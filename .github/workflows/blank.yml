@@ -26,18 +26,17 @@ jobs:
       - name: Run script
         run: |
           python main.py
-          
-      - name: Debug list data folder
-        run: |
-          echo "PWD=$(pwd)"
-          ls -lah
-          echo "---- data ----"
-          ls -lah data || true
 
+      - name: Keep only dedup CSV
+        run: |
+          rm -f data/google_news_raw_*.csv
+          rm -f data/search_audit_*.csv
+          rm -f data/google_news_dedup_audit_*.csv
+          ls -lah data
 
       - name: Upload deduped output only
         uses: actions/upload-artifact@v4
         with:
           name: deduped
-          path: data/latest_dedup.csv
+          path: data/google_news_dedup_*.csv
 
