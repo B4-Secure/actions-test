@@ -4,6 +4,7 @@ import glob
 import urllib.parse
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
+import shutil
 
 import feedparser
 import pandas as pd
@@ -343,6 +344,11 @@ def main():
         threshold=DUP_THRESHOLD,
         model_name=MODEL_NAME,
     )
+    # Always keep a stable single file for automation
+    latest_dedup = DATA_DIR / "latest_dedup.csv"
+    shutil.copyfile(dedup_file, latest_dedup)
+    print(f"Saved latest: {latest_dedup}")
+
 
     print(f"Saved raw:   {raw_results_file} | rows={len(results)}")
     print(f"Saved audit: {audit_search_file} | searches={len(search_df)}")
@@ -356,6 +362,7 @@ if __name__ == "__main__":
 
 
 # %%
+
 
 
 
