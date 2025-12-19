@@ -315,7 +315,7 @@ def semantic_dedupe_csv(infile: str, out_clean: str, out_audit: str,
 
 
 def main():
-    ts = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S_UTC")
+    ts = datetime.now(timezone.utc).strftime("%d_%m%y_UTC")
 
     search_df = parse_search_library(SEARCH_LIBRARY_TEXT)
     search_df["google_news_compatible"] = search_df["raw_query"].apply(is_google_news_compatible)
@@ -362,6 +362,7 @@ if __name__ == "__main__":
 
 
 # %%
+
 
 
 
