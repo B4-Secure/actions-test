@@ -222,7 +222,7 @@ def latest_file(pattern: str) -> str | None:
 
 def semantic_dedupe_csv(infile: str, out_clean: str, out_audit: str,
                         threshold: float, model_name: str) -> tuple[int, int]:
-    df = pd.read_csv(infile)
+    df = pd.read_excel(infile)
     df["compare_text"] = df["title"].fillna("").astype(str)
 
     mask = df["compare_text"].str.len() > 0
@@ -230,8 +230,8 @@ def semantic_dedupe_csv(infile: str, out_clean: str, out_audit: str,
     orig_idx = df.index[mask].to_numpy()
 
     if df_work.empty:
-        df.drop(columns=["compare_text"], errors="ignore").to_csv(out_clean, index=False)
-        pd.DataFrame().to_csv(out_audit, index=False)
+        df.drop(columns=["compare_text"], errors="ignore").to_excel(out_clean, index=False)
+        pd.DataFrame().to_excel(out_audit, index=False, engine="openpyxl")
         return len(df), len(df)
 
     model = SentenceTransformer(model_name)
@@ -309,8 +309,8 @@ def semantic_dedupe_csv(infile: str, out_clean: str, out_audit: str,
     df_clean = df.loc[keep_mask].drop(columns=["compare_text"], errors="ignore").reset_index(drop=True)
     audit = pd.DataFrame(audit_rows)
 
-    df_clean.to_csv(out_clean, index=False)
-    audit.to_csv(out_audit, index=False)
+    df_clean.to_excel(out_clean, index=False, engine = "openpyxl")
+    audit.to_excel(out_audit, index=False, engine = "openpyxl")
     return len(df), len(df_clean)
 
 
@@ -330,8 +330,8 @@ def main():
     raw_results_file = DATA_DIR / f"google_news_raw_{ts}_past{PAST_DAYS}d.xlsx"
     audit_search_file = DATA_DIR / f"search_audit_{ts}.xlsx"
 
-    results.to_csv(raw_results_file, index=False)
-    search_df.to_csv(audit_search_file, index=False)
+    results.to_excel(raw_results_file, index=False, engine = "openpyxl")
+    search_df.to_excel(audit_search_file, index=False, engine = "openpyxl")
 
     # Dedupe the raw file we just created
     dedup_file = DATA_DIR / f"google_news_dedup_{ts}_past{PAST_DAYS}d.xlsx"
@@ -362,6 +362,7 @@ if __name__ == "__main__":
 
 
 # %%
+
 
 
 
