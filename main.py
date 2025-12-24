@@ -19,6 +19,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 # CONFIG (can be overridden by GitHub Actions env vars)
 # ---------------------------
 PAST_DAYS = int(os.getenv("PAST_DAYS", "1"))
+LOOKBACK_HOURS = int(os.getenv("LOOKBACK_HOURS", "18"))
 MAX_ITEMS = int(os.getenv("MAX_ITEMS", "50"))
 DUP_THRESHOLD = float(os.getenv("DUP_THRESHOLD", "0.60"))
 MODEL_NAME = os.getenv("MODEL_NAME", "all-MiniLM-L6-v2")
@@ -150,8 +151,8 @@ def parse_published_dt(published_str: str):
         return None
 
 
-def filter_last_n_days(df, n_days: int):
-    cutoff = datetime.now(timezone.utc) - timedelta(days=n_days)
+def filter_last_n_hours(df, hours: int):
+    cutoff = datetime.now(timezone.utc) - timedelta(hours=hours)
     df = df.copy()
     df["published_dt_utc"] = df["published"].apply(parse_published_dt)
     df = df[df["published_dt_utc"].notna()]
@@ -322,7 +323,7 @@ def main():
     to_run = search_df[search_df["google_news_compatible"]].copy()
 
     results = collect_google_news(to_run, past_days=PAST_DAYS, max_items=MAX_ITEMS)
-    results = filter_last_n_days(results, n_days=PAST_DAYS)
+    results = filter_last_n_hours(results, hours=LOOKBACK_HOURS)
 
     if not results.empty:
         results = results.drop_duplicates(subset=["link"]).reset_index(drop=True)
@@ -358,6 +359,7 @@ def main():
     print(f"Dedupe: original={orig} cleaned={cleaned}")
     print(f"Saved dedup: {dedup_file}")
     print(f"Saved dedup audit: {dedup_audit}")
+    print(f"Running with LOOKBACK_HOURS={LOOKBACK_HOURS}")
 
 
 if __name__ == "__main__":
@@ -365,6 +367,7 @@ if __name__ == "__main__":
 
 
 # %%
+
 
 
 
