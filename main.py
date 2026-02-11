@@ -219,6 +219,38 @@ def parse_search_library(text: str) -> pd.DataFrame:
 # NEWS COLLECTION FUNCTIONS
 # ---------------------------
 
+def create_fallback_query(query: str) -> str | None:
+    """
+    Create a simplified fallback query from a complex boolean query.
+    
+    For queries like: ("Maasmechelen" OR "Hasselt") AND (incident OR protest OR bomb)
+    Returns: "Maasmechelen" OR "Hasselt"
+    
+    This helps get results for local searches where the full boolean is too restrictive.
+    """
+    # If query doesn't have AND, no need for fallback
+    if ' AND ' not in query.upper():
+        return None
+    
+    # Try to extract the first parenthetical group (usually location names)
+    # Pattern: ("term1" OR "term2" OR ...) AND ...
+    match = re.search(r'\(([^)]+)\)\s*AND', query, re.IGNORECASE)
+    if match:
+        location_part = match.group(1).strip()
+        # Clean up and return just the locations
+        return f"({location_part})"
+    
+    # Alternative: split on AND and take the first part
+    parts = re.split(r'\s+AND\s+', query, flags=re.IGNORECASE)
+    if len(parts) >= 2:
+        first_part = parts[0].strip()
+        # Only use if it looks like it has location terms
+        if first_part and len(first_part) > 3:
+            return first_part
+    
+    return None
+
+
 def google_news_rss_url(query: str, past_days: int, hl: str, gl: str, ceid: str) -> str:
     """Generate Google News RSS URL."""
     full = f"{query} when:{past_days}d"
@@ -569,34 +601,79 @@ def collect_all_news(df_searches: pd.DataFrame, past_days: int, lookback_hours: 
     print(f"  - Content Extraction: {'ENABLED' if EXTRACT_CONTENT else 'DISABLED'}")
     print(f"{'='*60}\n")
     
+    fallback_count = 0  # Track how many fallback searches were used
+    
     for idx, row in df_searches.iterrows():
         search_name = row["search_name"]
         query = row["raw_query"]
         
         print(f"[{idx+1}/{len(df_searches)}] Processing: {search_name[:50]}...")
         
+        search_total = 0  # Track total articles for this search
+        
         # Always try Google News RSS
         rss_articles = fetch_google_news_rss(search_name, query, past_days, max_items)
         all_articles.extend(rss_articles)
+        search_total += len(rss_articles)
         print(f"  ├─ Google RSS: {len(rss_articles)} articles")
         
         # Try NewsAPI if enabled
         if USE_NEWSAPI and NEWSAPI_KEY:
             api_articles = fetch_newsapi(search_name, query, lookback_hours, max_items)
             all_articles.extend(api_articles)
+            search_total += len(api_articles)
             print(f"  ├─ NewsAPI: {len(api_articles)} articles")
         
         # Try Bing News if enabled
         if USE_BING_NEWS and BING_NEWS_KEY:
             bing_articles = fetch_bing_news(search_name, query, lookback_hours, max_items)
             all_articles.extend(bing_articles)
+            search_total += len(bing_articles)
             print(f"  ├─ Bing News: {len(bing_articles)} articles")
         
         # Try GDELT if enabled (FREE - no API key needed!)
         if USE_GDELT:
             gdelt_articles = fetch_gdelt(search_name, query, lookback_hours, max_items)
             all_articles.extend(gdelt_articles)
-            print(f"  └─ GDELT: {len(gdelt_articles)} articles")
+            search_total += len(gdelt_articles)
+            print(f"  ├─ GDELT: {len(gdelt_articles)} articles")
+        
+        # FALLBACK: If no results from any source, try a relaxed query
+        if search_total == 0:
+            fallback_query = create_fallback_query(query)
+            if fallback_query:
+                print(f"  ├─ ⚠️  No results! Trying fallback query...")
+                fallback_count += 1
+                
+                # Try fallback with Google RSS
+                fallback_rss = fetch_google_news_rss(
+                    f"{search_name} (fallback)", 
+                    fallback_query, 
+                    past_days, 
+                    max_items
+                )
+                all_articles.extend(fallback_rss)
+                
+                # Try fallback with GDELT if enabled
+                fallback_gdelt = []
+                if USE_GDELT:
+                    fallback_gdelt = fetch_gdelt(
+                        f"{search_name} (fallback)", 
+                        fallback_query, 
+                        lookback_hours, 
+                        max_items
+                    )
+                    all_articles.extend(fallback_gdelt)
+                
+                total_fallback = len(fallback_rss) + len(fallback_gdelt)
+                print(f"  └─ 🔄 Fallback: {total_fallback} articles (query: {fallback_query[:50]}...)")
+            else:
+                print(f"  └─ ⚠️  No results and no fallback available")
+        else:
+            print(f"  └─ Total: {search_total} articles")
+    
+    if fallback_count > 0:
+        print(f"\n📊 Used fallback searches for {fallback_count} queries with no results")
     
     df = pd.DataFrame(all_articles)
     
