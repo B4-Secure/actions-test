@@ -5,11 +5,15 @@ import urllib.parse
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
 import shutil
+import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import feedparser
 import pandas as pd
 import numpy as np
+import requests
 from dateutil import parser as dateparser
+import trafilatura
 
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -24,11 +28,19 @@ MAX_ITEMS = int(os.getenv("MAX_ITEMS", "30"))
 DUP_THRESHOLD = float(os.getenv("DUP_THRESHOLD", "0.60"))
 MODEL_NAME = os.getenv("MODEL_NAME", "all-MiniLM-L6-v2")
 
-# NEW: Feature flags for future improvements
+# Feature flags for data sources
 USE_NEWSAPI = os.getenv("USE_NEWSAPI", "false").lower() == "true"
 USE_BING_NEWS = os.getenv("USE_BING_NEWS", "false").lower() == "true"
+USE_GDELT = os.getenv("USE_GDELT", "true").lower() == "true"  # Enabled by default (free!)
+EXTRACT_CONTENT = os.getenv("EXTRACT_CONTENT", "true").lower() == "true"  # Article extraction
+
+# API Keys
 NEWSAPI_KEY = os.getenv("NEWSAPI_KEY", "")
 BING_NEWS_KEY = os.getenv("BING_NEWS_KEY", "")
+
+# Content extraction settings
+MAX_EXTRACT_WORKERS = int(os.getenv("MAX_EXTRACT_WORKERS", "5"))  # Parallel extraction threads
+EXTRACT_TIMEOUT = int(os.getenv("EXTRACT_TIMEOUT", "10"))  # Seconds per article
 
 DEFAULT_HL, DEFAULT_GL, DEFAULT_CEID = "en-GB", "GB", "GB:en"
 
@@ -342,6 +354,197 @@ def fetch_bing_news(search_name: str, query: str, hours_back: int, max_items: in
         return []
 
 
+def fetch_gdelt(search_name: str, query: str, hours_back: int, max_items: int = 100) -> list[dict]:
+    """
+    Fetch articles from GDELT Project API (FREE, no API key needed!).
+    
+    GDELT monitors news from virtually every country in 100+ languages,
+    updating every 15 minutes with ~300,000 articles daily.
+    
+    API Docs: https://blog.gdeltproject.org/gdelt-doc-2-0-api-debuts/
+    """
+    try:
+        # Clean up query for GDELT - it uses a simpler syntax
+        # Remove boolean operators and quotes for basic keyword search
+        clean_query = query
+        clean_query = re.sub(r'\bAND\b', ' ', clean_query, flags=re.IGNORECASE)
+        clean_query = re.sub(r'\bOR\b', ' ', clean_query, flags=re.IGNORECASE)
+        clean_query = re.sub(r'["\(\)]', '', clean_query)
+        clean_query = ' '.join(clean_query.split())  # Normalize whitespace
+        
+        # Take first few significant terms to avoid overly complex queries
+        terms = [t.strip() for t in clean_query.split() if len(t.strip()) > 2][:5]
+        gdelt_query = ' '.join(terms)
+        
+        if not gdelt_query:
+            return []
+        
+        # GDELT DOC 2.0 API
+        url = "https://api.gdeltproject.org/api/v2/doc/doc"
+        
+        # Calculate time range
+        end_time = datetime.now(timezone.utc)
+        start_time = end_time - timedelta(hours=hours_back)
+        
+        params = {
+            'query': gdelt_query,
+            'mode': 'artlist',  # Article list mode
+            'maxrecords': min(max_items, 250),  # API limit is 250
+            'format': 'json',
+            'startdatetime': start_time.strftime('%Y%m%d%H%M%S'),
+            'enddatetime': end_time.strftime('%Y%m%d%H%M%S'),
+            'sort': 'datedesc'  # Most recent first
+        }
+        
+        response = requests.get(url, params=params, timeout=15)
+        response.raise_for_status()
+        
+        data = response.json()
+        articles = []
+        
+        for article in data.get('articles', []):
+            # Parse GDELT date format (YYYYMMDDHHMMSS)
+            seendate = article.get('seendate', '')
+            try:
+                if seendate:
+                    pub_dt = datetime.strptime(seendate, '%Y%m%d%H%M%S')
+                    pub_dt = pub_dt.replace(tzinfo=timezone.utc)
+                    published = pub_dt.isoformat()
+                else:
+                    published = ''
+            except:
+                published = seendate
+            
+            articles.append({
+                "search_name": search_name,
+                "search_query": query,
+                "title": article.get('title', ''),
+                "published": published,
+                "link": article.get('url', ''),
+                "source": f"gdelt_{article.get('domain', 'unknown')}",
+                "description": '',  # GDELT doesn't provide descriptions
+                "language": article.get('language', ''),
+                "source_country": article.get('sourcecountry', ''),
+            })
+        
+        return articles
+        
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching GDELT for '{search_name}': {e}")
+        return []
+    except Exception as e:
+        print(f"Unexpected error fetching GDELT for '{search_name}': {e}")
+        return []
+
+
+def extract_article_content(url: str, timeout: int = 10) -> dict:
+    """
+    Extract full article content from a URL using trafilatura.
+    
+    Returns dict with: content, author, date, sitename
+    """
+    try:
+        # Download the page
+        downloaded = trafilatura.fetch_url(url)
+        if not downloaded:
+            return {"content": None, "extraction_error": "Failed to download"}
+        
+        # Extract main content
+        content = trafilatura.extract(
+            downloaded,
+            include_comments=False,
+            include_tables=True,
+            no_fallback=False,
+            favor_precision=True
+        )
+        
+        # Also try to get metadata
+        metadata = trafilatura.extract_metadata(downloaded)
+        
+        return {
+            "content": content,
+            "author": metadata.author if metadata else None,
+            "sitename": metadata.sitename if metadata else None,
+            "extraction_error": None
+        }
+        
+    except Exception as e:
+        return {"content": None, "extraction_error": str(e)}
+
+
+def extract_content_batch(df: pd.DataFrame, max_workers: int = 5) -> pd.DataFrame:
+    """
+    Extract article content for all URLs in the dataframe using parallel processing.
+    """
+    if df.empty or 'link' not in df.columns:
+        return df
+    
+    print(f"\n{'='*60}")
+    print(f"Extracting article content...")
+    print(f"  - Articles to process: {len(df)}")
+    print(f"  - Parallel workers: {max_workers}")
+    print(f"{'='*60}\n")
+    
+    # Initialize new columns
+    df = df.copy()
+    df['content'] = None
+    df['author'] = None
+    df['sitename'] = None
+    df['extraction_error'] = None
+    
+    urls = df['link'].tolist()
+    results = {}
+    
+    start_time = time.time()
+    completed = 0
+    
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        # Submit all extraction tasks
+        future_to_url = {
+            executor.submit(extract_article_content, url, EXTRACT_TIMEOUT): url 
+            for url in urls
+        }
+        
+        # Process results as they complete
+        for future in as_completed(future_to_url):
+            url = future_to_url[future]
+            completed += 1
+            
+            try:
+                result = future.result(timeout=EXTRACT_TIMEOUT + 5)
+                results[url] = result
+            except Exception as e:
+                results[url] = {"content": None, "extraction_error": str(e)}
+            
+            # Progress update every 10 articles
+            if completed % 10 == 0 or completed == len(urls):
+                elapsed = time.time() - start_time
+                rate = completed / elapsed if elapsed > 0 else 0
+                print(f"  Progress: {completed}/{len(urls)} ({rate:.1f} articles/sec)")
+    
+    # Update dataframe with results
+    for idx, row in df.iterrows():
+        url = row['link']
+        if url in results:
+            result = results[url]
+            df.at[idx, 'content'] = result.get('content')
+            df.at[idx, 'author'] = result.get('author')
+            df.at[idx, 'sitename'] = result.get('sitename')
+            df.at[idx, 'extraction_error'] = result.get('extraction_error')
+    
+    # Summary stats
+    success_count = df['content'].notna().sum()
+    fail_count = df['content'].isna().sum()
+    elapsed = time.time() - start_time
+    
+    print(f"\n✅ Content extraction complete:")
+    print(f"  - Successful: {success_count} ({success_count/len(df)*100:.1f}%)")
+    print(f"  - Failed: {fail_count}")
+    print(f"  - Total time: {elapsed:.1f}s")
+    
+    return df
+
+
 def collect_all_news(df_searches: pd.DataFrame, past_days: int, lookback_hours: int, max_items: int) -> pd.DataFrame:
     """
     Collect news from all enabled sources.
@@ -350,6 +553,9 @@ def collect_all_news(df_searches: pd.DataFrame, past_days: int, lookback_hours: 
     - Google News RSS (always enabled)
     - NewsAPI (if USE_NEWSAPI=true and NEWSAPI_KEY is set)
     - Bing News (if USE_BING_NEWS=true and BING_NEWS_KEY is set)
+    - GDELT (if USE_GDELT=true, FREE - no API key needed!)
+    
+    Then optionally extracts full article content using trafilatura.
     """
     all_articles = []
     
@@ -357,8 +563,10 @@ def collect_all_news(df_searches: pd.DataFrame, past_days: int, lookback_hours: 
     print(f"Starting news collection:")
     print(f"  - Total searches: {len(df_searches)}")
     print(f"  - Google News RSS: ENABLED")
-    print(f"  - NewsAPI: {'ENABLED' if USE_NEWSAPI else 'DISABLED'}")
-    print(f"  - Bing News: {'ENABLED' if USE_BING_NEWS else 'DISABLED'}")
+    print(f"  - NewsAPI: {'ENABLED' if USE_NEWSAPI and NEWSAPI_KEY else 'DISABLED'}")
+    print(f"  - Bing News: {'ENABLED' if USE_BING_NEWS and BING_NEWS_KEY else 'DISABLED'}")
+    print(f"  - GDELT: {'ENABLED' if USE_GDELT else 'DISABLED'}")
+    print(f"  - Content Extraction: {'ENABLED' if EXTRACT_CONTENT else 'DISABLED'}")
     print(f"{'='*60}\n")
     
     for idx, row in df_searches.iterrows():
@@ -382,7 +590,13 @@ def collect_all_news(df_searches: pd.DataFrame, past_days: int, lookback_hours: 
         if USE_BING_NEWS and BING_NEWS_KEY:
             bing_articles = fetch_bing_news(search_name, query, lookback_hours, max_items)
             all_articles.extend(bing_articles)
-            print(f"  └─ Bing News: {len(bing_articles)} articles")
+            print(f"  ├─ Bing News: {len(bing_articles)} articles")
+        
+        # Try GDELT if enabled (FREE - no API key needed!)
+        if USE_GDELT:
+            gdelt_articles = fetch_gdelt(search_name, query, lookback_hours, max_items)
+            all_articles.extend(gdelt_articles)
+            print(f"  └─ GDELT: {len(gdelt_articles)} articles")
     
     df = pd.DataFrame(all_articles)
     
@@ -398,6 +612,10 @@ def collect_all_news(df_searches: pd.DataFrame, past_days: int, lookback_hours: 
     # Remove exact URL duplicates (can happen when multiple sources return same article)
     df = df.drop_duplicates(subset=["link"]).reset_index(drop=True)
     print(f"After URL deduplication: {len(df)} articles")
+    
+    # Extract full article content if enabled
+    if EXTRACT_CONTENT and not df.empty:
+        df = extract_content_batch(df, max_workers=MAX_EXTRACT_WORKERS)
     
     return df
 
@@ -624,14 +842,37 @@ def main():
     print(f"\n{'='*60}")
     print("SUMMARY")
     print(f"{'='*60}")
-    print(f"Configuration:")
+    print(f"\nConfiguration:")
     print(f"  - Lookback hours: {LOOKBACK_HOURS}")
     print(f"  - Past days filter: {PAST_DAYS}")
     print(f"  - Max items per search: {MAX_ITEMS}")
     print(f"  - Dedup threshold: {DUP_THRESHOLD}")
-    print(f"\nTop searches by article count:")
+    
+    print(f"\nData Sources:")
+    print(f"  - Google News RSS: ENABLED")
+    print(f"  - NewsAPI: {'ENABLED' if USE_NEWSAPI and NEWSAPI_KEY else 'DISABLED'}")
+    print(f"  - Bing News: {'ENABLED' if USE_BING_NEWS and BING_NEWS_KEY else 'DISABLED'}")
+    print(f"  - GDELT: {'ENABLED' if USE_GDELT else 'DISABLED'}")
+    print(f"  - Content Extraction: {'ENABLED' if EXTRACT_CONTENT else 'DISABLED'}")
+    
     if not results.empty:
+        print(f"\nTop searches by article count:")
         print(results["search_name"].value_counts().head(10).to_string())
+        
+        # Show source breakdown if multiple sources used
+        if "source" in results.columns:
+            print(f"\nArticles by source type:")
+            source_counts = results["source"].apply(
+                lambda x: x.split("_")[0] if pd.notna(x) and "_" in str(x) else "google_rss"
+            ).value_counts()
+            print(source_counts.to_string())
+        
+        # Content extraction stats
+        if EXTRACT_CONTENT and "content" in results.columns:
+            content_success = results["content"].notna().sum()
+            print(f"\nContent extraction:")
+            print(f"  - Successful: {content_success}/{len(results)} ({content_success/len(results)*100:.1f}%)")
+    
     print(f"\n{'='*60}\n")
 
 
