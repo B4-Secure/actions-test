@@ -4,7 +4,26 @@ on:
   schedule:
     - cron: "0 8 * * *"    # 09:00 Amsterdam (winter) -> 18h lookback
     - cron: "0 14 * * *"   # 15:00 Amsterdam (winter) -> 6h lookback
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      use_gdelt:
+        description: 'Enable GDELT data source'
+        required: false
+        default: 'true'
+        type: choice
+        options: ['true', 'false']
+      extract_content:
+        description: 'Extract full article content'
+        required: false
+        default: 'true'
+        type: choice
+        options: ['true', 'false']
+      use_newsapi:
+        description: 'Enable NewsAPI (requires secret)'
+        required: false
+        default: 'false'
+        type: choice
+        options: ['true', 'false']
 
 permissions:
   contents: write
@@ -41,6 +60,8 @@ jobs:
           HOUR=$(date -u +%H)
           if [ "$HOUR" = "08" ]; then echo "LOOKBACK_HOURS=18" >> $GITHUB_ENV; fi
           if [ "$HOUR" = "14" ]; then echo "LOOKBACK_HOURS=6"  >> $GITHUB_ENV; fi
+          # Default to 18 hours if not set (manual trigger)
+          if [ -z "$LOOKBACK_HOURS" ]; then echo "LOOKBACK_HOURS=18" >> $GITHUB_ENV; fi
           echo "LOOKBACK_HOURS set to: $LOOKBACK_HOURS"
 
       - name: Run script
@@ -48,6 +69,14 @@ jobs:
           python main.py
         env:
           LOOKBACK_HOURS: ${{ env.LOOKBACK_HOURS }}
+          # Data sources
+          USE_GDELT: ${{ github.event.inputs.use_gdelt || 'true' }}
+          USE_NEWSAPI: ${{ github.event.inputs.use_newsapi || 'false' }}
+          NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
+          # Content extraction
+          EXTRACT_CONTENT: ${{ github.event.inputs.extract_content || 'true' }}
+          MAX_EXTRACT_WORKERS: "5"
+          EXTRACT_TIMEOUT: "10"
 
       - name: Keep only dedup XLSX
         run: |
