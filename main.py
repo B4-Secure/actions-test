@@ -25,7 +25,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 PAST_DAYS = int(os.getenv("PAST_DAYS", "1"))
 LOOKBACK_HOURS = int((os.getenv("LOOKBACK_HOURS") or "18").strip())
 MAX_ITEMS = int(os.getenv("MAX_ITEMS", "30"))
-DUP_THRESHOLD = float(os.getenv("DUP_THRESHOLD", "0.60"))
+DUP_THRESHOLD = float(os.getenv("DUP_THRESHOLD", "0.7"))
 MODEL_NAME = os.getenv("MODEL_NAME", "all-MiniLM-L6-v2")
 
 # Feature flags for data sources
@@ -47,7 +47,7 @@ RAPIDAPI_KEY = os.getenv("RAPIDAPI_KEY", "")
 
 # Content extraction settings
 MAX_EXTRACT_WORKERS = int(os.getenv("MAX_EXTRACT_WORKERS", "5"))  # Parallel extraction threads
-EXTRACT_TIMEOUT = int(os.getenv("EXTRACT_TIMEOUT", "10"))  # Seconds per article
+EXTRACT_TIMEOUT = int(os.getenv("EXTRACT_TIMEOUT", "15"))  # Seconds per article
 
 DEFAULT_HL, DEFAULT_GL, DEFAULT_CEID = "en-GB", "GB", "GB:en"
 
@@ -112,14 +112,14 @@ Local Town Searches Las Rozas & La Roca Spanish   ("Las Rozas" OR "La Roca" OR "
 Village Search Las Rozas & La Roca   ("Las Rozas Village" OR "La Roca Village")
 Local Town Searches Bicester & Kildare	("Bicester" OR "Kildare" OR "Newbridge") AND (protest OR boycott OR bomb OR explosion OR shooting OR stabbing)
 Village Search Bicester & Kildare   ("Bicester Village" OR "Kildare Village")
-High Level City searches UK & Ireland   ("London" OR "Oxford" OR "Dublin") AND (bomb OR explosion OR shooting OR stabbing OR "suspicious package")
-High Level City searches France English	"Paris" AND (bomb OR explosion OR shooting OR stabbing)
-High Level City searches France French	"Paris" AND (bombe OR explosion OR fusillade OR poignarder)
+High Level City searches UK & Ireland   ("London,UK" OR "Oxford,UK" OR "Dublin,UK") AND (bomb OR explosion OR shooting OR stabbing OR "suspicious package") AND -"New London" AND -Connecticut
+High Level City searches France English	("Paris, France" OR "Paris France" OR "Île-de-France") AND (bomb OR explosion OR shooting OR stabbing) AND -Texas AND -"Paris, Texas"
+High Level City searches France French	("Paris, France" OR "Paris France" OR "Île-de-France") AND (bombe OR explosion OR fusillade OR poignarder) AND -Texas AND -"Paris, Texas"
 Local Town Searches La Vallée French   ("Serris" OR "Chessy" OR "Disneyland Paris") AND (manifestation OR grève OR bombe OR explosion OR poignarder)
 Village Search La Vallée	("La Vallée Village" OR ("Serris" OR "Chessy") AND ("designer outlet" OR outlet OR retail))
-High Level City searches Italy English   ("Milan" OR "Bologna") AND (bomb OR explosion OR shooting OR stabbing)
-High Level City searches Italy Italian   ("Milan" OR "Bologna") AND (bomba OR esplosione OR sparatoria OR accoltellamento)
-Local Town Searches Fidenza Italian   ("Fidenza" OR "Parma" OR "Piacenza" OR "Cremona") AND (protesta OR boicottaggio OR bomba OR esplosione)
+High Level City searches Italy English   ("Milan, Italy" OR "Bologna, Italy") AND (bomb OR explosion OR stabbing OR "bomb threat") AND -OlympicsAND -biathlonAND -"shooting sports" AND -"film shooting" AND -"photo shoot"
+High Level City searches Italy Italian   ("Milan, Italy" OR "Bologna, Italy") AND (bomb OR explosion OR stabbing OR "bomb threat") AND -OlympicsAND -biathlonAND -"shooting sports" AND -"film shooting" AND -"photo shoot"
+Local Town Searches Fidenza Italian   ("Fidenza" OR "Parma,Italy" OR "Piacenza" OR "Cremona") AND (protesta OR boicottaggio OR bomba OR esplosione)
 Village Search Fidenza	("Fidenza Village" OR ("Fidenza" AND ("designer outlet" OR outlet OR retail)))
 """.strip()
 
