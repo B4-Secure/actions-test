@@ -83,46 +83,45 @@ DATA_DIR.mkdir(exist_ok=True)
 # Your search library (unchanged)
 # ---------------------------
 SEARCH_LIBRARY_TEXT = r"""
-Brand search Google News and X - PROTEST   ("Gucci" OR "Ralph Lauren" OR "Dior" OR "Armani" OR "Louis Vuitton" OR "Valentino" OR "Burberry" OR "Dolce Gabbana" OR "Polo Ralph Lauren" OR "Cartier" OR "Calvin Klein" OR "Tommy Hilfiger" OR "Timberland" OR "Prada" OR "Nike" OR "Balenciaga" OR "Canada Goose") AND protest
-Brand search Google News and X - BOYCOTT   ("Gucci" OR "Ralph Lauren" OR "Dior" OR "Armani" OR "Louis Vuitton" OR "Valentino" OR "Burberry" OR "Dolce Gabbana" OR "Polo Ralph Lauren" OR "Cartier" OR "Calvin Klein" OR "Tommy Hilfiger" OR "Timberland" OR "Prada" OR "Nike" OR "Balenciaga" OR "Canada Goose") AND boycott
-Cotswold Designer Outlet   ("Cotswold Designer Outlet")
+Brand search Google News and X - PROTEST	("Gucci" OR "Ralph Lauren" OR "Dior" OR "Armani" OR "Louis Vuitton" OR "Valentino" OR "Burberry" OR "Dolce Gabbana" OR "Polo Ralph Lauren" OR "Cartier" OR "Calvin Klein" OR "Tommy Hilfiger" OR "Timberland" OR "Prada" OR "Nike" OR "Balenciaga" OR "Canada Goose") AND protest
+Brand search Google News and X - BOYCOTT	("Gucci" OR "Ralph Lauren" OR "Dior" OR "Armani" OR "Louis Vuitton" OR "Valentino" OR "Burberry" OR "Dolce Gabbana" OR "Polo Ralph Lauren" OR "Cartier" OR "Calvin Klein" OR "Tommy Hilfiger" OR "Timberland" OR "Prada" OR "Nike" OR "Balenciaga" OR "Canada Goose") AND boycott
+Cotswold Designer Outlet	("Cotswold Designer Outlet")
 Value Retail	"Value Retail" OR "Bicester Collection"
-London Marylebone   ("London Marylebone" OR "Marylebone station") AND (incident OR disruption OR delay OR closure OR police OR protest OR bomb OR explosion OR stabbing OR shooting OR "suspicious package")
-Roermond outlet   ("Roermond Outlet" OR Roermond) AND (incident OR protest OR boycott OR police OR closure OR evacuation OR bomb OR explosion OR stabbing OR shooting OR crime)
-BV Logistics Companies   ("DHL" OR "UPS" OR "DPD" OR "FedEx" OR "Amazon" OR "Royal Mail" OR "Parcelforce" OR "EVRI") AND (delivery OR supply OR logistics)
-High Level City searches Belgium Dutch language   ("Brussels" OR "Maastricht" OR "Antwerp") AND (bom OR bommelding OR explosie OR schieten OR steekincident OR "verdacht pakket")
-High Level City searches Belgium English language   ("Brussels" OR "Maastricht" OR "Antwerp") AND (bomb OR explosion OR shooting OR stabbing OR "suspicious package" OR "bomb threat")
-High Level City searches Belgium French language   ("Brussels" OR "Maastricht" OR "Antwerp") AND (bombe OR explosion OR "colis suspect" OR poignarder OR fusillade)
+London Marylebone	("London Marylebone" OR "Marylebone station") AND (incident OR disruption OR delay OR closure OR police OR protest OR bomb OR explosion OR stabbing OR shooting OR "suspicious package")
+Roermond outlet	("Roermond Outlet" OR Roermond) AND (incident OR protest OR boycott OR police OR closure OR evacuation OR bomb OR explosion OR stabbing OR shooting OR crime)
+BV Logistics Companies	("DHL" OR "UPS" OR "DPD" OR "FedEx" OR "Amazon" OR "Royal Mail" OR "Parcelforce" OR "EVRI") AND (delivery OR supply OR logistics) AND ("UK" OR "United Kingdom" OR "Britain" OR "England")
+High Level City searches Belgium Dutch language	("Brussels" OR "Maastricht" OR "Antwerp") AND ("Belgium" OR "Nederland" OR "Netherlands") AND (bom OR bommelding OR explosie OR schieten OR steekincident OR "verdacht pakket")
+High Level City searches Belgium English language	("Brussels" OR "Maastricht" OR "Antwerp") AND ("Belgium" OR "Netherlands") AND (bomb OR explosion OR shooting OR stabbing OR "suspicious package" OR "bomb threat")
+High Level City searches Belgium French language	("Brussels" OR "Maastricht" OR "Antwerp") AND ("Belgique" OR "Belgien" OR "Belgium") AND (bombe OR explosion OR "colis suspect" OR poignarder OR fusillade)
 Local Town Searches Maasmechelen Dutch	("Maasmechelen" OR "Hasselt" OR "Lanaken") AND (incident OR protest OR boycot OR bom OR bommelding OR explosie OR evacuatie OR afzetting OR politie OR politie-inzet OR steekpartij OR steekincident OR schietpartij OR schieten OR dreiging OR "verdacht pakket" OR verdachte)
 Local Town Searches Maasmechelen French	("Maasmechelen" OR "Hasselt" OR "Lanaken") AND (incident OR manifestation OR protestation OR bombe OR "alerte à la bombe" OR "menace de bombe" OR explosion OR évacuation OR "colis suspect" OR agression OR "attaque au couteau" OR fusillade OR poignarder OR police OR menace)
 Local Town Searches Maasmechelen English	("Maasmechelen" OR "Hasselt" OR "Lanaken") AND (incident OR protest OR boycott OR police OR "armed police" OR evacuation OR cordon OR closure OR disruption OR delay OR threat OR terror OR bomb OR explosion OR shooting OR stabbing OR "suspicious package" OR "bomb threat")
-Village searches Maasmechelen   ("Maasmechelen Village" OR ("Maasmechelen" AND ("designer outlet" OR outlet OR retail)))
-High Level City searches Germany English   ("Frankfurt" OR "Cologne" OR "Munich") AND (bomb OR explosion OR shooting OR stabbing OR "suspicious package")
-High Level City searches Germany German   ("Frankfurt" OR "Cologne" OR "Munich") AND (bombe OR explosion OR schießen OR messer OR "verdächtiges paket")
+Village searches Maasmechelen	("Maasmechelen Village" OR ("Maasmechelen" AND ("designer outlet" OR outlet OR retail)))
+High Level City searches Germany English	("Frankfurt" OR "Cologne" OR "Munich") AND "Germany" AND (bomb OR explosion OR shooting OR stabbing OR "suspicious package") AND -"Las Vegas" AND -"New York" AND -"New Jersey" AND -"Los Angeles" AND -Bayern AND -"Bayern Munich" AND -Bundesliga AND -football AND -soccer
+High Level City searches Germany German	("Frankfurt" OR "Cologne" OR "Munich") AND "Deutschland" AND (bombe OR explosion OR schießen OR messer OR "verdächtiges paket") AND -Bayern AND -Fußball
 Local Town Searches Wertheim English	("Wertheim" OR "Wurzburg" OR "Aschaffenburg") AND (incident OR protest OR boycott OR police OR "armed police" OR evacuation OR cordon OR closure OR disruption OR threat OR bomb OR explosion OR shooting OR stabbing OR "suspicious package" OR "bomb threat")
 Local Town Searches Wertheim German	("Wertheim" OR "Wurzburg" OR "Aschaffenburg") AND (incident OR protest OR boykott OR polizei OR polizeieinsatz OR bombe OR bombendrohung OR sprengsatz OR explosion OR evakuierung OR absperrung OR verdächtig OR "verdächtiges paket" OR schießen OR schuss OR messer OR messerangriff OR großalarm OR großeinsatz)
-Village search Wertheim   ("Wertheim Village" OR ("Wertheim" AND ("designer outlet" OR outlet OR retail)))
-XR and JSO Broad search   ("Extinction Rebellion" OR "Just Stop Oil")
-XR and JSO Village search   ("Extinction Rebellion" OR "Just Stop Oil") AND ("Ingolstadt" OR "Kildare" OR "Bicester" OR "Wertheim" OR "Fidenza" OR "Maasmechelen")
-Shoplifting UK   "shoplifting" OR "retail crime" OR "theft from person" OR "pickpocket gang"
-High Level City searches Spain English   ("Madrid" OR "Barcelona") AND (bomb OR explosion OR shooting OR stabbing OR "suspicious package")
-High Level City searches Spain Spanish   ("Madrid" OR "Barcelona") AND (bomba OR explosión OR tiroteo OR puñalada OR "paquete sospechoso")
-Local Town Searches Las Rozas & La Roca English   ("Las Rozas" OR "La Roca" OR "Mataro" OR "Badalona") AND (protest OR boycott OR bomb OR explosion OR shooting OR stabbing)
-Local Town Searches Las Rozas & La Roca Spanish   ("Las Rozas" OR "La Roca" OR "Mataro" OR "Badalona") AND (protesta OR boicot OR bomba OR explosión OR tiroteo OR puñalada)
-Village Search Las Rozas & La Roca   ("Las Rozas Village" OR "La Roca Village")
+Village search Wertheim	("Wertheim Village" OR ("Wertheim" AND ("designer outlet" OR outlet OR retail)))
+XR and JSO Broad search	("Extinction Rebellion" OR "Just Stop Oil")
+XR and JSO Village search	("Extinction Rebellion" OR "Just Stop Oil") AND ("Ingolstadt" OR "Kildare" OR "Bicester" OR "Wertheim" OR "Fidenza" OR "Maasmechelen")
+Shoplifting UK	("shoplifting" OR "retail crime" OR "theft from person" OR "pickpocket gang" OR "retail crime report" OR "retail crime survey" OR "safer town centres") AND ("UK" OR "England" OR "Britain" OR "Wales" OR "Scotland")
+High Level City searches Spain English	("Madrid" OR "Barcelona") AND "Spain" AND (bomb OR explosion OR shooting OR stabbing OR "suspicious package") AND -football AND -soccer AND -LaLiga AND -"Champions League"
+High Level City searches Spain Spanish	("Madrid" OR "Barcelona") AND "España" AND (bomba OR explosión OR tiroteo OR puñalada OR "paquete sospechoso") AND -fútbol AND -"Liga"
+Local Town Searches Las Rozas & La Roca English	("Las Rozas" OR "La Roca" OR "Mataro" OR "Badalona") AND (protest OR boycott OR bomb OR explosion OR shooting OR stabbing)
+Local Town Searches Las Rozas & La Roca Spanish	("Las Rozas" OR "La Roca" OR "Mataro" OR "Badalona") AND (protesta OR boicot OR bomba OR explosión OR tiroteo OR puñalada)
+Village Search Las Rozas & La Roca	("Las Rozas Village" OR "La Roca Village")
 Local Town Searches Bicester & Kildare	("Bicester" OR "Kildare" OR "Newbridge") AND (protest OR boycott OR bomb OR explosion OR shooting OR stabbing)
-Village Search Bicester & Kildare   ("Bicester Village" OR "Kildare Village")
-High Level City searches UK & Ireland   ("London,UK" OR "Oxford,UK" OR "Dublin,UK") AND (bomb OR explosion OR shooting OR stabbing OR "suspicious package") AND -"New London" AND -Connecticut
+Village Search Bicester & Kildare	("Bicester Village" OR "Kildare Village")
+High Level City searches UK & Ireland	("London,UK" OR "Oxford,UK" OR "Dublin,UK") AND (bomb OR explosion OR shooting OR stabbing OR "suspicious package") AND -"New London" AND -Connecticut
 High Level City searches France English	("Paris, France" OR "Paris France" OR "Île-de-France") AND (bomb OR explosion OR shooting OR stabbing) AND -Texas AND -"Paris, Texas"
 High Level City searches France French	("Paris, France" OR "Paris France" OR "Île-de-France") AND (bombe OR explosion OR fusillade OR poignarder) AND -Texas AND -"Paris, Texas"
-Local Town Searches La Vallée French   ("Serris" OR "Chessy" OR "Disneyland Paris") AND (manifestation OR grève OR bombe OR explosion OR poignarder)
+Local Town Searches La Vallée French	("Serris" OR "Chessy" OR "Disneyland Paris") AND (manifestation OR grève OR bombe OR explosion OR poignarder)
 Village Search La Vallée	("La Vallée Village" OR ("Serris" OR "Chessy") AND ("designer outlet" OR outlet OR retail))
 High Level City searches Italy English   ("Milan, Italy" OR "Bologna, Italy") AND (bomb OR explosion OR stabbing OR "bomb threat") AND -OlympicsAND -biathlonAND -"shooting sports" AND -"film shooting" AND -"photo shoot"
 High Level City searches Italy Italian   ("Milan, Italy" OR "Bologna, Italy") AND (bomb OR explosion OR stabbing OR "bomb threat") AND -OlympicsAND -biathlonAND -"shooting sports" AND -"film shooting" AND -"photo shoot"
-Local Town Searches Fidenza Italian   ("Fidenza" OR "Parma,Italy" OR "Piacenza" OR "Cremona") AND (protesta OR boicottaggio OR bomba OR esplosione)
+Local Town Searches Fidenza Italian	("Fidenza" OR "Parma,Italy" OR "Piacenza" OR "Cremona") AND (protesta OR boicottaggio OR bomba OR esplosione)
 Village Search Fidenza	("Fidenza Village" OR ("Fidenza" AND ("designer outlet" OR outlet OR retail)))
 """.strip()
-
 
 # ---------------------------
 # HELPER FUNCTIONS
