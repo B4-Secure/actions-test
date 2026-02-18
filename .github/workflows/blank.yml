@@ -2,8 +2,8 @@ name: Daily Python Job
 
 on:
   schedule:
-    - cron: "0 8 * * *"    # 09:00 Amsterdam (winter) -> 18h lookback
-    - cron: "0 14 * * *"   # 15:00 Amsterdam (winter) -> 6h lookback
+    - cron: "0 7 * * *"    # 07:00 Amsterdam (winter) -> 17h lookback
+    - cron: "0 14 * * *"   # 14:00 Amsterdam (winter) -> 7h lookback
   workflow_dispatch:
     inputs:
       use_gdelt:
