@@ -1,6 +1,5 @@
 import os
 import re
-import glob
 import urllib.parse
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
@@ -20,135 +19,117 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 
 # ---------------------------
-# CONFIG (can be overridden by GitHub Actions env vars)
+# CONFIG
 # ---------------------------
-PAST_DAYS = int(os.getenv("PAST_DAYS", "1"))
-def _get_lookback_hours() -> int:
-    """Return lookback hours based on time of day.
-    - 7am run: look back to 2pm previous day (~17 hours)
-    - 2pm run: look back to 7am same day (~7 hours)
-    """
-    override = os.getenv("LOOKBACK_HOURS", "").strip()
-    if override:
-        return int(override)
-    
-    now_utc = datetime.now(timezone.utc)
-    current_hour = now_utc.hour  # 0-23 UTC
-    
-    # Adjust if your GitHub Actions runs are in a different timezone
-    # 7am UTC run → look back ~17h to previous day 2pm UTC
-    # 2pm UTC run → look back ~7h to same day 7am UTC
-    if current_hour < 12:  # Morning run (7am)
-        return 17
-    else:  # Afternoon run (2pm)
-        return 7
-
-LOOKBACK_HOURS = _get_lookback_hours()
-MAX_ITEMS = int(os.getenv("MAX_ITEMS", "30"))
-DUP_THRESHOLD = float(os.getenv("DUP_THRESHOLD", "0.7"))
-MODEL_NAME = os.getenv("MODEL_NAME", "all-MiniLM-L6-v2")
-
-# Feature flags for data sources
-USE_NEWSAPI = os.getenv("USE_NEWSAPI", "false").lower() == "true"
-USE_BING_NEWS = os.getenv("USE_BING_NEWS", "false").lower() == "true"
-USE_GDELT = os.getenv("USE_GDELT", "true").lower() == "true"  # Enabled by default (free!)
-EXTRACT_CONTENT = os.getenv("EXTRACT_CONTENT", "true").lower() == "true"  # Article extraction
-
-# Social Media sources (FREE options!)
-USE_APIFY_TWITTER = os.getenv("USE_APIFY_TWITTER", "false").lower() == "true"
-USE_RAPIDAPI_TWITTER = os.getenv("USE_RAPIDAPI_TWITTER", "false").lower() == "true"
-USE_REDDIT = os.getenv("USE_REDDIT", "true").lower() == "true"  # Enabled by default (free!)
-
-# API Keys
-NEWSAPI_KEY = os.getenv("NEWSAPI_KEY", "")
-BING_NEWS_KEY = os.getenv("BING_NEWS_KEY", "")
-APIFY_TOKEN = os.getenv("APIFY_TOKEN", "")
-RAPIDAPI_KEY = os.getenv("RAPIDAPI_KEY", "")
-
-# Content extraction settings
-MAX_EXTRACT_WORKERS = int(os.getenv("MAX_EXTRACT_WORKERS", "5"))  # Parallel extraction threads
-EXTRACT_TIMEOUT = int(os.getenv("EXTRACT_TIMEOUT", "15"))  # Seconds per article
+PAST_DAYS       = int(os.getenv("PAST_DAYS", "1"))
+LOOKBACK_HOURS  = int((os.getenv("LOOKBACK_HOURS") or "24").strip())
+MAX_ITEMS       = int(os.getenv("MAX_ITEMS", "30"))
+DUP_THRESHOLD   = float(os.getenv("DUP_THRESHOLD", "0.7"))
+MODEL_NAME      = os.getenv("MODEL_NAME", "all-MiniLM-L6-v2")
+EXTRACT_CONTENT = os.getenv("EXTRACT_CONTENT", "false").lower() == "true"  # OFF by default
+MAX_EXTRACT_WORKERS = int(os.getenv("MAX_EXTRACT_WORKERS", "5"))
+EXTRACT_TIMEOUT     = int(os.getenv("EXTRACT_TIMEOUT", "15"))
 
 DEFAULT_HL, DEFAULT_GL, DEFAULT_CEID = "en-GB", "GB", "GB:en"
 
-
 REGION_RULES = [
-    # Belgium
-    
-    (r"Belgium.*English",("en-GB", "BE", "BE:en")),
-
-    # Germany
-   
-    (r"Germany.*English",("en-GB", "DE", "DE:en")),
-
-    # Spain
-    
-    (r"Spain.*English",  ("en-GB", "ES", "ES:en")),
-
-    # France
-    
-    (r"France.*English", ("en-GB", "FR", "FR:en")),
-
-    # Italy
-   
-    (r"Italy.*English",  ("en-GB", "IT", "IT:en")),
+    (r"Belgium.*English",     ("en-GB", "BE", "BE:en")),
+    (r"Belgium.*Dutch",       ("nl",    "BE", "BE:nl")),
+    (r"Belgium.*French",      ("fr",    "BE", "BE:fr")),
+    (r"Germany.*English",     ("en-GB", "DE", "DE:en")),
+    (r"Germany.*German",      ("de",    "DE", "DE:de")),
+    (r"Spain.*English",       ("en-GB", "ES", "ES:en")),
+    (r"Spain.*Spanish",       ("es",    "ES", "ES:es")),
+    (r"France.*English",      ("en-GB", "FR", "FR:en")),
+    (r"France.*French",       ("fr",    "FR", "FR:fr")),
+    (r"Italy.*English",       ("en-GB", "IT", "IT:en")),
+    (r"Italy.*Italian",       ("it",    "IT", "IT:it")),
+    (r"Maasmechelen.*Dutch",  ("nl",    "BE", "BE:nl")),
+    (r"Maasmechelen.*French", ("fr",    "BE", "BE:fr")),
+    (r"Wertheim.*German",     ("de",    "DE", "DE:de")),
+    (r"Ingolstadt.*German",   ("de",    "DE", "DE:de")),
+    (r"Las Rozas.*Spanish",   ("es",    "ES", "ES:es")),
+    (r"La Val.*French",       ("fr",    "FR", "FR:fr")),
+    (r"Fidenza.*Italian",     ("it",    "IT", "IT:it")),
 ]
-
 
 DATA_DIR = Path("data")
 DATA_DIR.mkdir(exist_ok=True)
 
 
 # ---------------------------
-# Your search library (unchanged)
+# SEARCH LIBRARY
+# Google News RSS only — cleaned up & tightened.
+# Removed: brand boycott/protest (too noisy/irrelevant), Reddit, GDELT, Twitter.
+# Village searches now use (village name) AND (incident/news/event) so RSS
+# has something to match on, with a broader fallback if still 0 results.
 # ---------------------------
 SEARCH_LIBRARY_TEXT = r"""
-Brand search Google News and X - PROTEST	("Gucci" OR "Ralph Lauren" OR "Dior" OR "Armani" OR "Louis Vuitton" OR "Valentino" OR "Burberry" OR "Dolce Gabbana" OR "Polo Ralph Lauren" OR "Cartier" OR "Calvin Klein" OR "Tommy Hilfiger" OR "Timberland" OR "Prada" OR "Nike" OR "Balenciaga" OR "Canada Goose") AND protest
-Brand search Google News and X - BOYCOTT	("Gucci" OR "Ralph Lauren" OR "Dior" OR "Armani" OR "Louis Vuitton" OR "Valentino" OR "Burberry" OR "Dolce Gabbana" OR "Polo Ralph Lauren" OR "Cartier" OR "Calvin Klein" OR "Tommy Hilfiger" OR "Timberland" OR "Prada" OR "Nike" OR "Balenciaga" OR "Canada Goose") AND boycott
-Cotswold Designer Outlet	("Cotswold Designer Outlet")
-Value Retail	"Value Retail" OR "Bicester Collection"
-London Marylebone	("London Marylebone" OR "Marylebone station") AND (incident OR disruption OR delay OR closure OR police OR protest OR bomb OR explosion OR stabbing OR shooting OR "suspicious package")
-Roermond outlet	("Roermond Outlet" OR Roermond) AND (incident OR protest OR boycott OR police OR closure OR evacuation OR bomb OR explosion OR stabbing OR shooting OR crime)
-BV Logistics Companies	("DHL" OR "UPS" OR "DPD" OR "FedEx" OR "Amazon" OR "Royal Mail" OR "Parcelforce" OR "EVRI") AND (delivery OR supply OR logistics) AND ("UK" OR "United Kingdom" OR "Britain" OR "England")
-High Level City searches Belgium Dutch language	("Brussels" OR "Maastricht" OR "Antwerp") AND ("Belgium" OR "Nederland" OR "Netherlands") AND (bom OR bommelding OR explosie OR schieten OR steekincident OR "verdacht pakket")
-High Level City searches Belgium English language	("Brussels" OR "Maastricht" OR "Antwerp") AND ("Belgium" OR "Netherlands") AND (bomb OR explosion OR shooting OR stabbing OR "suspicious package" OR "bomb threat")
-High Level City searches Belgium French language	("Brussels" OR "Maastricht" OR "Antwerp") AND ("Belgique" OR "Belgien" OR "Belgium") AND (bombe OR explosion OR "colis suspect" OR poignarder OR fusillade)
-Local Town Searches Maasmechelen Dutch	("Maasmechelen" OR "Hasselt" OR "Lanaken") AND (incident OR protest OR boycot OR bom OR bommelding OR explosie OR evacuatie OR afzetting OR politie OR politie-inzet OR steekpartij OR steekincident OR schietpartij OR schieten OR dreiging OR "verdacht pakket" OR verdachte)
-Local Town Searches Maasmechelen French	("Maasmechelen" OR "Hasselt" OR "Lanaken") AND (incident OR manifestation OR protestation OR bombe OR "alerte à la bombe" OR "menace de bombe" OR explosion OR évacuation OR "colis suspect" OR agression OR "attaque au couteau" OR fusillade OR poignarder OR police OR menace)
-Local Town Searches Maasmechelen English	("Maasmechelen" OR "Hasselt" OR "Lanaken") AND (incident OR protest OR boycott OR police OR "armed police" OR evacuation OR cordon OR closure OR disruption OR delay OR threat OR terror OR bomb OR explosion OR shooting OR stabbing OR "suspicious package" OR "bomb threat")
-Village searches Maasmechelen	("Maasmechelen Village" OR ("Maasmechelen" AND ("designer outlet" OR outlet OR retail)))
-High Level City searches Germany English	("Frankfurt" OR "Cologne" OR "Munich") AND "Germany" AND (bomb OR explosion OR shooting OR stabbing OR "suspicious package") AND -"Las Vegas" AND -"New York" AND -"New Jersey" AND -"Los Angeles" AND -Bayern AND -"Bayern Munich" AND -Bundesliga AND -football AND -soccer
-High Level City searches Germany German	("Frankfurt" OR "Cologne" OR "Munich") AND "Deutschland" AND (bombe OR explosion OR schießen OR messer OR "verdächtiges paket") AND -Bayern AND -Fußball
-Local Town Searches Wertheim English	("Wertheim" OR "Wurzburg" OR "Aschaffenburg") AND (incident OR protest OR boycott OR police OR "armed police" OR evacuation OR cordon OR closure OR disruption OR threat OR bomb OR explosion OR shooting OR stabbing OR "suspicious package" OR "bomb threat")
-Local Town Searches Wertheim German	("Wertheim" OR "Wurzburg" OR "Aschaffenburg") AND (incident OR protest OR boykott OR polizei OR polizeieinsatz OR bombe OR bombendrohung OR sprengsatz OR explosion OR evakuierung OR absperrung OR verdächtig OR "verdächtiges paket" OR schießen OR schuss OR messer OR messerangriff OR großalarm OR großeinsatz)
-Village search Wertheim	("Wertheim Village" OR ("Wertheim" AND ("designer outlet" OR outlet OR retail)))
-XR and JSO Broad search	("Extinction Rebellion" OR "Just Stop Oil")
-XR and JSO Village search	("Extinction Rebellion" OR "Just Stop Oil") AND ("Ingolstadt" OR "Kildare" OR "Bicester" OR "Wertheim" OR "Fidenza" OR "Maasmechelen")
-Shoplifting UK	("shoplifting" OR "retail crime" OR "theft from person" OR "pickpocket gang" OR "retail crime report" OR "retail crime survey" OR "safer town centres") AND ("UK" OR "England" OR "Britain" OR "Wales" OR "Scotland")
-High Level City searches Spain English	("Madrid" OR "Barcelona") AND "Spain" AND (bomb OR explosion OR shooting OR stabbing OR "suspicious package") AND -football AND -soccer AND -LaLiga AND -"Champions League"
-High Level City searches Spain Spanish	("Madrid" OR "Barcelona") AND "España" AND (bomba OR explosión OR tiroteo OR puñalada OR "paquete sospechoso") AND -fútbol AND -"Liga"
-Local Town Searches Las Rozas & La Roca English	("Las Rozas" OR "La Roca" OR "Mataro" OR "Badalona") AND (protest OR boycott OR bomb OR explosion OR shooting OR stabbing)
-Local Town Searches Las Rozas & La Roca Spanish	("Las Rozas" OR "La Roca" OR "Mataro" OR "Badalona") AND (protesta OR boicot OR bomba OR explosión OR tiroteo OR puñalada)
-Village Search Las Rozas & La Roca	("Las Rozas Village" OR "La Roca Village")
-Local Town Searches Bicester & Kildare	("Bicester" OR "Kildare" OR "Newbridge") AND (protest OR boycott OR bomb OR explosion OR shooting OR stabbing)
-Village Search Bicester & Kildare	("Bicester Village" OR "Kildare Village")
-High Level City searches UK & Ireland	("London,UK" OR "Oxford,UK" OR "Dublin,UK") AND (bomb OR explosion OR shooting OR stabbing OR "suspicious package") AND -"New London" AND -Connecticut
-High Level City searches France English	("Paris, France" OR "Paris France" OR "Île-de-France") AND (bomb OR explosion OR shooting OR stabbing) AND -Texas AND -"Paris, Texas"
-High Level City searches France French	("Paris, France" OR "Paris France" OR "Île-de-France") AND (bombe OR explosion OR fusillade OR poignarder) AND -Texas AND -"Paris, Texas"
-Local Town Searches La Vallée French	("Serris" OR "Chessy" OR "Disneyland Paris") AND (manifestation OR grève OR bombe OR explosion OR poignarder)
-Village Search La Vallée	("La Vallée Village" OR ("Serris" OR "Chessy") AND ("designer outlet" OR outlet OR retail))
-High Level City searches Italy English   ("Milan, Italy" OR "Bologna, Italy") AND (bomb OR explosion OR stabbing OR "bomb threat") AND -OlympicsAND -biathlonAND -"shooting sports" AND -"film shooting" AND -"photo shoot"
-High Level City searches Italy Italian   ("Milan, Italy" OR "Bologna, Italy") AND (bomb OR explosion OR stabbing OR "bomb threat") AND -OlympicsAND -biathlonAND -"shooting sports" AND -"film shooting" AND -"photo shoot"
-Local Town Searches Fidenza Italian	("Fidenza" OR "Parma,Italy" OR "Piacenza" OR "Cremona") AND (protesta OR boicottaggio OR bomba OR esplosione)
-Village Search Fidenza	("Fidenza Village" OR ("Fidenza" AND ("designer outlet" OR outlet OR retail)))
+Value Retail Brand	"Value Retail" OR "Bicester Collection" OR "Chic Outlet Shopping"
+BV Value Retail Crime	("Bicester Village") AND ("money laundering" OR "gang" OR "criminal" OR "fraud" OR "counterfeit")
+BV Logistics Disruption	("DHL" OR "UPS" OR "DPD" OR "FedEx" OR "Royal Mail" OR "Parcelforce" OR "EVRI" OR "Dropit") AND (disruption OR strike OR failure OR delay) AND ("UK" OR "United Kingdom" OR "Britain")
+PETA Broad Search	"PETA" AND ("Italy" OR "UK" OR "Germany" OR "Belgium" OR "Spain" OR "France") AND ("fashion" OR "designer" OR "retail" OR "luxury") AND (protest OR rally OR demonstration OR campaign)
+PETA Village Search	("PETA") AND ("Ingolstadt" OR "Kildare" OR "Vallee" OR "Bicester" OR "Wertheim" OR "Las Rozas" OR "La Roca" OR "Fidenza" OR "Maasmechelen")
+XR JSO Village Search	("Extinction Rebellion" OR "Just Stop Oil" OR protest OR demonstration) AND ("Ingolstadt" OR "Kildare" OR "Vallee" OR "Bicester" OR "Wertheim" OR "Las Rozas" OR "La Roca" OR "Fidenza" OR "Maasmechelen")
+Shoplifting UK	("shoplifting" OR "retail theft" OR "retail crime" OR "shop theft" OR "pickpocket") AND ("UK" OR "England" OR "Britain") AND ("gang" OR "organised" OR "trend" OR "rise" OR "survey" OR "report")
+London Marylebone Incident	("London Marylebone" OR "Marylebone station") AND (incident OR disruption OR closure OR police OR bomb OR explosion OR stabbing OR shooting OR "suspicious package")
+High Level City Belgium Dutch	("Brussels" OR "Antwerp" OR "Maastricht") AND (bom OR bommelding OR "verdacht pakket" OR explosie OR schieten OR steken OR liquidatie)
+High Level City Belgium English	("Brussels" OR "Antwerp" OR "Maastricht") AND (bomb OR explosion OR shooting OR stabbing OR "suspicious package" OR "bomb threat")
+High Level City Belgium French	("Bruxelles" OR "Anvers" OR "Maastricht") AND (bombe OR explosion OR fusillade OR poignarder OR "colis suspect" OR "alerte à la bombe")
+Local Town Maasmechelen Dutch	("Maasmechelen" OR "Hasselt" OR "Lanaken") AND (protest OR bom OR bommelding OR explosie OR schieten OR steken OR evacuatie OR politie)
+Local Town Maasmechelen French	("Maasmechelen" OR "Hasselt" OR "Lanaken") AND (manifestation OR bombe OR explosion OR fusillade OR évacuation OR police OR protestation)
+Local Town Maasmechelen English	("Maasmechelen" OR "Hasselt" OR "Lanaken") AND (protest OR bomb OR explosion OR shooting OR stabbing OR evacuation OR police OR threat)
+Village Maasmechelen	("Maasmechelen Village") AND (incident OR news OR event OR opening OR closure OR protest OR crime)
+High Level City Germany English	("Frankfurt" OR "Cologne" OR "Munich") AND "Germany" AND (bomb OR explosion OR shooting OR stabbing OR "suspicious package" OR "bomb threat")
+High Level City Germany German	("Frankfurt" OR "Köln" OR "München") AND (Bombe OR Bombendrohung OR Explosion OR Schießerei OR Messerangriff OR "verdächtiges Paket")
+Local Town Wertheim English	("Wertheim" OR "Wurzburg" OR "Aschaffenburg") AND (protest OR bomb OR shooting OR explosion OR stabbing OR "suspicious package" OR evacuation)
+Local Town Wertheim German	("Wertheim" OR "Würzburg" OR "Aschaffenburg") AND (Protest OR Bombe OR Bombendrohung OR Explosion OR Schießerei OR Polizei OR Evakuierung)
+Village Wertheim	("Wertheim Village") AND (incident OR news OR event OR opening OR closure OR protest OR crime)
+Local Town Ingolstadt English	("Ingolstadt") AND (protest OR bomb OR shooting OR explosion OR stabbing OR "suspicious package" OR evacuation)
+Local Town Ingolstadt German	("Ingolstadt") AND (Protest OR Bombe OR Bombendrohung OR Explosion OR Schießerei OR Polizei OR Evakuierung OR Streik)
+Village Ingolstadt	("Ingolstadt Village") AND (incident OR news OR event OR opening OR closure OR protest OR crime)
+High Level City Spain English	("Madrid" OR "Barcelona") AND "Spain" AND (bomb OR explosion OR shooting OR stabbing OR "suspicious package" OR "bomb threat")
+High Level City Spain Spanish	("Madrid" OR "Barcelona") AND (bomba OR explosión OR tiroteo OR puñalada OR "paquete sospechoso" OR "amenaza de bomba")
+Local Town Las Rozas English	("Las Rozas" OR "La Roca" OR "Mataró" OR "Badalona") AND (protest OR bomb OR explosion OR shooting OR stabbing OR evacuation OR police)
+Local Town Las Rozas Spanish	("Las Rozas" OR "La Roca" OR "Mataró" OR "Badalona") AND (protesta OR bomba OR explosión OR tiroteo OR evacuación OR policía)
+Village Las Rozas La Roca	("Las Rozas Village" OR "La Roca Village") AND (incident OR news OR event OR opening OR closure OR protest OR crime)
+Local Town Bicester Kildare	("Bicester" OR "Kildare" OR "Newbridge") AND (protest OR bomb OR explosion OR shooting OR stabbing OR "suspicious package" OR evacuation OR police)
+Village Bicester Kildare	("Bicester Village" OR "Kildare Village") AND (incident OR news OR event OR opening OR closure OR protest OR crime)
+High Level City UK Ireland	("London" OR "Oxford" OR "Dublin") AND (bomb OR explosion OR shooting OR stabbing OR "suspicious package" OR "bomb threat")
+High Level City France English	("Paris" OR "Île-de-France") AND "France" AND (bomb OR explosion OR shooting OR stabbing OR "suspicious package" OR "bomb threat")
+High Level City France French	("Paris" OR "Île-de-France") AND (bombe OR explosion OR fusillade OR poignarder OR "colis suspect" OR "alerte à la bombe")
+Local Town La Vallee French	("Serris" OR "Chessy" OR "Bailly-Romainvilliers" OR "Magny-le-Hongre" OR "Seine-et-Marne") AND (manifestation OR bombe OR explosion OR fusillade OR protestation OR évacuation OR police)
+Local Town La Vallee English	("Serris" OR "Chessy" OR "Bailly-Romainvilliers" OR "Disneyland Paris" OR "Seine-et-Marne") AND (protest OR bomb OR explosion OR shooting OR stabbing OR evacuation OR police)
+Village La Vallee	("La Vallee Village" OR "La Vallée Village") AND (incident OR news OR event OR opening OR closure OR protest OR crime)
+High Level City Italy English	("Milan" OR "Bologna") AND "Italy" AND (bomb OR explosion OR shooting OR stabbing OR "suspicious package" OR "bomb threat")
+High Level City Italy Italian	("Milano" OR "Bologna") AND (bomba OR esplosione OR sparatoria OR accoltellamento OR "pacco sospetto" OR "minaccia bomba")
+Local Town Fidenza English	("Fidenza" OR "Parma" OR "Piacenza" OR "Cremona") AND (protest OR bomb OR explosion OR shooting OR stabbing OR "suspicious package" OR evacuation)
+Local Town Fidenza Italian	("Fidenza" OR "Parma" OR "Piacenza" OR "Cremona") AND (protesta OR bomba OR esplosione OR sparatoria OR accoltellamento OR evacuazione OR polizia)
+Village Fidenza	("Fidenza Village") AND (incident OR news OR event OR opening OR closure OR protest OR crime)
+Roermond Outlet	("Roermond" OR "Designer Outlet Roermond") AND (incident OR protest OR police OR closure OR evacuation OR bomb OR explosion OR stabbing OR shooting)
 """.strip()
 
+
 # ---------------------------
-# HELPER FUNCTIONS
+# VILLAGE FALLBACK MAP
+# When a village search still returns 0, broaden to location name only.
+# ---------------------------
+VILLAGE_FALLBACK_MAP = {
+    r"village maasmechelen":          '("Maasmechelen Village" OR "Maasmechelen") AND (shopping OR outlet OR luxury OR retail OR news)',
+    r"village wertheim":              '("Wertheim Village" OR "Wertheim") AND (shopping OR outlet OR luxury OR retail OR news)',
+    r"village ingolstadt":            '("Ingolstadt Village" OR "Ingolstadt") AND (shopping OR outlet OR luxury OR retail OR news)',
+    r"village las rozas|la roca":     '("Las Rozas Village" OR "La Roca Village" OR "Las Rozas" OR "La Roca") AND (shopping OR outlet OR luxury OR retail OR news)',
+    r"village bicester|kildare":      '("Bicester Village" OR "Kildare Village" OR "Bicester" OR "Kildare") AND (shopping OR outlet OR luxury OR retail OR news)',
+    r"village la val":                '("La Vallee Village" OR "La Vallée Village" OR "Serris" OR "Chessy") AND (shopping OR outlet OR luxury OR retail OR news)',
+    r"village fidenza":               '("Fidenza Village" OR "Fidenza") AND (shopping OR outlet OR luxury OR retail OR news)',
+}
+
+
+# ---------------------------
+# HELPERS
 # ---------------------------
 
 def parse_published_dt(published_str: str):
-    """Parse published date string to UTC datetime."""
     if not published_str:
         return None
     try:
@@ -162,11 +143,9 @@ def parse_published_dt(published_str: str):
         return None
 
 
-def filter_last_n_hours(df, hours: int):
-    """Filter dataframe to only include articles from the last N hours."""
+def filter_last_n_hours(df: pd.DataFrame, hours: int) -> pd.DataFrame:
     if df.empty:
         return df
-    
     cutoff = datetime.now(timezone.utc) - timedelta(hours=hours)
     df = df.copy()
     df["published_dt_utc"] = df["published"].apply(parse_published_dt)
@@ -175,11 +154,7 @@ def filter_last_n_hours(df, hours: int):
     return df
 
 
-def edition_for_search(search_name: str) -> tuple[str, str, str]:
-    """
-    Decide (hl, gl, ceid) for a given search based on search_name.
-    Falls back to UK edition if nothing matches.
-    """
+def edition_for_search(search_name: str) -> tuple:
     name = (search_name or "").strip()
     for pattern, triple in REGION_RULES:
         if re.search(pattern, name, flags=re.IGNORECASE):
@@ -188,889 +163,235 @@ def edition_for_search(search_name: str) -> tuple[str, str, str]:
 
 
 def parse_search_library(text: str) -> pd.DataFrame:
-    """Parse search library text into structured dataframe."""
     rows = []
-    pending_name = None
-
     for line in text.splitlines():
         line = line.strip()
         if not line:
             continue
-
-        # URL on its own line
-        if line.startswith("http"):
-            if pending_name:
-                rows.append({"search_name": pending_name, "raw_query": f'"{line}"'})
-            else:
-                rows.append({"search_name": "URL_SOURCE", "raw_query": f'"{line}"'})
-            continue
-
-        # Tab-separated "name<TAB>query"
         if "\t" in line:
             name, query = line.split("\t", 1)
-            name = name.strip()
-            query = query.strip()
-
-            if query == "":
-                pending_name = name
-                continue
-
-            if "\n" in query:
-                parts = [p.strip().strip('"') for p in query.splitlines() if p.strip()]
-                if parts and parts[0].startswith("http"):
-                    for u in parts:
-                        rows.append({"search_name": name, "raw_query": f'"{u}"'})
-                    pending_name = None
-                    continue
-
-            rows.append({"search_name": name, "raw_query": query})
-            pending_name = None
-            continue
-
-        # Fallback: split on 2+ spaces
-        m = re.split(r"\s{2,}", line, maxsplit=1)
-        if len(m) == 2:
-            name, query = m[0].strip(), m[1].strip()
-            rows.append({"search_name": name, "raw_query": query})
-            pending_name = None
-            continue
-
-        # Can't parse
-        rows.append({"search_name": "UNMAPPED_LINE", "raw_query": line})
-
+            rows.append({"search_name": name.strip(), "raw_query": query.strip()})
+        else:
+            m = re.split(r"\s{2,}", line, maxsplit=1)
+            if len(m) == 2:
+                rows.append({"search_name": m[0].strip(), "raw_query": m[1].strip()})
+            else:
+                rows.append({"search_name": "UNMAPPED_LINE", "raw_query": line})
     return pd.DataFrame(rows)
 
 
 # ---------------------------
-# NEWS COLLECTION FUNCTIONS
+# FALLBACK LOGIC
 # ---------------------------
 
-def create_fallback_query(query: str) -> str | None:
+def create_fallback_query(search_name: str, query: str) -> str | None:
     """
-    Create a simplified fallback query from a complex boolean query.
-    
-    For queries like: ("Maasmechelen" OR "Hasselt") AND (incident OR protest OR bomb)
-    Returns: "Maasmechelen" OR "Hasselt"
-    
-    This helps get results for local searches where the full boolean is too restrictive.
+    1. Village searches  -> VILLAGE_FALLBACK_MAP (explicit broader query)
+    2. AND-queries       -> strip event terms, keep first location group
     """
-    # If query doesn't have AND, no need for fallback
+    # Strategy 1: explicit village fallback
+    for pattern, fb_query in VILLAGE_FALLBACK_MAP.items():
+        if re.search(pattern, search_name, flags=re.IGNORECASE):
+            return fb_query
+
+    # Strategy 2: strip AND clauses, keep location group
     if ' AND ' not in query.upper():
         return None
-    
-    # Try to extract the first parenthetical group (usually location names)
-    # Pattern: ("term1" OR "term2" OR ...) AND ...
+
     match = re.search(r'\(([^)]+)\)\s*AND', query, re.IGNORECASE)
     if match:
-        location_part = match.group(1).strip()
-        # Clean up and return just the locations
-        return f"({location_part})"
-    
-    # Alternative: split on AND and take the first part
+        return f"({match.group(1).strip()})"
+
     parts = re.split(r'\s+AND\s+', query, flags=re.IGNORECASE)
-    if len(parts) >= 2:
-        first_part = parts[0].strip()
-        # Only use if it looks like it has location terms
-        if first_part and len(first_part) > 3:
-            return first_part
-    
+    if len(parts) >= 2 and len(parts[0].strip()) > 3:
+        return parts[0].strip()
+
     return None
 
 
+# ---------------------------
+# GOOGLE NEWS RSS  (sole source)
+# ---------------------------
+
 def google_news_rss_url(query: str, past_days: int, hl: str, gl: str, ceid: str) -> str:
-    """Generate Google News RSS URL."""
     full = f"{query} when:{past_days}d"
     q = urllib.parse.quote(full)
     return f"https://news.google.com/rss/search?q={q}&hl={hl}&gl={gl}&ceid={ceid}"
 
 
-def fetch_google_news_rss(search_name: str, query: str, past_days: int, max_items: int) -> list[dict]:
-    """Fetch articles from Google News RSS for a single search query."""
+def fetch_google_news_rss(search_name: str, query: str, past_days: int, max_items: int) -> list:
     hl, gl, ceid = edition_for_search(search_name)
     rss_url = google_news_rss_url(query, past_days, hl=hl, gl=gl, ceid=ceid)
-    
     try:
         feed = feedparser.parse(rss_url)
         articles = []
-        
         for entry in feed.entries[:max_items]:
             articles.append({
-                "search_name": search_name,
+                "search_name":  search_name,
                 "search_query": query,
-                "title": entry.get("title", ""),
-                "published": entry.get("published", ""),
-                "link": entry.get("link", ""),
-                "source": "google_news_rss",
-                "past_days": past_days,
-                "hl": hl,
-                "gl": gl,
-                "ceid": ceid,
+                "title":        entry.get("title", ""),
+                "published":    entry.get("published", ""),
+                "link":         entry.get("link", ""),
+                "source":       "google_rss",
+                "hl": hl, "gl": gl, "ceid": ceid,
             })
-        
         return articles
     except Exception as e:
-        print(f"Error fetching RSS for '{search_name}': {e}")
-        return []
-
-
-def fetch_newsapi(search_name: str, query: str, hours_back: int, max_items: int = 100) -> list[dict]:
-    """
-    Fetch articles from NewsAPI (to be implemented).
-    
-    To enable:
-    1. Get free API key from https://newsapi.org
-    2. Set environment variable: NEWSAPI_KEY=your_key_here
-    3. Set environment variable: USE_NEWSAPI=true
-    """
-    if not NEWSAPI_KEY:
-        return []
-    
-    try:
-        import requests
-        
-        from_date = (datetime.now(timezone.utc) - timedelta(hours=hours_back)).isoformat()
-        
-        url = "https://newsapi.org/v2/everything"
-        params = {
-            'q': query,
-            'from': from_date,
-            'sortBy': 'publishedAt',
-            'apiKey': NEWSAPI_KEY,
-            'pageSize': min(max_items, 100),  # API limit
-            'language': 'en'  # TODO: derive from region rules
-        }
-        
-        response = requests.get(url, params=params, timeout=10)
-        response.raise_for_status()
-        
-        data = response.json()
-        articles = []
-        
-        for article in data.get('articles', []):
-            articles.append({
-                "search_name": search_name,
-                "search_query": query,
-                "title": article.get('title', ''),
-                "published": article.get('publishedAt', ''),
-                "link": article.get('url', ''),
-                "source": f"newsapi_{article.get('source', {}).get('name', 'unknown')}",
-                "description": article.get('description', ''),
-            })
-        
-        return articles
-        
-    except Exception as e:
-        print(f"Error fetching NewsAPI for '{search_name}': {e}")
-        return []
-
-
-def fetch_bing_news(search_name: str, query: str, hours_back: int, max_items: int = 100) -> list[dict]:
-    """
-    Fetch articles from Bing News Search API (to be implemented).
-    
-    To enable:
-    1. Get API key from Azure Cognitive Services
-    2. Set environment variable: BING_NEWS_KEY=your_key_here
-    3. Set environment variable: USE_BING_NEWS=true
-    """
-    if not BING_NEWS_KEY:
-        return []
-    
-    try:
-        import requests
-        
-        url = "https://api.bing.microsoft.com/v7.0/news/search"
-        headers = {"Ocp-Apim-Subscription-Key": BING_NEWS_KEY}
-        params = {
-            'q': query,
-            'count': min(max_items, 100),
-            'mkt': 'en-GB',  # TODO: derive from region rules
-            'freshness': 'Day'  # Last 24 hours
-        }
-        
-        response = requests.get(url, headers=headers, params=params, timeout=10)
-        response.raise_for_status()
-        
-        data = response.json()
-        articles = []
-        
-        for article in data.get('value', []):
-            articles.append({
-                "search_name": search_name,
-                "search_query": query,
-                "title": article.get('name', ''),
-                "published": article.get('datePublished', ''),
-                "link": article.get('url', ''),
-                "source": f"bing_{article.get('provider', [{}])[0].get('name', 'unknown')}",
-                "description": article.get('description', ''),
-            })
-        
-        return articles
-        
-    except Exception as e:
-        print(f"Error fetching Bing News for '{search_name}': {e}")
-        return []
-
-
-def fetch_gdelt(search_name: str, query: str, hours_back: int, max_items: int = 100) -> list[dict]:
-    """
-    Fetch articles from GDELT Project API (FREE, no API key needed!).
-    
-    GDELT monitors news from virtually every country in 100+ languages,
-    updating every 15 minutes with ~300,000 articles daily.
-    
-    API Docs: https://blog.gdeltproject.org/gdelt-doc-2-0-api-debuts/
-    """
-    try:
-        # Clean up query for GDELT - it uses a simpler syntax
-        # Remove boolean operators and quotes for basic keyword search
-        clean_query = query
-        clean_query = re.sub(r'\bAND\b', ' ', clean_query, flags=re.IGNORECASE)
-        clean_query = re.sub(r'\bOR\b', ' ', clean_query, flags=re.IGNORECASE)
-        clean_query = re.sub(r'["\(\)]', '', clean_query)
-        clean_query = ' '.join(clean_query.split())  # Normalize whitespace
-        
-        # Take first few significant terms to avoid overly complex queries
-        terms = [t.strip() for t in clean_query.split() if len(t.strip()) > 2][:5]
-        gdelt_query = ' '.join(terms)
-        
-        if not gdelt_query:
-            return []
-        
-        # GDELT DOC 2.0 API
-        url = "https://api.gdeltproject.org/api/v2/doc/doc"
-        
-        # Calculate time range
-        end_time = datetime.now(timezone.utc)
-        start_time = end_time - timedelta(hours=hours_back)
-        
-        params = {
-            'query': gdelt_query,
-            'mode': 'artlist',  # Article list mode
-            'maxrecords': min(max_items, 250),  # API limit is 250
-            'format': 'json',
-            'startdatetime': start_time.strftime('%Y%m%d%H%M%S'),
-            'enddatetime': end_time.strftime('%Y%m%d%H%M%S'),
-            'sort': 'datedesc'  # Most recent first
-        }
-        
-        response = requests.get(url, params=params, timeout=15)
-        response.raise_for_status()
-        
-        data = response.json()
-        articles = []
-        
-        for article in data.get('articles', []):
-            # Parse GDELT date format (YYYYMMDDHHMMSS)
-            seendate = article.get('seendate', '')
-            try:
-                if seendate:
-                    pub_dt = datetime.strptime(seendate, '%Y%m%d%H%M%S')
-                    pub_dt = pub_dt.replace(tzinfo=timezone.utc)
-                    published = pub_dt.isoformat()
-                else:
-                    published = ''
-            except:
-                published = seendate
-            
-            articles.append({
-                "search_name": search_name,
-                "search_query": query,
-                "title": article.get('title', ''),
-                "published": published,
-                "link": article.get('url', ''),
-                "source": f"gdelt_{article.get('domain', 'unknown')}",
-                "description": '',  # GDELT doesn't provide descriptions
-                "language": article.get('language', ''),
-                "source_country": article.get('sourcecountry', ''),
-            })
-        
-        return articles
-        
-    except requests.exceptions.RequestException as e:
-        print(f"Error fetching GDELT for '{search_name}': {e}")
-        return []
-    except Exception as e:
-        print(f"Unexpected error fetching GDELT for '{search_name}': {e}")
+        print(f"  ⚠️  RSS error for '{search_name}': {e}")
         return []
 
 
 # ---------------------------
-# SOCIAL MEDIA FUNCTIONS (FREE!)
+# CONTENT EXTRACTION  (optional, off by default)
 # ---------------------------
-
-def fetch_apify_twitter(search_name: str, query: str, hours_back: int, max_items: int = 50) -> list[dict]:
-    """
-    Fetch tweets using Apify Twitter Scraper (FREE tier available).
-    
-    To enable:
-    1. Sign up at https://apify.com (free account)
-    2. Get your API token from Settings > Integrations
-    3. Set environment variable: APIFY_TOKEN=your_token
-    4. Set environment variable: USE_APIFY_TWITTER=true
-    
-    Free tier: Includes free credits for ~5-10 runs/month
-    Uses: gentle_cloud~twitter-tweets-scraper (reliable Twitter search scraper)
-    """
-    if not APIFY_TOKEN:
-        return []
-    
-    try:
-        # Clean query for Twitter search
-        clean_query = query
-        clean_query = re.sub(r'\bAND\b', '', clean_query, flags=re.IGNORECASE)
-        clean_query = re.sub(r'\bOR\b', ' OR ', clean_query, flags=re.IGNORECASE)
-        clean_query = re.sub(r'[()]', '', clean_query)
-        clean_query = ' '.join(clean_query.split())[:200]  # Twitter search limit
-        
-        # Use the Twitter Tweets Scraper actor (works for search)
-        # Actor: gentle_cloud~twitter-tweets-scraper
-        url = "https://api.apify.com/v2/acts/gentle_cloud~twitter-tweets-scraper/run-sync-get-dataset-items"
-        
-        params = {
-            'token': APIFY_TOKEN,
-            'timeout': 60,  # Wait up to 60 seconds
-        }
-        
-        # Input for the Twitter scraper
-        payload = {
-            "searchTerms": [clean_query],
-            "tweetsDesired": min(max_items, 50),
-            "addUserInfo": True,
-            "proxyConfig": {
-                "useApifyProxy": True
-            }
-        }
-        
-        response = requests.post(url, params=params, json=payload, timeout=120)
-        response.raise_for_status()
-        
-        tweets = response.json()
-        articles = []
-        
-        for tweet in tweets:
-            # Handle different response formats
-            created_at = tweet.get('created_at', tweet.get('createdAt', ''))
-            full_text = tweet.get('full_text', tweet.get('text', tweet.get('tweet', '')))
-            
-            # Get user info (may be nested or flat)
-            user = tweet.get('user', {})
-            screen_name = user.get('screen_name', tweet.get('screen_name', tweet.get('username', 'unknown')))
-            
-            # Get tweet ID
-            tweet_id = tweet.get('id_str', tweet.get('id', tweet.get('tweetId', '')))
-            
-            if full_text:  # Only add if we have content
-                articles.append({
-                    "search_name": search_name,
-                    "search_query": query,
-                    "title": full_text[:280],
-                    "published": created_at,
-                    "link": f"https://twitter.com/{screen_name}/status/{tweet_id}" if tweet_id else "",
-                    "source": f"twitter_apify_{screen_name}",
-                    "description": full_text,
-                    "author": screen_name,
-                    "retweet_count": tweet.get('retweet_count', tweet.get('retweetCount', 0)),
-                    "favorite_count": tweet.get('favorite_count', tweet.get('likeCount', 0)),
-                })
-        
-        return articles
-        
-    except requests.exceptions.Timeout:
-        print(f"Timeout fetching Apify Twitter for '{search_name}' (this is normal for complex queries)")
-        return []
-    except Exception as e:
-        print(f"Error fetching Apify Twitter for '{search_name}': {e}")
-        return []
-
-
-def fetch_rapidapi_twitter(search_name: str, query: str, hours_back: int, max_items: int = 50) -> list[dict]:
-    """
-    Fetch tweets using RapidAPI Twitter Search (FREE tier available).
-    
-    To enable:
-    1. Sign up at https://rapidapi.com (free account)
-    2. Subscribe to "Twitter API v2" or "Twitter135" (free tier)
-    3. Get your API key from the dashboard
-    4. Set environment variable: RAPIDAPI_KEY=your_key
-    5. Set environment variable: USE_RAPIDAPI_TWITTER=true
-    
-    Free tier: ~100-500 requests/month depending on provider
-    """
-    if not RAPIDAPI_KEY:
-        return []
-    
-    try:
-        # Clean query for Twitter search
-        clean_query = query
-        clean_query = re.sub(r'\bAND\b', '', clean_query, flags=re.IGNORECASE)
-        clean_query = re.sub(r'\bOR\b', ' OR ', clean_query, flags=re.IGNORECASE)
-        clean_query = re.sub(r'[()]', '', clean_query)
-        clean_query = ' '.join(clean_query.split())[:100]
-        
-        # Using Twitter135 API (popular free option on RapidAPI)
-        url = "https://twitter135.p.rapidapi.com/v2/Search/"
-        
-        headers = {
-            "X-RapidAPI-Key": RAPIDAPI_KEY,
-            "X-RapidAPI-Host": "twitter135.p.rapidapi.com"
-        }
-        
-        params = {
-            "q": clean_query,
-            "count": str(min(max_items, 40)),
-            "cursor": ""
-        }
-        
-        response = requests.get(url, headers=headers, params=params, timeout=30)
-        response.raise_for_status()
-        
-        data = response.json()
-        articles = []
-        
-        # Parse tweets from response
-        tweets = data.get('data', {}).get('search_by_raw_query', {}).get('search_timeline', {}).get('timeline', {}).get('instructions', [])
-        
-        for instruction in tweets:
-            entries = instruction.get('entries', [])
-            for entry in entries:
-                content = entry.get('content', {})
-                if content.get('entryType') == 'TimelineTimelineItem':
-                    tweet_result = content.get('itemContent', {}).get('tweet_results', {}).get('result', {})
-                    legacy = tweet_result.get('legacy', {})
-                    user = tweet_result.get('core', {}).get('user_results', {}).get('result', {}).get('legacy', {})
-                    
-                    if legacy:
-                        articles.append({
-                            "search_name": search_name,
-                            "search_query": query,
-                            "title": legacy.get('full_text', '')[:280],
-                            "published": legacy.get('created_at', ''),
-                            "link": f"https://twitter.com/{user.get('screen_name', 'unknown')}/status/{legacy.get('id_str', '')}",
-                            "source": f"twitter_rapidapi_{user.get('screen_name', 'unknown')}",
-                            "description": legacy.get('full_text', ''),
-                            "author": user.get('screen_name', ''),
-                            "retweet_count": legacy.get('retweet_count', 0),
-                            "favorite_count": legacy.get('favorite_count', 0),
-                        })
-        
-        return articles
-        
-    except Exception as e:
-        print(f"Error fetching RapidAPI Twitter for '{search_name}': {e}")
-        return []
-
-
-def fetch_reddit(search_name: str, query: str, hours_back: int, max_items: int = 50) -> list[dict]:
-    """
-    Fetch posts from Reddit Search (COMPLETELY FREE, no API key needed!).
-    
-    Uses Reddit's public JSON API which doesn't require authentication
-    for basic search functionality.
-    
-    To enable: Set USE_REDDIT=true (enabled by default)
-    """
-    try:
-        # Clean query for Reddit search
-        clean_query = query
-        clean_query = re.sub(r'\bAND\b', ' ', clean_query, flags=re.IGNORECASE)
-        clean_query = re.sub(r'\bOR\b', ' OR ', clean_query, flags=re.IGNORECASE)
-        clean_query = re.sub(r'["\(\)]', '', clean_query)
-        clean_query = ' '.join(clean_query.split())[:200]
-        
-        # Reddit public JSON API - use old.reddit.com which is more permissive
-        url = "https://old.reddit.com/search.json"
-        
-        # Use a browser-like User-Agent to avoid blocks
-        headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "Accept": "application/json",
-            "Accept-Language": "en-US,en;q=0.9",
-        }
-        
-        # Time filter based on hours_back
-        if hours_back <= 24:
-            time_filter = "day"
-        elif hours_back <= 168:
-            time_filter = "week"
-        else:
-            time_filter = "month"
-        
-        params = {
-            "q": clean_query,
-            "sort": "new",
-            "t": time_filter,
-            "limit": min(max_items, 100),
-        }
-        
-        response = requests.get(url, headers=headers, params=params, timeout=15)
-        response.raise_for_status()
-        
-        data = response.json()
-        articles = []
-        
-        for post in data.get('data', {}).get('children', []):
-            post_data = post.get('data', {})
-            
-            # Convert Unix timestamp to ISO format
-            created_utc = post_data.get('created_utc', 0)
-            if created_utc:
-                pub_dt = datetime.fromtimestamp(created_utc, tz=timezone.utc)
-                published = pub_dt.isoformat()
-            else:
-                published = ''
-            
-            # Build the post URL
-            permalink = post_data.get('permalink', '')
-            post_url = f"https://www.reddit.com{permalink}" if permalink else ''
-            
-            articles.append({
-                "search_name": search_name,
-                "search_query": query,
-                "title": post_data.get('title', ''),
-                "published": published,
-                "link": post_url,
-                "source": f"reddit_r/{post_data.get('subreddit', 'unknown')}",
-                "description": post_data.get('selftext', '')[:500] if post_data.get('selftext') else '',
-                "author": post_data.get('author', ''),
-                "score": post_data.get('score', 0),
-                "num_comments": post_data.get('num_comments', 0),
-                "subreddit": post_data.get('subreddit', ''),
-            })
-        
-        return articles
-        
-    except Exception as e:
-        print(f"Error fetching Reddit for '{search_name}': {e}")
-        return []
-
 
 def extract_article_content(url: str, timeout: int = 10) -> dict:
-    """
-    Extract full article content from a URL using trafilatura.
-    
-    Returns dict with: content, author, date, sitename
-    """
     try:
-        # Download the page
         downloaded = trafilatura.fetch_url(url)
         if not downloaded:
             return {"content": None, "extraction_error": "Failed to download"}
-        
-        # Extract main content
-        content = trafilatura.extract(
-            downloaded,
-            include_comments=False,
-            include_tables=True,
-            no_fallback=False,
-            favor_precision=True
-        )
-        
-        # Also try to get metadata
+        content  = trafilatura.extract(downloaded, include_comments=False, include_tables=True, no_fallback=False, favor_precision=True)
         metadata = trafilatura.extract_metadata(downloaded)
-        
         return {
-            "content": content,
-            "author": metadata.author if metadata else None,
-            "sitename": metadata.sitename if metadata else None,
-            "extraction_error": None
+            "content":          content,
+            "author":           metadata.author   if metadata else None,
+            "sitename":         metadata.sitename if metadata else None,
+            "extraction_error": None,
         }
-        
     except Exception as e:
         return {"content": None, "extraction_error": str(e)}
 
 
 def extract_content_batch(df: pd.DataFrame, max_workers: int = 5) -> pd.DataFrame:
-    """
-    Extract article content for all URLs in the dataframe using parallel processing.
-    """
     if df.empty or 'link' not in df.columns:
         return df
-    
     print(f"\n{'='*60}")
-    print(f"Extracting article content...")
-    print(f"  - Articles to process: {len(df)}")
-    print(f"  - Parallel workers: {max_workers}")
+    print(f"Extracting article content  ({len(df)} articles, {max_workers} workers)")
     print(f"{'='*60}\n")
-    
-    # Initialize new columns
     df = df.copy()
-    df['content'] = None
-    df['author'] = None
-    df['sitename'] = None
-    df['extraction_error'] = None
-    
-    urls = df['link'].tolist()
+    for col in ('content', 'author', 'sitename', 'extraction_error'):
+        df[col] = None
+    urls    = df['link'].tolist()
     results = {}
-    
-    start_time = time.time()
-    completed = 0
-    
+    start   = time.time()
+    done    = 0
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        # Submit all extraction tasks
-        future_to_url = {
-            executor.submit(extract_article_content, url, EXTRACT_TIMEOUT): url 
-            for url in urls
-        }
-        
-        # Process results as they complete
-        for future in as_completed(future_to_url):
-            url = future_to_url[future]
-            completed += 1
-            
+        fmap = {executor.submit(extract_article_content, url, EXTRACT_TIMEOUT): url for url in urls}
+        for future in as_completed(fmap):
+            url  = fmap[future]
+            done += 1
             try:
-                result = future.result(timeout=EXTRACT_TIMEOUT + 5)
-                results[url] = result
+                results[url] = future.result(timeout=EXTRACT_TIMEOUT + 5)
             except Exception as e:
                 results[url] = {"content": None, "extraction_error": str(e)}
-            
-            # Progress update every 10 articles
-            if completed % 10 == 0 or completed == len(urls):
-                elapsed = time.time() - start_time
-                rate = completed / elapsed if elapsed > 0 else 0
-                print(f"  Progress: {completed}/{len(urls)} ({rate:.1f} articles/sec)")
-    
-    # Update dataframe with results
+            if done % 10 == 0 or done == len(urls):
+                elapsed = time.time() - start
+                print(f"  Progress: {done}/{len(urls)} ({done/elapsed:.1f} art/sec)")
     for idx, row in df.iterrows():
-        url = row['link']
-        if url in results:
-            result = results[url]
-            df.at[idx, 'content'] = result.get('content')
-            df.at[idx, 'author'] = result.get('author')
-            df.at[idx, 'sitename'] = result.get('sitename')
-            df.at[idx, 'extraction_error'] = result.get('extraction_error')
-    
-    # Summary stats
-    success_count = df['content'].notna().sum()
-    fail_count = df['content'].isna().sum()
-    elapsed = time.time() - start_time
-    
-    print(f"\n✅ Content extraction complete:")
-    print(f"  - Successful: {success_count} ({success_count/len(df)*100:.1f}%)")
-    print(f"  - Failed: {fail_count}")
-    print(f"  - Total time: {elapsed:.1f}s")
-    
+        r = results.get(row['link'], {})
+        df.at[idx, 'content']          = r.get('content')
+        df.at[idx, 'author']           = r.get('author')
+        df.at[idx, 'sitename']         = r.get('sitename')
+        df.at[idx, 'extraction_error'] = r.get('extraction_error')
+    ok = df['content'].notna().sum()
+    print(f"\n✅ Extraction: {ok}/{len(df)} successful ({ok/len(df)*100:.1f}%)")
     return df
 
+
+# ---------------------------
+# MAIN COLLECTION
+# ---------------------------
 
 def collect_all_news(df_searches: pd.DataFrame, past_days: int, lookback_hours: int, max_items: int) -> pd.DataFrame:
-    """
-    Collect news from all enabled sources.
-    
-    This function orchestrates fetching from multiple sources:
-    - Google News RSS (always enabled)
-    - NewsAPI (if USE_NEWSAPI=true and NEWSAPI_KEY is set)
-    - Bing News (if USE_BING_NEWS=true and BING_NEWS_KEY is set)
-    - GDELT (if USE_GDELT=true, FREE - no API key needed!)
-    - Twitter/X via Apify (if USE_APIFY_TWITTER=true and APIFY_TOKEN is set)
-    - Twitter/X via RapidAPI (if USE_RAPIDAPI_TWITTER=true and RAPIDAPI_KEY is set)
-    - Reddit (if USE_REDDIT=true, FREE - no API key needed!)
-    
-    Then optionally extracts full article content using trafilatura.
-    """
-    all_articles = []
-    
+    all_articles   = []
+    fallback_count = 0
+
     print(f"\n{'='*60}")
-    print(f"Starting news collection:")
-    print(f"  - Total searches: {len(df_searches)}")
-    print(f"  NEWS SOURCES:")
-    print(f"  - Google News RSS: ENABLED")
-    print(f"  - NewsAPI: {'ENABLED' if USE_NEWSAPI and NEWSAPI_KEY else 'DISABLED'}")
-    print(f"  - Bing News: {'ENABLED' if USE_BING_NEWS and BING_NEWS_KEY else 'DISABLED'}")
-    print(f"  - GDELT: {'ENABLED' if USE_GDELT else 'DISABLED'}")
-    print(f"  SOCIAL MEDIA:")
-    print(f"  - Twitter (Apify): {'ENABLED' if USE_APIFY_TWITTER and APIFY_TOKEN else 'DISABLED'}")
-    print(f"  - Twitter (RapidAPI): {'ENABLED' if USE_RAPIDAPI_TWITTER and RAPIDAPI_KEY else 'DISABLED'}")
-    print(f"  - Reddit: {'ENABLED' if USE_REDDIT else 'DISABLED'}")
-    print(f"  OTHER:")
-    print(f"  - Content Extraction: {'ENABLED' if EXTRACT_CONTENT else 'DISABLED'}")
+    print(f"NEWS COLLECTION  —  Google News RSS only")
+    print(f"  Searches: {len(df_searches)}  |  Window: {lookback_hours}h  |  Max per search: {max_items}")
     print(f"{'='*60}\n")
-    
-    fallback_count = 0  # Track how many fallback searches were used
-    
+
     for idx, row in df_searches.iterrows():
         search_name = row["search_name"]
-        query = row["raw_query"]
-        
-        print(f"[{idx+1}/{len(df_searches)}] Processing: {search_name[:50]}...")
-        
-        search_total = 0  # Track total articles for this search
-        
-        # Always try Google News RSS
-        rss_articles = fetch_google_news_rss(search_name, query, past_days, max_items)
-        all_articles.extend(rss_articles)
-        search_total += len(rss_articles)
-        print(f"  ├─ Google RSS: {len(rss_articles)} articles")
-        
-        # Try NewsAPI if enabled
-        if USE_NEWSAPI and NEWSAPI_KEY:
-            api_articles = fetch_newsapi(search_name, query, lookback_hours, max_items)
-            all_articles.extend(api_articles)
-            search_total += len(api_articles)
-            print(f"  ├─ NewsAPI: {len(api_articles)} articles")
-        
-        # Try Bing News if enabled
-        if USE_BING_NEWS and BING_NEWS_KEY:
-            bing_articles = fetch_bing_news(search_name, query, lookback_hours, max_items)
-            all_articles.extend(bing_articles)
-            search_total += len(bing_articles)
-            print(f"  ├─ Bing News: {len(bing_articles)} articles")
-        
-        # Try GDELT if enabled (FREE - no API key needed!)
-        if USE_GDELT:
-            gdelt_articles = fetch_gdelt(search_name, query, lookback_hours, max_items)
-            all_articles.extend(gdelt_articles)
-            search_total += len(gdelt_articles)
-            print(f"  ├─ GDELT: {len(gdelt_articles)} articles")
-        
-        # Try Twitter via Apify if enabled
-        if USE_APIFY_TWITTER and APIFY_TOKEN:
-            apify_articles = fetch_apify_twitter(search_name, query, lookback_hours, max_items)
-            all_articles.extend(apify_articles)
-            search_total += len(apify_articles)
-            print(f"  ├─ Twitter (Apify): {len(apify_articles)} tweets")
-        
-        # Try Twitter via RapidAPI if enabled
-        if USE_RAPIDAPI_TWITTER and RAPIDAPI_KEY:
-            rapidapi_articles = fetch_rapidapi_twitter(search_name, query, lookback_hours, max_items)
-            all_articles.extend(rapidapi_articles)
-            search_total += len(rapidapi_articles)
-            print(f"  ├─ Twitter (RapidAPI): {len(rapidapi_articles)} tweets")
-        
-        # Try Reddit if enabled (FREE!)
-        if USE_REDDIT:
-            reddit_articles = fetch_reddit(search_name, query, lookback_hours, max_items)
-            all_articles.extend(reddit_articles)
-            search_total += len(reddit_articles)
-            print(f"  ├─ Reddit: {len(reddit_articles)} posts")
-        
-        # FALLBACK: If no results from any source, try a relaxed query
-        if search_total == 0:
-            fallback_query = create_fallback_query(query)
-            if fallback_query:
-                print(f"  ├─ ⚠️  No results! Trying fallback query...")
-                fallback_count += 1
-                
-                # Try fallback with Google RSS
-                fallback_rss = fetch_google_news_rss(
-                    f"{search_name} (fallback)", 
-                    fallback_query, 
-                    past_days, 
-                    max_items
-                )
-                all_articles.extend(fallback_rss)
-                
-                # Try fallback with GDELT if enabled
-                fallback_gdelt = []
-                if USE_GDELT:
-                    fallback_gdelt = fetch_gdelt(
-                        f"{search_name} (fallback)", 
-                        fallback_query, 
-                        lookback_hours, 
-                        max_items
-                    )
-                    all_articles.extend(fallback_gdelt)
-                
-                # Try fallback with Reddit if enabled
-                fallback_reddit = []
-                if USE_REDDIT:
-                    fallback_reddit = fetch_reddit(
-                        f"{search_name} (fallback)",
-                        fallback_query,
-                        lookback_hours,
-                        max_items
-                    )
-                    all_articles.extend(fallback_reddit)
-                
-                total_fallback = len(fallback_rss) + len(fallback_gdelt) + len(fallback_reddit)
-                print(f"  └─ 🔄 Fallback: {total_fallback} articles (query: {fallback_query[:50]}...)")
-            else:
-                print(f"  └─ ⚠️  No results and no fallback available")
+        query       = row["raw_query"]
+        print(f"[{idx+1}/{len(df_searches)}] {search_name[:65]}")
+
+        articles = fetch_google_news_rss(search_name, query, past_days, max_items)
+        print(f"  ├─ Google RSS: {len(articles)} articles")
+
+        if articles:
+            all_articles.extend(articles)
+            print(f"  └─ Total: {len(articles)}")
         else:
-            print(f"  └─ Total: {search_total} articles")
-    
-    if fallback_count > 0:
-        print(f"\n📊 Used fallback searches for {fallback_count} queries with no results")
-    
+            fb_query = create_fallback_query(search_name, query)
+            if fb_query:
+                fallback_count += 1
+                fb_name = f"{search_name} (fallback)"
+                print(f"  ├─ ⚠️  0 results — fallback: {fb_query[:65]}...")
+                fb_articles = fetch_google_news_rss(fb_name, fb_query, past_days, max_items)
+                all_articles.extend(fb_articles)
+                print(f"  └─ 🔄 Fallback: {len(fb_articles)} articles")
+            else:
+                print(f"  └─ ⚠️  0 results, no fallback available")
+
+    if fallback_count:
+        print(f"\n📊 Fallback used for {fallback_count} zero-result searches")
+
     df = pd.DataFrame(all_articles)
-    
     if df.empty:
-        print("\n⚠️  No articles collected from any source!")
+        print("\n⚠️  No articles collected!")
         return df
-    
-    # Apply time filter
-    print(f"\nBefore time filter: {len(df)} articles")
+
+    print(f"\nBefore time filter:        {len(df)} articles")
     df = filter_last_n_hours(df, hours=lookback_hours)
-    print(f"After time filter ({lookback_hours}h): {len(df)} articles")
-    
-    # Remove exact URL duplicates (can happen when multiple sources return same article)
+    print(f"After time filter ({lookback_hours}h):  {len(df)} articles")
     df = df.drop_duplicates(subset=["link"]).reset_index(drop=True)
-    print(f"After URL deduplication: {len(df)} articles")
-    
-    # Extract full article content if enabled
-    if EXTRACT_CONTENT and not df.empty:
+    print(f"After URL deduplication:   {len(df)} articles")
+
+    if EXTRACT_CONTENT:
         df = extract_content_batch(df, max_workers=MAX_EXTRACT_WORKERS)
-    
+
     return df
 
 
 # ---------------------------
-# DEDUPLICATION
+# SEMANTIC DEDUPLICATION
 # ---------------------------
 
-def semantic_dedupe_csv(infile: str, out_clean: str, out_audit: str,
-                        threshold: float, model_name: str) -> tuple[int, int]:
-    """
-    Deduplicate articles using semantic similarity.
-    
-    Returns: (original_count, cleaned_count)
-    """
+def semantic_dedupe(infile: str, out_clean: str, out_audit: str, threshold: float, model_name: str) -> tuple:
     print(f"\n{'='*60}")
-    print(f"Starting semantic deduplication...")
-    print(f"  - Input file: {infile}")
-    print(f"  - Similarity threshold: {threshold}")
-    print(f"  - Model: {model_name}")
+    print(f"Semantic deduplication  (threshold={threshold})")
     print(f"{'='*60}\n")
-    
+
     df = pd.read_excel(infile)
     original_count = len(df)
-    
+
     if df.empty:
-        print("⚠️  Input file is empty, nothing to deduplicate")
         df.to_excel(out_clean, index=False, engine="openpyxl")
         pd.DataFrame().to_excel(out_audit, index=False, engine="openpyxl")
         return 0, 0
-    
+
     df["compare_text"] = df["title"].fillna("").astype(str)
-    
-    # Filter out empty titles
-    mask = df["compare_text"].str.len() > 0
-    df_work = df[mask].copy().reset_index(drop=True)
+    mask     = df["compare_text"].str.len() > 0
+    df_work  = df[mask].copy().reset_index(drop=True)
     orig_idx = df.index[mask].to_numpy()
-    
+
     if df_work.empty:
-        print("⚠️  No valid titles to compare")
         df.drop(columns=["compare_text"], errors="ignore").to_excel(out_clean, index=False, engine="openpyxl")
         pd.DataFrame().to_excel(out_audit, index=False, engine="openpyxl")
         return len(df), len(df)
-    
-    print(f"Loading embedding model: {model_name}...")
+
+    print(f"Loading model: {model_name}...")
     model = SentenceTransformer(model_name)
-    
     print(f"Generating embeddings for {len(df_work)} articles...")
-    emb = model.encode(
-        df_work["compare_text"].tolist(),
-        normalize_embeddings=True,
-        show_progress_bar=True,
-    )
-    
+    emb = model.encode(df_work["compare_text"].tolist(), normalize_embeddings=True, show_progress_bar=True)
+
     print("Computing similarity matrix...")
     sim = cosine_similarity(emb, emb)
-    n = sim.shape[0]
-    
-    # Union-Find for grouping duplicates
+    n   = sim.shape[0]
+
     parent = list(range(n))
-    rank = [0] * n
+    rank   = [0] * n
 
     def find(x):
         while parent[x] != x:
@@ -1080,193 +401,134 @@ def semantic_dedupe_csv(infile: str, out_clean: str, out_audit: str,
 
     def union(a, b):
         ra, rb = find(a), find(b)
-        if ra == rb:
-            return
-        if rank[ra] < rank[rb]:
-            parent[ra] = rb
-        elif rank[ra] > rank[rb]:
-            parent[rb] = ra
+        if ra == rb: return
+        if rank[ra] < rank[rb]:   parent[ra] = rb
+        elif rank[ra] > rank[rb]: parent[rb] = ra
         else:
             parent[rb] = ra
             rank[ra] += 1
 
-    # Group similar articles
-    duplicate_pairs = 0
+    pairs = 0
     for i in range(n):
         for j in range(i + 1, n):
             if sim[i, j] >= threshold:
                 union(i, j)
-                duplicate_pairs += 1
+                pairs += 1
+    print(f"Found {pairs} similar pairs above threshold {threshold}")
 
-    print(f"Found {duplicate_pairs} similar pairs above threshold {threshold}")
-    
-    # Build groups
     groups = {}
     for i in range(n):
-        r = find(i)
-        groups.setdefault(r, []).append(i)
+        groups.setdefault(find(i), []).append(i)
 
-    keep_work = set()
+    keep_work  = set()
     audit_rows = []
 
     for g in groups.values():
         if len(g) == 1:
             keep_work.add(g[0])
             continue
-
-        # Keep the earliest article (by original index)
-        g_map = [(int(orig_idx[i]), i) for i in g]
-        g_map.sort(key=lambda x: x[0])
-
+        g_map = sorted([(int(orig_idx[i]), i) for i in g])
         keep_orig, keep_i = g_map[0]
         keep_work.add(keep_i)
-
         for drop_orig, drop_i in g_map[1:]:
             audit_rows.append({
-                "kept_original_row": keep_orig,
+                "kept_original_row":    keep_orig,
                 "dropped_original_row": int(drop_orig),
-                "similarity": float(sim[keep_i, drop_i]),
-                "kept_title": df.loc[keep_orig, "title"],
-                "dropped_title": df.loc[int(drop_orig), "title"],
+                "similarity":           float(sim[keep_i, drop_i]),
+                "kept_title":           df.loc[keep_orig, "title"],
+                "dropped_title":        df.loc[int(drop_orig), "title"],
             })
 
-    kept_orig_rows = {int(orig_idx[i]) for i in keep_work}
-    drop_orig_rows = set(map(int, orig_idx.tolist())) - kept_orig_rows
-
+    kept_rows = {int(orig_idx[i]) for i in keep_work}
+    drop_rows = set(map(int, orig_idx.tolist())) - kept_rows
     keep_mask = np.ones(len(df), dtype=bool)
-    for r in drop_orig_rows:
+    for r in drop_rows:
         keep_mask[r] = False
 
     df_clean = df.loc[keep_mask].drop(columns=["compare_text"], errors="ignore").reset_index(drop=True)
-    audit = pd.DataFrame(audit_rows)
-
-    # Save results
+    pd.DataFrame(audit_rows).to_excel(out_audit, index=False, engine="openpyxl")
     df_clean.to_excel(out_clean, index=False, engine="openpyxl")
-    audit.to_excel(out_audit, index=False, engine="openpyxl")
-    
-    cleaned_count = len(df_clean)
-    removed_count = original_count - cleaned_count
-    
-    print(f"\n✅ Deduplication complete:")
-    print(f"  - Original articles: {original_count}")
-    print(f"  - Removed duplicates: {removed_count}")
-    print(f"  - Final articles: {cleaned_count}")
-    print(f"  - Reduction: {(removed_count/original_count*100):.1f}%\n")
-    
-    return original_count, cleaned_count
+
+    removed = original_count - len(df_clean)
+    print(f"\n✅ Dedup: {original_count} → {len(df_clean)} articles ({removed} removed, {removed/original_count*100:.1f}% reduction)")
+    return original_count, len(df_clean)
 
 
 # ---------------------------
-# MAIN WORKFLOW
+# MAIN
 # ---------------------------
 
 def main():
-    """Main execution flow."""
     print("\n" + "="*60)
-    print("NEWS COLLECTION AUTOMATION")
+    print("NEWS COLLECTION  —  Google News RSS")
     print("="*60)
-    
+
     ts = datetime.now(timezone.utc).strftime("%d_%m%y_UTC")
-    
-    # Parse search library
+
     print("\nParsing search library...")
     search_df = parse_search_library(SEARCH_LIBRARY_TEXT)
-    
-    # Filter out unmapped lines
-    to_run = search_df[search_df["search_name"] != "UNMAPPED_LINE"].copy()
-    skipped = search_df[search_df["search_name"] == "UNMAPPED_LINE"]
-    
-    print(f"✓ Parsed {len(to_run)} runnable searches")
+    to_run    = search_df[search_df["search_name"] != "UNMAPPED_LINE"].copy().reset_index(drop=True)
+    skipped   = search_df[search_df["search_name"] == "UNMAPPED_LINE"]
+
+    print(f"✓ {len(to_run)} runnable searches")
     if not skipped.empty:
-        print(f"⚠️  Skipped {len(skipped)} unmapped lines:")
-        print(skipped.head(10).to_string(index=False))
-    
-    # Collect news from all sources
+        print(f"⚠️  {len(skipped)} unmapped lines skipped")
+
     results = collect_all_news(
         df_searches=to_run,
         past_days=PAST_DAYS,
         lookback_hours=LOOKBACK_HOURS,
-        max_items=MAX_ITEMS
+        max_items=MAX_ITEMS,
     )
-    
-    # Save raw results
-    raw_results_file = DATA_DIR / f"google_news_raw_{ts}_past{PAST_DAYS}d.xlsx"
-    audit_search_file = DATA_DIR / f"search_audit_{ts}.xlsx"
-    
+
+    raw_file   = DATA_DIR / f"google_news_raw_{ts}_past{PAST_DAYS}d.xlsx"
+    audit_file = DATA_DIR / f"search_audit_{ts}.xlsx"
+
     if not results.empty:
-        # Remove timezone info for Excel compatibility
         results = results.apply(
-            lambda s: s.dt.tz_localize(None) 
-            if hasattr(s, "dt") and getattr(s.dt, "tz", None) is not None 
-            else s
+            lambda s: s.dt.tz_localize(None)
+            if hasattr(s, "dt") and getattr(s.dt, "tz", None) is not None else s
         )
-        
-        results.to_excel(raw_results_file, index=False, engine="openpyxl")
-        print(f"\n✓ Saved raw results: {raw_results_file} ({len(results)} articles)")
+        results.to_excel(raw_file, index=False, engine="openpyxl")
+        print(f"\n✓ Raw results saved: {raw_file} ({len(results)} articles)")
     else:
         print("\n⚠️  No results to save!")
-        # Create empty file so workflow doesn't break
-        pd.DataFrame().to_excel(raw_results_file, index=False, engine="openpyxl")
-    
-    search_df.to_excel(audit_search_file, index=False, engine="openpyxl")
-    print(f"✓ Saved search audit: {audit_search_file}")
-    
-    # Semantic deduplication
+        pd.DataFrame().to_excel(raw_file, index=False, engine="openpyxl")
+
+    search_df.to_excel(audit_file, index=False, engine="openpyxl")
+    print(f"✓ Search audit saved: {audit_file}")
+
     if not results.empty:
-        dedup_file = DATA_DIR / f"google_news_dedup_{ts}_past{PAST_DAYS}d.xlsx"
+        dedup_file  = DATA_DIR / f"google_news_dedup_{ts}_past{PAST_DAYS}d.xlsx"
         dedup_audit = DATA_DIR / f"google_news_dedup_audit_{ts}.xlsx"
-        
-        orig, cleaned = semantic_dedupe_csv(
-            infile=str(raw_results_file),
+
+        semantic_dedupe(
+            infile=str(raw_file),
             out_clean=str(dedup_file),
             out_audit=str(dedup_audit),
             threshold=DUP_THRESHOLD,
             model_name=MODEL_NAME,
         )
-        
-        # Always keep a stable file for automation
+
         latest = DATA_DIR / "latest_deduped.xlsx"
         shutil.copyfile(dedup_file, latest)
-        
-        print(f"✓ Saved deduplicated results: {dedup_file}")
-        print(f"✓ Saved deduplication audit: {dedup_audit}")
-        print(f"✓ Saved latest file: {latest}")
-    
-    # Summary
+        print(f"✓ Deduplicated file: {dedup_file}")
+        print(f"✓ Latest file:       {latest}")
+
+    # ── Summary ──────────────────────────────────────────────────────────
     print(f"\n{'='*60}")
     print("SUMMARY")
     print(f"{'='*60}")
-    print(f"\nConfiguration:")
-    print(f"  - Lookback hours: {LOOKBACK_HOURS}")
-    print(f"  - Past days filter: {PAST_DAYS}")
-    print(f"  - Max items per search: {MAX_ITEMS}")
-    print(f"  - Dedup threshold: {DUP_THRESHOLD}")
-    
-    print(f"\nData Sources:")
-    print(f"  - Google News RSS: ENABLED")
-    print(f"  - NewsAPI: {'ENABLED' if USE_NEWSAPI and NEWSAPI_KEY else 'DISABLED'}")
-    print(f"  - Bing News: {'ENABLED' if USE_BING_NEWS and BING_NEWS_KEY else 'DISABLED'}")
-    print(f"  - GDELT: {'ENABLED' if USE_GDELT else 'DISABLED'}")
-    print(f"  - Content Extraction: {'ENABLED' if EXTRACT_CONTENT else 'DISABLED'}")
-    
+    print(f"  Lookback window  : {LOOKBACK_HOURS}h")
+    print(f"  Past days filter : {PAST_DAYS}")
+    print(f"  Max per search   : {MAX_ITEMS}")
+    print(f"  Dedup threshold  : {DUP_THRESHOLD}")
+    print(f"  Content extract  : {'ENABLED' if EXTRACT_CONTENT else 'DISABLED'}")
+
     if not results.empty:
         print(f"\nTop searches by article count:")
-        print(results["search_name"].value_counts().head(10).to_string())
-        
-        # Show source breakdown if multiple sources used
-        if "source" in results.columns:
-            print(f"\nArticles by source type:")
-            source_counts = results["source"].apply(
-                lambda x: x.split("_")[0] if pd.notna(x) and "_" in str(x) else "google_rss"
-            ).value_counts()
-            print(source_counts.to_string())
-        
-        # Content extraction stats
-        if EXTRACT_CONTENT and "content" in results.columns:
-            content_success = results["content"].notna().sum()
-            print(f"\nContent extraction:")
-            print(f"  - Successful: {content_success}/{len(results)} ({content_success/len(results)*100:.1f}%)")
-    
+        print(results["search_name"].value_counts().head(15).to_string())
+
     print(f"\n{'='*60}\n")
 
 
