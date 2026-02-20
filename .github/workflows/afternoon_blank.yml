@@ -8,8 +8,6 @@ on:
         description: 'Hours to look back for articles (default 24)'
         required: false
         default: '7'
-        type: choice
-        options: ['24', '36', '48']
       past_days:
         description: 'Days passed to Google RSS when: filter (default 2)'
         required: false
