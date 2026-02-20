@@ -1,0 +1,115 @@
+name: Daily News Collection
+on:
+  schedule:
+    - cron: "0 14 * * *"   
+  workflow_dispatch:
+    inputs:
+      lookback_hours:
+        description: 'Hours to look back for articles (default 24)'
+        required: false
+        default: '24'
+        type: choice
+        options: ['24', '36', '48']
+      past_days:
+        description: 'Days passed to Google RSS when: filter (default 2)'
+        required: false
+        default: '2'
+        type: choice
+        options: ['1', '2', '3']
+      max_items:
+        description: 'Max articles per search query (default 30)'
+        required: false
+        default: '30'
+        type: choice
+        options: ['15', '30']
+      dup_threshold:
+        description: 'Semantic dedup similarity threshold (lower = more aggressive)'
+        required: false
+        default: '0.7'
+        type: choice
+        options: ['0.6', '0.7', '0.8']
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      # ── 1. Checkout ────────────────────────────────────────────────────
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      # ── 2. Python ──────────────────────────────────────────────────────
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # ── 3. Free disk space (sentence-transformers model can be large) ──
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /usr/local/lib/android
+          sudo apt-get clean
+
+      # ── 4. Install dependencies ────────────────────────────────────────
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install --no-cache-dir -r requirements.txt
+
+      # ── 5. Resolve runtime config ─────────────────────────────────────
+      #    Scheduled runs always use fixed values.
+      #    Manual (workflow_dispatch) runs use the chosen inputs.
+      - name: Resolve config
+        run: |
+          # Scheduled run defaults
+          LOOKBACK_HOURS="${{ github.event.inputs.lookback_hours || '24' }}"
+          PAST_DAYS="${{ github.event.inputs.past_days || '2' }}"
+          MAX_ITEMS="${{ github.event.inputs.max_items || '30' }}"
+          DUP_THRESHOLD="${{ github.event.inputs.dup_threshold || '0.7' }}"
+
+          echo "LOOKBACK_HOURS=$LOOKBACK_HOURS" >> $GITHUB_ENV
+          echo "PAST_DAYS=$PAST_DAYS"           >> $GITHUB_ENV
+          echo "MAX_ITEMS=$MAX_ITEMS"           >> $GITHUB_ENV
+          echo "DUP_THRESHOLD=$DUP_THRESHOLD"   >> $GITHUB_ENV
+
+          echo "--- Config for this run ---"
+          echo "  LOOKBACK_HOURS : $LOOKBACK_HOURS"
+          echo "  PAST_DAYS      : $PAST_DAYS"
+          echo "  MAX_ITEMS      : $MAX_ITEMS"
+          echo "  DUP_THRESHOLD  : $DUP_THRESHOLD"
+
+      # ── 6. Run the collector ───────────────────────────────────────────
+      - name: Run news collector
+        run: python main.py
+        env:
+          LOOKBACK_HOURS:  ${{ env.LOOKBACK_HOURS }}
+          PAST_DAYS:       ${{ env.PAST_DAYS }}
+          MAX_ITEMS:       ${{ env.MAX_ITEMS }}
+          DUP_THRESHOLD:   ${{ env.DUP_THRESHOLD }}
+          EXTRACT_CONTENT: "false"   # Off — Google RSS redirect URLs break trafilatura
+
+      # ── 7. Clean up intermediate files ────────────────────────────────
+      - name: Clean up intermediate files
+        run: |
+          rm -f data/google_news_raw_*.xlsx
+          rm -f data/search_audit_*.xlsx
+          rm -f data/google_news_dedup_audit_*.xlsx
+          echo "--- Files remaining in data/ ---"
+          ls -lah data/
+
+      # ── 8. Commit latest_deduped.xlsx to repo ─────────────────────────
+      - name: Commit results
+        run: |
+          git config user.name  "github-actions"
+          git config user.email "github-actions@github.com"
+          git add data/latest_deduped.xlsx
+          git diff --cached --quiet && echo "No changes to commit" || \
+            git commit -m "chore: update latest_deduped.xlsx [$(date -u '+%Y-%m-%d %H:%M UTC')]"
+          git push
