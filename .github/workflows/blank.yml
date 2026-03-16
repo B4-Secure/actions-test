@@ -68,13 +68,22 @@ jobs:
       # ── 5. Resolve runtime config ─────────────────────────────────────
       #    Scheduled runs always use fixed values.
       #    Manual (workflow_dispatch) runs use the chosen inputs.
-      - name: Resolve config
-        run: |
-          # Scheduled run defaults
+     - name: Resolve config
+       run: |
+          DAY_OF_WEEK=$(date +%u)
+          if [ "$DAY_OF_WEEK" = "1" ]; then
+            DEFAULT_PAST_DAYS="3"
+          else
+            DEFAULT_PAST_DAYS="1"
+          fi
+
           LOOKBACK_HOURS="${{ github.event.inputs.lookback_hours || '24' }}"
-          PAST_DAYS="${{ github.event.inputs.past_days || '2' }}"
           MAX_ITEMS="${{ github.event.inputs.max_items || '30' }}"
           DUP_THRESHOLD="${{ github.event.inputs.dup_threshold || '0.7' }}"
+
+          # Manual override takes priority; otherwise use day-based default
+          MANUAL_PAST_DAYS="${{ github.event.inputs.past_days }}"
+          PAST_DAYS="${MANUAL_PAST_DAYS:-$DEFAULT_PAST_DAYS}"
 
           echo "LOOKBACK_HOURS=$LOOKBACK_HOURS" >> $GITHUB_ENV
           echo "PAST_DAYS=$PAST_DAYS"           >> $GITHUB_ENV
@@ -82,11 +91,11 @@ jobs:
           echo "DUP_THRESHOLD=$DUP_THRESHOLD"   >> $GITHUB_ENV
 
           echo "--- Config for this run ---"
+          echo "  DAY_OF_WEEK    : $DAY_OF_WEEK (1=Mon)"
           echo "  LOOKBACK_HOURS : $LOOKBACK_HOURS"
           echo "  PAST_DAYS      : $PAST_DAYS"
           echo "  MAX_ITEMS      : $MAX_ITEMS"
           echo "  DUP_THRESHOLD  : $DUP_THRESHOLD"
-
       # ── 6. Run the collector ───────────────────────────────────────────
       - name: Run news collector
         run: python main.py
