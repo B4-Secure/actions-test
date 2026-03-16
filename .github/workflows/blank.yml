@@ -68,7 +68,8 @@ jobs:
       # ── 5. Resolve runtime config ─────────────────────────────────────
       #    Scheduled runs always use fixed values.
       #    Manual (workflow_dispatch) runs use the chosen inputs.
-     - name: Resolve config
+      
+       name: Resolve config
        run: |
           DAY_OF_WEEK=$(date +%u)
           if [ "$DAY_OF_WEEK" = "1" ]; then
@@ -96,8 +97,9 @@ jobs:
           echo "  PAST_DAYS      : $PAST_DAYS"
           echo "  MAX_ITEMS      : $MAX_ITEMS"
           echo "  DUP_THRESHOLD  : $DUP_THRESHOLD"
+          
       # ── 6. Run the collector ───────────────────────────────────────────
-      - name: Run news collector
+        name: Run news collector
         run: python main.py
         env:
           LOOKBACK_HOURS:  ${{ env.LOOKBACK_HOURS }}
