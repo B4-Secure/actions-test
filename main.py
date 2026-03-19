@@ -110,6 +110,7 @@ Local Town Fidenza English	("Fidenza outlet" OR "Designer Outlet Fidenza" OR "Fi
 Local Town Fidenza Italian	("Fidenza" OR "Parma" OR "Piacenza" OR "Cremona") AND (protesta OR "minaccia bomba" OR esplosione OR sparatoria OR accoltellamento OR evacuazione OR "operazione di polizia" OR arresto) AND -calcio AND -Serie AND -mercato
 Village Fidenza	("Fidenza outlet" OR "Designer Outlet Fidenza" OR "Fidenza Village")
 Roermond Outlet	("Designer Outlet Roermond" OR "Roermond outlet" OR "Roermond shopping")
+Dublin    ("Dublin" OR "Oxford" OR "London") AND ("Bomb" OR "explosion" OR "shooting"  OR "Stabbing" OR "suspicious package" OR "unattended Package" OR "explosive" OR "bomb threat" )
 """.strip()
 
 
