@@ -27,10 +27,19 @@ from sklearn.metrics.pairwise import cosine_similarity
 import datetime
 from datetime import datetime, timezone
 
-_hour = datetime.now(timezone.utc).hour  # for my lookback logic
+_now = datetime.now(timezone.utc)
+_hour = _now.hour
+_weekday = _now.weekday()  # 0=Monday, 6=Sunday
 
-# Morning run (e.g. 06:00 UTC) → 24h lookback; Afternoon run (e.g. 13:00 UTC) → 7h lookback
-LOOKBACK_HOURS = int(os.getenv("LOOKBACK_HOURS") or (24 if _hour < 12 else 7))
+if os.getenv("LOOKBACK_HOURS"):
+    LOOKBACK_HOURS = int(os.getenv("LOOKBACK_HOURS"))
+elif _weekday == 0:          # Monday
+    LOOKBACK_HOURS = 72      # Fri afternoon + all of Sat + Sun
+elif _hour < 12:             # Tue-Fri morning
+    LOOKBACK_HOURS = 24
+else:                        # Tue-Fri afternoon
+    LOOKBACK_HOURS = 7
+
 PAST_DAYS       = int(os.getenv("PAST_DAYS", "1"))      # ← 2 so RSS fetches wide, time filter trims precisely
 MAX_ITEMS       = int(os.getenv("MAX_ITEMS", "30"))
 DUP_THRESHOLD   = float(os.getenv("DUP_THRESHOLD", "0.7"))
