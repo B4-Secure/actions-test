@@ -23,15 +23,22 @@ from sklearn.metrics.pairwise import cosine_similarity
 # ---------------------------
 # CONFIG
 # ---------------------------
+
+import datetime
+from datetime import datetime, timezone
+
+_hour = datetime.now(timezone.utc).hour  # for my lookback logic
+
+# Morning run (e.g. 06:00 UTC) → 24h lookback; Afternoon run (e.g. 13:00 UTC) → 7h lookback
+LOOKBACK_HOURS = int(os.getenv("LOOKBACK_HOURS") or (24 if _hour < 12 else 7))
 PAST_DAYS       = int(os.getenv("PAST_DAYS", "1"))      # ← 2 so RSS fetches wide, time filter trims precisely
-LOOKBACK_HOURS  = int((os.getenv("LOOKBACK_HOURS") or "24").strip())
 MAX_ITEMS       = int(os.getenv("MAX_ITEMS", "30"))
 DUP_THRESHOLD   = float(os.getenv("DUP_THRESHOLD", "0.7"))
 MODEL_NAME      = os.getenv("MODEL_NAME", "all-MiniLM-L6-v2")
 EXTRACT_CONTENT = os.getenv("EXTRACT_CONTENT", "false").lower() == "true"
 TRANSLATE_TITLES = os.getenv("TRANSLATE_TITLES", "true").lower() == "true"
 MAX_EXTRACT_WORKERS = int(os.getenv("MAX_EXTRACT_WORKERS", "5"))
-EXTRACT_TIMEOUT     = int(os.getenv("EXTRACT_TIMEOUT", "15"))
+EXTRACT_TIMEOUT     = int(os.getenv("EXTRACT_TIMEOUT", "20"))
 
 DEFAULT_HL, DEFAULT_GL, DEFAULT_CEID = "en-GB", "GB", "GB:en"
 
