@@ -9,7 +9,6 @@ on:
       lookback_hours:
         description: 'Hours to look back for articles (default 24)'
         required: false
-        default: '24'
         type: choice
         options: ['7', '24', '36', '48']
       past_days:
