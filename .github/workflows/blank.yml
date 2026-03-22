@@ -2,8 +2,8 @@ name: Daily News Collection
 
 on:
   schedule:
-    - cron: "0 7 * * *"    # 07:00 UTC daily (~08:00 Amsterdam winter, ~09:00 summer)
-
+    - cron: "0 7 * * *"    # Morning run → 24h lookback
+    - cron: "0 14 * * *"   # Afternoon run → 7h lookback
   workflow_dispatch:
     inputs:
       lookback_hours:
@@ -11,7 +11,7 @@ on:
         required: false
         default: '24'
         type: choice
-        options: ['24', '36', '48']
+        options: ['7', '24', '36', '48']
       past_days:
         description: 'Days passed to Google RSS when: filter (default 2)'
         required: false
@@ -70,22 +70,10 @@ jobs:
       #    Manual (workflow_dispatch) runs use the chosen inputs.
       - name: Resolve config
         run: |
-          # Scheduled run defaults
-          LOOKBACK_HOURS="${{ github.event.inputs.lookback_hours || '24' }}"
-          PAST_DAYS="${{ github.event.inputs.past_days || '2' }}"
-          MAX_ITEMS="${{ github.event.inputs.max_items || '30' }}"
-          DUP_THRESHOLD="${{ github.event.inputs.dup_threshold || '0.7' }}"
-
-          echo "LOOKBACK_HOURS=$LOOKBACK_HOURS" >> $GITHUB_ENV
-          echo "PAST_DAYS=$PAST_DAYS"           >> $GITHUB_ENV
-          echo "MAX_ITEMS=$MAX_ITEMS"           >> $GITHUB_ENV
-          echo "DUP_THRESHOLD=$DUP_THRESHOLD"   >> $GITHUB_ENV
-
-          echo "--- Config for this run ---"
-          echo "  LOOKBACK_HOURS : $LOOKBACK_HOURS"
-          echo "  PAST_DAYS      : $PAST_DAYS"
-          echo "  MAX_ITEMS      : $MAX_ITEMS"
-          echo "  DUP_THRESHOLD  : $DUP_THRESHOLD"
+         echo "LOOKBACK_HOURS=${{ github.event.inputs.lookback_hours }}" >> $GITHUB_ENV
+          echo "PAST_DAYS=${{ github.event.inputs.past_days || '2' }}"    >> $GITHUB_ENV
+          echo "MAX_ITEMS=${{ github.event.inputs.max_items || '30' }}"   >> $GITHUB_ENV
+          echo "DUP_THRESHOLD=${{ github.event.inputs.dup_threshold || '0.7' }}" >> $GITHUB_ENV
 
       # ── 6. Run the collector ───────────────────────────────────────────
       - name: Run news collector
