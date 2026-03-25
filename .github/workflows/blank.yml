@@ -11,7 +11,7 @@ on:
         description: 'Override lookback hours (blank = auto by time of day)'
         required: false
         type: choice
-        options: ['7', '24', '36', '48', '72']
+        options: ['', '7', '24', '36', '48', '72']
 
 permissions:
   contents: write
