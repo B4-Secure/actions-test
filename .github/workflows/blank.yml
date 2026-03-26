@@ -8,10 +8,11 @@ on:
   workflow_dispatch:
     inputs:
       lookback_hours:
-        description: 'Override lookback hours (blank = auto by time of day)'
+        description: 'Override lookback hours'
         required: false
-        type: choice
-        options: ['', '7', '24', '36', '48', '72']
+        default: ''
+        type: string
+        
 
 permissions:
   contents: write
@@ -57,6 +58,8 @@ jobs:
           echo "PAST_DAYS=2"       >> $GITHUB_ENV
           echo "MAX_ITEMS=30"      >> $GITHUB_ENV
           echo "DUP_THRESHOLD=0.7" >> $GITHUB_ENV
+          echo "--- Trigger: ${{ github.event_name }} ---"
+          echo "--- UTC time: $(date -u) ---"
           
       # ── 6. Run the collector ───────────────────────────────────────────
       - name: Run news collector
