@@ -49,6 +49,11 @@ TRANSLATE_TITLES = os.getenv("TRANSLATE_TITLES", "true").lower() == "true"
 MAX_EXTRACT_WORKERS = int(os.getenv("MAX_EXTRACT_WORKERS", "5"))
 EXTRACT_TIMEOUT     = int(os.getenv("EXTRACT_TIMEOUT", "20"))
 
+import os
+_raw = os.getenv("LOOKBACK_HOURS")
+print(f"DEBUG LOOKBACK_HOURS: repr={repr(_raw)}")
+print(f"DEBUG weekday={_weekday}, hour={_hour}")
+
 DEFAULT_HL, DEFAULT_GL, DEFAULT_CEID = "en-GB", "GB", "GB:en"
 
 REGION_RULES = [
