@@ -5,11 +5,7 @@ on:
     - cron: "0 7 * * 2-5"   # Tue-Fri morning → 24h lookback
     - cron: "0 14 * * 1-5"  # Mon-Fri afternoon → 7h lookback
     - cron: "0 7 * * 1"     # Monday morning only → 72h lookback
-    - cron: "57 15 * * 4"
-    - cron: "03 14 * * 4"
-    - cron: "03 13 * * 4"
-    - cron: "3 13 * * 4"
-    - cron: "3 14 * * 4"
+  
   workflow_dispatch:
     inputs:
       lookback_hours:
