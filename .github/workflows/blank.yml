@@ -1,14 +1,9 @@
 name: Daily News Collection
-
 on:
   schedule:
-    - cron: "0 7 * * 2-5"
-      timezone: "Europe/London"   # Tue–Fri morning → 24h
-    - cron: "0 14 * * 1-5"
-      timezone: "Europe/London"   # Mon–Fri afternoon → 7h
-    - cron: "0 7 * * 1"
-      timezone: "Europe/London"   # Monday morning → 72h
-
+    - cron: "0 7 * * 2-5"    # Tue-Fri morning → 24h
+    - cron: "0 14 * * 1-5"   # Mon-Fri afternoon → 7h
+    - cron: "0 7 * * 1"      # Monday morning → 72h
   workflow_dispatch:
     inputs:
       lookback_hours:
@@ -17,13 +12,18 @@ on:
         default: ""
         type: string
 
+permissions:
+  contents: write
+
 jobs:
   run:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -34,39 +34,73 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      # 🔑 CORE FIX: deterministic lookback
       - name: Resolve config
         shell: bash
         run: |
           echo "Trigger: ${{ github.event_name }}"
           echo "Schedule: ${{ github.event.schedule }}"
           echo "UTC: $(date -u)"
-          echo "London: $(TZ=Europe/London date)"
 
           if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ github.event.inputs.lookback_hours }}" ]; then
             LOOKBACK_HOURS="${{ github.event.inputs.lookback_hours }}"
-          
           elif [ "${{ github.event.schedule }}" = "0 7 * * 1" ]; then
-            LOOKBACK_HOURS=72   # Monday morning
-
+            LOOKBACK_HOURS=72
           elif [ "${{ github.event.schedule }}" = "0 7 * * 2-5" ]; then
-            LOOKBACK_HOURS=24   # Tue-Fri morning
-
+            LOOKBACK_HOURS=24
           else
-            LOOKBACK_HOURS=7    # Mon-Fri afternoon
+            LOOKBACK_HOURS=7
           fi
 
           echo "LOOKBACK_HOURS=$LOOKBACK_HOURS" >> $GITHUB_ENV
-          echo "PAST_DAYS=2" >> $GITHUB_ENV
-          echo "MAX_ITEMS=30" >> $GITHUB_ENV
-          echo "DUP_THRESHOLD=0.7" >> $GITHUB_ENV
-
+          echo "PAST_DAYS=2"                    >> $GITHUB_ENV
+          echo "MAX_ITEMS=30"                   >> $GITHUB_ENV
+          echo "DUP_THRESHOLD=0.7"              >> $GITHUB_ENV
           echo "FINAL LOOKBACK_HOURS=$LOOKBACK_HOURS"
 
       - name: Run news collector
         run: python main.py
         env:
           LOOKBACK_HOURS: ${{ env.LOOKBACK_HOURS }}
-          PAST_DAYS: ${{ env.PAST_DAYS }}
-          MAX_ITEMS: ${{ env.MAX_ITEMS }}
-          DUP_THRESHOLD: ${{ env.DUP_THRESHOLD }}
+          PAST_DAYS:      ${{ env.PAST_DAYS }}
+          MAX_ITEMS:      ${{ env.MAX_ITEMS }}
+          DUP_THRESHOLD:  ${{ env.DUP_THRESHOLD }}
+
+      - name: List output files
+        run: |
+          echo "==== data tree ===="
+          ls -R data || true
+          echo "==== docs tree ===="
+          ls -R docs || true
+
+      - name: Commit outputs
+        shell: bash
+        run: |
+          set -e
+          git config user.name  "github-actions"
+          git config user.email "github-actions@github.com"
+
+          files=()
+          [ -f data/latest_deduped.xlsx ] && files+=(data/latest_deduped.xlsx)
+          [ -f docs/feed.json ]           && files+=(docs/feed.json)
+
+          shopt -s nullglob
+          data_files=(data/google_news_dedup_*.xlsx)
+          shopt -u nullglob
+          if [ ${#data_files[@]} -gt 0 ]; then
+            files+=("${data_files[@]}")
+          fi
+
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No output files to commit."
+            exit 0
+          fi
+
+          git add "${files[@]}"
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git commit -m "Update village feed (${LOOKBACK_HOURS}h lookback)"
+          git push origin HEAD:main
