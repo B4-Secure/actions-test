@@ -3,34 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>B4 Secure — Intelligence Feed</title>
+<title>B4 Secure — Village Intelligence Feed</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --bg: #f5f4f0;
-    --surface: #ffffff;
-    --surface2: #f0efe9;
-    --border: #e2e0d8;
-    --border2: #cccac0;
-    --text: #1a1916;
-    --text2: #5c5a53;
-    --text3: #9c9a90;
-    --green: #1a6b42;
-    --live-dot: #22c55e;
+    --bg: #f5f4f0; --surface: #ffffff; --surface2: #f0efe9;
+    --border: #e2e0d8; --border2: #cccac0;
+    --text: #1a1916; --text2: #5c5a53; --text3: #9c9a90;
+    --green: #1a6b42; --live-dot: #22c55e;
   }
-
   body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
 
-  .topbar {
-    background: var(--surface); border-bottom: 1px solid var(--border);
-    padding: 14px 24px; display: flex; align-items: center; justify-content: space-between;
-    position: sticky; top: 0; z-index: 100;
-  }
+  .topbar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
   .brand { display: flex; align-items: center; gap: 10px; }
-  .brand-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--live-dot); box-shadow: 0 0 0 3px rgba(34,197,94,0.2); flex-shrink: 0; }
+  .brand-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--live-dot); box-shadow: 0 0 0 3px rgba(34,197,94,0.2); }
   .brand-name { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
   .brand-sub { font-size: 12px; color: var(--text3); margin-top: 1px; }
   .live-badge { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text2); background: var(--surface2); border: 1px solid var(--border); padding: 5px 12px; border-radius: 20px; font-family: 'DM Mono', monospace; }
@@ -43,43 +31,42 @@
   .metric-value { font-size: 32px; font-weight: 300; line-height: 1.1; margin: 6px 0 4px; letter-spacing: -0.02em; }
   .metric-sub { font-size: 12px; color: var(--text3); }
 
-  .main { max-width: 900px; margin: 0 auto; padding: 24px 24px 80px; }
+  .main { max-width: 980px; margin: 0 auto; padding: 24px 24px 80px; }
 
-  .toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
-  .filter-bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .filter-label { font-size: 12px; color: var(--text3); margin-right: 4px; }
-  .filter-btn { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; border: 1px solid var(--border); background: var(--surface); color: var(--text2); cursor: pointer; transition: all 0.15s; }
+  .filters-row { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+  .filter-group { display: flex; flex-direction: column; gap: 6px; }
+  .filter-group-label { font-size: 11px; font-weight: 500; color: var(--text3); text-transform: uppercase; letter-spacing: 0.06em; }
+  .filter-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+
+  .filter-btn { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border); background: var(--surface); color: var(--text2); cursor: pointer; transition: all 0.15s; white-space: nowrap; }
   .filter-btn:hover { border-color: var(--border2); color: var(--text); }
   .filter-btn.active { background: var(--text); color: #fff; border-color: var(--text); }
 
-  .copy-btn { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); background: var(--surface); color: var(--text2); cursor: pointer; transition: all 0.15s; white-space: nowrap; display: flex; align-items: center; gap: 6px; }
-  .copy-btn:hover { border-color: var(--border2); color: var(--text); }
-  .copy-btn.copied { background: var(--green); color: #fff; border-color: var(--green); }
-
-  .search-wrap { position: relative; margin-bottom: 16px; }
-  .search-input { width: 100%; font-family: 'DM Sans', sans-serif; font-size: 14px; padding: 11px 16px 11px 40px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); color: var(--text); outline: none; transition: border-color 0.15s; }
+  .toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+  .search-wrap { flex: 1; min-width: 200px; position: relative; }
+  .search-input { width: 100%; font-family: 'DM Sans', sans-serif; font-size: 14px; padding: 10px 14px 10px 38px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); color: var(--text); outline: none; transition: border-color 0.15s; }
   .search-input:focus { border-color: var(--border2); }
   .search-input::placeholder { color: var(--text3); }
-  .search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text3); pointer-events: none; }
+  .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text3); pointer-events: none; }
+
+  .copy-btn { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; padding: 8px 14px; border-radius: 20px; border: 1px solid var(--border); background: var(--surface); color: var(--text2); cursor: pointer; transition: all 0.15s; white-space: nowrap; display: flex; align-items: center; gap: 6px; }
+  .copy-btn:hover { border-color: var(--border2); color: var(--text); }
+  .copy-btn.copied { background: var(--green); color: #fff; border-color: var(--green); }
 
   .results-count { font-size: 12px; color: var(--text3); margin-bottom: 12px; }
   .articles { display: flex; flex-direction: column; gap: 2px; }
 
-  .article-card {
-    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
-    padding: 14px 18px; display: flex; align-items: flex-start; gap: 12px;
-    text-decoration: none; color: inherit; transition: border-color 0.15s, box-shadow 0.15s;
-    border-left: 3px solid transparent;
-  }
+  .article-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; text-decoration: none; color: inherit; transition: border-color 0.15s, box-shadow 0.15s; border-left: 3px solid transparent; display: block; }
   .article-card:hover { border-color: var(--border2); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
 
-  .article-body { flex: 1; min-width: 0; }
-  .article-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; flex-wrap: wrap; }
+  .article-tags { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; flex-wrap: wrap; }
+  .article-title-en { font-size: 14px; font-weight: 500; line-height: 1.45; color: var(--text); margin-bottom: 3px; }
+  .article-title-orig { font-size: 12px; color: var(--text3); font-style: italic; margin-bottom: 4px; }
+  .article-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .article-source { font-size: 12px; color: var(--text3); }
   .article-dot { font-size: 10px; color: var(--border2); }
-  .article-time { font-size: 12px; color: var(--text3); font-family: 'DM Mono', monospace; }
   .article-date { font-size: 12px; color: var(--text3); font-family: 'DM Mono', monospace; }
-  .article-title { font-size: 14px; font-weight: 500; line-height: 1.45; color: var(--text); }
+  .article-time { font-size: 12px; color: var(--text3); font-family: 'DM Mono', monospace; }
 
   .tag { display: inline-flex; align-items: center; font-size: 11px; font-weight: 500; padding: 3px 8px; border-radius: 5px; white-space: nowrap; flex-shrink: 0; }
 
@@ -92,11 +79,11 @@
   .gate-box { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 40px 36px; width: 100%; max-width: 360px; text-align: center; }
   .gate-logo { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 24px; }
   .gate-logo-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--live-dot); }
-  .gate-logo-text { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
+  .gate-logo-text { font-size: 15px; font-weight: 600; }
   .gate-title { font-size: 14px; color: var(--text2); margin-bottom: 20px; }
-  .gate-input { font-family: 'DM Sans', sans-serif; font-size: 14px; width: 100%; padding: 11px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface2); color: var(--text); outline: none; margin-bottom: 10px; text-align: center; letter-spacing: 0.1em; transition: border-color 0.15s; }
-  .gate-input:focus { border-color: var(--border2); background: var(--surface); }
-  .gate-btn { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; width: 100%; padding: 11px; background: var(--text); color: #fff; border: none; border-radius: 8px; cursor: pointer; transition: opacity 0.15s; }
+  .gate-input { font-family: 'DM Sans', sans-serif; font-size: 14px; width: 100%; padding: 11px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface2); color: var(--text); outline: none; margin-bottom: 10px; text-align: center; letter-spacing: 0.1em; }
+  .gate-input:focus { border-color: var(--border2); }
+  .gate-btn { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; width: 100%; padding: 11px; background: var(--text); color: #fff; border: none; border-radius: 8px; cursor: pointer; }
   .gate-btn:hover { opacity: 0.85; }
   .gate-error { font-size: 12px; color: #dc2626; margin-top: 10px; min-height: 18px; }
 
@@ -109,12 +96,11 @@
 </head>
 <body>
 
-<!-- PASSWORD GATE -->
 <div id="gate">
   <div class="gate-box">
     <div class="gate-logo">
       <div class="gate-logo-dot"></div>
-      <span class="gate-logo-text">B4 Secure — Intelligence Feed</span>
+      <span class="gate-logo-text">B4 Secure — Village Feed</span>
     </div>
     <div class="gate-title">Enter your access password to continue</div>
     <input class="gate-input" type="password" id="gate-input" placeholder="Password" autocomplete="current-password">
@@ -127,8 +113,8 @@
   <div class="brand">
     <div class="brand-dot"></div>
     <div>
-      <div class="brand-name">B4 Secure — Intelligence Feed</div>
-      <div class="brand-sub">Automated threat monitoring · Europe</div>
+      <div class="brand-name">B4 Secure — Village Intelligence Feed</div>
+      <div class="brand-sub">Outlet village monitoring · Europe</div>
     </div>
   </div>
   <div class="live-badge">
@@ -139,19 +125,19 @@
 
 <div class="metrics">
   <div class="metric">
-    <div class="metric-label">Articles (7 days)</div>
+    <div class="metric-label">Articles</div>
     <div class="metric-value" id="m-total">—</div>
-    <div class="metric-sub" id="m-sub">&nbsp;</div>
+    <div class="metric-sub" id="m-run-type">—</div>
   </div>
   <div class="metric">
-    <div class="metric-label">Categories</div>
-    <div class="metric-value" id="m-cats">—</div>
-    <div class="metric-sub">categories tracked</div>
+    <div class="metric-label">Villages tracked</div>
+    <div class="metric-value" id="m-villages">—</div>
+    <div class="metric-sub" id="m-countries">—</div>
   </div>
   <div class="metric">
     <div class="metric-label">Lookback window</div>
     <div class="metric-value" id="m-lookback">—</div>
-    <div class="metric-sub" id="m-run-type">—</div>
+    <div class="metric-sub">hours</div>
   </div>
   <div class="metric">
     <div class="metric-label">Last updated</div>
@@ -161,11 +147,29 @@
 </div>
 
 <div class="main">
+
+  <div class="filters-row">
+    <div class="filter-group">
+      <div class="filter-group-label">Village</div>
+      <div class="filter-pills" id="village-filters"></div>
+    </div>
+    <div class="filter-group">
+      <div class="filter-group-label">Category</div>
+      <div class="filter-pills" id="cat-filters"></div>
+    </div>
+    <div class="filter-group">
+      <div class="filter-group-label">Country</div>
+      <div class="filter-pills" id="country-filters"></div>
+    </div>
+  </div>
+
   <div class="toolbar">
-    <div class="filter-bar">
-      <span class="filter-label">Category</span>
-      <button class="filter-btn active" data-cat="all">All</button>
-      <div id="cat-filters" style="display:flex;gap:8px;flex-wrap:wrap;"></div>
+    <div class="search-wrap">
+      <svg class="search-icon" width="15" height="15" viewBox="0 0 16 16" fill="none">
+        <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <input class="search-input" type="text" id="search" placeholder="Search articles…" autocomplete="off">
     </div>
     <button class="copy-btn" id="copy-btn">
       <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="9" height="9" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3a2 2 0 00-2-2H3a2 2 0 00-2 2v6a2 2 0 002 2h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -173,35 +177,40 @@
     </button>
   </div>
 
-  <div class="search-wrap">
-    <svg class="search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
-      <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/>
-      <path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-    </svg>
-    <input class="search-input" type="text" id="search" placeholder="Search articles…" autocomplete="off">
-  </div>
-
   <div class="results-count" id="results-count"></div>
   <div class="articles" id="articles-list"></div>
 </div>
 
 <script>
-const CATEGORY_STYLES = {
-  fraud:          { bg: '#fef3e2', text: '#92400e', border: '#f59e0b' },
-  fraud_scam:     { bg: '#fef3e2', text: '#92400e', border: '#f59e0b' },
-  cyber:          { bg: '#eff6ff', text: '#1e40af', border: '#3b82f6' },
-  protest:        { bg: '#fdf2f8', text: '#831843', border: '#ec4899' },
-  theft:          { bg: '#fff1f2', text: '#881337', border: '#f43f5e' },
-  supply_chain:   { bg: '#f0fdf4', text: '#14532d', border: '#22c55e' },
-  current_affairs:{ bg: '#f5f3ff', text: '#4c1d95', border: '#8b5cf6' },
-  insider_risk:   { bg: '#fff7ed', text: '#9a3412', border: '#f97316' },
-  technology:     { bg: '#f0f9ff', text: '#0c4a6e', border: '#0ea5e9' },
-  default:        { bg: '#f8fafc', text: '#334155', border: '#94a3b8' },
+const VILLAGE_COLORS = {
+  "Bicester":     { bg: '#eff6ff', text: '#1e40af', border: '#3b82f6' },
+  "Kildare":      { bg: '#f0fdf4', text: '#14532d', border: '#22c55e' },
+  "Maasmechelen": { bg: '#fdf2f8', text: '#831843', border: '#ec4899' },
+  "Wertheim":     { bg: '#fef3e2', text: '#92400e', border: '#f59e0b' },
+  "Ingolstadt":   { bg: '#fff7ed', text: '#9a3412', border: '#f97316' },
+  "Las Rozas":    { bg: '#fef2f2', text: '#7f1d1d', border: '#ef4444' },
+  "La Roca":      { bg: '#fdf4ff', text: '#581c87', border: '#a855f7' },
+  "La Vallee":    { bg: '#f0f9ff', text: '#0c4a6e', border: '#0ea5e9' },
+  "Fidenza":      { bg: '#f5f3ff', text: '#4c1d95', border: '#8b5cf6' },
+  "Roermond":     { bg: '#ecfdf5', text: '#064e3b', border: '#10b981' },
+  "default":      { bg: '#f8fafc', text: '#334155', border: '#94a3b8' },
 };
 
-function getCatKey(name) { return name.toLowerCase().replace(/\s+/g, '_'); }
-function getCatStyle(name) { return CATEGORY_STYLES[getCatKey(name)] || CATEGORY_STYLES.default; }
-function cleanCatName(name) { return name.replace(/_/g, ' '); }
+const CAT_COLORS = {
+  "Village":           { bg: '#eff6ff', text: '#1e40af', border: '#3b82f6' },
+  "Local Town":        { bg: '#fef3e2', text: '#92400e', border: '#f59e0b' },
+  "High Level City":   { bg: '#fdf2f8', text: '#831843', border: '#ec4899' },
+  "Brand":             { bg: '#f5f3ff', text: '#4c1d95', border: '#8b5cf6' },
+  "PETA":              { bg: '#f0fdf4', text: '#14532d', border: '#22c55e' },
+  "Shoplifting":       { bg: '#fff1f2', text: '#881337', border: '#f43f5e' },
+  "Climate Protest":   { bg: '#ecfdf5', text: '#064e3b', border: '#10b981' },
+  "BV Intel":          { bg: '#fff7ed', text: '#9a3412', border: '#f97316' },
+  "Specific Location": { bg: '#fdf4ff', text: '#581c87', border: '#a855f7' },
+  "Other":             { bg: '#f8fafc', text: '#334155', border: '#94a3b8' },
+};
+
+function getVillageStyle(v) { return VILLAGE_COLORS[v] || VILLAGE_COLORS.default; }
+function getCatStyle(c)     { return CAT_COLORS[c]     || CAT_COLORS.Other; }
 
 function formatDate(dateStr) {
   try {
@@ -228,45 +237,62 @@ function extractSource(link) {
 }
 
 let allArticles = [];
+let activeVillage  = 'all';
 let activeCategory = 'all';
+let activeCountry  = 'all';
 
 function getFiltered() {
   const q = document.getElementById('search').value.toLowerCase();
   return allArticles.filter(a => {
-    const catMatch = activeCategory === 'all' || getCatKey(a.search_name) === activeCategory;
-    const qMatch = !q || a.title.toLowerCase().includes(q) || cleanCatName(a.search_name).toLowerCase().includes(q);
-    return catMatch && qMatch;
+    if (activeVillage  !== 'all' && a.village  !== activeVillage)  return false;
+    if (activeCategory !== 'all' && a.category !== activeCategory) return false;
+    if (activeCountry  !== 'all' && a.country  !== activeCountry)  return false;
+    if (q && !a.title_en.toLowerCase().includes(q) && !a.title.toLowerCase().includes(q) &&
+        !a.village.toLowerCase().includes(q) && !a.category.toLowerCase().includes(q)) return false;
+    return true;
   });
 }
 
 function render() {
   const filtered = getFiltered();
-  const list = document.getElementById('articles-list');
-  const countEl = document.getElementById('results-count');
-  const q = document.getElementById('search').value;
+  const list     = document.getElementById('articles-list');
+  const countEl  = document.getElementById('results-count');
+  const q        = document.getElementById('search').value;
 
-  countEl.textContent = `${filtered.length} article${filtered.length !== 1 ? 's' : ''}${activeCategory !== 'all' ? ' in ' + cleanCatName(activeCategory.replace(/_/g,' ')) : ''}${q ? ' matching "' + q + '"' : ''}`;
+  let desc = `${filtered.length} article${filtered.length !== 1 ? 's' : ''}`;
+  if (activeVillage  !== 'all') desc += ` · ${activeVillage}`;
+  if (activeCategory !== 'all') desc += ` · ${activeCategory}`;
+  if (activeCountry  !== 'all') desc += ` · ${activeCountry}`;
+  if (q) desc += ` matching "${q}"`;
+  countEl.textContent = desc;
 
   if (filtered.length === 0) {
-    list.innerHTML = `<div class="empty"><div class="empty-title">No articles found</div><div>Try a different search or category</div></div>`;
+    list.innerHTML = `<div class="empty"><div class="empty-title">No articles found</div><div>Try adjusting your filters or search</div></div>`;
     return;
   }
 
   list.innerHTML = filtered.map(a => {
-    const style = getCatStyle(a.search_name);
+    const vs = getVillageStyle(a.village);
+    const cs = getCatStyle(a.category);
     const source = extractSource(a.link);
-    const date = formatDate(a.published);
-    const ago = timeAgo(a.published);
+    const date   = formatDate(a.published);
+    const ago    = timeAgo(a.published);
+    const showOrig = a.title_en && a.title_en !== a.title && a.title_en !== 'nan';
+
     return `
-      <a class="article-card" href="${a.link}" target="_blank" rel="noopener" style="border-left-color:${style.border}">
-        <div class="article-body">
-          <div class="article-meta">
-            <span class="tag" style="background:${style.bg};color:${style.text}">${cleanCatName(a.search_name)}</span>
-            ${source ? `<span class="article-source">${source}</span><span class="article-dot">·</span>` : ''}
-            ${date ? `<span class="article-date">${date}</span>` : ''}
-            ${ago ? `<span class="article-dot">·</span><span class="article-time">${ago}</span>` : ''}
-          </div>
-          <div class="article-title">${a.title}</div>
+      <a class="article-card" href="${a.link}" target="_blank" rel="noopener" style="border-left-color:${vs.border}">
+        <div class="article-tags">
+          ${a.village ? `<span class="tag" style="background:${vs.bg};color:${vs.text}">${a.village}</span>` : ''}
+          <span class="tag" style="background:${cs.bg};color:${cs.text}">${a.category}</span>
+          ${a.country ? `<span class="tag" style="background:#f1f5f9;color:#475569">${a.country}</span>` : ''}
+          ${a.language && a.language !== 'en-GB' && a.language !== 'en' ? `<span class="tag" style="background:#f8fafc;color:#94a3b8">${a.language.toUpperCase()}</span>` : ''}
+        </div>
+        <div class="article-title-en">${a.title_en || a.title}</div>
+        ${showOrig ? `<div class="article-title-orig">${a.title}</div>` : ''}
+        <div class="article-meta">
+          ${source ? `<span class="article-source">${source}</span><span class="article-dot">·</span>` : ''}
+          ${date   ? `<span class="article-date">${date}</span>` : ''}
+          ${ago    ? `<span class="article-dot">·</span><span class="article-time">${ago}</span>` : ''}
         </div>
       </a>`;
   }).join('');
@@ -274,16 +300,17 @@ function render() {
 
 function copyForGamma() {
   const filtered = getFiltered();
-  if (filtered.length === 0) return;
+  if (!filtered.length) return;
 
   const lines = filtered.map(a => {
     const date = formatDate(a.published);
-    return `[${cleanCatName(a.search_name)}] ${date} — ${a.title}\n${a.link}`;
+    const title = a.title_en && a.title_en !== 'nan' ? a.title_en : a.title;
+    const orig  = (a.title_en && a.title_en !== a.title && a.title_en !== 'nan') ? `\n  Original: ${a.title}` : '';
+    return `[${a.village || a.category}] [${a.country}] ${date}\n${title}${orig}\n${a.link}`;
   });
 
-  const text = `B4 Secure Intelligence Feed — ${new Date().toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'})}\nTotal articles: ${filtered.length}\n\n` + lines.join('\n\n');
-
-  navigator.clipboard.writeText(text).then(() => {
+  const header = `B4 Secure Village Intelligence Feed\nGenerated: ${new Date().toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'})}\nTotal articles: ${filtered.length}\n`;
+  navigator.clipboard.writeText(header + '\n' + lines.join('\n\n')).then(() => {
     const btn = document.getElementById('copy-btn');
     btn.textContent = 'Copied!';
     btn.classList.add('copied');
@@ -294,44 +321,56 @@ function copyForGamma() {
   });
 }
 
-async function init() {
-  try {
-    const res = await fetch('feed.json?t=' + Date.now());
-    const data = await res.json();
-    allArticles = (data.articles || []).sort((a, b) => new Date(b.published) - new Date(a.published));
+function buildFilters(articles) {
+  const villages  = [...new Set(articles.map(a => a.village).filter(Boolean))].sort();
+  const cats      = [...new Set(articles.map(a => a.category).filter(Boolean))].sort();
+  const countries = [...new Set(articles.map(a => a.country).filter(Boolean))].sort();
 
-    document.getElementById('m-total').textContent = allArticles.length;
-    document.getElementById('m-sub').textContent = '';
-
-    const cats = [...new Set(allArticles.map(a => a.search_name))];
-    document.getElementById('m-cats').textContent = cats.length;
-
-    const lookback = data.lookback_days || 7;
-    document.getElementById('m-lookback').textContent = lookback + 'd';
-    document.getElementById('m-run-type').textContent = data.run_type || 'Scheduled run';
-
-    const genAt = new Date(data.generated_at);
-    document.getElementById('m-updated').textContent = genAt.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
-    document.getElementById('m-updated-sub').textContent = genAt.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
-    document.getElementById('live-time').textContent = 'Live · ' + genAt.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) + ' UTC';
-
-    const filterContainer = document.getElementById('cat-filters');
-    filterContainer.innerHTML = cats.map(cat => {
-      return `<button class="filter-btn" data-cat="${getCatKey(cat)}">${cleanCatName(cat)}</button>`;
-    }).join('');
-
-    document.querySelectorAll('.filter-btn').forEach(btn => {
+  function makePills(containerId, items, getActive, setActive) {
+    const el = document.getElementById(containerId);
+    el.innerHTML = `<button class="filter-btn active" data-val="all">All</button>` +
+      items.map(v => `<button class="filter-btn" data-val="${v}">${v}</button>`).join('');
+    el.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        el.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        activeCategory = btn.dataset.cat;
+        setActive(btn.dataset.val);
         render();
       });
     });
+  }
 
+  makePills('village-filters',  villages,  () => activeVillage,  v => activeVillage  = v);
+  makePills('cat-filters',      cats,      () => activeCategory, v => activeCategory = v);
+  makePills('country-filters',  countries, () => activeCountry,  v => activeCountry  = v);
+}
+
+async function init() {
+  try {
+    const res  = await fetch('feed.json?t=' + Date.now());
+    const data = await res.json();
+    allArticles = (data.articles || []).sort((a, b) => new Date(b.published) - new Date(a.published));
+
+    document.getElementById('m-total').textContent    = allArticles.length;
+    document.getElementById('m-run-type').textContent = data.run_type || 'Scheduled run';
+
+    const villages  = [...new Set(allArticles.map(a => a.village).filter(Boolean))];
+    const countries = [...new Set(allArticles.map(a => a.country).filter(Boolean))];
+    document.getElementById('m-villages').textContent  = villages.length;
+    document.getElementById('m-countries').textContent = countries.length + ' countries';
+
+    document.getElementById('m-lookback').textContent = data.lookback_hours || '—';
+
+    const genAt = new Date(data.generated_at);
+    document.getElementById('m-updated').textContent     = genAt.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+    document.getElementById('m-updated-sub').textContent = genAt.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+    document.getElementById('live-time').textContent     = 'Live · ' + genAt.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) + ' UTC';
+
+    buildFilters(allArticles);
     document.getElementById('copy-btn').addEventListener('click', copyForGamma);
+    document.getElementById('search').addEventListener('input', render);
     render();
-  } catch (e) {
+  } catch(e) {
     document.getElementById('articles-list').innerHTML =
       `<div class="empty"><div class="empty-title">Could not load feed</div><div>Make sure feed.json exists in the same folder</div></div>`;
     console.error(e);
@@ -339,11 +378,11 @@ async function init() {
 }
 
 // ─────────────────────────────────────────────────────────────────
-// SET YOUR PASSWORD HERE — change the value inside the quotes below
-const FEED_PASSWORD = 'changeme';
+// SET YOUR PASSWORD HERE
+const FEED_PASSWORD = 'bvcollection';
 // ─────────────────────────────────────────────────────────────────
 
-const SESSION_KEY = 'b4_feed_auth';
+const SESSION_KEY = 'b4_village_auth';
 
 function checkGate() {
   if (sessionStorage.getItem(SESSION_KEY) === 'granted') {
@@ -370,7 +409,6 @@ function tryUnlock() {
 
 document.getElementById('gate-btn').addEventListener('click', tryUnlock);
 document.getElementById('gate-input').addEventListener('keydown', e => { if (e.key === 'Enter') tryUnlock(); });
-document.getElementById('search').addEventListener('input', render);
 document.getElementById('live-time').textContent = new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) + ' UTC';
 
 if (checkGate()) init();
