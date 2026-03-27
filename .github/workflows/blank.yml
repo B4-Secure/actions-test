@@ -8,7 +8,7 @@ on:
       timezone: "Europe/London"
     - cron: "0 7 * * 1"
       timezone: "Europe/London"
-    - cron: "54 12 * * 5"
+    - cron: "57 12 * * 5"
 
   workflow_dispatch:
     inputs:
