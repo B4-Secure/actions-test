@@ -32,18 +32,10 @@ _hour = _now.hour
 _weekday = _now.weekday()  # 0=Monday, 6=Sunday
 
 _raw_lookback = os.getenv("LOOKBACK_HOURS")
+if not _raw or not _raw.strip():
+    raise ValueError("LOOKBACK_HOURS must be set by workflow")
 
-if _raw_lookback and _raw_lookback.strip():
-    LOOKBACK_HOURS = int(_raw_lookback)
-
-elif _weekday == 0 and _hour < 12:   # Monday morning only
-    LOOKBACK_HOURS = 72
-
-elif 1 <= _weekday <= 4 and _hour < 12:   # Tue-Fri morning
-    LOOKBACK_HOURS = 24
-
-else:   # Mon-Fri afternoon and anything else not explicitly handled
-    LOOKBACK_HOURS = 7
+LOOKBACK_HOURS = int(_raw)
 
 PAST_DAYS       = int(os.getenv("PAST_DAYS", "1"))      # ← 2 so RSS fetches wide, time filter trims precisely
 MAX_ITEMS       = int(os.getenv("MAX_ITEMS", "30"))
