@@ -31,13 +31,18 @@ _now = datetime.now(timezone.utc)
 _hour = _now.hour
 _weekday = _now.weekday()  # 0=Monday, 6=Sunday
 
-if os.getenv("LOOKBACK_HOURS"):
-    LOOKBACK_HOURS = int(os.getenv("LOOKBACK_HOURS"))
-elif _weekday == 0:          # Monday
-    LOOKBACK_HOURS = 72      # Fri afternoon + all of Sat + Sun
-elif _hour < 12:             # Tue-Fri morning
+_raw_lookback = os.getenv("LOOKBACK_HOURS")
+
+if _raw_lookback and _raw_lookback.strip():
+    LOOKBACK_HOURS = int(_raw_lookback)
+
+elif _weekday == 0 and _hour < 12:   # Monday morning only
+    LOOKBACK_HOURS = 72
+
+elif 1 <= _weekday <= 4 and _hour < 12:   # Tue-Fri morning
     LOOKBACK_HOURS = 24
-else:                        # Tue-Fri afternoon
+
+else:   # Mon-Fri afternoon and anything else not explicitly handled
     LOOKBACK_HOURS = 7
 
 PAST_DAYS       = int(os.getenv("PAST_DAYS", "1"))      # ← 2 so RSS fetches wide, time filter trims precisely
