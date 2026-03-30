@@ -68,8 +68,5 @@ jobs:
           git config user.email "github-actions@github.com"
           git add data/latest_deduped.xlsx
           git diff --cached --quiet && echo "No changes" && exit 0
-          git commit -m "Update feed (${LOOKBACK_HOURS}h lookback)"
-          git stash
-          git pull --rebase origin main
-          git stash pop
+          git commit -m "Update feed (${{ env.LOOKBACK_HOURS }}h lookback)"
           git push origin HEAD:main
