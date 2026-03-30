@@ -84,6 +84,9 @@ BV Value Retail Crime    ("Bicester Village") AND ("money laundering" OR "gang" 
 BV Logistics Companies    ("Dropit" OR "DHL" OR "UPS" OR "DPD" OR "Flight Logistics" OR "Fedex" OR "Amazon" OR "Royal Mail" OR "Parcelforce" OR "EVRI" ) AND ( "supply " OR  "delivery") AND -"postal vote"
 PETA Broad Search    ("PETA") AND ("Italy" OR "UK" OR "Germany" OR "Belgium" OR "Spain" OR "France") AND ("fashion" OR "designer" OR "outlet" OR "luxury retail" OR "shopping village") AND (protest OR rally OR demonstration OR campaign OR action)
 PETA Village Search    ("PETA") AND ("Ingolstadt Village" OR "Kildare Village" OR "La Vallee Village" OR "Bicester Village" OR "Wertheim Village" OR "Las Rozas Village" OR "La Roca Village" OR "Fidenza Village" OR "Maasmechelen Village")
+PETA Twitter search   peta (gucci OR dior OR armani OR lv OR valentino OR vuitton OR polo OR ralph OR klein OR hilfiger OR prada OR balenciaga OR goose OR burberry OR lvmh)
+PETA Village German    ("PETA") AND ("Ingolstadt Village" OR "Wertheim Village" OR "Designer Outlet") AND ("Protest" OR "Aktion" OR "Kampagne" OR "Demonstration")
+PETA Germany German    ("PETA") AND ("Ingolstadt" OR "Wertheim" OR "München" OR "Deutschland")
 XR JSO Village Search    ("Extinction Rebellion" OR "Just Stop Oil" OR "climate protest" OR "environmental protest") AND ("Ingolstadt" OR "Kildare" OR "Vallee" OR "Bicester" OR "Wertheim" OR "Las Rozas" OR "La Roca" OR "Fidenza" OR "Maasmechelen")
 Shoplifting UK    ("shoplifting" OR "retail theft" OR "retail crime" OR "shop theft" OR "pickpocket") AND ("UK" OR "England" OR "Britain") AND ("gang" OR "organised" OR "trend" OR "rise" OR "survey" OR "report")
 London Marylebone    ("marylebone station" OR "london Marylebone") AND ("incident" OR "delay" OR "closed" OR "delays" OR "protest" OR "boycott" OR "bomb" OR "Bomb threat" OR "shooting" OR "explosion" OR "stabbing"  OR "suspicious package" OR "unattended Package" OR "explosive" OR "bomb threat")
@@ -101,6 +104,7 @@ Local Town Wertheim German    ( "Wertheim" OR "Wurzburg" OR "Aschaffenburg") AND
 Village Wertheim    ("Wertheim outlet" OR "Designer Outlet Wertheim" OR "Wertheim Village")
 Local Town Ingolstadt English    ("Ingolstadt outlet" OR "Designer Outlet Ingolstadt" OR "Ingolstadt Village") AND (protest OR bomb OR shooting OR explosion OR stabbing OR "suspicious package" OR evacuation OR police OR news)
 Local Town Ingolstadt German    ("Ingolstadt") AND (Protest OR Bombe OR Bombendrohung OR Explosion OR Schießerei OR Polizei OR Evakuierung OR Terrorverdacht) AND -Audi AND -Auto AND -Wetter
+Local Town Ingolstadt German    ("Ingolstadt") AND (Protest OR Bombe OR PETA OR Tierschutz OR Greenwashing OR Polizei OR Evakuierung OR Terrorverdacht) AND -Audi AND -Auto AND -Wetter
 Village Ingolstadt    ("Ingolstadt outlet" OR "Designer Outlet Ingolstadt" OR "Ingolstadt Village")
 High Level City Spain English    ("Madrid" OR "Barcelona") AND "Spain" AND ("bomb threat" OR "suspicious package" OR "stabbing attack" OR "shooting attack" OR "terror attack" OR "police operation" OR "evacuation") AND -football AND -soccer AND -transfer AND -signing AND -LaLiga AND -"Champions League" AND -"Real Madrid" AND -"Atletico"
 High Level City Spain Spanish    ("Madrid" OR "Barcelona") AND ("amenaza de bomba" OR "paquete sospechoso" OR "paquete explosivo" OR "ataque con cuchillo" OR "tiroteo" OR "atentado" OR "operación policial" OR "evacuación" OR "artefacto explosivo") AND -fútbol AND -fichaje AND -Liga AND -transferencia
