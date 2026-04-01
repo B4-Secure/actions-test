@@ -1,5 +1,6 @@
 import os
 import re
+import json
 import urllib.parse
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
@@ -24,28 +25,26 @@ from sklearn.metrics.pairwise import cosine_similarity
 # CONFIG
 # ---------------------------
 
+_now     = datetime.now(timezone.utc)
+_hour    = _now.hour
+_weekday = _now.weekday()
 
-_now = datetime.now(timezone.utc)
-_hour = _now.hour
-_weekday = _now.weekday()  # 0=Monday, 6=Sunday
+_raw = os.getenv("LOOKBACK_HOURS")
+if not _raw or not _raw.strip():
+    raise ValueError("LOOKBACK_HOURS must be set by workflow")
 
-if os.getenv("LOOKBACK_HOURS"):
-    LOOKBACK_HOURS = int(os.getenv("LOOKBACK_HOURS"))
-elif _weekday == 0:        # Monday → covers whole weekend
-    LOOKBACK_HOURS = 72
-elif _hour < 12:           # Tue-Fri morning
-    LOOKBACK_HOURS = 24
-else:                      # Tue-Fri afternoon
-    LOOKBACK_HOURS = 7
-
-PAST_DAYS       = int(os.getenv("PAST_DAYS", "1"))      # ← 2 so RSS fetches wide, time filter trims precisely
-MAX_ITEMS       = int(os.getenv("MAX_ITEMS", "30"))
-DUP_THRESHOLD   = float(os.getenv("DUP_THRESHOLD", "0.7"))
-MODEL_NAME      = os.getenv("MODEL_NAME", "all-MiniLM-L6-v2")
-EXTRACT_CONTENT = os.getenv("EXTRACT_CONTENT", "false").lower() == "true"
-TRANSLATE_TITLES = os.getenv("TRANSLATE_TITLES", "true").lower() == "true"
+LOOKBACK_HOURS      = int(_raw)
+PAST_DAYS           = int(os.getenv("PAST_DAYS", "1"))
+MAX_ITEMS           = int(os.getenv("MAX_ITEMS", "30"))
+DUP_THRESHOLD       = float(os.getenv("DUP_THRESHOLD", "0.7"))
+MODEL_NAME          = os.getenv("MODEL_NAME", "all-MiniLM-L6-v2")
+EXTRACT_CONTENT     = os.getenv("EXTRACT_CONTENT", "false").lower() == "true"
+TRANSLATE_TITLES    = os.getenv("TRANSLATE_TITLES", "true").lower() == "true"
 MAX_EXTRACT_WORKERS = int(os.getenv("MAX_EXTRACT_WORKERS", "5"))
 EXTRACT_TIMEOUT     = int(os.getenv("EXTRACT_TIMEOUT", "20"))
+
+print(f"DEBUG LOOKBACK_HOURS: repr={repr(_raw)}")
+print(f"DEBUG weekday={_weekday}, hour={_hour}")
 
 DEFAULT_HL, DEFAULT_GL, DEFAULT_CEID = "en-GB", "GB", "GB:en"
 
@@ -73,9 +72,13 @@ REGION_RULES = [
 DATA_DIR = Path("data")
 DATA_DIR.mkdir(exist_ok=True)
 
+# ── NEW: docs folder for GitHub Pages dashboard ──
+DOCS_DIR = Path("docs")
+DOCS_DIR.mkdir(exist_ok=True)
+
 
 # ---------------------------
-# SEARCH LIBRARY  (v3 — tightened to reduce noise)
+# SEARCH LIBRARY
 # ---------------------------
 SEARCH_LIBRARY_TEXT = r"""
 Brand Protest    ("Gucci" OR "Ralph Lauren" OR "Dior" OR "Armani" OR "Louis Vuitton" OR "Burberry" OR "Prada" OR "Nike" OR "Canada Goose" OR "Hugo Boss" OR "Moncler" OR "Saint Laurent" OR "Loro Piana" OR "Lacoste" OR "Versace" OR "Jimmy Choo" OR "Michael Kors" OR "Missoni" OR "Kiton" OR "Aquazzura" OR "Tumi") AND ("protest" OR "animal rights" OR "fur free" OR "PETA" OR "activist") AND -BAFTA AND -"red carpet" AND -"awards" AND -"wears" AND -"dressed in"
@@ -84,9 +87,6 @@ BV Value Retail Crime    ("Bicester Village") AND ("money laundering" OR "gang" 
 BV Logistics Companies    ("Dropit" OR "DHL" OR "UPS" OR "DPD" OR "Flight Logistics" OR "Fedex" OR "Amazon" OR "Royal Mail" OR "Parcelforce" OR "EVRI" ) AND ( "supply " OR  "delivery") AND -"postal vote"
 PETA Broad Search    ("PETA") AND ("Italy" OR "UK" OR "Germany" OR "Belgium" OR "Spain" OR "France") AND ("fashion" OR "designer" OR "outlet" OR "luxury retail" OR "shopping village") AND (protest OR rally OR demonstration OR campaign OR action)
 PETA Village Search    ("PETA") AND ("Ingolstadt Village" OR "Kildare Village" OR "La Vallee Village" OR "Bicester Village" OR "Wertheim Village" OR "Las Rozas Village" OR "La Roca Village" OR "Fidenza Village" OR "Maasmechelen Village")
-PETA Twitter search   peta (gucci OR dior OR armani OR lv OR valentino OR vuitton OR polo OR ralph OR klein OR hilfiger OR prada OR balenciaga OR goose OR burberry OR lvmh)
-PETA Village German    ("PETA") AND ("Ingolstadt Village" OR "Wertheim Village" OR "Designer Outlet") AND ("Protest" OR "Aktion" OR "Kampagne" OR "Demonstration")
-PETA Germany German    ("PETA") AND ("Ingolstadt" OR "Wertheim" OR "München" OR "Deutschland")
 XR JSO Village Search    ("Extinction Rebellion" OR "Just Stop Oil" OR "climate protest" OR "environmental protest") AND ("Ingolstadt" OR "Kildare" OR "Vallee" OR "Bicester" OR "Wertheim" OR "Las Rozas" OR "La Roca" OR "Fidenza" OR "Maasmechelen")
 Shoplifting UK    ("shoplifting" OR "retail theft" OR "retail crime" OR "shop theft" OR "pickpocket") AND ("UK" OR "England" OR "Britain") AND ("gang" OR "organised" OR "trend" OR "rise" OR "survey" OR "report")
 London Marylebone    ("marylebone station" OR "london Marylebone") AND ("incident" OR "delay" OR "closed" OR "delays" OR "protest" OR "boycott" OR "bomb" OR "Bomb threat" OR "shooting" OR "explosion" OR "stabbing"  OR "suspicious package" OR "unattended Package" OR "explosive" OR "bomb threat")
@@ -104,7 +104,6 @@ Local Town Wertheim German    ( "Wertheim" OR "Wurzburg" OR "Aschaffenburg") AND
 Village Wertheim    ("Wertheim outlet" OR "Designer Outlet Wertheim" OR "Wertheim Village")
 Local Town Ingolstadt English    ("Ingolstadt outlet" OR "Designer Outlet Ingolstadt" OR "Ingolstadt Village") AND (protest OR bomb OR shooting OR explosion OR stabbing OR "suspicious package" OR evacuation OR police OR news)
 Local Town Ingolstadt German    ("Ingolstadt") AND (Protest OR Bombe OR Bombendrohung OR Explosion OR Schießerei OR Polizei OR Evakuierung OR Terrorverdacht) AND -Audi AND -Auto AND -Wetter
-Local Town Ingolstadt German    ("Ingolstadt") AND (Protest OR Bombe OR PETA OR Tierschutz OR Greenwashing OR Polizei OR Evakuierung OR Terrorverdacht) AND -Audi AND -Auto AND -Wetter
 Village Ingolstadt    ("Ingolstadt outlet" OR "Designer Outlet Ingolstadt" OR "Ingolstadt Village")
 High Level City Spain English    ("Madrid" OR "Barcelona") AND "Spain" AND ("bomb threat" OR "suspicious package" OR "stabbing attack" OR "shooting attack" OR "terror attack" OR "police operation" OR "evacuation") AND -football AND -soccer AND -transfer AND -signing AND -LaLiga AND -"Champions League" AND -"Real Madrid" AND -"Atletico"
 High Level City Spain Spanish    ("Madrid" OR "Barcelona") AND ("amenaza de bomba" OR "paquete sospechoso" OR "paquete explosivo" OR "ataque con cuchillo" OR "tiroteo" OR "atentado" OR "operación policial" OR "evacuación" OR "artefacto explosivo") AND -fútbol AND -fichaje AND -Liga AND -transferencia
@@ -118,7 +117,7 @@ High Level City France English    ("Paris" OR "Île-de-France") AND "France" AND
 High Level City France French    ("Paris" OR "Île-de-France") AND ("alerte à la bombe" OR "colis suspect" OR "menace à la bombe" OR fusillade OR "attentat" OR "attaque au couteau" OR "opération de police" OR évacuation) AND -immobilier AND -"prix immobilier" AND -foot AND -transfert AND -Texas
 Local Town La Vallee French    ("Serris" OR "Chessy" OR "Bailly-Romainvilliers" OR "Magny-le-Hongre" OR "Seine-et-Marne") AND (manifestation OR "alerte à la bombe" OR "colis suspect" OR bombe OR fusillade OR couteau OR protestation OR évacuation OR attentat OR "opération de police")
 Local Town La Vallee English    ("Serris" OR "Chessy" OR "Bailly-Romainvilliers" OR "Disneyland Paris" OR "Seine-et-Marne") AND (protest OR "bomb threat" OR "suspicious package" OR explosion OR shooting OR stabbing OR evacuation OR "police operation") AND -"theme park ride" AND -"park closure"
-Village La Vallee    ("La Vallee Village" OR "LaValleeVillage" OR "LaValleeVillage" OR "Ingolstadt Village" OR "IngolstadtVillage" OR "IngolstadtVillage") 
+Village La Vallee    ("La Vallee Village" OR "LaValleeVillage" OR "LaValleeVillage" OR "Ingolstadt Village" OR "IngolstadtVillage" OR "IngolstadtVillage")
 High Level City Italy English    ("Milan" OR "Bologna") AND "Italy" AND ("bomb threat" OR "suspicious package" OR "stabbing attack" OR "shooting" OR "terror attack" OR "police operation" OR explosion OR evacuation) AND -Olympics AND -biathlon AND -skiing AND -skating AND -Cortina AND -"Winter Games" AND -"Winter Olympics" AND -curling AND -hockey AND -football AND -transfer AND -Serie
 High Level City Italy Italian    ("Milano" OR "Bologna") AND ("minaccia bomba" OR "pacco sospetto" OR "pacco esplosivo" OR sparatoria OR accoltellamento OR "attentato" OR "operazione di polizia" OR esplosione OR evacuazione) AND -Olimpiadi AND -pattinaggio AND -sci AND -Cortina AND -calcio AND -Serie AND -mercato
 High Level City Italy English    ("Milan" OR "Milano" OR "Bologna") AND ("Italy" OR "Italian") AND (protest OR demonstration OR rally OR "civil unrest" OR strike OR blockade OR march) AND -football AND -transfer AND -Serie AND -"fashion week" AND -catwalk AND -runway
@@ -132,10 +131,8 @@ Roermond Outlet    ("Designer Outlet Roermond" OR "Roermond outlet" OR "Roermond
 
 # ---------------------------
 # VILLAGE FALLBACK MAP
-# When a village search still returns 0, broaden to location name only.
 # ---------------------------
 VILLAGE_FALLBACK_MAP = {
-    # Village outlet searches — fallback drops event terms, keeps outlet name only
     r"village maasmechelen":          '("Maasmechelen Village" OR "Maasmechelen") AND (shopping OR outlet OR luxury OR retail OR news)',
     r"village wertheim":              '("Wertheim Village" OR "Wertheim") AND (shopping OR outlet OR luxury OR retail OR news)',
     r"village ingolstadt":            '("Ingolstadt Village" OR "Ingolstadt") AND (shopping OR outlet OR luxury OR retail OR news)',
@@ -143,19 +140,17 @@ VILLAGE_FALLBACK_MAP = {
     r"village bicester|kildare":      '("Bicester Village" OR "Kildare Village" OR "Bicester" OR "Kildare") AND (shopping OR outlet OR luxury OR retail OR news)',
     r"village la val":                '("La Vallee Village" OR "La Vallée Village" OR "Serris" OR "Chessy") AND (shopping OR outlet OR luxury OR retail OR news)',
     r"village fidenza":               '("Fidenza Village" OR "Fidenza") AND (shopping OR outlet OR luxury OR retail OR news)',
-    # Local town English fallbacks — anchor to outlet name so results stay relevant
-    r"local town wertheim english":     '("Wertheim outlet" OR "Designer Outlet Wertheim" OR "Wertheim Germany")',
-    r"local town ingolstadt english":   '("Ingolstadt outlet" OR "Designer Outlet Ingolstadt")',
-    r"local town las rozas english":    '("Las Rozas outlet" OR "La Roca outlet" OR "Las Rozas Village" OR "La Roca Village")',
-    r"local town bicester kildare":     '("Bicester Village" OR "Kildare Village" OR "Bicester outlet" OR "Kildare outlet")',
-    r"local town la vallee english":    '("La Vallee outlet" OR "Val d\'Europe" OR "Disneyland Paris") AND (news OR incident OR police OR closure)',
-    r"local town fidenza english":      '("Fidenza outlet" OR "Designer Outlet Fidenza" OR "Parma") AND (news OR incident OR police)',
-    # PETA — stays scoped to retail/luxury context
-    r"peta broad search":               '"PETA" AND ("outlet" OR "luxury" OR "shopping" OR "fashion" OR "fur" OR "leather") AND (protest OR campaign OR action)',
-    r"peta village search":             '"PETA" AND ("designer outlet" OR "outlet village" OR "luxury shopping") AND (protest OR campaign OR demonstration)',
-    # Roermond
-    r"roermond outlet":                 '("Designer Outlet Roermond" OR "Roermond outlet" OR "Roermond shopping")',
+    r"local town wertheim english":   '("Wertheim outlet" OR "Designer Outlet Wertheim" OR "Wertheim Germany")',
+    r"local town ingolstadt english": '("Ingolstadt outlet" OR "Designer Outlet Ingolstadt")',
+    r"local town las rozas english":  '("Las Rozas outlet" OR "La Roca outlet" OR "Las Rozas Village" OR "La Roca Village")',
+    r"local town bicester kildare":   '("Bicester Village" OR "Kildare Village" OR "Bicester outlet" OR "Kildare outlet")',
+    r"local town la vallee english":  '("La Vallee outlet" OR "Val d\'Europe" OR "Disneyland Paris") AND (news OR incident OR police OR closure)',
+    r"local town fidenza english":    '("Fidenza outlet" OR "Designer Outlet Fidenza" OR "Parma") AND (news OR incident OR police)',
+    r"peta broad search":             '"PETA" AND ("outlet" OR "luxury" OR "shopping" OR "fashion" OR "fur" OR "leather") AND (protest OR campaign OR action)',
+    r"peta village search":           '"PETA" AND ("designer outlet" OR "outlet village" OR "luxury shopping") AND (protest OR campaign OR demonstration)',
+    r"roermond outlet":               '("Designer Outlet Roermond" OR "Roermond outlet" OR "Roermond shopping")',
 }
+
 
 # ---------------------------
 # HELPERS
@@ -212,32 +207,24 @@ def parse_search_library(text: str) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-# ---------------------------
-# FALLBACK LOGIC
-# ---------------------------
-
 def create_fallback_query(search_name: str, query: str) -> str | None:
     name_lower = search_name.lower()
     for pattern, fb_query in VILLAGE_FALLBACK_MAP.items():
         if re.search(pattern, name_lower, flags=re.IGNORECASE):
             return fb_query
-
     if ' AND ' not in query.upper():
         return None
-
     match = re.search(r'\(([^)]+)\)\s*AND', query, re.IGNORECASE)
     if match:
         return f"({match.group(1).strip()})"
-
     parts = re.split(r'\s+AND\s+', query, flags=re.IGNORECASE)
     if len(parts) >= 2 and len(parts[0].strip()) > 3:
         return parts[0].strip()
-
     return None
 
 
 # ---------------------------
-# GOOGLE NEWS RSS  (sole source)
+# GOOGLE NEWS RSS
 # ---------------------------
 
 def google_news_rss_url(query: str, past_days: int, hl: str, gl: str, ceid: str) -> str:
@@ -264,12 +251,12 @@ def fetch_google_news_rss(search_name: str, query: str, past_days: int, max_item
             })
         return articles
     except Exception as e:
-        print(f"  ⚠️  RSS error for '{search_name}': {e}")
+        print(f"  RSS error for '{search_name}': {e}")
         return []
 
 
 # ---------------------------
-# CONTENT EXTRACTION  (optional, off by default)
+# CONTENT EXTRACTION
 # ---------------------------
 
 def extract_article_content(url: str, timeout: int = 10) -> dict:
@@ -293,9 +280,7 @@ def extract_article_content(url: str, timeout: int = 10) -> dict:
 def extract_content_batch(df: pd.DataFrame, max_workers: int = 5) -> pd.DataFrame:
     if df.empty or 'link' not in df.columns:
         return df
-    print(f"\n{'='*60}")
-    print(f"Extracting article content  ({len(df)} articles, {max_workers} workers)")
-    print(f"{'='*60}\n")
+    print(f"\nExtracting article content ({len(df)} articles, {max_workers} workers)")
     df = df.copy()
     for col in ('content', 'author', 'sitename', 'extraction_error'):
         df[col] = None
@@ -312,9 +297,6 @@ def extract_content_batch(df: pd.DataFrame, max_workers: int = 5) -> pd.DataFram
                 results[url] = future.result(timeout=EXTRACT_TIMEOUT + 5)
             except Exception as e:
                 results[url] = {"content": None, "extraction_error": str(e)}
-            if done % 10 == 0 or done == len(urls):
-                elapsed = time.time() - start
-                print(f"  Progress: {done}/{len(urls)} ({done/elapsed:.1f} art/sec)")
     for idx, row in df.iterrows():
         r = results.get(row['link'], {})
         df.at[idx, 'content']          = r.get('content')
@@ -322,26 +304,18 @@ def extract_content_batch(df: pd.DataFrame, max_workers: int = 5) -> pd.DataFram
         df.at[idx, 'sitename']         = r.get('sitename')
         df.at[idx, 'extraction_error'] = r.get('extraction_error')
     ok = df['content'].notna().sum()
-    print(f"\n✅ Extraction: {ok}/{len(df)} successful ({ok/len(df)*100:.1f}%)")
+    print(f"Extraction: {ok}/{len(df)} successful")
     return df
 
 
 def translate_titles_batch(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Adds a 'title_en' column with English translations.
-    - English titles are copied as-is
-    - Non-English titles are translated via Google Translate (free, no API key)
-    - Falls back to original title if translation fails
-    """
     if df.empty or "title" not in df.columns:
         return df
-
     print(f"\nTranslating {len(df)} titles to English...")
     translator = GoogleTranslator(source="auto", target="en")
     titles_en  = []
     translated = 0
     errors     = 0
-
     for title in df["title"].fillna("").astype(str):
         if not title.strip():
             titles_en.append("")
@@ -350,25 +324,20 @@ def translate_titles_batch(df: pd.DataFrame) -> pd.DataFrame:
             lang = detect(title)
         except LangDetectException:
             lang = "en"
-
         if lang == "en":
             titles_en.append(title)
             continue
-
         try:
             result = translator.translate(title)
             titles_en.append(result if result else title)
             translated += 1
         except Exception:
-            titles_en.append(title)   # fall back to original
+            titles_en.append(title)
             errors += 1
-
     df = df.copy()
-    # Insert title_en right after title column
     title_idx = df.columns.get_loc("title")
     df.insert(title_idx + 1, "title_en", titles_en)
-
-    print(f"✅ Translation: {translated} translated, {len(df)-translated-errors} already English, {errors} errors")
+    print(f"Translation: {translated} translated, {errors} errors")
     return df
 
 
@@ -380,10 +349,7 @@ def collect_all_news(df_searches: pd.DataFrame, past_days: int, lookback_hours: 
     all_articles   = []
     fallback_count = 0
 
-    print(f"\n{'='*60}")
-    print(f"NEWS COLLECTION  —  Google News RSS only")
-    print(f"  Searches: {len(df_searches)}  |  Window: {lookback_hours}h  |  PAST_DAYS: {past_days}  |  Max: {max_items}")
-    print(f"{'='*60}\n")
+    print(f"\nNEWS COLLECTION — {len(df_searches)} searches | {lookback_hours}h window | max {max_items} per search\n")
 
     for idx, row in df_searches.iterrows():
         search_name = row["search_name"]
@@ -391,36 +357,33 @@ def collect_all_news(df_searches: pd.DataFrame, past_days: int, lookback_hours: 
         print(f"[{idx+1}/{len(df_searches)}] {search_name[:65]}")
 
         articles = fetch_google_news_rss(search_name, query, past_days, max_items)
-        print(f"  ├─ Google RSS: {len(articles)} articles")
+        print(f"  RSS: {len(articles)} articles")
 
         if articles:
             all_articles.extend(articles)
-            print(f"  └─ Total: {len(articles)}")
         else:
             fb_query = create_fallback_query(search_name, query)
             if fb_query:
                 fallback_count += 1
-                fb_name = f"{search_name} (fallback)"
-                print(f"  ├─ ⚠️  0 results — fallback: {fb_query[:65]}...")
-                fb_articles = fetch_google_news_rss(fb_name, fb_query, past_days, max_items)
+                fb_articles = fetch_google_news_rss(f"{search_name} (fallback)", fb_query, past_days, max_items)
                 all_articles.extend(fb_articles)
-                print(f"  └─ 🔄 Fallback: {len(fb_articles)} articles")
+                print(f"  Fallback: {len(fb_articles)} articles")
             else:
-                print(f"  └─ ⚠️  0 results, no fallback available")
+                print(f"  0 results, no fallback")
 
     if fallback_count:
-        print(f"\n📊 Fallback used for {fallback_count} zero-result searches")
+        print(f"\nFallback used for {fallback_count} zero-result searches")
 
     df = pd.DataFrame(all_articles)
     if df.empty:
-        print("\n⚠️  No articles collected!")
+        print("\nNo articles collected!")
         return df
 
-    print(f"\nBefore time filter:        {len(df)} articles")
+    print(f"\nBefore time filter:       {len(df)} articles")
     df = filter_last_n_hours(df, hours=lookback_hours)
-    print(f"After time filter ({lookback_hours}h):  {len(df)} articles")
+    print(f"After time filter ({lookback_hours}h): {len(df)} articles")
     df = df.drop_duplicates(subset=["link"]).reset_index(drop=True)
-    print(f"After URL deduplication:   {len(df)} articles")
+    print(f"After URL dedup:          {len(df)} articles")
 
     if EXTRACT_CONTENT:
         df = extract_content_batch(df, max_workers=MAX_EXTRACT_WORKERS)
@@ -436,10 +399,7 @@ def collect_all_news(df_searches: pd.DataFrame, past_days: int, lookback_hours: 
 # ---------------------------
 
 def semantic_dedupe(infile: str, out_clean: str, out_audit: str, threshold: float, model_name: str) -> tuple:
-    print(f"\n{'='*60}")
-    print(f"Semantic deduplication  (threshold={threshold})")
-    print(f"{'='*60}\n")
-
+    print(f"\nSemantic deduplication (threshold={threshold})")
     df = pd.read_excel(infile)
     original_count = len(df)
 
@@ -458,14 +418,10 @@ def semantic_dedupe(infile: str, out_clean: str, out_audit: str, threshold: floa
         pd.DataFrame().to_excel(out_audit, index=False, engine="openpyxl")
         return len(df), len(df)
 
-    print(f"Loading model: {model_name}...")
     model = SentenceTransformer(model_name)
-    print(f"Generating embeddings for {len(df_work)} articles...")
-    emb = model.encode(df_work["compare_text"].tolist(), normalize_embeddings=True, show_progress_bar=True)
-
-    print("Computing similarity matrix...")
-    sim = cosine_similarity(emb, emb)
-    n   = sim.shape[0]
+    emb   = model.encode(df_work["compare_text"].tolist(), normalize_embeddings=True, show_progress_bar=True)
+    sim   = cosine_similarity(emb, emb)
+    n     = sim.shape[0]
 
     parent = list(range(n))
     rank   = [0] * n
@@ -485,13 +441,10 @@ def semantic_dedupe(infile: str, out_clean: str, out_audit: str, threshold: floa
             parent[rb] = ra
             rank[ra] += 1
 
-    pairs = 0
     for i in range(n):
         for j in range(i + 1, n):
             if sim[i, j] >= threshold:
                 union(i, j)
-                pairs += 1
-    print(f"Found {pairs} similar pairs above threshold {threshold}")
 
     groups = {}
     for i in range(n):
@@ -527,8 +480,144 @@ def semantic_dedupe(infile: str, out_clean: str, out_audit: str, threshold: floa
     df_clean.to_excel(out_clean, index=False, engine="openpyxl")
 
     removed = original_count - len(df_clean)
-    print(f"\n✅ Dedup: {original_count} → {len(df_clean)} ({removed} removed, {removed/original_count*100:.1f}% reduction)")
-    return original_count, len(df_clean), df_clean
+    print(f"Dedup: {original_count} → {len(df_clean)} ({removed} removed)")
+    return original_count, len(df_clean)
+
+
+# ---------------------------
+# NEW: Export feed.json for village dashboard
+# ---------------------------
+
+def export_feed_json(df: pd.DataFrame, lookback_hours: int):
+    """Export deduplicated village articles to docs/feed.json for the GitHub Pages dashboard."""
+
+    if lookback_hours == 72:
+        run_type = "Monday morning (72h)"
+    elif lookback_hours == 24:
+        run_type = "Morning run (24h)"
+    else:
+        run_type = "Afternoon run (7h)"
+
+    def extract_village(search_name: str) -> str:
+        name = search_name.lower()
+        for v in ["Bicester", "Kildare", "Maasmechelen", "Wertheim",
+                  "Ingolstadt", "Las Rozas", "La Roca", "La Vallee", "Fidenza", "Roermond"]:
+            if v.lower() in name:
+                return v
+        if any(x in name for x in ["belgium", "brussels", "antwerp", "brussel", "antwerpen"]):
+            return "Belgium"
+        if any(x in name for x in ["germany", "frankfurt", "munich", "cologne", "münchen", "köln"]):
+            return "Germany"
+        if any(x in name for x in ["spain", "madrid", "barcelona"]):
+            return "Spain"
+        if any(x in name for x in ["france", "paris"]):
+            return "France"
+        if any(x in name for x in ["italy", "milan", "bologna", "milano"]):
+            return "Italy"
+        if any(x in name for x in ["uk", "ireland", "london", "dublin", "marylebone", "oxford"]):
+            return "UK / Ireland"
+        return ""
+
+    def extract_country(search_name: str) -> str:
+        name = search_name.lower()
+        if any(x in name for x in ["belgium", "maasmechelen", "brussels", "antwerp", "dutch", "brussel"]):
+            return "Belgium"
+        if any(x in name for x in ["germany", "german", "wertheim", "ingolstadt", "frankfurt", "munich"]):
+            return "Germany"
+        if any(x in name for x in ["spain", "spanish", "las rozas", "la roca", "madrid", "barcelona"]):
+            return "Spain"
+        if any(x in name for x in ["france", "french", "la val", "paris"]):
+            return "France"
+        if any(x in name for x in ["italy", "italian", "fidenza", "milan", "bologna"]):
+            return "Italy"
+        if any(x in name for x in ["uk", "ireland", "bicester", "kildare", "london", "dublin", "marylebone"]):
+            return "UK / Ireland"
+        if "roermond" in name:
+            return "Netherlands"
+        return "Europe"
+
+    def extract_category(search_name: str) -> str:
+        name = search_name.lower().replace(" (fallback)", "")
+        if name.startswith("village "):          return "Village"
+        if name.startswith("local town "):       return "Local Town"
+        if name.startswith("high level city "):  return "High Level City"
+        if name.startswith("brand "):            return "Brand"
+        if "peta" in name:                       return "PETA"
+        if "shoplifting" in name:                return "Shoplifting"
+        if "xr" in name or "jso" in name or "extinction" in name: return "Climate Protest"
+        if "bv value" in name or "bv logistics" in name:          return "BV Intel"
+        if "marylebone" in name or "roermond" in name:            return "Specific Location"
+        return "Other"
+
+    articles = []
+    for _, row in df.iterrows():
+        search_name = str(row.get("search_name", ""))
+        title       = str(row.get("title", ""))
+        title_en    = str(row.get("title_en", ""))
+        if title_en in ("nan", "None", ""):
+            title_en = title
+
+        articles.append({
+            "search_name":  search_name,
+            "search_query": str(row.get("search_query", "")),
+            "title":        title,
+            "title_en":     title_en,
+            "published":    str(row.get("published", "")),
+            "link":         str(row.get("link", "")),
+            "village":      extract_village(search_name),
+            "country":      extract_country(search_name),
+            "category":     extract_category(search_name),
+            "language":     str(row.get("hl", "en")),
+        })
+
+    payload = {
+        "generated_at":   datetime.now(timezone.utc).isoformat(),
+        "lookback_hours": lookback_hours,
+        "run_type":       run_type,
+        "articles":       articles,
+    }
+
+    output_path = DOCS_DIR / "feed.json"
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, ensure_ascii=False, indent=2)
+
+    print(f"\n✓ feed.json written → {len(articles)} articles → {output_path}")
+
+
+def export_empty_searches_json(df_searches: pd.DataFrame, df_results: pd.DataFrame, lookback_hours: int):
+    """Export searches that returned 0 articles to docs/empty_searches.json."""
+    DOCS_DIR = Path("docs")
+    DOCS_DIR.mkdir(exist_ok=True)
+
+    # Get search names that have results
+    if df_results.empty:
+        searches_with_results = set()
+    else:
+        searches_with_results = set(df_results["search_name"].str.replace(" (fallback)", "", regex=False).unique())
+
+    empty = []
+    for _, row in df_searches.iterrows():
+        name = str(row.get("search_name", ""))
+        if name == "UNMAPPED_LINE":
+            continue
+        clean_name = name.replace(" (fallback)", "")
+        if clean_name not in searches_with_results:
+            empty.append({
+                "search_name":  clean_name,
+                "search_query": str(row.get("raw_query", "")),
+            })
+
+    payload = {
+        "generated_at":   datetime.now(timezone.utc).isoformat(),
+        "lookback_hours": lookback_hours,
+        "searches":       empty,
+    }
+
+    output_path = DOCS_DIR / "empty_searches.json"
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, ensure_ascii=False, indent=2)
+
+    print(f"\n✓ empty_searches.json written → {len(empty)} searches with no results → {output_path}")
 
 
 # ---------------------------
@@ -537,19 +626,18 @@ def semantic_dedupe(infile: str, out_clean: str, out_audit: str, threshold: floa
 
 def main():
     print("\n" + "="*60)
-    print("NEWS COLLECTION  —  Google News RSS")
+    print("VILLAGE NEWS COLLECTION — Google News RSS")
     print("="*60)
 
     ts = datetime.now(timezone.utc).strftime("%d_%m%y_UTC")
 
-    print("\nParsing search library...")
     search_df = parse_search_library(SEARCH_LIBRARY_TEXT)
     to_run    = search_df[search_df["search_name"] != "UNMAPPED_LINE"].copy().reset_index(drop=True)
     skipped   = search_df[search_df["search_name"] == "UNMAPPED_LINE"]
 
     print(f"✓ {len(to_run)} runnable searches")
     if not skipped.empty:
-        print(f"⚠️  {len(skipped)} unmapped lines skipped")
+        print(f"  {len(skipped)} unmapped lines skipped")
 
     results = collect_all_news(
         df_searches=to_run,
@@ -567,84 +655,39 @@ def main():
             if hasattr(s, "dt") and getattr(s.dt, "tz", None) is not None else s
         )
         results.to_excel(raw_file, index=False, engine="openpyxl")
-        print(f"\n✓ Raw results saved: {raw_file} ({len(results)} articles)")
+        print(f"\n✓ Raw results: {raw_file} ({len(results)} articles)")
     else:
-        print("\n⚠️  No results to save!")
+        print("\nNo results to save!")
         pd.DataFrame().to_excel(raw_file, index=False, engine="openpyxl")
 
     search_df.to_excel(audit_file, index=False, engine="openpyxl")
-    print(f"✓ Search audit saved: {audit_file}")
 
     if not results.empty:
         dedup_file  = DATA_DIR / f"google_news_dedup_{ts}_past{PAST_DAYS}d.xlsx"
         dedup_audit = DATA_DIR / f"google_news_dedup_audit_{ts}.xlsx"
 
-        _, _, df_clean = semantic_dedupe(
+        semantic_dedupe(
             infile=str(raw_file),
             out_clean=str(dedup_file),
             out_audit=str(dedup_audit),
             threshold=DUP_THRESHOLD,
             model_name=MODEL_NAME,
         )
-        write_feed_json(df_clean)
 
         latest = DATA_DIR / "latest_deduped.xlsx"
         shutil.copyfile(dedup_file, latest)
-        print(f"✓ Deduplicated file: {dedup_file}")
-        print(f"✓ Latest file:       {latest}")
-        write_feed_json(df_clean)
+        print(f"✓ Latest file: {latest}")
+
+        # ── Export dashboard feed ──
+        df_final = pd.read_excel(latest)
+        export_feed_json(df_final, LOOKBACK_HOURS)
 
     print(f"\n{'='*60}")
-    print("SUMMARY")
-    print(f"{'='*60}")
-    print(f"  Lookback window  : {LOOKBACK_HOURS}h")
-    print(f"  Past days filter : {PAST_DAYS}")
-    print(f"  Max per search   : {MAX_ITEMS}")
-    print(f"  Dedup threshold  : {DUP_THRESHOLD}")
-    print(f"  Content extract  : {'ENABLED' if EXTRACT_CONTENT else 'DISABLED'}")
-
+    print(f"  Lookback : {LOOKBACK_HOURS}h  |  Max/search: {MAX_ITEMS}  |  Dedup: {DUP_THRESHOLD}")
     if not results.empty:
-        print(f"\nTop searches by article count:")
-        print(results["search_name"].value_counts().head(15).to_string())
-
-    print(f"\n{'='*60}\n")
-
-# ---------------------------
-# FEED.JSON FOR GITHUB PAGES
-# ---------------------------
-
-def write_feed_json(df: pd.DataFrame):
-    """Convert deduped dataframe to docs/feed.json for GitHub Pages dashboard."""
-    import json
-
-    docs_dir = Path("docs")
-    docs_dir.mkdir(exist_ok=True)
-
-    records = []
-    for _, row in df.iterrows():
-        records.append({
-            "search_name": str(row.get("search_name", "")),
-            "search_query": str(row.get("search_query", "")),
-            "title":       str(row.get("title", "")),
-            "title_en":    str(row.get("title_en", row.get("title", ""))),
-            "published":   str(row.get("published", "")),
-            "link":        str(row.get("link", "")),
-            "hl":          str(row.get("hl", "")),
-            "gl":          str(row.get("gl", "")),
-        })
-
-    feed = {
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-        "lookback_hours": LOOKBACK_HOURS,
-        "count":         len(records),
-        "articles":      records,
-    }
-
-    out = docs_dir / "feed.json"
-    with open(out, "w", encoding="utf-8") as f:
-        json.dump(feed, f, ensure_ascii=False, indent=2)
-
-    print(f"✅ feed.json written: {out} ({len(records)} articles)")
+        print(f"\nTop searches:")
+        print(results["search_name"].value_counts().head(10).to_string())
+    print(f"{'='*60}\n")
 
 
 if __name__ == "__main__":
