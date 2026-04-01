@@ -1,28 +1,8 @@
 {
-  "generated_at": "2026-04-01T12:38:40.826573+00:00",
+  "generated_at": "2026-04-01T13:47:33.003843+00:00",
   "lookback_hours": 7,
-  "count": 52,
+  "run_type": "Afternoon run (7h)",
   "articles": [
-    {
-      "search_name": "BV Logistics Companies",
-      "search_query": "(\"Dropit\" OR \"DHL\" OR \"UPS\" OR \"DPD\" OR \"Flight Logistics\" OR \"Fedex\" OR \"Amazon\" OR \"Royal Mail\" OR \"Parcelforce\" OR \"EVRI\" ) AND ( \"supply \" OR  \"delivery\") AND -\"postal vote\"",
-      "title": "FedEx unveils ‘SameDay Local’ faster delivery service - MSN",
-      "title_en": "FedEx unveils ‘SameDay Local’ faster delivery service - MSN",
-      "published": "Wed, 01 Apr 2026 07:46:40 GMT",
-      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNa1FPNWVaeU05ZjhPMXVNZU1fX0d3bWg1emlURkgxR1RzQ1JSaGQwTXB0OHlOQTN4clp2dG1TRWFVTHhjUHpZdThWLXEtanhaVVZtemRiNUdkNTVnQ1otQ0J2aktLdTB4Z3F4Mm5OQ2ZaU2RsYnpJczBrWGpoQ2l2WXBYSTZOQzFJRk5GbHJsNDRLdHJjOW1fMmdzT2cyYTQwVFRBRzRxQmU?oc=5",
-      "hl": "en-GB",
-      "gl": "GB"
-    },
-    {
-      "search_name": "BV Logistics Companies",
-      "search_query": "(\"Dropit\" OR \"DHL\" OR \"UPS\" OR \"DPD\" OR \"Flight Logistics\" OR \"Fedex\" OR \"Amazon\" OR \"Royal Mail\" OR \"Parcelforce\" OR \"EVRI\" ) AND ( \"supply \" OR  \"delivery\") AND -\"postal vote\"",
-      "title": "130+ of the top deals during Amazon’s Big Spring Sale 2026 you can shop now - aboutamazon.com",
-      "title_en": "130+ of the top deals during Amazon’s Big Spring Sale 2026 you can shop now - aboutamazon.com",
-      "published": "Wed, 01 Apr 2026 06:30:11 GMT",
-      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQazlkcW1kWHVfUVgzVXQtdFlNV3doaGFpTGV3UnIydldvcXdlMTF6bjFBeDNGMDMtWkVBb0JNU0hDYzBwdGFIV2FoSjNaUFhxYXNHdGRPN2NNbl8ybE9vcnJ3V1NhZThLamtKWF8wNVpwLW4tLU5MLThDUDhscjUwLW9tTkY?oc=5",
-      "hl": "en-GB",
-      "gl": "GB"
-    },
     {
       "search_name": "BV Logistics Companies",
       "search_query": "(\"Dropit\" OR \"DHL\" OR \"UPS\" OR \"DPD\" OR \"Flight Logistics\" OR \"Fedex\" OR \"Amazon\" OR \"Royal Mail\" OR \"Parcelforce\" OR \"EVRI\" ) AND ( \"supply \" OR  \"delivery\") AND -\"postal vote\"",
@@ -30,128 +10,10 @@
       "title_en": "DHL Supply Chain Expands Airport Role With Air France-KLM - Supply Chain Digital Magazine",
       "published": "Wed, 01 Apr 2026 11:25:58 GMT",
       "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPRTRERzh1akhtTExIWFAzVlhBandsTExpeTVqelZfOVNxa1pXRGFkdS1zVkZwQWNQd3dxRk5SSUlFaWdRWGdrYVpqSXEzTks2aFRtNTliSzBKMmhyOS1iMHZoeGhLYjAtS2F2dDhmMXBucDZrejF3N3Y2YjN0WEpoaQ?oc=5",
-      "hl": "en-GB",
-      "gl": "GB"
-    },
-    {
-      "search_name": "PETA Village German (fallback)",
-      "search_query": "(\"PETA\")",
-      "title": "Achieving a Foie Gras Import and Sales Ban in the UK - PETA UK",
-      "title_en": "Achieving a Foie Gras Import and Sales Ban in the UK - PETA UK",
-      "published": "Wed, 01 Apr 2026 10:52:30 GMT",
-      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE13U1RTU1l1bTBLajMtRERlNjczNEJISURHdk5xVm9ZeDQ4cXJRSlZOeGp5ZEJ5UkhLbDFyT2FFUVRPZWJjWFREbkJKUXlWSjJ6VkJCd1FIVVltNWtQTGlQa2llTW0wV2c?oc=5",
-      "hl": "en-GB",
-      "gl": "GB"
-    },
-    {
-      "search_name": "PETA Village German (fallback)",
-      "search_query": "(\"PETA\")",
-      "title": "VIDEO: Liora the Dog Goes From Chains to Cuddles - PETA",
-      "title_en": "VIDEO: Liora the Dog Goes From Chains to Cuddles - PETA",
-      "published": "Wed, 01 Apr 2026 12:04:41 GMT",
-      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1sOXB2MTBBRnNPVXg5eUljUUpMckdSWFIxUlA1SzZ1cE00NUZNeUlrN21Ka3lkU2puU3RoS0EyU0lvVXFRWkNzWndVWFFVWkpHR2c?oc=5",
-      "hl": "en-GB",
-      "gl": "GB"
-    },
-    {
-      "search_name": "PETA Village German (fallback)",
-      "search_query": "(\"PETA\")",
-      "title": "PETA want Northerners to roll spuds downhill instead of eggs - thecanary.co",
-      "title_en": "PETA want Northerners to roll spuds downhill instead of eggs - thecanary.co",
-      "published": "Wed, 01 Apr 2026 09:07:17 GMT",
-      "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFA3S29Db0E2aG1lWUx5enpsUE5fVGtWQXBfVUUxYXBjamtYaFBWd2ZUTEYyUVZWcGtMXy1kWDVmZlZzOGgxdVM4X2tWSk1YaUc4WHR0NTlNR2pqcWxFZlhKY0F4aUI1Zw?oc=5",
-      "hl": "en-GB",
-      "gl": "GB"
-    },
-    {
-      "search_name": "PETA Village German (fallback)",
-      "search_query": "(\"PETA\")",
-      "title": "Sky News Australia. . Sky News host Peta Credlin details how the Victorian Liberal Party has a “special talent” for “epic incompetence” concerning the Moira Deeming preselection saga. - Facebook",
-      "title_en": "Sky News Australia. . Sky News host Peta Credlin details how the Victorian Liberal Party has a “special talent” for “epic incompetence” concerning the Moira Deeming preselection saga. - Facebook",
-      "published": "Wed, 01 Apr 2026 08:09:51 GMT",
-      "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOV3NSaXlvMnhTUENWX0loSTlTSzRmOFJheVI3XzJubVkxbW80M2t6eGNIMnlWc0JSa3N0SHc0MkZJdC1rV19RdWJMMkxwcHVpQTlVSnJmSDlqUEhRcFk4MlJwVVZ2R3QyVmh2cnR2MFJVTHlsN3EwSTJBOXhEbmpXZUFZd3ZsaC1aY09QOXlUS3Jvc3ZtZmhjVlN1YmViNjZDejdOeS1VTXVZNGxZRHZsM1hzZEJNdWVtNXpfTWZJRTFUR0ota1BReGpKQUJWTW00MnUtZThvVkY?oc=5",
-      "hl": "en-GB",
-      "gl": "GB"
-    },
-    {
-      "search_name": "PETA Village German (fallback)",
-      "search_query": "(\"PETA\")",
-      "title": "PETA Wins: Fishing Outlawed in California - wired2fish.com",
-      "title_en": "PETA Wins: Fishing Outlawed in California - wired2fish.com",
-      "published": "Wed, 01 Apr 2026 10:59:54 GMT",
-      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE02QTBGMjVNNm5meUE0SElHTllKMWh6M05tRnk5UEpZcG9xc2JEY0dzdlNHdUJQRXhIRmdFU3BHVGlGclczbG0weVVBT2NjZllzRTBCaElPMGlfdjl2ZU1oTzJLMGwyYmFoYTdsNWZfQzZZejlyYzYtcHZvZms?oc=5",
-      "hl": "en-GB",
-      "gl": "GB"
-    },
-    {
-      "search_name": "PETA Village German (fallback)",
-      "search_query": "(\"PETA\")",
-      "title": "Owners of Downtown Barbecue Spot Summon Police Over PETA ‘Pig Truck’ - Jersey City Times",
-      "title_en": "Owners of Downtown Barbecue Spot Summon Police Over PETA ‘Pig Truck’ - Jersey City Times",
-      "published": "Wed, 01 Apr 2026 10:15:00 GMT",
-      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNOXI5eUtDeVlIOFVTOTNPbWZuX0xNWWVOUHFiWnpfWm80UXYweFFUWnRFUW4xWnNmb0RuZUNBSkZjLVBQc2swNVNRR0Z5R0RvX3k5cXJCa19lUlJzRzFEODVLLUEzbTV5MGM4R3FMMDhpTXN6TG9zM2FZWDU1YlNocHBRd2ZBT2Y2YUlRaGtmc2xGWVF5?oc=5",
-      "hl": "en-GB",
-      "gl": "GB"
-    },
-    {
-      "search_name": "PETA Germany German",
-      "search_query": "(\"PETA\") AND (\"Ingolstadt\" OR \"Wertheim\" OR \"München\" OR \"Deutschland\")",
-      "title": "Expertenkommission schlägt neue Abgaben für ungesunde Produkte vor – PETA: „Wer Zucker besteuern will, darf Fleisch nicht weiter verschonen“ - PETA",
-      "title_en": "Expert commission proposes new taxes for unhealthy products - PETA: \"If you want to tax sugar, you can't continue to spare meat\" - PETA",
-      "published": "Wed, 01 Apr 2026 11:10:14 GMT",
-      "link": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxQb05MRGVveENmNWFwUWVmYzVyZ21fQllTd2p2bnU0ekJKSjJPU2daSWVoQl94SVhjbW9YTzhRWTZpcDRrNC1YWHVHVGg0S19Hbmw1QlU4OWFJNnJJSmo3d1pNSFM1bHVqLXd3b0t3V29PWDNYUkstaEt3aEt6a2dPOEtXSjdFdm1qVmZxS0xCSjByNkk0SW5oeDIzNzJod0dLdC1SanNKQkxERS1IeG1SUy0tZ3ExZGFUaUo3c0pmdVNEamRlMWhPOXZWbVFpTjQ3VVM5eTNxdGhCbHRZTEFOeXRkSHlFZEZnVkx6YVdxVU5IRUNlbVlEOHB3?oc=5",
-      "hl": "de",
-      "gl": "DE"
-    },
-    {
-      "search_name": "PETA Germany German",
-      "search_query": "(\"PETA\") AND (\"Ingolstadt\" OR \"Wertheim\" OR \"München\" OR \"Deutschland\")",
-      "title": "„Weltstreunertag“ am 4. April: Rund zwei Millionen heimatlose Katzen – PETA: „Bundesregierung muss endlich Verantwortung übernehmen“ - PETA",
-      "title_en": "“World Stray Cats Day” on April 4th: Around two million homeless cats – PETA: “The federal government must finally take responsibility” - PETA",
-      "published": "Wed, 01 Apr 2026 08:54:59 GMT",
-      "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxOWDNlRjY0bXl3ajFtV2ZYSmF4UzZRYUlFTFNWaG9rMi13cm9faldYQWZhN2YzTU1pSUp3eDhfWmQ0Rm5XX2tiZ2l5a3V1UF9JeElLOVJYWkJhWjZvMXE3TVEtVEZhTTlfeEstdk1sTXZueXVZaXV4T2NLcHlvVEJhTGFHMXp1MEFKYS1vblE0Q0xSdnRfUTZKVXVOb3U4TzNHQUFubU5SaDdpbVpRNkp2VjZwa0trd0ZMSmZJVjlTUFhCbE04dDVWLUxtRW1JU0tFbWJoMklMQ2JMeWI3OGY2Wmw1VVJDb3ZFY3c?oc=5",
-      "hl": "de",
-      "gl": "DE"
-    },
-    {
-      "search_name": "PETA Germany German",
-      "search_query": "(\"PETA\") AND (\"Ingolstadt\" OR \"Wertheim\" OR \"München\" OR \"Deutschland\")",
-      "title": "PETA VEGAN AWARD 2026 – jetzt bewerben für den Bereich Companion Animal! - PETA",
-      "title_en": "PETA VEGAN AWARD 2026 – apply now for the Companion Animal section! -PETA",
-      "published": "Wed, 01 Apr 2026 07:11:03 GMT",
-      "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9GM3BmYWtVcmJfSXBsU012VUZVMlBad1pCWVNpamRJZEhTbVBBdUpBNXJkRDd0Y2JkcXFMNFM1amNPcHlJWFJUVzA4aTZMU2JfVmM5QU54eG5vSXBZbWVOSGpRSDJSTEZJMmZFbkNac0hwOTRIVXB5QnlGbw?oc=5",
-      "hl": "de",
-      "gl": "DE"
-    },
-    {
-      "search_name": "PETA Germany German",
-      "search_query": "(\"PETA\") AND (\"Ingolstadt\" OR \"Wertheim\" OR \"München\" OR \"Deutschland\")",
-      "title": "Neues Videomaterial enthüllt Tierquälerei: PETA kritisiert Pferdeshow „Cavalluna – Tor zur Anderswelt“ in Münster - PETA",
-      "title_en": "New video material reveals animal cruelty: PETA criticizes horse show “Cavalluna – Gateway to the Other World” in Münster - PETA",
-      "published": "Wed, 01 Apr 2026 08:54:59 GMT",
-      "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxNVzM4OWlUTWdMNzA1bEhmcGxnRDZhX1R6RU10dG1GT2t0c0NZZWF2SENsTWVJM19LRTNOMUVaX3pLMnpheXFDYWg1Q0NYUG9Pak83QXFVbHROaGEtNWlaSE5qM3RabUxEWGtCMlo0MVc0VldPVWpORGFlQmZrX2FSWnI5ZkE3bHk1OS0tc1ZWcXZOQ1Zid3NqQ1hLQnlxeGZidC1mcEZwVGNhRWJSdWhhazNWWUNlZHlCTUExNWdYc0N1UURYYXBFWk9Vblc4Y0R5TFJhNGMzN1U?oc=5",
-      "hl": "de",
-      "gl": "DE"
-    },
-    {
-      "search_name": "PETA Germany German",
-      "search_query": "(\"PETA\") AND (\"Ingolstadt\" OR \"Wertheim\" OR \"München\" OR \"Deutschland\")",
-      "title": "Antilope im Tiergarten Schönbrunn erschossen - PETA",
-      "title_en": "Antelope shot in Schönbrunn Zoo - PETA",
-      "published": "Wed, 01 Apr 2026 08:54:59 GMT",
-      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOSkdGRktmRXdXZV9lMVdxR1pvanhWM3d3d0RJOU9XT2pmVDhla3R0TFNlbDdJQW9NY0NSX1p3amd1WlF5anlLYjFiMkx2RU84TS1TaF93bTZQbURkZFNrNGZZWV8zeFpBRG8xaVFHRWFvcUlnb2tYeEVWeDk4N1dqX1Uxem1iXzlCUWM5d0Y0QWFlY1Y1T2Z6ZG5pMDJZQ0VZVXZDT0NDQTJmWTl3OGxESUNmeVl2OTc2VUR4S2VsQQ?oc=5",
-      "hl": "de",
-      "gl": "DE"
-    },
-    {
-      "search_name": "PETA Germany German",
-      "search_query": "(\"PETA\") AND (\"Ingolstadt\" OR \"Wertheim\" OR \"München\" OR \"Deutschland\")",
-      "title": "Werne: 99 Ferkel bei Stallbrand getötet – PETA erstattet Strafanzeige bei der Staatsanwaltschaft Dortmund - PETA",
-      "title_en": "Werne: 99 piglets killed in barn fire - PETA files a criminal complaint with the Dortmund public prosecutor's office - PETA",
-      "published": "Wed, 01 Apr 2026 09:30:05 GMT",
-      "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPNVByT2JYMnZ3UTdPdGpCbTBLXzdlWkZjQU1ZSU9weVUyVEwtNUp2b2MzM09GTVlkR2tSWU5WMUVyYTRBVGdRWWIyOUVRb3hSMEtlYXhuTjFUcXk4NGNtUEpVZGR4VmRTOUpQRzFmSDE1LUtoODhuNFlkVnVudzUzbXBPTHNQeGh3dDZOaGYtSnp1Q1JxUVhrcnVfTEFFT1o2QVI5MlFyYmZ5ak1wSFVMcDFFSEZNLURIV08xMHRfVjBGdE11R2cyeGxmQ2d1dw?oc=5",
-      "hl": "de",
-      "gl": "DE"
+      "village": "",
+      "country": "Europe",
+      "category": "BV Intel",
+      "language": "en-GB"
     },
     {
       "search_name": "High Level City Belgium Dutch",
@@ -160,8 +22,10 @@
       "title_en": "Anderlecht shooting: victim was shot in the arm - Nieuwsblad",
       "published": "Wed, 01 Apr 2026 11:40:48 GMT",
       "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPWHU0dllKMlNxUkJiVWI0M3RFMkxUZlpVZHhMcDVTal9rQzVua3BEQ2Y5NGtqbnRzSEhpTXdTUFUzTlZWQV9qQlFjUUotWkVHaDVvaV9DbjY0dEY5TG1HOHczZE5mZ3hoM3lVckJqUmFfXzM4dkVCWFF0Z2tQbkEyVkFvZVJpZjJyQ21ocVotYmFjc2FRbjdoZmpUa2xic2Z5UHd1YVhTcDh4QQ?oc=5",
-      "hl": "nl",
-      "gl": "BE"
+      "village": "Belgium",
+      "country": "Belgium",
+      "category": "High Level City",
+      "language": "nl"
     },
     {
       "search_name": "High Level City Belgium Dutch",
@@ -170,18 +34,10 @@
       "title_en": "“You're going to see, you're going to burn”: Women convicted for explosion in Deurne - GVA",
       "published": "Wed, 01 Apr 2026 10:47:41 GMT",
       "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxQZmxiWlBGTjBrQnJtNnJMYUl1aW5adE9VaXlnOFViUkwwOWp6bHptS3FtQlVkMkVzTnR5YnZRbkQtOFRmbU9kXzZNV3psSUV0cjZNSk9aOVZEVGZzOXhMYzJDeUtXWGlabzBwQTFjajNQZVZJaG9wUHhHQXJ4WXk2VF9nRHB1OV9zUmJpTGtnakY4WU4wYzI1TXNQMjh3YVZRREZGU0lKa3FhMDMzQzdqN1lCRDJsdkdzazdxZEpVQS1VSTB1Y05TOXF2UW81TWRzR05rTWNDajVWZkR5N1lzeFhR?oc=5",
-      "hl": "nl",
-      "gl": "BE"
-    },
-    {
-      "search_name": "High Level City Belgium Dutch",
-      "search_query": "(\"Brussel\" OR \"Antwerpen\" OR \"Maastricht\") AND (bom OR bommelding OR \"verdacht pakket\" OR \"onbeheerd pakket\" OR explosie OR schietpartij OR steekpartij OR liquidatie OR arrestatie)",
-      "title": "Persoon met schotwonde aangetroffen in de buurt van Clemenceau - BRUZZ",
-      "title_en": "Person found with gunshot wound near Clemenceau - BRUZZ",
-      "published": "Wed, 01 Apr 2026 06:11:15 GMT",
-      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNRUJuSm5UZF9neDRxYlVCa3lDTVlrMmhTVnNGNHpPcDVDTThEOU8wdndQWm1PTVdkTnAxTDlGdGFLa1dDQktvaUN5UlA3S2U4b013SVpaV2JTejZfX1c2SnhoMnpfUzc4N05aM0daV0FISWVMRXRfUFY0S3ZiZGFMbVFLSjROMlZrcFNhVGNnZnAzVzNrUkVSWW16R2kzODg1UlQ0a0pNQnF0WV9V?oc=5",
-      "hl": "nl",
-      "gl": "BE"
+      "village": "Belgium",
+      "country": "Belgium",
+      "category": "High Level City",
+      "language": "nl"
     },
     {
       "search_name": "High Level City Belgium Dutch",
@@ -190,8 +46,10 @@
       "title_en": "Boy from Friesland wanted to attack the Flemish Parliament in Brussels - NRC",
       "published": "Wed, 01 Apr 2026 09:19:10 GMT",
       "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQQzdqendJRW13bzNLejlNYk9zMU1oQ0d0c0ZGQy0zS3JsU25YN3dPcFhaQVk1Vl9pc3U3Zlg0aE9mYnRhNzI3Rm5ucnZGUHRobHNIaVR0aVFkb0ZubWRkNVFrVEQtOXBGU1ZVRnZkSWtnUklpZW94SjJrMkk0RThVbE50V0RIc3ZOOFBXVFQ5M1owa3lWSkl1d3RqUHB5aGg1b0I0YzRXcXUxdDJ2X1VscjFIdFZPQVpuYXc?oc=5",
-      "hl": "nl",
-      "gl": "BE"
+      "village": "Belgium",
+      "country": "Belgium",
+      "category": "High Level City",
+      "language": "nl"
     },
     {
       "search_name": "High Level City Belgium Dutch",
@@ -200,8 +58,22 @@
       "title_en": "Tiger Woods wants treatment after arrest in Florida - HBVL",
       "published": "Wed, 01 Apr 2026 07:11:46 GMT",
       "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPZDg5bXdnMndQTVY5RzByb1I4MkF6ZkRJdjRDOWpQdHVQSExveGZjNXZZMTVwWlE2Nm1mTDFRbF9rQjBCQ2k4UmQ4QmNUOC1YWV92bnRVTFMyRFFXMjM2aFpqVWJfOFlaN2IxSTFPRjBQNF9VNmZfNHhSVF82OXpoakl6Ri1CSXYyU01GaTJDLWhwWVBtQUZHUWVydlp1eVN5aUd0Sm1GcmpaWDVHTWFvaGxPYUtUZkowOUE4ckgybWE?oc=5",
-      "hl": "nl",
-      "gl": "BE"
+      "village": "Belgium",
+      "country": "Belgium",
+      "category": "High Level City",
+      "language": "nl"
+    },
+    {
+      "search_name": "High Level City Belgium Dutch",
+      "search_query": "(\"Brussel\" OR \"Antwerpen\" OR \"Maastricht\") AND (bom OR bommelding OR \"verdacht pakket\" OR \"onbeheerd pakket\" OR explosie OR schietpartij OR steekpartij OR liquidatie OR arrestatie)",
+      "title": "ASSISEN. Zus van Davy Verachtert richt zich tot Cherkaoui: \"Waar is uw schuldgevoel?\" - GVA",
+      "title_en": "ASSIS. Davy Verachtert's sister addresses Cherkaoui: \"Where is your guilt?\" - GVA",
+      "published": "Wed, 01 Apr 2026 12:59:46 GMT",
+      "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxPN3JSYm1nanotcjdodlQwR2UyaTl4TjM5NlNhcXF4M0VFM05mNUlvenFTWkdScHl0OHdjeEhwc2F5eXcxS2s1bXBhTy10b2xuM1N3Q2hfLXp1aFNIbkxMWDAtNWRhZzZ3d3lhRWNNNW5DSUQ5NmIxeVk1WlRlaEwxVDNuZVloM0d6R1dLdEJxR3ZoUWJnZDZoU0xhVmtZWFhOb2ZTNXBfZkVEbkdNYU05bHEza3Z3Ulc3TFVQY2lKejQ4T2dDLTFLSUpsZERQNG9mZFVGaFZ5blhzQ0hNYjNzZGxmaGEzNmVsREt5c1VkOXFSXzUxdjY5dA?oc=5",
+      "village": "Belgium",
+      "country": "Belgium",
+      "category": "High Level City",
+      "language": "nl"
     },
     {
       "search_name": "High Level City Belgium Dutch",
@@ -210,8 +82,10 @@
       "title_en": "Kennedy tunnel closed for two nights next week for maintenance work - Nieuwsblad",
       "published": "Wed, 01 Apr 2026 11:22:07 GMT",
       "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxQWEx3d0FKT0ZIaWNjT1lLb0Ftb1FjRXEzaTlKTlBhcjMxOWtEYmRzdFEtYUFqV2p3WUlfMGNlT0pwS0Eydk9ONm1PeXhBSjJRZHF1bVAzMnlabGlfRFd2MEUxQVNuaS1aN2NOYlY4Rkdnc2FFZjE4alRRNTl6MVNSVmJ0YmM4SmVUamxjWV9SUmk5NWdQb1JOdEtHUTRscUpJc0ZBTGVxM0hqeUo4RFlRWnlfYWl0bVItOXMxVXEzS0h0Q3BjVllfanh1ejVPM2VJbVEtS05xRzV3Y01ZWkRNeDlOb2otRktqQnc?oc=5",
-      "hl": "nl",
-      "gl": "BE"
+      "village": "Belgium",
+      "country": "Belgium",
+      "category": "High Level City",
+      "language": "nl"
     },
     {
       "search_name": "High Level City Belgium English",
@@ -220,8 +94,10 @@
       "title_en": "Dutch minor convicted over plans to attack Flemish Parliament - belganewsagency.eu",
       "published": "Wed, 01 Apr 2026 06:51:00 GMT",
       "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNdzM0OXVKZXctRVdYS1F0UGZQeUxQVVE1eVplNW5LZ2xBU1doRUNaUjJxb000SUc2ekVmYnNoLVNHSXM0TWZsZ01odzN6aE9pMmp6bnJlWnlWMVBhQlZaM3VsMTBLRlRNNmYyVXFOcHN0eHhXeFNCQTVPeVJuUGttQkZnbmFHTWtiRmVTTWVGd1dEdWkyZjZZ?oc=5",
-      "hl": "en-GB",
-      "gl": "BE"
+      "village": "Belgium",
+      "country": "Belgium",
+      "category": "High Level City",
+      "language": "en-GB"
     },
     {
       "search_name": "High Level City Belgium English",
@@ -230,8 +106,10 @@
       "title_en": "Brussels introduces nighttime closures to combat crime around North Station - belganewsagency.eu",
       "published": "Wed, 01 Apr 2026 11:01:00 GMT",
       "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNaENpdWdTS2UxTmRFeDF2b2ZXOHM4Rk5Tc042TTVVbU96SlVTRkc4VGticTNlX0M3blJsUTUyUk9IY1FQQU9HU3NRRUJVTDRGd0J5SVltMXg0WGhZM0FjTHJ6WFdzMWRnVlg0OFltenJkbklzWmVScjFfTWpaNGVsV2pncXlBNlhCdzRSRXN5ZFByTWxNZ1h1WncxeDVWQXk0RkZ6YkdJOWNQZw?oc=5",
-      "hl": "en-GB",
-      "gl": "BE"
+      "village": "Belgium",
+      "country": "Belgium",
+      "category": "High Level City",
+      "language": "en-GB"
     },
     {
       "search_name": "High Level City Belgium English",
@@ -240,8 +118,10 @@
       "title_en": "Watch 9News Latest Stories - Season 2026 - Savannah Guthrie's first interview since the disappearance of her mother - 9Now",
       "published": "Wed, 01 Apr 2026 07:19:54 GMT",
       "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNV3RTc25YbGd0WXJYV29WOHpiNTZwckJwQi1OM0oySXNFZUFMMzdwQXFXX2hzUWZqSGdfNTBUb1JoV0Y1N19tQkVKaTNjS0dsdFdWbWZMSkxxWjE0bWxnTlRNT1NOTExzMm11RFpuakJ5eXQtdURkTl9NckJUS1ZQellBTDVTUkpJNWc2eA?oc=5",
-      "hl": "en-GB",
-      "gl": "BE"
+      "village": "Belgium",
+      "country": "Belgium",
+      "category": "High Level City",
+      "language": "en-GB"
     },
     {
       "search_name": "High Level City Belgium English",
@@ -250,28 +130,10 @@
       "title_en": "Watch 9News Latest Stories - Season 2026 - Tributes flow for beloved TV personality Mel Schilling - 9Now",
       "published": "Wed, 01 Apr 2026 06:47:21 GMT",
       "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOTWVFVVpTU1BxVXlTV0VrNHJzdVpuUEFISkpGaEs5RzlwZGR0LUJzQ2V0MWxuc2xpd1UtOVRJbERGWXYtblVxNGFKVEVWdnF3N29sazJhd00xWXgwWk5iVy1sSGpTNE92aHk5di1vOVNIMlBKU1VmZWE2cDBnSUdMTE5qVkxBV1BNN3c2Tw?oc=5",
-      "hl": "en-GB",
-      "gl": "BE"
-    },
-    {
-      "search_name": "High Level City Belgium English",
-      "search_query": "(\"Brussels\" OR \"Antwerp\" OR \"Maastricht\") AND (bomb OR explosion OR shooting OR stabbing OR \"suspicious package\" OR \"bomb threat\" OR \"terror\") AND -football AND -soccer AND -transfer",
-      "title": "Watch 9News Latest Stories - Season 2026 - Dodgy agent attempts to keep her alleged fraud case secret - 9Now",
-      "title_en": "Watch 9News Latest Stories - Season 2026 - Dodgy agent attempts to keep her alleged fraud case secret - 9Now",
-      "published": "Wed, 01 Apr 2026 06:18:22 GMT",
-      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNN1BPR0x5UkYzZ0drUkJQcFNZU0dxcW9OTm4yUGdTaWdRU3dDMXE3NEVKMWJqRlpsU05zb3FPb1I0R2NjTXFRMWljOEJwOXNKVlNiV21MM0YwZWYyTmN0Q0l5bFRSLVdIM3V6ZFpNTFloUXNnZE5NYjkzME9qdmF6QTByeFNDdlRMQmZCNQ?oc=5",
-      "hl": "en-GB",
-      "gl": "BE"
-    },
-    {
-      "search_name": "High Level City Belgium English",
-      "search_query": "(\"Brussels\" OR \"Antwerp\" OR \"Maastricht\") AND (bomb OR explosion OR shooting OR stabbing OR \"suspicious package\" OR \"bomb threat\" OR \"terror\") AND -football AND -soccer AND -transfer",
-      "title": "'Worst ever': Farmers left divided over Australia's historic European Union deal - 9Now",
-      "title_en": "'Worst ever': Farmers left divided over Australia's historic European Union deal - 9Now",
-      "published": "Wed, 01 Apr 2026 06:20:01 GMT",
-      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNR0xWWS1NcS1fNEtHRnJ1bkZXYXAtOTY1MGZDeGpHVHFpZlRERWYzclVPazhVeTduVVpHNEtUaEYtUF9UWC1yR3RtcGhJUTZwSVRnU3RPczI0Z1ZUeDNaMi1tQk1KQXBHYk5Td1lJSnhfR3F3RXdYQ2NtSUhNcC1WRVFncWd4RDRPLVJoVA?oc=5",
-      "hl": "en-GB",
-      "gl": "BE"
+      "village": "Belgium",
+      "country": "Belgium",
+      "category": "High Level City",
+      "language": "en-GB"
     },
     {
       "search_name": "High Level City Belgium French",
@@ -280,8 +142,10 @@
       "title_en": "A 12-year-old child planned an attack against the Flemish parliament in Brussels - parismatch.be",
       "published": "Wed, 01 Apr 2026 06:54:00 GMT",
       "link": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxPcjczODJtRUppVC1LLTh1UlBJeU9UNlpIZ3lTajVvWURHaTh5RlAwSHp6Zm5zYUprZ2lUblp0bi1JN0g3R2lHQmlGSV9YU3pRV3RKOTJFcXpGU1dYMjlLTzVKYlg0aGhHX2I4MUlmeG5mSm1wdkZEMDh1VDl0NENlYW1RUzFtcFluTFVVVXc1TmZJdUZPZl93RUhyMGJMMU1CdjhxRlVnZC02d3l6Nk5ielV0Tk5BcU8yMmFCV0FGdEFfM1FJVllOM2pMY1RYSVV2TGZZeXIzdFhUeGctOFRoV25hUmwyWm1RcVRmd3lHT25weXVIVUtz?oc=5",
-      "hl": "fr",
-      "gl": "BE"
+      "village": "Belgium",
+      "country": "Belgium",
+      "category": "High Level City",
+      "language": "fr"
     },
     {
       "search_name": "High Level City Belgium French",
@@ -290,38 +154,10 @@
       "title_en": "A very young teenager sentenced in the Netherlands for planning an attack against the Flemish Parliament - VRT",
       "published": "Wed, 01 Apr 2026 08:39:30 GMT",
       "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQVHN0a2ZiYmhVSV9ieDBvWXVGdFZVZ2lueE5Bc2pFSnI3V1BGOGdEb0tsYWFVWlZYNXVKU2lfN3pEOEN1aE1uRmpzMFpjTm1hOTh2TW8zcDNXNTBCVm5GN29sbTFVcHhzXzRQUVZlaGxzV1VvbnN3NzRwSUVuMWx3S3BmY3NlaGxxbDdoaGF2RTZUZy1JOHBJMFR1eE0zQ1VGdng5OHB5Qm0?oc=5",
-      "hl": "fr",
-      "gl": "BE"
-    },
-    {
-      "search_name": "High Level City Belgium French",
-      "search_query": "(\"Bruxelles\" OR \"Anvers\" OR \"Maastricht\") AND (bombe OR explosion OR fusillade OR agression OR couteau OR \"colis suspect\" OR \"alerte à la bombe\" OR attentat) AND -football AND -transfert",
-      "title": "Nouvelle fusillade à Anderlecht: une personne blessée par balle - 7sur7.be",
-      "title_en": "New shooting in Anderlecht: one person injured by gunfire - 7sur7.be",
-      "published": "Wed, 01 Apr 2026 06:02:00 GMT",
-      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPNTNVdDE3UnJoLVR4YnZsazhaRjdMRE9fenY4Z05YU0tEVS0xcU9uOGQ2aFhXdG5xX2tvZnBMN2RSb2dveWh0TWFmVEpXQmU5eE8xMmY0SkxjNEViMHhrbWxrSWxJRV8yUXQ0NEJxNEtic3lvMXhKRVVQUmJpdE9pd3lJRVl3MXJWQWJpdExMVXpuRkVuUHh5STRmODJMMjFCT3ZidTEtOGs4SXc?oc=5",
-      "hl": "fr",
-      "gl": "BE"
-    },
-    {
-      "search_name": "High Level City Belgium French",
-      "search_query": "(\"Bruxelles\" OR \"Anvers\" OR \"Maastricht\") AND (bombe OR explosion OR fusillade OR agression OR couteau OR \"colis suspect\" OR \"alerte à la bombe\" OR attentat) AND -football AND -transfert",
-      "title": "Une nouvelle fusillade fait un blessé dans le quartier Clemenceau - bruxellestoday.be",
-      "title_en": "A new shooting leaves one injured in the Clemenceau district - bruxellestoday.be",
-      "published": "Wed, 01 Apr 2026 05:53:36 GMT",
-      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQSTVSNGoxa01TOWFfWDh6VFJyNjhRWExUYWdVZTdnOXlBNTdBM1JmOW5FNG9jUUFuVm9SdXhSS25SMTV2dVFEMGY4MUdLMkRVOXBNdHlrb0xEakJ1eVE2RmZpQTh2Zi1EcDlTaUNBWmFXdWJTSjE0U0J3RnctMHlWcw?oc=5",
-      "hl": "fr",
-      "gl": "BE"
-    },
-    {
-      "search_name": "High Level City Belgium French",
-      "search_query": "(\"Bruxelles\" OR \"Anvers\" OR \"Maastricht\") AND (bombe OR explosion OR fusillade OR agression OR couteau OR \"colis suspect\" OR \"alerte à la bombe\" OR attentat) AND -football AND -transfert",
-      "title": "Grève spontanée des chauffeurs de bus dans un important dépôt à Mortsel : la région d'Anvers impactée - VRT",
-      "title_en": "Spontaneous strike by bus drivers in a major depot in Mortsel: the Antwerp region impacted - VRT",
-      "published": "Wed, 01 Apr 2026 12:14:01 GMT",
-      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQRG1DcDRkTkRnTE54ZG45SWVoNVltZVp4bW4zOWt2YndrTjZUVksyNDk1d2ZnbmhWaVNpM1BKcE1zZVlybVgwOXVKaW5HNnh5T0xYTFJBbUNKZFI5dkstSEhwQ1loRG9odDBZWGs2NktSOEdIYUNjZlFNNEhIZGNfMVA2c3JyTGdHLWE4NkhmT0lOZks5N24yaDJIV3ZLeWZkamlpdmU2aw?oc=5",
-      "hl": "fr",
-      "gl": "BE"
+      "village": "Belgium",
+      "country": "Belgium",
+      "category": "High Level City",
+      "language": "fr"
     },
     {
       "search_name": "High Level City Belgium French",
@@ -330,18 +166,58 @@
       "title_en": "Konjufca: The Banjska attack, the final nail in the coffin of the Brussels dialogue - koha.net",
       "published": "Wed, 01 Apr 2026 09:32:51 GMT",
       "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOUENOTWNVY3U5RzA5OE1ZUWhCbkFpTUtha1ZUeWdWVmVreHc5TFhKZEFraWU5bXQ5Vm1HbzdjMUw2X0tMM3JyS2hWTjVLN1pfdWQ0NzU5WmtEczMwcngzamJCMDIwZDlrY2xhUHVhUE8ydjlEVWx0c2ZOUkFoSExNSTBRMXdnbXdCd2xQdTZFbW9TOG4zM3hvbkRPcWs0RmtIb213RHd0ZkkxZw?oc=5",
-      "hl": "fr",
-      "gl": "BE"
+      "village": "Belgium",
+      "country": "Belgium",
+      "category": "High Level City",
+      "language": "fr"
     },
     {
       "search_name": "High Level City Belgium French",
       "search_query": "(\"Bruxelles\" OR \"Anvers\" OR \"Maastricht\") AND (bombe OR explosion OR fusillade OR agression OR couteau OR \"colis suspect\" OR \"alerte à la bombe\" OR attentat) AND -football AND -transfert",
-      "title": "Un million de cigarettes contrefaites saisies à Bruxelles - bruxellestoday.be",
-      "title_en": "One million counterfeit cigarettes seized in Brussels - bruxellestoday.be",
+      "title": "\"Un logement contre du sexe\": un sans-papiers condamné pour avoir agressé un septuagénaire de Schaerbeek - BruxellesToday",
+      "title_en": "“Housing for sex”: an undocumented migrant sentenced for attacking a septuagenarian from Schaerbeek - BruxellesToday",
+      "published": "Wed, 01 Apr 2026 12:15:48 GMT",
+      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQZFNycEpwZElrblZFQzNoM3NEb1JETDc5VEVOUnM3V3gxZnR2NXotSG5NNkxjM2NwcHFBRUdjSmszS1BHdTBJcENNSTJPVWVVSndqQkRPTTdIWllCQ0dyREtwOG44bDJhcEFYSlFZdUlRRFgtUnhZZzgwV3ZJaV8zel9BRkVzcDQ4RUZv?oc=5",
+      "village": "Belgium",
+      "country": "Belgium",
+      "category": "High Level City",
+      "language": "fr"
+    },
+    {
+      "search_name": "High Level City Belgium French",
+      "search_query": "(\"Bruxelles\" OR \"Anvers\" OR \"Maastricht\") AND (bombe OR explosion OR fusillade OR agression OR couteau OR \"colis suspect\" OR \"alerte à la bombe\" OR attentat) AND -football AND -transfert",
+      "title": "Grève spontanée des chauffeurs de bus dans un important dépôt à Mortsel : la région d'Anvers impactée - VRT",
+      "title_en": "Spontaneous strike by bus drivers in a major depot in Mortsel: the Antwerp region impacted - VRT",
+      "published": "Wed, 01 Apr 2026 12:14:01 GMT",
+      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQRG1DcDRkTkRnTE54ZG45SWVoNVltZVp4bW4zOWt2YndrTjZUVksyNDk1d2ZnbmhWaVNpM1BKcE1zZVlybVgwOXVKaW5HNnh5T0xYTFJBbUNKZFI5dkstSEhwQ1loRG9odDBZWGs2NktSOEdIYUNjZlFNNEhIZGNfMVA2c3JyTGdHLWE4NkhmT0lOZks5N24yaDJIV3ZLeWZkamlpdmU2aw?oc=5",
+      "village": "Belgium",
+      "country": "Belgium",
+      "category": "High Level City",
+      "language": "fr"
+    },
+    {
+      "search_name": "High Level City Belgium French",
+      "search_query": "(\"Bruxelles\" OR \"Anvers\" OR \"Maastricht\") AND (bombe OR explosion OR fusillade OR agression OR couteau OR \"colis suspect\" OR \"alerte à la bombe\" OR attentat) AND -football AND -transfert",
+      "title": "Un million de cigarettes contrefaites saisies à Bruxelles - BruxellesToday",
+      "title_en": "One million counterfeit cigarettes seized in Brussels - BruxellesToday",
       "published": "Wed, 01 Apr 2026 07:11:21 GMT",
       "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPcG1JMTFsWGxveHdsVkNubW9mRndWT0ZUXzlZdDkwOVVVbTRrZDd3Zi12S1JlU1J3blJpV0JZeGFYYUtySl9sVG01MmZweklKdjB3MXdRaHY5UVphM25RcmhfS1hxVDRFUkNJTlRhSTFPWlNUTktqRDdfUjJZTk5GQVBwNGd2RDlMaGVRREV1YkhlU2p6UGxHOGpsNlU5MkJTSUJN?oc=5",
-      "hl": "fr",
-      "gl": "BE"
+      "village": "Belgium",
+      "country": "Belgium",
+      "category": "High Level City",
+      "language": "fr"
+    },
+    {
+      "search_name": "Local Town Maasmechelen Dutch",
+      "search_query": "(\"Maasmechelen\" OR \"Hasselt\" OR \"Lanaken\") AND (protest OR bom OR bommelding OR explosie OR schietpartij OR steekpartij OR evacuatie OR politie OR arrestatie) AND -sport AND -voetbal",
+      "title": "Drie mannen opgepakt na gewelddadige overval op vrouw in Blankenberge: verdachten blijken niet aan hun proefstuk toe - VRT",
+      "title_en": "Three men arrested after violent robbery of woman in Blankenberge: suspects appear not to be up to their test - VRT",
+      "published": "Wed, 01 Apr 2026 13:12:24 GMT",
+      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNU0FYWElHS1lIRDFhYnk5RlRxa3czZno1X29LSjNOVG5xRnZ3ZXp4MUtrODNGdHdiMWlja1R2ODNoTFR3TjFNdkwwWU1ycnFWaElBc1ljRUdGcWhHcUxyRnRucGxDTWc4R256Ymo4cEJYSEVCQWZfMkppU1VBQUZ5WjItWmxQTTU4RVRRdzZUZmUxQ3VtVzB5QkpwSG1CckRzMkdRSTZmTQ?oc=5",
+      "village": "Maasmechelen",
+      "country": "Belgium",
+      "category": "Local Town",
+      "language": "nl"
     },
     {
       "search_name": "Local Town Maasmechelen French (fallback)",
@@ -350,18 +226,34 @@
       "title_en": "Blurred contours of Walloon photography - La Libre.be",
       "published": "Wed, 01 Apr 2026 08:18:00 GMT",
       "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNaUo1VnZlNWtTVFE5V2Vkc2FHNEVlYjJicEhlZEt3a1J0X2tlT0JGVVZwRHc1VUtubm02SnhIZmdOZ0FQcE1yMTdCcDc0Wmdsa0t2WEpQc28wRkJuMEYwM2ptY2VtekVGZXZ2WENpQlFOZFRsZUJUWF9sTWlxTXJPRkhlME1rUjhJQ0dKbUZzRkhjLVJpczJRYzdnMS1QY1p1TWJqMzFDcEJ0cDk2M3hpaEx5OEh4WTNu?oc=5",
-      "hl": "fr",
-      "gl": "BE"
+      "village": "Maasmechelen",
+      "country": "Belgium",
+      "category": "Local Town",
+      "language": "fr"
     },
     {
       "search_name": "Local Town Maasmechelen French (fallback)",
       "search_query": "(\"Maasmechelen\" OR \"Hasselt\" OR \"Lanaken\")",
-      "title": "La CGT bloque un hypermarché Auchan à Bagnolet - tv5monde",
-      "title_en": "The CGT blocks an Auchan hypermarket in Bagnolet - tv5monde",
+      "title": "Découvrez ici les 8 tendances mode pour le printemps/été 2026 - ELLE.be",
+      "title_en": "Discover here the 8 fashion trends for spring/summer 2026 - ELLE.be",
+      "published": "Wed, 01 Apr 2026 13:08:42 GMT",
+      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOVld5Y2dlbC1FSlJodGNjR2ljalVZZEdFZ0FPQ3lkN1B6OVFzQm9vVXNuR2EzOTBZMlFDZnk3d0Rzb1ZVTXRyS2ZOUlBuYUpPWEpGNzdPLUFPdUVIdjRsVm1NUTBVMWVibDhVY1l4dHM1ZDhSbTNWTVYzdXJmOUdENkg1RWd2RkZreEVFRmZRYUZHTFFnMWVSYg?oc=5",
+      "village": "Maasmechelen",
+      "country": "Belgium",
+      "category": "Local Town",
+      "language": "fr"
+    },
+    {
+      "search_name": "Local Town Maasmechelen French (fallback)",
+      "search_query": "(\"Maasmechelen\" OR \"Hasselt\" OR \"Lanaken\")",
+      "title": "La CGT bloque un hypermarché Auchan à Bagnolet - information.tv5monde.com",
+      "title_en": "The CGT blocks an Auchan hypermarket in Bagnolet - information.tv5monde.com",
       "published": "Wed, 01 Apr 2026 11:46:07 GMT",
       "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQakMwRXY5Yll0amVqMFlQcER5RGhwUG01VmhicnRwRmhObWtueTlSMmZianZTbDhia25oamtqWDVpaHpQRVlVTkVNQmJ1dG1zYVZhY3UtMXNMMUtkNmhzRlVoLWwzMGxBTGdULXlSMWVDZGVhMHZzamI1V2RUNGtaYWppNDVYXzNEXzZid3ViNjJiRHpQX3RDcFhR?oc=5",
-      "hl": "fr",
-      "gl": "BE"
+      "village": "Maasmechelen",
+      "country": "Belgium",
+      "category": "Local Town",
+      "language": "fr"
     },
     {
       "search_name": "Local Town Maasmechelen French (fallback)",
@@ -370,8 +262,10 @@
       "title_en": "Murder of Quentin: Raphaël Arnault finally comes out of silence and poses as a victim - lejdd.fr",
       "published": "Wed, 01 Apr 2026 08:48:56 GMT",
       "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNd3pKUUpIb0F6TmttZzV1Wjg3aHBJalRjWENjVmNyM2s5d1E0MkEzd1NhR1BqOVFBS1RtcTJrMWpPVi1kcm5OSlo2TlRTN1MwM0ZVZVQ0Z0d5M3ltV0ZjWkZGYWRhUmtuQnplUmtaRXVyY2lNbnFRbmlIQUNJTEhLNUx0cmc2cldaYTdFeFFxdlZEenlLbEcyUDRrbzU0WXhMa2JEcVdkd2ZPR0stb1JsdDViWGhLZ2s?oc=5",
-      "hl": "fr",
-      "gl": "BE"
+      "village": "Maasmechelen",
+      "country": "Belgium",
+      "category": "Local Town",
+      "language": "fr"
     },
     {
       "search_name": "Local Town Maasmechelen English (fallback)",
@@ -380,8 +274,10 @@
       "title_en": "France's Dassault says 'weeks' left to save Europe warplane project - France 24",
       "published": "Wed, 01 Apr 2026 10:41:12 GMT",
       "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQMFJzWmdhYTJvU0xXdnhqcDIyS05RcFdfTlZrbTJuN244c0JjZkFVb0RzY0xUMDBteS16NFlNcXVwWGhhdVBmaDVzTlJhWFRNMnpnUXJLbFhESjh6Vlc0d2xwMUtkS2tQZjlGd3V3MzRGQmdDbVhBV3lLOGtmaG9KcUYxdjhXOEY5LVNHSWU5X3VHVjdad2U3RDRwak1QMGljUUU5NG16azJ5NTlDSEVwWDlB?oc=5",
-      "hl": "en-GB",
-      "gl": "GB"
+      "village": "Maasmechelen",
+      "country": "Belgium",
+      "category": "Local Town",
+      "language": "en-GB"
     },
     {
       "search_name": "Local Town Ingolstadt German",
@@ -390,28 +286,22 @@
       "title_en": "Room is on fire: Police investigate - Augsburger Allgemeine",
       "published": "Wed, 01 Apr 2026 12:13:32 GMT",
       "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQMm5YYUc0SDF0VExNVUx0SVlneTZnZWQ1bHNKdkZjRkNKYy1jYXNNUVVKeVJZa2FzR1pmUUU4M1phWFJpdXRKUmlrTVA0bFYtRjc1dkFZRmd6M25zRmd4VDZtMXVIU2tKQlU5UEMxYVN2Ry1rMHBHblFiQm1sWEZ5ekZpWXhLUjZRcXplMzVzRlNBLVNiU0g3cnFEUmZ6Zw?oc=5",
-      "hl": "de",
-      "gl": "DE"
+      "village": "Ingolstadt",
+      "country": "Germany",
+      "category": "Local Town",
+      "language": "de"
     },
     {
       "search_name": "Village Ingolstadt (fallback)",
       "search_query": "(\"Ingolstadt Village\" OR \"Ingolstadt\") AND (shopping OR outlet OR luxury OR retail OR news)",
-      "title": "FC Ingolstadt 04 vs. FC Erzgebirge Aue - Live Score - May 03, 2026 - FOX Sports",
-      "title_en": "FC Ingolstadt 04 vs. FC Erzgebirge Aue - Live Score - May 03, 2026 - FOX Sports",
+      "title": "FC Ingolstadt 04 vs. FC Erzgebirge Aue - Live Score - May 03, 2026 - foxsports.com",
+      "title_en": "FC Ingolstadt 04 vs. FC Erzgebirge Aue - Live Score - May 03, 2026 - foxsports.com",
       "published": "Wed, 01 Apr 2026 12:07:23 GMT",
       "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNWWJzNnFLRlpUbkZmaE56UzVZMVZaeU11dUVEVXpVMEhhNlNROURrT3NqNkVIMDNqaTdpTWtMNkRKNzVMd19vWElxMkdJc3I3Vm42WEhEWE0zNzA4azNZcTRSV0Y5c1ZET0tkMVJsWktkSXJNdVc1ZC1PTEd3aXgtRjBfTW4wMnNkUml0ZXRVUXVXUHRZbVI4ZWZXLUxwRThSNUF0OUZ3?oc=5",
-      "hl": "en-GB",
-      "gl": "GB"
-    },
-    {
-      "search_name": "Village Ingolstadt (fallback)",
-      "search_query": "(\"Ingolstadt Village\" OR \"Ingolstadt\") AND (shopping OR outlet OR luxury OR retail OR news)",
-      "title": "Ingolstadt vs. Muenchen Odds & Predictions (Apr. 2, 2026) - Polymarket",
-      "title_en": "Ingolstadt vs. Muenchen Odds & Predictions (Apr. 2, 2026) - Polymarket",
-      "published": "Wed, 01 Apr 2026 06:38:09 GMT",
-      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9WUE5xX2lnd3V5ckRoZWJ2ci02ckV3UWxPbXI5M2VJcl9DMXVrNGFzTDJhZzUzVTVhckpfVmRpakJoTVppTmRtbFF0MW90eDFwNnBnLUJxTk9QMUs1c2ZTMHd3NndNbnFDd0E?oc=5",
-      "hl": "en-GB",
-      "gl": "GB"
+      "village": "Ingolstadt",
+      "country": "Germany",
+      "category": "Village",
+      "language": "en-GB"
     },
     {
       "search_name": "High Level City UK Ireland",
@@ -420,8 +310,10 @@
       "title_en": "2026 film and high-end TV productions shooting in the UK and Ireland: latest updates - Screen Daily",
       "published": "Wed, 01 Apr 2026 07:29:48 GMT",
       "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQZmNMRTBhWHdsbFo0WHUtenBKUWJ0Z09LVVBuTjVUb1R6dnYyV0UwSEluX01NUXJuVzhuVlZCTUlHanpOQ0hpT1p4N2xGSnIyaEg3eGRKQ3BZVlJWT0hPREU4dmd2azc2VGVhQVl2emFKVmpENnNrT3BJNGVDY2xlNDVSUV95dzdPcHFtOHhqcG9WbUdYYU9odjhUTHp2b0dzMTZ6Yzh4U1VGNVVfeVl5RmQ1eDJpLU91MHlMUS1kZlZNNng3LTE1VHNIb1o?oc=5",
-      "hl": "en-GB",
-      "gl": "GB"
+      "village": "UK / Ireland",
+      "country": "UK / Ireland",
+      "category": "High Level City",
+      "language": "en-GB"
     },
     {
       "search_name": "High Level City UK Ireland",
@@ -430,18 +322,10 @@
       "title_en": "Murder hunt after man, 29, shot dead sitting in car outside Euston Station - London Evening Standard",
       "published": "Wed, 01 Apr 2026 10:38:08 GMT",
       "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQRTB1OGl4VjZ5ZFlkenNneFRSTzZSRnRRQWxrQzAzVWlndWIwTUMzcmxLQk1fUS1YYUlISU52YzNVNG5PZzRtcU9uUVhKY245RnNQZzMtekRzLVl2VFNrLWVILUlJRnhIQ3JfckwyX21nNVFpVmRybDUteUwyR1lTMm9GQmFVYnBhX0E?oc=5",
-      "hl": "en-GB",
-      "gl": "GB"
-    },
-    {
-      "search_name": "High Level City UK Ireland",
-      "search_query": "(\"Dublin\" OR \"Oxford\" OR \"London\") AND (\"Bomb\" OR \"explosion\" OR \"shooting\"  OR \"Stabbing\" OR \"suspicious package\" OR \"unattended Package\" OR \"explosive\" OR \"bomb threat\" )",
-      "title": "London shooting photos show forensics scene after gunshots fired into Haringey restaurant - My London",
-      "title_en": "London shooting photos show forensics scene after gunshots fired into Haringey restaurant - My London",
-      "published": "Wed, 01 Apr 2026 06:08:13 GMT",
-      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQMnZEb3J3V3FobjM0bHhkWGtwc3RhZWtlTDlYOU1kNUlfLXAwNm03bFVfMXBlSGpCeW1tbC0xYTdQWkQ1cHN2N2RMallBZDc3R3FUZTN1aXJRMjdJTURDOTNBU0xvVmN3M2ZfTDVSN3NERmdFemh5S3I2MzY1VkkyMk9Pb1JlTXZYYXpENG5sNWRaakxma3NuQklZWdIBoAFBVV95cUxNQXU0SzZLZVlhTDlOQk5SM2VJNVVQMUNaWW9JQ2hBNHVoQkhBZlVpeHdleERQVVoyVzdHdE9uUkNGbDJacnVoTG1CdFM4blRQaG0tWkRPMjZ4bnBqQWZsaXRfeWQ0WnJUUTYxWjhuUHdNQi1ZQnFVT1V5ckFvNTFDd0lubk9ob05ubXNKM3JjX05HSk9XTl9NOHpDVGg2cVBx?oc=5",
-      "hl": "en-GB",
-      "gl": "GB"
+      "village": "UK / Ireland",
+      "country": "UK / Ireland",
+      "category": "High Level City",
+      "language": "en-GB"
     },
     {
       "search_name": "High Level City UK Ireland",
@@ -450,18 +334,10 @@
       "title_en": "Man, 18, charged with murder after stabbing near Westminster Abbey - London Now",
       "published": "Wed, 01 Apr 2026 07:47:40 GMT",
       "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNTS1lVHJYV0k1ZldkZmM3dk5qU0xyd2dfQTNra3dYMmM4N2t1UllndFJRc0FiaTZVbUluZG1uQTEtQnV1Q255bzgxNkkxdXNjaE9WVTlSaGJudnRVTTJndGNEb1ZoOWV1bEFQU0pmN0xTWGZUQUIxNUUyZFhlN3hmbkF6elVnRXVvMEdvZVZ1OXlzeFZ2dGFCTEdJd0ctcWtp?oc=5",
-      "hl": "en-GB",
-      "gl": "GB"
-    },
-    {
-      "search_name": "High Level City UK Ireland",
-      "search_query": "(\"Dublin\" OR \"Oxford\" OR \"London\") AND (\"Bomb\" OR \"explosion\" OR \"shooting\"  OR \"Stabbing\" OR \"suspicious package\" OR \"unattended Package\" OR \"explosive\" OR \"bomb threat\" )",
-      "title": "Man who sparked bomb hoax with fake dynamite outside MI5 to be sentenced | ITV News - itv.com",
-      "title_en": "Man who sparked bomb hoax with fake dynamite outside MI5 to be sentenced | ITV News - itv.com",
-      "published": "Wed, 01 Apr 2026 09:58:07 GMT",
-      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPenBZZFBCZ2lSQm9JTVFoQ0NmUmR5ekdocHlZQU10MFNOazdWTWRKTi0wdEwzTVZDZ2JKQ3pnVmwza2tnSE5HRXhsNmJtV0RKTlN6UGtQcEpyMUJhanB5emJMU0ltSG1pVy1iTHp5MW5OYzN1SUJEazZiSEFzcE1zb3VOZXdiS09LVjhBYlZYX1ljeF9yazA2UVdFSVZjNnRBazBLRkhnY29FcE55UjRtbGpjN1dfQQ?oc=5",
-      "hl": "en-GB",
-      "gl": "GB"
+      "village": "UK / Ireland",
+      "country": "UK / Ireland",
+      "category": "High Level City",
+      "language": "en-GB"
     },
     {
       "search_name": "High Level City France French",
@@ -470,28 +346,22 @@
       "title_en": "Attack foiled against the Bank of America in Paris: judicial investigation opened for terrorist conspiracy - Le Monde.fr",
       "published": "Wed, 01 Apr 2026 09:28:14 GMT",
       "link": "https://news.google.com/rss/articles/CBMioAJBVV95cUxQOEotTDVqUFF6ampQSTZ0a3BSMVVPeGRhd1czSU0tc01ROG5JRmRKTExLQk5BcEtPNF9UT2RsRERXQUNzdWpvbzl4ZFE3VlhnRG8zYWN3bDBJbUNma040NnZHa1hwMVQ4RThUdlA5TGFPVHJ2RVhUUTF4c0JzYXNLbEtCZVc3ZHlJSVd4SUFtTm96T1E0NVhXUmxzd1lGbjFidmpzT25uVDhBVTljNVlJeUhJV2FfbUN1ZWx1V2RzeG9ib0JEUWJfbkJ2cnZJMk9iQU1uTWo5WVRDVndFN1d5c29yb19NYmRHSV9faGlFbFl2SlIxX0NUSnhyZ2p6WkNEYUtFd1ExaGhMZm1Ub2hKSTlsUlRfdlY4N2luWDZuZlA?oc=5",
-      "hl": "fr",
-      "gl": "FR"
+      "village": "France",
+      "country": "France",
+      "category": "High Level City",
+      "language": "fr"
     },
     {
       "search_name": "High Level City Italy Italian",
       "search_query": "(\"Milano\" OR \"Bologna\") AND (protesta OR manifestazione OR corteo OR sciopero OR blocco OR presidio OR \"sit-in\") AND -calcio AND -moda AND -\"settimana della moda\" AND -Serie AND -mercato",
-      "title": "Domani altra manifestazione alla Civitanavi - ilrestodelcarlino.it",
-      "title_en": "Tomorrow another demonstration at Civitanavi - ilrestodelcarlino.it",
-      "published": "Wed, 01 Apr 2026 05:54:03 GMT",
-      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQVVFKR0RNMHppS3NacWp5ZVZ6dG51ZEJmcFl4c1lfYl9IZlhsNXFRZUZ0SVVEdHdBN0Q4ZEVHZHI4bTFVWk9JSkhQTEx1b3BRb3hHLVlic2JPR3RFcFNmM1Axd2kyd3J4MjVEeENlOXdoSktkMkE1VTYwZUhDT3pDZUVMcjRoTFpPR183UWkyMTcyQkY2Nm5GQWtKZEdLaEFI?oc=5",
-      "hl": "it",
-      "gl": "IT"
-    },
-    {
-      "search_name": "High Level City Italy Italian",
-      "search_query": "(\"Milano\" OR \"Bologna\") AND (protesta OR manifestazione OR corteo OR sciopero OR blocco OR presidio OR \"sit-in\") AND -calcio AND -moda AND -\"settimana della moda\" AND -Serie AND -mercato",
-      "title": "Bus, aerei e mezzi: tutti gli scioperi dei trasporti di aprile 2026. Il calendario - Moveo by Telepass",
-      "title_en": "Buses, planes and vehicles: all the transport strikes of April 2026. The calendar - Moveo by Telepass",
-      "published": "Wed, 01 Apr 2026 06:00:53 GMT",
-      "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE80OXZZYmxERHlQaGZfN1E5OEFpQnRuY0ZYSDZlWjVpaDZZdjJxMmptNS1MYXYzQVRjMGxHWDNyN1VOVkZUZmdXM01rS3FtLUNoS3VuX1hRUGhCcWdQMHlmOFpveG9MbGJLM1lVNUxYNkFGdw?oc=5",
-      "hl": "it",
-      "gl": "IT"
+      "title": "Leoncavallo, il Viminale non molla sul risarcimento. Associazione Mamme: “Contro di noi una causa infondata e politica” - ilgiorno.it",
+      "title_en": "Leoncavallo, the Interior Ministry does not give up on compensation. Mothers Association: “An unfounded and political lawsuit against us” - ilgiorno.it",
+      "published": "Wed, 01 Apr 2026 11:48:54 GMT",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPbkM4VWZmdF9WNVppMXlNd21nRkJCSzdYc3drYXJmZ0FWMVJKa3c1QklBQk5VVlRzOVUzLXlsaDhhVFJRcEhFUmtGVG5XM0NHVWtLWDRlYWFFbEtCeUJWQXNIYndCaGItdGhzamY1Z25OZGE5S3I1aW9JLUdid0dOMEhYSV9JNGVrcGlsRk9vbzVQSDU5T212c3ZwTXg1cUJhdlE?oc=5",
+      "village": "Italy",
+      "country": "Italy",
+      "category": "High Level City",
+      "language": "it"
     },
     {
       "search_name": "High Level City Italy Italian",
@@ -500,28 +370,10 @@
       "title_en": "Why Nordio decided to send inspectors to the Bologna court - BolognaToday",
       "published": "Wed, 01 Apr 2026 07:37:50 GMT",
       "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPMmh2TFd5NkN3M3ZTVDQyMXZaeWVlYVgzMDBjeEstYkdubGg2dFNwNGNfV2xMR0RZcXdWQkR1WnZ1MUg5M2dCOXp3SUltc0t4NklwY0g3UEMxaE1aaUlTMXRvMnVPaWhCYUNqZTdHYmlJcm85LUVoVVQybERQNUdubjRNal95aHlqZE5DQTM3aEJ1QXJ6aXU4?oc=5",
-      "hl": "it",
-      "gl": "IT"
-    },
-    {
-      "search_name": "High Level City Italy Italian",
-      "search_query": "(\"Milano\" OR \"Bologna\") AND (protesta OR manifestazione OR corteo OR sciopero OR blocco OR presidio OR \"sit-in\") AND -calcio AND -moda AND -\"settimana della moda\" AND -Serie AND -mercato",
-      "title": "Pilastro, lavori ‘blindati’. Gettate le basi del MuBa. La protesta in Quartiere - ilrestodelcarlino.it",
-      "title_en": "Pilastro, 'armored' works. Lay the foundations of MuBa. The protest in the neighborhood - ilrestodelcarlino.it",
-      "published": "Wed, 01 Apr 2026 05:48:16 GMT",
-      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOT1pBc3VpWUxfWlNlYmpQRGJRVmpZVnlfMEpBM1Y5MGx1Y25NeXMwbEVwcTNGZWI2N1dpYUtseHl6c0hYVC1TYnFReUk1Q2lqNHlUQzhNMW5BaTJOQUxlR0MwOVFNTVN2RnFoU0FqTTBfZTE2bS13UkhPWWJIc1Iwdk5HVy1mczR1VW1mWFNzd2dobjRt?oc=5",
-      "hl": "it",
-      "gl": "IT"
-    },
-    {
-      "search_name": "High Level City Italy Italian",
-      "search_query": "(\"Milano\" OR \"Bologna\") AND (protesta OR manifestazione OR corteo OR sciopero OR blocco OR presidio OR \"sit-in\") AND -calcio AND -moda AND -\"settimana della moda\" AND -Serie AND -mercato",
-      "title": "Autopromotec in Fiera. L’accordo fino al 2033 - ilrestodelcarlino.it",
-      "title_en": "Autopromotec at the Fair. The agreement until 2033 - ilrestodelcarlino.it",
-      "published": "Wed, 01 Apr 2026 05:46:25 GMT",
-      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQLU9JSHVvVGJYY0xSTE5BTVR0aGxuc3FDbzlETDNEVVg5N1BwWUhlOGZqTm1QcUxFSEJONVhMTWY0NkZwQm1FY1B1NHNiSWUtdl9hZEwzbTdYdksyZDJ3VVdfQ2RlSUl3bFZFZlZ5QnVFYjFFZlE2VktqY1ViTmNuOXhDU3p1ak9mT2J6bmM2ekc5U2YxVnFUTQ?oc=5",
-      "hl": "it",
-      "gl": "IT"
+      "village": "Italy",
+      "country": "Italy",
+      "category": "High Level City",
+      "language": "it"
     }
   ]
 }
