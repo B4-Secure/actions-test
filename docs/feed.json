@@ -1,32 +1,113 @@
 {
-  "generated_at": "2026-03-31T13:47:39.424334+00:00",
-  "lookback_hours": 7,
-  "count": 42,
+  "generated_at": "2026-04-01T07:02:47.592627+00:00",
+  "lookback_hours": 24,
+  "count": 107,
   "articles": [
     {
-      "search_name": "BV Value Retail Crime (fallback)",
-      "title": "Auxilia Networks appointed by Nordic Tourism Collective & Blenheim Palace, UK - The Voice of Chandigarh",
-      "title_en": "Auxilia Networks appointed by Nordic Tourism Collective & Blenheim Palace, UK - The Voice of Chandigarh",
-      "published": "Tue, 31 Mar 2026 10:22:47 GMT",
-      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNQzMxREJMUUZJX0JCTkIyYVp4ajZuOGN6MjJIOVhUTlNWaElnSWVSdjJIMklEbUJmRktZY1R4VW44RkNncFZLZ1ZGbTFkS01NN1VSX3N3b2c1Q0s1bUpRZWFnaThOTDFKMjg3Z20xbVdGakJIdHpzdVNtQlNVVkhEZEthb0wteHVuZWFNc2FveHBBaDI4clVzd2ZCZzFzeDczSEZXTDd2Y1VFQ2Ro?oc=5",
+      "search_name": "BV Value Retail Crime",
+      "title": "Lululemon convinces US judge to overturn Nike shoe patent verdict - Reuters",
+      "title_en": "Lululemon convinces US judge to overturn Nike shoe patent verdict - Reuters",
+      "published": "Tue, 31 Mar 2026 21:04:00 GMT",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxObVl2UTJvZHFVVXliVVBya3hTTEVhUHlhR0JFRy14UHpzaW1nTVpXOGNIZFJSZ0ZIbEktM0I0QXhRcnliQkpLbVB1RVFOMzIzUzh6UGlYbHdnLW1COU5oUUxDZWc0ZEd2VWFjV0pKVjRPZ19RMm5RX2lZQjQ5dk1CTjFIOGcxempaOEgyN09Idzd4OHdSbEtXeGhVVUxnNjJQc00xY1I1cTk4bVJIX3FDbHFjeVRiUQ?oc=5",
       "hl": "en-GB",
       "gl": "GB"
     },
     {
       "search_name": "BV Logistics Companies",
-      "title": "Royal Mail delivery delay warning to postcodes in Wales — full list of areas - Wales Online",
-      "title_en": "Royal Mail delivery delay warning to postcodes in Wales — full list of areas - Wales Online",
-      "published": "Tue, 31 Mar 2026 09:37:00 GMT",
-      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNZkt3RTB3NWk4T0xZQUZxYkc5ZXM3dkV0a1Y2eTg0ZEQ4d1pfcnNKNmxVVUhUT2JKaUlVTVdxTEJYWURjdHBoY2RNYko2YmRQT255WUdNQUNEQ1hIWHZyY3BQLVNrNzVvbE5SOTAtazROZFhiOEVBTnlXOTZsQmc0OVVsNWlSSmdEN0ZOc3MyRzVnVkRwWkdhMFM3b9IBoAFBVV95cUxQY1B5UmxpWE9WYjZmaHFvMmtubHkydGdndFdaRWxqX1JoMVVWZ2pTX29fLXE0VVJzRzVlUXQ5Zk5Ma3BUUGpodmYxMWRDeTFpQ0pyX1hTQmF1YVdyMUFOV1FUc3RsX1NnNHpSaWxLZGx2OFZqYmhjdjE0eGxwbDYwY0pyZmVYTFNhdGozY19Pem9VMWlzU2RXc3FKYUdkUjZF?oc=5",
+      "title": "FedEx’s Same-Day Delivery Rollout is More About Optionality than Speed - Sourcing Journal",
+      "title_en": "FedEx’s Same-Day Delivery Rollout is More About Optionality than Speed - Sourcing Journal",
+      "published": "Tue, 31 Mar 2026 20:09:57 GMT",
+      "link": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxQQklhekdhbEpTSHpPUTJPR2pXdDRSbkVyUVlSTmRiV2JSZFRCZjBLNDluU0ZrVzNqNlFpbzJRUXM3VHVLRDBvVGoxbHlTeFc5VThTNnN2MmZsSFFrMDZ1aWl2OVFuaWxrVHhvbl9XbzdsWHNTUlZrdk9CVnlDYktPbXVMdnhwdFh5T1dfTE9zTjZtaEdnaVJ4ZnZON3p6SnFuUmZmdmc4cGVqN0lxU2FQY1o4b1c3a21FRDFBNEZORng1LW9TV2dmaGpIbFMzLUVBTTlfT1I1VGRmRnowODNJZXQ2NjJ6bllnN2dpLTRoTFhuYTA?oc=5",
       "hl": "en-GB",
       "gl": "GB"
     },
     {
       "search_name": "BV Logistics Companies",
-      "title": "Amazon adds dynamic food delivery ordering to Alexa+ - Engadget",
-      "title_en": "Amazon adds dynamic food delivery ordering to Alexa+ - Engadget",
+      "title": "FedEx’s same-day delivery offering took years to build - Retail Brew",
+      "title_en": "FedEx’s same-day delivery offering took years to build - Retail Brew",
+      "published": "Tue, 31 Mar 2026 15:18:07 GMT",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQTkc2cTB0RUNBNXUyY2lqNTVnRkIwTzA5OGFMTnVBa1puSmpDam9keXNfRXBkZ3FTWjNEUThSWXNKbGdqdU5SNHNBTjJRRk5SMlVkRnluM19EZGJINDJjYmZueVF5cUYya1NhM0l3RHVZSERVTzBjSkJfX1VpVG9Hc0FwRHZTSS1nN2JmR1ppRVpfY2Qzb1R3dVBvYTVCczk2V1E?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "BV Logistics Companies",
+      "title": "130+ of the top deals during Amazon’s Big Spring Sale 2026 you can shop now - About Amazon",
+      "title_en": "130+ of the top deals during Amazon’s Big Spring Sale 2026 you can shop now - About Amazon",
+      "published": "Wed, 01 Apr 2026 03:27:20 GMT",
+      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQazlkcW1kWHVfUVgzVXQtdFlNV3doaGFpTGV3UnIydldvcXdlMTF6bjFBeDNGMDMtWkVBb0JNU0hDYzBwdGFIV2FoSjNaUFhxYXNHdGRPN2NNbl8ybE9vcnJ3V1NhZThLamtKWF8wNVpwLW4tLU5MLThDUDhscjUwLW9tTkY?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "BV Logistics Companies",
+      "title": "Amazon adds dynamic food delivery ordering to Alexa+ - engadget.com",
+      "title_en": "Amazon adds dynamic food delivery ordering to Alexa+ - engadget.com",
       "published": "Tue, 31 Mar 2026 13:00:00 GMT",
       "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOblNETVZpWTNCS2JqdmVvMFM5bXRjWTR1U0pqQzhMVlc1TGo4c0s5TXByekJpU0xGSElnQlFNNmR5Qi12SHRCNDNwT09hQ0VOZ2c0UG5DbzNKWlVPWEtVdWpxZ2RFdlNtQXhub3BaWGZNVGNsQ21MQ1VESmFvUlZ3Z2VDb2RfMlF6dzE2UXdvb1Z6dFF4U0lNemRB?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "BV Logistics Companies",
+      "title": "Accelerating software delivery with agentic QA automation using Amazon Nova Act - Amazon Web Services (AWS)",
+      "title_en": "Accelerating software delivery with agentic QA automation using Amazon Nova Act - Amazon Web Services (AWS)",
+      "published": "Tue, 31 Mar 2026 17:46:50 GMT",
+      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOckZOLVh4cFNpWC1jWmhOS1ZkdTROV3V3d0szb291ZzlFeGJaX2lTTkRucHNSS1Z4SFNwQ0dVN1NzR0U4X0RpTEdsN2IzbDNNUV9HQXF5T0lGNlVxZExRcVpyRjJvT1NsRmlPNy1JVUI0M3RhLW1JTTdCUW9UcEVuYm00LTlxODFyaG5vOXZjVWRWVHlPX0FSbk5hdl9lYnlJZzRTQkxkbDlYenA2ZzRqb3A3N1R5dlcwcWVNaHBFajNmQ1RJ?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "BV Logistics Companies",
+      "title": "DHL Supply Chain appointed by Air France at Gatwick - MultiModal UK",
+      "title_en": "DHL Supply Chain appointed by Air France at Gatwick - MultiModal UK",
+      "published": "Tue, 31 Mar 2026 15:32:10 GMT",
+      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNSDdRbjctT0w5TGtTM2N1MzlsQUFfQXR3bEItNHQxY3MyTGVFX1F6V1FSVTM1TFAxUTNLazdnQVpfcE9OMkR6dzR6dXcyUEVjSXBuRDRNSzVRYlppV3g3WmRuaWFxajFQVHFHNFQ2UWp3Y0hWOGx2X2VLYU8yUTNMTllYN0VaUHRrSGZXUVVWUjlXOGM?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "BV Logistics Companies",
+      "title": "Delivery firm Evri creates 150 jobs with new Yorkshire fulfilment centre - business-live.co.uk",
+      "title_en": "Delivery firm Evri creates 150 jobs with new Yorkshire fulfilment centre - business-live.co.uk",
+      "published": "Tue, 31 Mar 2026 14:16:00 GMT",
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNSmF2bzFRTlIzNUZMaXluRjNObU95WU5KTVNRS0t2Mkh0V2RQMGIwLTlybnZISHRLOWZkcVJqdHhiQmdPTWloRU1aSWJxM1VTUFJHZl9KZkJrckVOUHQ4OXpGVUdvUEN3dGkwVXJSTzhMZGtPUVhDdTlWUnJsNjZCS1lPU21JYlFJQlVia041c9IBjwFBVV95cUxNSmF2bzFRTlIzNUZMaXluRjNObU95WU5KTVNRS0t2Mkh0V2RQMGIwLTlybnZISHRLOWZkcVJqdHhiQmdPTWloRU1aSWJxM1VTUFJHZl9KZkJrckVOUHQ4OXpGVUdvUEN3dGkwVXJSTzhMZGtPUVhDdTlWUnJsNjZCS1lPU21JYlFJQlVia041cw?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "BV Logistics Companies",
+      "title": "Royal Mail announces delivery disruption for 27 UK postcodes today — check now - The Mirror",
+      "title_en": "Royal Mail announces delivery disruption for 27 UK postcodes today — check now - The Mirror",
+      "published": "Tue, 31 Mar 2026 08:40:00 GMT",
+      "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOU0lydlpRVWN4ZEVpeW0ycEs0SGplajRrM3h0eUV4dXVRUnljdHBUZ1RqcnpaRmhidlNuUVVheU9KMEZXWC0tdXhzVFdQRzk0bHFkWTRDU0J2SVkzN0l0MTBVcWlBTHVFeUhHejVWUVlOMnQ0ZDl2amRueXFtMDc2b0F1S0hqcXg3UWsxbWM3a0_SAZYBQVVfeXFMUEhpUHJpd2dVOU9aUGNCNzVmNmd6VnhGZUJZMlNMZGJLQlh0R3RISS1pUUtNbFBYUVRRbU5KczFUUGt1VlhGd0dRZm9LWjc1WWp4blBnbkhaVjRvZ25XZkRhdmtDSC1UMDdXSzNsRHFLdWFTN0pEVjBRVzEzZUdBbWNfRW41S2liemtTZ0t0bHhNd0E5UVJR?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "BV Logistics Companies",
+      "title": "U.S. DOE Partners with Amazon to Recover Critical Materials from Clothing, Tech Waste - ESG Today",
+      "title_en": "U.S. DOE Partners with Amazon to Recover Critical Materials from Clothing, Tech Waste - ESG Today",
+      "published": "Tue, 31 Mar 2026 20:22:57 GMT",
+      "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxObS1GbjhfYmJYVFhQQWlxNmtPcmw3cnJNVElwaE9XUnpmWWlmY2ZrOVpYWmFJdFZ2YUF5RmtIVURPdmV2YW5ycDF5NEN6V1dzdU1kNmpzTzN0Wmxwc0N0UjJ2aWFCc3BpdTdaQkI1U0FPbjFNVXN6M04zWEtTVUJuU0d4NWJMa2drRGd2YUpQaUktMVdnbHE1YzJUYjVnMk1kOGd2UEY3ZlNhYTZlSmxyclNwSlc4eGh0eVZlNExR?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "BV Logistics Companies",
+      "title": "Prime members can now get Whole Foods delivered with free Amazon Fresh - Mashable",
+      "title_en": "Prime members can now get Whole Foods delivered with free Amazon Fresh - Mashable",
+      "published": "Tue, 31 Mar 2026 09:00:00 GMT",
+      "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9hV2d2RXRHMW1Ed3RCX0ZtTnkzajlxTkF0QVY5SF9tdWt6RjhUTlVOOFV2NF9xV2RtRFdYWTRwNXdJSVJxYVBFc3Z5c3BpR1RKeHAwSHItSHRVTWdzRlc0NHdLVQ?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "BV Logistics Companies",
+      "title": "FedEx Exec Says Control Beats Speed in the New Delivery Race - PYMNTS.com",
+      "title_en": "FedEx Exec Says Control Beats Speed in the New Delivery Race - PYMNTS.com",
+      "published": "Tue, 31 Mar 2026 08:04:05 GMT",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPSVdxMDQ0TFVJY29IRWk0dFVFbms5X3Z4MTRoelh4U2JVd011NDlya0EzSlhJakNyT1lXNTMzeVprYXlseFZyWGFPNTVLallqQlNrRnMzT2I0QnBrVDRlNVRCYTdUb2FNRWNpRnhDQkNqVTlUc3JENVd6Q3ZPQWFGakpGVE10Mm1ZRmdCWTBubHhpZWhaWTk2VGdXMVZUSU9wSjBqODBB?oc=5",
       "hl": "en-GB",
       "gl": "GB"
     },
@@ -41,19 +122,82 @@
     },
     {
       "search_name": "BV Logistics Companies",
-      "title": "130+ of the top deals during Amazon’s Big Spring Sale 2026 you can shop now - About Amazon",
-      "title_en": "130+ of the top deals during Amazon’s Big Spring Sale 2026 you can shop now - About Amazon",
-      "published": "Tue, 31 Mar 2026 09:07:12 GMT",
-      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQazlkcW1kWHVfUVgzVXQtdFlNV3doaGFpTGV3UnIydldvcXdlMTF6bjFBeDNGMDMtWkVBb0JNU0hDYzBwdGFIV2FoSjNaUFhxYXNHdGRPN2NNbl8ybE9vcnJ3V1NhZThLamtKWF8wNVpwLW4tLU5MLThDUDhscjUwLW9tTkY?oc=5",
+      "title": "Video: Amazon Pharmacy's VP John Love discusses expansion of same-day prescription delivery - Drug Store News",
+      "title_en": "Video: Amazon Pharmacy's VP John Love discusses expansion of same-day prescription delivery - Drug Store News",
+      "published": "Tue, 31 Mar 2026 15:13:54 GMT",
+      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPTzN1NEZTZkg2cFprQ0dNQ2FzV2x6bGxHS2FvTGFzX29xeEJqRlAxdFNvV1QzUXk3enQ5dmdkQ1ZLR2xmb1JsTDA3Y081ZGJqTkJoY3c0UjJDLUJDbU1jSHNqcUp4RGRXOVFsbGsyUXhWS1hQQjNzbzJsTFMwaFVYdzBQdmhXZHlWdXY2dHFoU2VJa0wzSndNZmlQN1llZlRqVTFzOHdXcmhWenBTbUg0MzZB?oc=5",
       "hl": "en-GB",
       "gl": "GB"
     },
     {
       "search_name": "BV Logistics Companies",
-      "title": "Amazon launches Prime Air drone delivery in Ruskin, first site in Florida - MSN",
-      "title_en": "Amazon launches Prime Air drone delivery in Ruskin, first site in Florida - MSN",
-      "published": "Tue, 31 Mar 2026 07:11:06 GMT",
-      "link": "https://news.google.com/rss/articles/CBMi2gJBVV95cUxNSHNNcW81Sk9vdDlQRk9CT0R3R3hteW1fTW05bm5vQTNOVW9HbkxtSUNoM0o2ZHJGc2VDX21sZmFOalhRTzRGOHJWeC1wRTVmMEVJeEtjb3dGNkxHdDZaSEJfVkdmQU5HRDBtbXN0dG1OdnA1aEtQN1JSaXRUZGZESGZkR2IzaGgzRmlEMmV3TUZKLTg0RVVWMEpNekR4eThWNVVISDVtcUVtTGtmSldNcUdadHItb2xUczd6VGtPNnU2dnB2Mml0NF9nSVBCUnpLUnNEUTB2a0ctd2tNR1N5TVJIWHVEdnN0blpwbTRyN2hwcXpoREtBR0NvSnRhZUJKc2lBQ0h6US1DQlNKaXdXTGRvLXIwT1NyMjNyUVgtSGNhbVk0MEhUUUsyQld2UExOQ040UjVDVmRrR0RqM09WNnktZ2xFdC1iNzVtYmx4dnBnU0VXdmhJSy1B?oc=5",
+      "title": "14 arrested in connection to delivery service fraud scheme in Kent County - WZZM13.com",
+      "title_en": "14 arrested in connection to delivery service fraud scheme in Kent County - WZZM13.com",
+      "published": "Tue, 31 Mar 2026 21:01:00 GMT",
+      "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxQSEFpYW5DNmtZdHpZWEl6UDRTMmg3X2xFeWJVSDBuOFh6VlU1RmxhNWk3MXJXX1UydG1UWjVyQ0Z0aVFmOXUtZDVIdDlmaWxtZUV0d29TWkk0OUdzazE1M243enh6RTd4ZktPTmxIdi1RZGRRcU04cGlJWjR6ZWxlSEx6b2ZyVktMY1hLODdfWXFRTGJGNGNBRURIOTlySElsM2hkT3hQT0g0OXBhV3l4cnl4Y2I1OGlJVFFVaURISTFLR3pWbTBrT3NKNGN0T0xtY1Fra0lUanlzVEJGbVM1dEtEbWhXMDA?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "BV Logistics Companies",
+      "title": "Ride along: Amazon expands delivery e-bikes across Brooklyn and Manhattan - News12 | Brooklyn",
+      "title_en": "Ride along: Amazon expands delivery e-bikes across Brooklyn and Manhattan - News12 | Brooklyn",
+      "published": "Wed, 01 Apr 2026 04:58:38 GMT",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQNTZxUFJmUVIwbWlIUGM1RWppeFBFX3dsRzBoSm9VcVN3cTFVWW93WE1UTXdqR25wMUhPVmlSM01aalNMVU5HZ3NaRmgyY1U5dE8wU2d2YXY5WjR1OTdhZGFMa0xSRlNiak9BeER0WV81LWNwU2c3NWs2aXBPQlROaTBRaWEzS3IxcGxUYm5YLVFDQ0gyZ3RwamJGNXpleHdxdFE?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "BV Logistics Companies",
+      "title": "Fast and present - Retail Brew",
+      "title_en": "Fast and present - Retail Brew",
+      "published": "Tue, 31 Mar 2026 20:44:12 GMT",
+      "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9xcFhaLVhYY2M4M3JLYS1lRVZHcFdOdkZ1M1lPMU0zZG9zU1M1Q3czX0JfdUgxOTYyTk1vWllMTlZibjNNRy1pRWhNZmVIakQydG1KR0JTXzAyOGR2aFFj?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "BV Logistics Companies",
+      "title": "Amazon delivery drivers have entered multiple homes unauthorized - Mashable",
+      "title_en": "Amazon delivery drivers have entered multiple homes unauthorized - Mashable",
+      "published": "Tue, 31 Mar 2026 09:00:00 GMT",
+      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1VQWVsNnNhbDBwYllhNDRNY2Y5ejlUUkI4M2p1T3p0MlJTRE5zUG9BMjBCUlU0NDNRNXNLeTVOZWpqR3g0Vjl5aEp1QktZOUktbnJOM0dVblI5Sm5wMVRqSllyY3M3a29yZ1dmTGFsRV9LZ0k?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "PETA Twitter search",
+      "title": "Are You an April Fool That Buys “Humane” Lies? - PETA",
+      "title_en": "Are You an April Fool That Buys “Humane” Lies? - PETA",
+      "published": "Wed, 01 Apr 2026 00:57:33 GMT",
+      "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBXMkR1NzFSXy03TVR1MHA4eDZLMWZFYVcyYUY0LXFUeXhIVnFmRjJXdGIyMkhKaW5pLUxxejROVlpWOFZINGMxbUhOZml0OC1qRFQ5UW9xWUN3eHZKak9ScXhIUnVtQjh2dUFFZjhZVENaQldMRkIxSnE1WTNDUQ?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "PETA Twitter search",
+      "title": "Celeb-Favorite Shop Blondita Partners with PETA for Cozy New Collection, with Proceeds Aiding Neglected Dogs (Exclusive) - AOL.com",
+      "title_en": "Celeb-Favorite Shop Blondita Partners with PETA for Cozy New Collection, with Proceeds Aiding Neglected Dogs (Exclusive) - AOL.com",
+      "published": "Tue, 31 Mar 2026 17:32:55 GMT",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOUUxBWGRRdFBJNTU2aTRLLVk3elJ5SFNMUTFtQVp4bURmZFFmQXFLTnlISnFiYmEzejYxSEJuV0xpajRkbk91THdiaW9yQlFJTjlkdlNuRHlrNkZsRGZIVV9ncnd1UHhLb1BiUDVIWExndjc4QkRWV3VROVRHREtLbEM3YnBYajRu?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "PETA Village German (fallback)",
+      "title": "Protests Against Animal Experimentation Sites Have Been Outlawed – The Law Explained - PETA UK",
+      "title_en": "Protests Against Animal Experimentation Sites Have Been Outlawed – The Law Explained - PETA UK",
+      "published": "Wed, 01 Apr 2026 03:52:02 GMT",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5LQzlCOU51b2JtLU5WRWZkTUVUd0V2cjN2Z2F3WmdFYl9OVG1wT0puX2k2SG1QcU5EUS1jTkNPSEQtSjN0b2VvLVA3RFRaYko4YmdiTXNlTkVfRXVOOFNRSF9fUEM3VjV3dmx3cW9TUl9iOWdCQlE?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "PETA Village German (fallback)",
+      "title": "Calls for eggs to be swapped for potatoes to 'modernise' Easter event | ITV News - ITVX",
+      "title_en": "Calls for eggs to be swapped for potatoes to 'modernise' Easter event | ITV News - ITVX",
+      "published": "Tue, 31 Mar 2026 13:49:11 GMT",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPczVYZlV2cWp0d0RpdGpSYVhKTk5CSnJYMFY4bGhVUHY5Z0loS3Z3Q0xLbUxOQ0tacldrbHR2UDlXSXlHUC1iX0EzczRUNFRxRzBBeFdXME1mZkxrdWh5TnNra0l3UHhyZldsNU9uN2VBS25YR21iYVBXcGdtUlFxYlc1V1oyNjRyOVl5WkNIVGVHQTF4ZW4yM2ZPeFlLWGg4VUMwdURsQXhDcXZDSVp6MQ?oc=5",
       "hl": "en-GB",
       "gl": "GB"
     },
@@ -62,16 +206,79 @@
       "title": "Animal activists urge Easter egg rollers to use potatoes - BBC",
       "title_en": "Animal activists urge Easter egg rollers to use potatoes - BBC",
       "published": "Tue, 31 Mar 2026 07:30:40 GMT",
-      "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9kc0NZNUZqLTlxNmJEZ3dVM2NwM1BQSnk0di1FMnpqMFlrS19ySUxJUFcyX054aVp3djVUS01WeGRHRE9XUk5HVERWWWVKUWVyQjh3YWNmUGhoMWls?oc=5",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFB4Ni1nUDgtVVdmNzRjWmpoSDFfTW5ienBXQzNNSWRZN3doekxfTllUczNxajE3U0tlXzdFSnVNMTVNZlU4TGluV1dkVmdoRjVObHdIWVd5U3V1dw?oc=5",
       "hl": "en-GB",
       "gl": "GB"
     },
     {
       "search_name": "PETA Village German (fallback)",
-      "title": "Calls for eggs to be swapped for potatoes to 'modernise' Easter event | ITV News - ITVX",
-      "title_en": "Calls for eggs to be swapped for potatoes to 'modernise' Easter event | ITV News - ITVX",
-      "published": "Tue, 31 Mar 2026 07:58:12 GMT",
-      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPczVYZlV2cWp0d0RpdGpSYVhKTk5CSnJYMFY4bGhVUHY5Z0loS3Z3Q0xLbUxOQ0tacldrbHR2UDlXSXlHUC1iX0EzczRUNFRxRzBBeFdXME1mZkxrdWh5TnNra0l3UHhyZldsNU9uN2VBS25YR21iYVBXcGdtUlFxYlc1V1oyNjRyOVl5WkNIVGVHQTF4ZW4yM2ZPeFlLWGg4VUMwdURsQXhDcXZDSVp6MQ?oc=5",
+      "title": "Monkey's Oozing Skull Infection Goes Unnoticed at Johns Hopkins University, Drawing Federal Citation: PETA Statement - PETA",
+      "title_en": "Monkey's Oozing Skull Infection Goes Unnoticed at Johns Hopkins University, Drawing Federal Citation: PETA Statement - PETA",
+      "published": "Tue, 31 Mar 2026 21:09:59 GMT",
+      "link": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxQcFZRYTRnMWV2a2FTNi1SWVJrSHR2QWxuZU1JYU9XYnlBSWFIczBPOXFhX1VLd0NLRTJEXzNfZzNwcG91TGpMSXJUQklfMTFfSEd0YWRwLXprRlhqQWstcnFBYVduWGNEelpzc3Uwc0tyZ1VYSEF0ckFPYWFieHlxVldWNW9YQm1iNkVLQTRtN3JYbTgyTnJwWHZNVVBRRlZDaklxYnAxZEMxUzl1aUxWSWRaSW00LURrTnVRUHpNaWFuamJ0VFNJbjA3X2RPaWVWd2xYS1RvN1drMHE2V1JhOVh2ZmRILVFxT1Y0?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "PETA Village German (fallback)",
+      "title": "PETA asks USDA to send WSU horses to sanctuary - Rogue Valley Times",
+      "title_en": "PETA asks USDA to send WSU horses to sanctuary - Rogue Valley Times",
+      "published": "Tue, 31 Mar 2026 16:33:40 GMT",
+      "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQTkJpVEU1T1RKT205eFdfY1JZQlpnNHhZRDJDV3hGX0F1WU02MkJSRWkyclV2NTMybkg0ZHJYUmhBWUNWdnVQb25XVUk5ZDE1NTRQZE1USUIzc2lPR2lkRnFaNDY1d3FRejBRRFdGUWpfcnY2OWRWV0ttNVBheklCSU51U3Badw?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "PETA Village German (fallback)",
+      "title": "‘Anupamaa’ Star and PETA India Supporter Rupali Ganguly Urges Prime Minister Modi to End Elephant Rides After ‘Pink’ Elephant Chanchal is Reported Dead - PETA India",
+      "title_en": "‘Anupamaa’ Star and PETA India Supporter Rupali Ganguly Urges Prime Minister Modi to End Elephant Rides After ‘Pink’ Elephant Chanchal is Reported Dead - PETA India",
+      "published": "Tue, 31 Mar 2026 14:09:20 GMT",
+      "link": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxNMExQeW95SEpUeU9tSHhiSTdLMTBTVjltWE5CQ0lrOHlwTEg3YnZnLWNaSE5yVzlLbEZNUkt0ZF9YOFd6WTdEWmNJOXJweUU1eTFXbG9STzdkQWdwQ1pBc0V5WnVNblVBY1ZFMklzSVJiZWF2Y2szVnZlbkkwSldzWTl2bWxLckdqRG9DNHhRb0h2ZnhvWWpCTzNNSllxd2hEOHZiVmRoY3hMVGkySmFKOGhwa2FBZ1diMndoUGZYY3JzQmYwdEpPSlRHc3RreDRSVU5VNW1xNGVWZ292b1VDNENpV2lDMDVjclUzT0l2Z25kd0JrY2dGcXVwNFFCc0VFbmhKLXY3bmVjY1k?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "PETA Village German (fallback)",
+      "title": "PETA’s ‘Control + Shift’ returns with 4 new and restaged works on power, care and Filipino realities - Interaksyon",
+      "title_en": "PETA’s ‘Control + Shift’ returns with 4 new and restaged works on power, care and Filipino realities - Interaksyon",
+      "published": "Wed, 01 Apr 2026 05:00:05 GMT",
+      "link": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxQd0Q3aXdJb2d0VDhJTkRwZVV6bE1lbmJMSFBuUkpjdER2U0F0Mnd3eG9XTXZBT283NFo0MEJHdHdwWk1LUklrY24wWE1xZUppc1NGbGRvazYwU0lZQ2hLUGZsSF9MaEVza3p3cTdma1RXM2c3LVN4SzQ1VW1GREdmT1VuOHl2SDlDYTVFNGs0dTNjLWxUck5SbFc5TnFQekRSVWx4Tmw2TWotZTBodEFaY21pNl9jTzZxMkRsVVhYTTF0Q1d6ZWlzNFNDWVZKTmNVSVFlN2MyVy16Qzd5UE5FbGJnNEp4Y0x1amtLdGFzM1FHY3RqX0R30gH8AUFVX3lxTE9sMjV4TVlqX0dYR0MyWDVGbTR2V0RIdFJHQ2NYUFNCb0tGSHpER2hOV1NlR3lIVFplOU4zR3UzWExkSTNjakhrZWNJcS1YTEdadkxhcWQ3S0hTdzg1anRaX05CQWNlVTdfVmRLZVV2bWNtRTBmMHoyTi1kaE5wUVBSbEV0TkE5OGlZUmZWdl9SRnNNWk1vY29paDF0ZzZPdC00aVBlTGxQamp0RjNTWkR1ZUdyeHR3M09jN1hxVWlqb0FaSld6MXFVZi1TQm10VlZLQjE1cmhoN0lCRVFQOEhTcS1WYU02XzBfN2oxQzduOWlSZWNpR3JqTlV5aQ?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "PETA Village German (fallback)",
+      "title": "What Vegan Foods Does BJ’s Wholesale Club Offer? - PETA",
+      "title_en": "What Vegan Foods Does BJ’s Wholesale Club Offer? - PETA",
+      "published": "Tue, 31 Mar 2026 14:10:40 GMT",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFByNkhsaDdHYVhaTExrYjVZbUdZQVdIYU1vOXkzSVcxODZ1RU9WbFYxYlBHZ0JBSFBob0VMX001dUx1dVJ5aTR2WERhcTdUWFJwMlJ4VWctWnFZcFVJWEFlS0hJdkQ3ZGo0RnpOa2xnbW1wekp1?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "PETA Village German (fallback)",
+      "title": "‘If My Screams Move You, Why Don’t Theirs?’ nothing,nowhere. Stars in New Campaign for peta2 - PETA",
+      "title_en": "‘If My Screams Move You, Why Don’t Theirs?’ nothing,nowhere. Stars in New Campaign for peta2 - PETA",
+      "published": "Tue, 31 Mar 2026 21:09:59 GMT",
+      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNb1JTMTdoYnNyVllsdXJEaGJZZ2hHMUVLTFBWV3pqcDluRUpucEFaNnFINDFqSk1RYjNUbU9Yd01ETG9pcDF3cFpRTHlKTGZrby1VcXp4b3dRZTY0OXo0NVVKS0tDMy1rU3A0ZlpROFVTLTNRblZJTXdJYjVjZXZoWXZEcTJZN2FxSzFOajEzTGdIN3RZbnNnMmM4aFBRdmlUaVdRd1NOeGMtYlRDTHlldTEyQkV6VDhQN1FER0w4VFBoZkNINlE?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "PETA Village German (fallback)",
+      "title": "Woman accused of accessing fan fiction child abuse material on work computer - The Canberra Times",
+      "title_en": "Woman accused of accessing fan fiction child abuse material on work computer - The Canberra Times",
+      "published": "Tue, 31 Mar 2026 19:12:35 GMT",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOVXdnaHZXY0hlc1dlZXFYNkFwYzNPemVaOGNDdHY5UGpiZHF5dktzU2JaS1RONVgtTFB5ZnpZbWNtbjctMzBZTGwxbTh2WnVfRWlXbHgwTkMydnBIcHpnSVNLRjM0OVFodTRWci1YOEwtczh3dWpDR0VoV2hPNzhPMFZGUndmV2NCSS1RcVlrTFBrRWdJUW91SmJzTVVoazZEYlpPMzFHQkxDWlJodk50NA?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "PETA Village German (fallback)",
+      "title": "Sky News Australia. . Sky News host Peta Credlin reacts to a story by The Wall Street Journal today. - facebook.com",
+      "title_en": "Sky News Australia. . Sky News host Peta Credlin reacts to a story by The Wall Street Journal today. - facebook.com",
+      "published": "Tue, 31 Mar 2026 08:54:11 GMT",
+      "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPQ0Fmb3pDakU0d0RYUkFqbThWSk9MRGJ6Skd5Ul93ZDNvNTVIV3VTbHdqUWNkZHAxdDJ3eURvOS1YcUpiYnNHQ0ZmckhkUHVVRnpKXzEtdTU4OEVhOWV2anFpaHdzdlZFY3BqSE1qVGM0eGZha05vV3MtbDBJNmFDSFVHY0d2Qks2TXE2MFhkaDV6cVBscDhvV0VJdjkzT1ZZQ0YzVTBHTGJWcDY1Y2tPbTBQUmtKZ2d6VzZwdFYzV0ZaYlZhdUNWX0ZNR1hkb084anpPT3drQQ?oc=5",
       "hl": "en-GB",
       "gl": "GB"
     },
@@ -86,37 +293,19 @@
     },
     {
       "search_name": "PETA Village German (fallback)",
-      "title": "‘A problem they can’t get a grip on’: France rejects UK immigrant demand - Sky News Australia",
-      "title_en": "‘A problem they can’t get a grip on’: France rejects UK immigrant demand - Sky News Australia",
-      "published": "Tue, 31 Mar 2026 08:55:12 GMT",
-      "link": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxNblMzSXJFc0stbHFsRm1aYWdlakRSM3A0TmN6U1ZUMHNzWll3RjBuV2tiTE1NcGVwb2xVU2g0MHJldzZKRnF3V2pnN2xRQWt5VkwyeEQ4OWx2STRoRHZFendXU2Y4M1ItekN0WXluTGl1ZUtwaVFZVE5jb2ZPcEdEeTlvLThfUVpnVGRnTDZNMkwxcnRwd01DTFFlRDRBSHN4X2pfTG5DTDY4LWlZdEZINVRUY1hrVzd0dXlmSkV0REhTZFFPMTRQeDZ4NGszcTdtSnNjMy0yYWFnV1FzeDFyd2RFc3hObTdaLUNr0gHwAUFVX3lxTE9uZklha0owbDB2SHMxTGhpazhDWkhOa3BoLUNCcFk1T1hNdUxuQ3lMSnA4UmxleDR2RzhUUUFYeVNSMnRvekdHa0Q2OG9Ld0Q3RGpHZTJDdzN2S25pbEdrdi1LSkxhN0NSVFMtSWY4WXJfVXctcGU3S2txdWpjaGRjQ1BFSHZFelN2ZnYwcnl1WGZFQWotZFlXSHk4WGUwaXR3QnAtOG1hUENsY0JRTXNWcEVxbXM5RmNpTGhaYU9pdDBpTnNRcE5KeVdLbVlXc0hFQnZvQVhaQ01mMHFGcTJHUDBwOG9rV1M0ckwwaFBXVA?oc=5",
+      "title": "PETA’s ‘Hell on Wheels’ pig truck targets Hamilton Pork in Jersey City - Hudson County View",
+      "title_en": "PETA’s ‘Hell on Wheels’ pig truck targets Hamilton Pork in Jersey City - Hudson County View",
+      "published": "Tue, 31 Mar 2026 15:25:42 GMT",
+      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNeVdWTExVeUwzMmtLd2pqQ0xkR2ZyX0ZsejNuQUZjbi1aT3BISzhyaUl4YzVzTXFPWnlJRjBySnI3OHFNaE1BcGNZT2xET0tZVjRIS2dWQmFSbVJVZENKOU5KTUtUZjFBUTZuZnhLbk91eU9zMHBQYUFJQmhMR3oyYUYzR2lfRUp6YlZHX3U1WmRsUmV1MjAzM3VQVldVQdIBowFBVV95cUxQeF95M3Z3V1VtYzJaUGEwN09OUFoxMU44Q2RNQXQ0c3E3T00yVzZTUWJ0dG5WMzJyOUpFUUdTa19VbG9hVVhVeGJpWDIweTVUbFVva2hmeEFSajhiWTlKdnJaNGExN2I5WkQ4bVdVTGlOMTRQcUl5WWtMYm9zR0F2Y2c0NkY2bUlvZW5rQU1DeDVyTEV2bU85bVNHeWZJSHBMWG1N?oc=5",
       "hl": "en-GB",
       "gl": "GB"
     },
     {
       "search_name": "PETA Village German (fallback)",
-      "title": "Beatrice and Eugenie’s Easter snub revealed amid royal fallout - Sky News Australia",
-      "title_en": "Beatrice and Eugenie’s Easter snub revealed amid royal fallout - Sky News Australia",
-      "published": "Tue, 31 Mar 2026 08:55:57 GMT",
-      "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxOdTRXN3IyUndlVUFJd3JwWkdNamgxd0RvQ0Y3X0QtWU1LUzI2M1B6c05sLUJFWlJPZUY2NHlJRWxRT1VtOGl5UU8yVHRxcHlCRUt2RzRjZC1VQXVXR2I5VTVyaFRRbDFXVUNZZDF3bFBjb2pSdUY1b21TYW9DNWpPMk9WeDUzdnl5UFd0RW5Gc0djMWFlVVo1MlloQTZIVjJ6cWpNUjlVdGtlbW1vZGJqSUFrVjRsbmFuUG9LTFZDVUN0X0J4SWc2VktTQ3NtZVZiazdoU0IwRjFqaTNmMHZZSzFR0gHnAUFVX3lxTE1VTW1sUE5rbV9GSnp6eEotVTJ6ZDJieDdrWXAyOHBkQjJVTnBfbTducUxlejVybEJPSzN2Nk1tZFo0dmd1WkIwajhxNGhIYWhTTkFqa1FPRUlDMTlQYXcxZzB0b05GN1EzT1Y4Z3dtUzJ2aGl3aV96eFE0Z3g4djJLcHd3VENHNHhOX2p2OEVjMjhmYWp1LWl4WXdPNkwzcjNKdjZuS2lrb2NwbS1zRFhEcy1ESEg1bG1mY2hiYWFSc3R4WWlRLWUtMEEyejI2MklITEtoemdqMldFNmt0Q0hBYVFfZnRLWQ?oc=5",
-      "hl": "en-GB",
-      "gl": "GB"
-    },
-    {
-      "search_name": "PETA Village German (fallback)",
-      "title": "‘Too ambitious’: Marco Rubio claims Iran war will last ‘weeks not months’ - Sky News Australia",
-      "title_en": "‘Too ambitious’: Marco Rubio claims Iran war will last ‘weeks not months’ - Sky News Australia",
-      "published": "Tue, 31 Mar 2026 09:02:35 GMT",
-      "link": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxQdm5DcmhLTkxqTTdpcl9OMGJIc3A3T0NtZUcwMV9nQThHRHg3THh6TEhRWGJuWTRQRmpnanoyakEzY3NvWTRVUkpzZ2FnOGVPM2JKcHBFUndtR25uQllkUFkxVW5tUGw3T25GOUtnaEZwZmJITjh4V1RBNlY2S29IWGVySVJFcU10M3M0M3VjeTVOcC15a0FEYXZqdHVsNldvQ0xLeHRhUmF1UGZoa3Zab1l1a3B4VWRESC1HV3B1bUp2UUFpUWs1Wl96a0I5ME1PMy1MMXFfdHRBWUp6TWRZWmU3N2RNYmdzdHBZ0gHwAUFVX3lxTE42MnlZVzV0SUtBaVRhM3h4UjlaQWxUUDJ1anF1UXo4UzlpVU1TMm5PbWtONDluT3BOTVFzd3dZMURNTlE3TURUQnlPZkxudnkwRGFMSktYd0RWUU9LUThwempVODFEVWhhVnVEMkd2NDVBRUlMcEt1X2hacUg1SlhGOXM5aXNSZ2JGU0l1TXFSb2dXNHdNa21YME5sVllIYlVjREpfZTRGNVBDSjRYbU5DU1J5QTF1ZzVwNHNrS3dYNWFTX3FZb0xjR1B6cmxVak5ISW5XTzZ0WXhKcWItdHZhVnRRc1Z5X3FLRXhqWDhsQw?oc=5",
-      "hl": "en-GB",
-      "gl": "GB"
-    },
-    {
-      "search_name": "PETA Village German (fallback)",
-      "title": "Labor exposed for not ‘picking up the phone’ to farmers over fuel crisis - Sky News Australia",
-      "title_en": "Labor exposed for not ‘picking up the phone’ to farmers over fuel crisis - Sky News Australia",
-      "published": "Tue, 31 Mar 2026 09:08:20 GMT",
-      "link": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxOeGh4UzZxV3UzS3A5R0lQRlVUR21CbEpkcXJjdmFDR2ZRWVFNd1dlUDVSOWRpVTg0ck4xX1dHaE9TMXgzdENaZlNpQ18tM2FUTmRseHNoU3pwQkF4czVpMUFqaTctRVhiS3AyVElPR3J3RzcweFhrUmg0a050aVd6N1pOU3BuNXZNWXdCaGRhVlN5c3JoQ3FWY3pDbUtldnFtMjlPaVZfU1ZXX1dsY3VjbmJfUmFJR2FzUFVuS09naDZTeWJ0d3hRdm1tNGVXa2NOZ0phdnpxRFl4M2hTNWF2VlVzMzFLT0k1ZXJ5ckln0gHzAUFVX3lxTE8tam04aHpzWWE5YTItTXZSejU5OFhfRmpVVUVsOFJnX0x5QWg2d3FISGswYk9WWW53VXp2dzFIZWplc3doVVJSU1FHZ2pKUW5vdHFPVnR0N3F1WTJHMTVqZ0tHcHZ5OTh5UFlGbTNEVlZtWVc2OUM2cnJEeFFzdGIzN2VJNnB5WEpCc09PZlYxWmpPWjJLSkwxUGFzbDY0OC1tNEYyRElKUldfZFlJWG9ydWpTOHYxMDNNcmlrZkNyNWtjc182Tk1jRTBXNzJuUG9xdGwxSUE0MXNYYnBubHhadmlSazNkMzVmWWpIT0p6cTJERQ?oc=5",
+      "title": "Major health board shakeup: Chief out, new faces in - The Courier Mail",
+      "title_en": "Major health board shakeup: Chief out, new faces in - The Courier Mail",
+      "published": "Wed, 01 Apr 2026 04:21:40 GMT",
+      "link": "https://news.google.com/rss/articles/CBMikAJBVV95cUxNdHQ1R2lBR2xoMmtUMW41Qi1KRUtfREd2THkxMmVabGlFY2JxcGh5eHFrS3V0cWdUNTk2WWk3TjE4U2JTQVliWmZrNHlWMV9nZVVNZEgtdS0tSk1SM2d6R08zeUdQekVpb01mV3RrR1dGdFBkNGNIWGZFT054LWxpaEVvb2c2S3A0NzJFT0kybmxILU55eFhzOUtGR0d1ajZMUVAwTzFYNzFycTVaQUI2NTh5aS1nYnFSeDJCZnZoaUtnSTlueUtaRmE3SkpVbGp0WW9uZzJ1YnEyMUVLUlBXRDJnbzN5S09aWm9TblZiMjZidHMzQmJlT1I0cVZ0UzRwZVFzQ0pMUHNfLWt3aklaNtIBkAJBVV95cUxNdHQ1R2lBR2xoMmtUMW41Qi1KRUtfREd2THkxMmVabGlFY2JxcGh5eHFrS3V0cWdUNTk2WWk3TjE4U2JTQVliWmZrNHlWMV9nZVVNZEgtdS0tSk1SM2d6R08zeUdQekVpb01mV3RrR1dGdFBkNGNIWGZFT054LWxpaEVvb2c2S3A0NzJFT0kybmxILU55eFhzOUtGR0d1ajZMUVAwTzFYNzFycTVaQUI2NTh5aS1nYnFSeDJCZnZoaUtnSTlueUtaRmE3SkpVbGp0WW9uZzJ1YnEyMUVLUlBXRDJnbzN5S09aWm9TblZiMjZidHMzQmJlT1I0cVZ0UzRwZVFzQ0pMUHNfLWt3aklaNg?oc=5",
       "hl": "en-GB",
       "gl": "GB"
     },
@@ -124,15 +313,33 @@
       "search_name": "PETA Germany German",
       "title": "Einbeck: Waschbär durch Schlagfalle schwer verletzt und anschließend getötet - PETA",
       "title_en": "Einbeck: Raccoon seriously injured by snap trap and then killed - PETA",
-      "published": "Tue, 31 Mar 2026 11:48:45 GMT",
+      "published": "Tue, 31 Mar 2026 11:59:15 GMT",
       "link": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxNQjU0N0hFajFKMk9yaFFYc1lDQTdickQ5OVkydEZUWHNtU29rN19ta1l3bjFZUjJnLXV6ZXVYRDFzTmRHVC1FeGJVMkgwY0JFWWVYalMwbDZUd1RtUERnTmRFS3d2ZmFNeU9sblRUbU0zQTczMzZXcEVjU2laTTl5R1lRUmxqNS1RelRBZjRWVWFyd012UVNNcWROdnNnZlRMeVVuS1JPYmExck9KLXB2Y1lJeVJ0NS16RE1aZFlCMzRfZmJKQy1Dc1NCemJmcllrRkRWaDZjT0d2QXp3UWhxUG9GYzhLY0FLYU04?oc=5",
       "hl": "de",
       "gl": "DE"
     },
     {
       "search_name": "PETA Germany German",
+      "title": "Igling: Taube mit Luftgewehr erschossen – PETA bietet 1.000 Euro Belohnung für Hinweise - PETA",
+      "title_en": "Igling: Pigeon shot with an air rifle – PETA offers a 1,000 euro reward for information - PETA",
+      "published": "Tue, 31 Mar 2026 12:48:21 GMT",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQaC1OWEVIY3o5d2ZHazAwZmh6VHJobW5KT01BUzNjX1hGQVlsclRJTl82eGxpbndJakJtSWh5eGJwNms3WVFpbTcwVlp0SmkwbUNsU1hDMTZaTkp4TWdUZGlENWQyZ3NLM0xTWnpGbmpTdFRybmxQQjZlcW5wWGgzNkNYMmVpZjZ0bm43SFdjVzRvNk02ZTFSbUk4N1l1czdaS3ZSMTRuTjRzS2xNd2hLZkhEbmJndw?oc=5",
+      "hl": "de",
+      "gl": "DE"
+    },
+    {
+      "search_name": "PETA Germany German",
+      "title": "Massenmorde wegen Ausbruch der Newcastle-Krankheit im Landkreis Dahme-Spreewald: PETA appelliert erneut an Landrat Sven Herzberger, Ausstieg aus der Tierwirtschaft voranzutreiben - PETA",
+      "title_en": "Mass murders due to the outbreak of Newcastle disease in the Dahme-Spreewald district: PETA once again appeals to District Administrator Sven Herzberger to promote the exit from the animal industry - PETA",
+      "published": "Tue, 31 Mar 2026 10:14:08 GMT",
+      "link": "https://news.google.com/rss/articles/CBMirwJBVV95cUxNd3R0MFVZSm51Sjg1aTE5NS1zQUUyZFBfQ3pIaWpWb3hZQVZMMWhHNnZtU1N3bDlkTTdmdXFtTFBZeTdYUkhfZnlKWG16cGJSazc0NkxQdlJ3Qkd6dHFKTmMxQmUxNDFsczAyNUtGaG9kMVRFMF9ES01pWGVuQXBmdTV2NFJzWEF3OU85WXJaeHBQakJfMWhDS0paNGY4RUVxMmNxeFY4RWxhdWJJZDJ5bV94aWpnZEJvQXpHaXVoQWlfc2hHQWtGYkNXSEQwX3ZPOVJEbWhEUkhiZFdOTFVLOG9XVDdBV0RrSXZ2U1dXSFV5cHBxMVJHd0FZamx2dEVieElLY3VWZnhpTXUyR1YyWU8yWWxIOV9wQWgxSW1YN2VxbVNZZHU5RDNWNEhzUEE?oc=5",
+      "hl": "de",
+      "gl": "DE"
+    },
+    {
+      "search_name": "PETA Germany German",
       "title": "„Mäuseplage“ in Waltroper Schule: PETA fordert Jagdbehörde und Jägerschaft Recklinghausen auf, Fuchsjagd ganzjährig einzustellen - PETA",
-      "title_en": "“Mice plague” in Waltrop school: PETA calls on the Recklinghausen hunting authority and hunters’ association to stop fox hunting all year round - PETA",
+      "title_en": "“Mice plague” in Waltrop school: PETA calls on the Recklinghausen hunting authority and hunting association to stop fox hunting all year round - PETA",
       "published": "Tue, 31 Mar 2026 10:14:08 GMT",
       "link": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxPWmdwUzRIUnZhT1M5N3RoeHVOemRVSndwOFNJQV9OYS1UckozTjdudTNRVFFZX1c5TzJxZ3l1LVhKcVJfZGxMTjc3aG8yd2szbTdkcmRxUDhRNGpGNnQwMjdxNjN4MENIUDJTU1JPOUlMZTJyTXBteFRHdlVhQ3dfM1Azb3lhSjRXQzBCT29LMjBNZzcwZG8wb24zV1dHbmh2SkZJTVE3MmJfaUFlYWFjZjQ1QUVrQ051NHhnS2U0cmR6RHozVkxnb1RwTUN4Q0d6SEViamxtZkhQNzRpaFZFcm83ZTNEaU9VZVFkNDFqYw?oc=5",
       "hl": "de",
@@ -140,19 +347,55 @@
     },
     {
       "search_name": "PETA Germany German",
-      "title": "PETA fordert: Pfarrer sollen an Ostern keine Eier mehr segnen - BILD",
-      "title_en": "PETA demands: Pastors should no longer bless eggs at Easter - BILD",
-      "published": "Tue, 31 Mar 2026 08:46:10 GMT",
-      "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNdkFqX2pqYml4YjUySFhKTGNFRjU5R2d5NFhLaVR6RUt2UnAxdFFsdm01ZE5jbWlPMUJyclU1aWFVaDRVamlYRllPcEZWWHc4dFdaWXZTcHRoYjJnWkZ4T1E1MFFDTFUyMFZLLXhLcFRqWTgwU1ZWMlV1aWxyTVkwZGhlR1l0akl0WHViaG51c3E3MU9FaTlnTWVyaDlyY3FRQmxXcl9XODBMYVRyZDJLSjhJMXZnYlc2Z1k5dmFn?oc=5",
+      "title": "Meeresschutzgebiete statt Stellnetze: PETA fordert Ministerpräsidentin Schwesig und Ministerpräsident Günther zum Schutz der Wale und Ostseetiere auf - PETA",
+      "title_en": "Marine protected areas instead of gillnets: PETA calls on Prime Minister Schwesig and Prime Minister Günther to protect whales and Baltic Sea animals - PETA",
+      "published": "Tue, 31 Mar 2026 13:49:23 GMT",
+      "link": "https://news.google.com/rss/articles/CBMijgJBVV95cUxOMGlYbndOZTI5b1lDLUdsbDBzNXRPM2xmWDJyV1E3TmxvUVQwX01sM25rTmtVZzNrczNDdXlURFFIQUtYc1VIUWZjcjE2N0hYWnhCSkQ0dW1lLXRrWEFESDdMcmhQMnNxLVY2WHNSbG9QMHJPajUwakJXSzRmX1dPbjlQUXl0dGVfUVhvZ3hzRGMwb3BYNzdBaG9UVmNic29QaEw3MjFSZzFxOWxySEpzUnpaejhqelBoVnp1b3JfQmduRkVJTDBLdmw1UFZnbVlLbGZGc1A2RjJvcFJiblZtcENiUnJxVS00MHJrd0llaUpfNG85TGlRYllaTW5fUFRWMWhZLVJicmVVY2duTFE?oc=5",
+      "hl": "de",
+      "gl": "DE"
+    },
+    {
+      "search_name": "PETA Germany German",
+      "title": "Wie Sie sich bei einer Begegnung mit einem Wolf richtig verhalten - web.de",
+      "title_en": "How to behave correctly when you encounter a wolf - web.de",
+      "published": "Tue, 31 Mar 2026 13:56:36 GMT",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxORWx3RFdWeUhnZmZQRTZ3d0JvVEtlVk14Wk5oTGJ1YnVxMURvQ1N4NHdBS0l5Z1JUOUZIcXI2N3JuSWFfWVA4WVRaYXM0WEtLOGF5bER2bElCUUo1cFZDYTVuWFJ0ano4bm02Z1J1M1NHMkRrLTZDWkV0enhseDJZb08xMFhOSTVU?oc=5",
       "hl": "de",
       "gl": "DE"
     },
     {
       "search_name": "High Level City Belgium Dutch",
-      "title": "'Kleine Pagel' in Belgische cel: Nederlander wordt gezien als aanstuurder van moord op Firdaous (11) - GVA",
-      "title_en": "'Little Pagel' in Belgian cell: Dutchman is seen as driving the murder of Firdaous (11) - GVA",
-      "published": "Tue, 31 Mar 2026 12:37:21 GMT",
-      "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOTjVCa0hnUFpwcVh4eTBMVVllMWt5WEk1aFRuQmFRWmxTa09FbHdqOXNfdUFJQzJCSDNfTzlwajhGa0FTYlNoM25RZ1luaHJVU2xoY0s2YzhXaU0wSHVKY2ZDQmtxU3lOQnR1VFpzRzZndmtBT1hNRTNJSzVxTFk5R2FhSGdmUmJJSVdidXNYMkZteFZSUEY4U0x4dFZWYXIxdG5hZC1tcGdid1RvRFNpbHZsQ0FIV3ZHUXhVWjd4ZndKQ1BONFBzRnRGM0dqYTZW?oc=5",
+      "title": "Persoon met schotwonde aangetroffen in de buurt van Clemenceau - BRUZZ",
+      "title_en": "Person found with gunshot wound near Clemenceau - BRUZZ",
+      "published": "Wed, 01 Apr 2026 06:10:53 GMT",
+      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNRUJuSm5UZF9neDRxYlVCa3lDTVlrMmhTVnNGNHpPcDVDTThEOU8wdndQWm1PTVdkTnAxTDlGdGFLa1dDQktvaUN5UlA3S2U4b013SVpaV2JTejZfX1c2SnhoMnpfUzc4N05aM0daV0FISWVMRXRfUFY0S3ZiZGFMbVFLSjROMlZrcFNhVGNnZnAzVzNrUkVSWW16R2kzODg1UlQ0a0pNQnF0WV9V?oc=5",
+      "hl": "nl",
+      "gl": "BE"
+    },
+    {
+      "search_name": "High Level City Belgium Dutch",
+      "title": "25-jarige man is uit Nederland overgeleverd aan ons land voor dodelijke schietpartij op Firdaous - GVA",
+      "title_en": "25-year-old man has been extradited from the Netherlands to our country for the deadly shooting at Firdaous - GVA",
+      "published": "Tue, 31 Mar 2026 16:35:08 GMT",
+      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNZEFJTlAwREZhdU5DdVNtdnFZSlNtb3U3SE1jUk1UQVgtS0hDekNzT25Mb0J3WmZNSFZZM2cwU2dKaFNPODVDZHFzVVMxNzJTTU43aHJoZ3BZbVhQY1AxSnA0UTltU0pkYlhVa3hBOXBXbTBNeC1MdUYwQ1RpMjBhUWpZWDgzMjFrMWdIZ3lvRXNTeE00c2lVREExQWdJWHdQM0NmclFtazVmSnprbzhwSG82aEFhR2FzMzFuMk9OWVRLa3hHTWdxN3lJZHAyUTA?oc=5",
+      "hl": "nl",
+      "gl": "BE"
+    },
+    {
+      "search_name": "High Level City Belgium Dutch",
+      "title": "‘Kleine Pagel’ zit in cel voor moord op Firdaous: “Nederlander beweert onschuldig te zijn” - HLN",
+      "title_en": "'Little Pagel' is in jail for the murder of Firdaous: “Dutchman claims to be innocent” - HLN",
+      "published": "Tue, 31 Mar 2026 12:55:18 GMT",
+      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPNlgyTVp6OTE1TXZHXzB0a3FKRlpjd3VoTDhBNm5PYld2ZXRWcngxYVBKMThPZTY2dEFGLWZyd091cG5QZlpyLXJOMmRsUUJuVTAxUzZxeDBYbDBhVU4xdklobW0waGhfZlM0WGFQUnZsSUdreTFmbHZwblFlMnZISFRkYjNwRFVKQmVSVlVieUF4dGFsWEtGdWxnNFB1SnVQU01lanMtSndvcWc5VlZXSDlITDdVQzhUZkEyWXZyaVdVdw?oc=5",
+      "hl": "nl",
+      "gl": "BE"
+    },
+    {
+      "search_name": "High Level City Belgium Dutch",
+      "title": "Nederlandse tiener plande aanslagen op Vlaams Parlement in Brussel en op Nederlandse militaire basis - HBVL",
+      "title_en": "Dutch teenager planned attacks on Flemish Parliament in Brussels and on Dutch military base - HBVL",
+      "published": "Wed, 01 Apr 2026 03:50:34 GMT",
+      "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQSW9ZeGpKc0oyVER5U0EyVXZBS2FRNmJjUzJ1eS1PUzQ3Sng1Zmk4SkFiZmtka1JrTUhMbkRod2JzQy1CYTd6TzdKNDEzeVVwdzVMMVctVkhPczdUQlNMU0lUQ3JDYVBpOWZTV2xCUV9adGIwSjkxbjNSZ3gwVm1tSk8wbzdvdng4Q3FYSVU4czRTUUxlUm9HdGV0Q0tTMDNDbzRoQV9yeFFYaEFLQ2pJSUktUktxS3VmN09CeFVuc2t2Q0Y3dmxSdVU1LW1QM0l4SFloZVNEOEtEN1NMTTFZ?oc=5",
       "hl": "nl",
       "gl": "BE"
     },
@@ -167,29 +410,146 @@
     },
     {
       "search_name": "High Level City Belgium Dutch",
-      "title": "Explosie Venlo - De Limburger",
-      "title_en": "Explosion Venlo - De Limburger",
-      "published": "Tue, 31 Mar 2026 07:05:20 GMT",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBqZUV2WUFKei1CM2hjaldqdkRacFo4ZmUxeUFBUU5mUkJvTWo5ZGxCdU5yR2NtZlRCRUFSc2NJSlNYY05MQ2JnS3I3X2U5b3pWT21QQWFSejB1QkNuQ3k1Tk9ldTBBR2dBdVpEQ0NGRUIyLXUz?oc=5",
+      "title": "Explosie bij voordeur van woning Venlo: flinke schade - De Limburger",
+      "title_en": "Explosion at the front door of a Venlo home: significant damage - De Limburger",
+      "published": "Tue, 31 Mar 2026 13:17:05 GMT",
+      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQQXpZTWl1bk9PeVQtb1Z3U3ZKZWJmem1ua3Z6LWNKbXY5eHM3SmFnSWRYXzJ6bXlVWkEwREgzRlh6STVWRTRwd0s2U1NWRWp6WXJudUNsLXlHY0RLaGpwWHR4NHdHX1R6MW93VTFtaVg4b19YSWswVUN4SWFuSmtYamxJLUZMVVM4aXFoTnZYTExadzluaFpGQmZmdVpDRTFIMzd0c2FfRQ?oc=5",
+      "hl": "nl",
+      "gl": "BE"
+    },
+    {
+      "search_name": "High Level City Belgium Dutch",
+      "title": "Knal tot 15 kilometer verderop te horen, maar Gino zegt: ‘Ik reed alleen maar een rondje door de wijk’ - AD.nl",
+      "title_en": "Bang can be heard up to 15 kilometers away, but Gino says: 'I was just driving around the neighborhood' - AD.nl",
+      "published": "Tue, 31 Mar 2026 10:42:00 GMT",
+      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQOG9teGMtRUFwaDVQZlB3RnhHZGRva1BlQWdnS29CRU9Kdnpmc2w5a3NrdWxoMk41ZzNYM0lIQUZKb251WmthLVgtYmllcG1MWXBtc0QyRGF0MmdxWXR2NzVjVTA4R25XcHZTTWRSVGNyY19mMWNqUi1vcnplV2ZQU0d6MHBQV1dGX0k2TkpldVloOUFFMEwyUmlxY2pKb1BEOFU1bHk5NU9ZUFVlVExCY1ByRlNqcnBpRXRvWHIyQkdOaGxfd09WUFNTOUo3MDQ?oc=5",
+      "hl": "nl",
+      "gl": "BE"
+    },
+    {
+      "search_name": "High Level City Belgium Dutch",
+      "title": "Oorlog Midden-Oosten: Israël wil Zuid-Libanon ook na conflict blijven bezetten - P-magazine",
+      "title_en": "War in the Middle East: Israel wants to continue occupying southern Lebanon even after the conflict - P-magazine",
+      "published": "Tue, 31 Mar 2026 20:17:13 GMT",
+      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOMk5nY0dhclgteGc1RFpZaUxGWUp2Q3gxdGotanJDQTFEdDJKQ25udHp0UVdGQU1pTkJxUmRfaW9YUGRqUjlLUW41YVhuM1hiZXZ6b3BLSkRYNW5mN1Z2cEM4OUthZ29udWROZG1uZTFDY0diS05icWZUZFRMZFdfMXh1eEJ4aVJrZ3MwSU9ud3R6THpRYWI5cGNzMnJJR2tneHNjQWswWVdQRWQ1bXREb3ln?oc=5",
+      "hl": "nl",
+      "gl": "BE"
+    },
+    {
+      "search_name": "High Level City Belgium Dutch",
+      "title": "\"Kleine Pagel\"ontkent rol dodelijke schietpartij Firdaous - crimesite.nl",
+      "title_en": "\"Kleine Pagel\" denies role in fatal shooting of Firdaous - crimesite.nl",
+      "published": "Tue, 31 Mar 2026 13:10:34 GMT",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQS2VyQ1Q4c3pRZlNpSUhGUHltRVQzV3RJb09ubHU1dWRhRUhoNnJSTTBEVnpiZkV5NjQ3VGJqUUxxZTJnN2Yxc0g2NEZBUlI4THg5RjNWTDB2ZHZhYnRrNE9fVWdLTC12emhObVJYZTA5eGNtUUVUaXV4QjFVQzl2OVptV2JkNnpE?oc=5",
       "hl": "nl",
       "gl": "BE"
     },
     {
       "search_name": "High Level City Belgium English",
-      "title": "Watch 9News Latest Stories - Season 2026 - The 'Sunburnt Car' made of synthetic 'human skin' - 9Now",
-      "title_en": "Watch 9News Latest Stories - Season 2026 - The 'Sunburnt Car' made of synthetic 'human skin' - 9Now",
-      "published": "Tue, 31 Mar 2026 08:09:58 GMT",
-      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQU3pCWDd5SFpVTGJyQkM1SUJYclRFQnhpVFhfZlpRamxGcDZlcUlrckFhNzNYRzF4eU04SWFLVUg1SVFNbTJfbHNZVEZZWjIwci14Q0FsejAxcXRIeUxMME0yMEItNklmZzlONmlvc1FmYjFxODZZX3FaQ3VQY0hPWXRJanhfanloVnhiUw?oc=5",
+      "title": "Dutch minor convicted over plans to attack Flemish Parliament - belganewsagency.eu",
+      "title_en": "Dutch minor convicted over plans to attack Flemish Parliament - belganewsagency.eu",
+      "published": "Wed, 01 Apr 2026 06:51:00 GMT",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNdzM0OXVKZXctRVdYS1F0UGZQeUxQVVE1eVplNW5LZ2xBU1doRUNaUjJxb000SUc2ekVmYnNoLVNHSXM0TWZsZ01odzN6aE9pMmp6bnJlWnlWMVBhQlZaM3VsMTBLRlRNNmYyVXFOcHN0eHhXeFNCQTVPeVJuUGttQkZnbmFHTWtiRmVTTWVGd1dEdWkyZjZZ?oc=5",
       "hl": "en-GB",
       "gl": "BE"
     },
     {
       "search_name": "High Level City Belgium English",
-      "title": "Fans throng Jubel Park gates for glimpse of Brad Pitt - VRT",
-      "title_en": "Fans throng Jubel Park gates for glimpse of Brad Pitt - VRT",
+      "title": "Oil and gas prices won't immediately return to normal even if the Iran war ends, the EU warns - KSAT",
+      "title_en": "Oil and gas prices won't immediately return to normal even if the Iran war ends, the EU warns - KSAT",
+      "published": "Wed, 01 Apr 2026 03:35:37 GMT",
+      "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQeU1PVWJSVkVLdW5oOUFodVRvZHVOQVpEYkVxZnJLZHBxYi1LN2c4X3J0NEZ5MGdvY2h6UlgtZm0tMTFOLTRWOW9rdFVKTjR1VC16Zm80aVJzcUVkZnZGZTRmeDhKSTVwbGd4N0pCelNEdTJuSGFWMGhzZUdKR0dtRjlUcnU0SUVPU015Vkd2R083YVhEVjh6NWJsOTlXZFhJb1hYYWEzRlBaVWRqUnZncng5Y19TUG1UdXlubmExTjJwTGlULVpTOE0zSTA3Q2dncjgw?oc=5",
+      "hl": "en-GB",
+      "gl": "BE"
+    },
+    {
+      "search_name": "High Level City Belgium English",
+      "title": "Fans throng Jubel Park gates for glimpse of Brad Pitt (VIDEO) - VRT",
+      "title_en": "Fans throng Jubel Park gates for glimpse of Brad Pitt (VIDEO) - VRT",
       "published": "Tue, 31 Mar 2026 09:12:58 GMT",
       "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNdnVzVjhNWHY4QVZjaEc3TXBPUHJ3QWI2ZHotVlFoeG92SlJZZURqcG1sTG1USGJCaXk3YXJNcnQ5QnhoM1cyNF90eXNmanJvZ241WnA1TzNneEFzWVB4X3AtMnV5MUhYdGhpcVM5NVVUQTF1VDJ5U0RhN2FlYVZ5Vko2VjRnUzVyLURab3A4ZEZVcTlsUHZrR0tR?oc=5",
       "hl": "en-GB",
+      "gl": "BE"
+    },
+    {
+      "search_name": "High Level City Belgium English",
+      "title": "EU condemns Israel’s death penalty law ‘close to apartheid’ - Dawn",
+      "title_en": "EU condemns Israel’s death penalty law ‘close to apartheid’ - Dawn",
+      "published": "Wed, 01 Apr 2026 02:03:30 GMT",
+      "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE1MU2d4QW5YcDhoS3dFTDZkRnZNbFRnN2RzQUdlci1xRG4zSHVhYkdVQzBYQVh1VkZwbXJFVnZsUzhvZm42UkNWSdIBTkFVX3lxTE4yeHJLSHhDUWxwZlRCd2FvNnFuc3VpQnZXQmIzZ1h2TmZ5WC1pLTlsVGU4eU0xU3pFRE5rT3dtdW9ZNERNLXU3Znl6WUlSQQ?oc=5",
+      "hl": "en-GB",
+      "gl": "BE"
+    },
+    {
+      "search_name": "High Level City Belgium English",
+      "title": "Fire at Russian petrochemical factory kills two people, injures over 70 - The Brussels Times",
+      "title_en": "Fire at Russian petrochemical factory kills two people, injures over 70 - The Brussels Times",
+      "published": "Tue, 31 Mar 2026 21:02:55 GMT",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQa0F6WmRkM2d4TGJiQ1pnMHlQQ0xMU0dNc0JGSXpvTF9vNEYxeExnODdCUjBna3lyalFGMF9wbjZCcXhHYm9MWmxVNzZkTExZM3dWeFIyMUtTZG9WNy02ZG1scXdIa2ZVUzhKOGNiV3l5MS1La1cxU2JJbzBmSHM3MzVLNkpmb25YUngxQm5LdWtQSDVseFdOZzA2TjFVSHM0aWVwV2RNazlkWXlXTmx4NWk1QWZJdw?oc=5",
+      "hl": "en-GB",
+      "gl": "BE"
+    },
+    {
+      "search_name": "High Level City Belgium English",
+      "title": "Watch 9News Latest Stories - Season 2026 - Donald Trump claims talks with Tehran \"are going well\" - 9Now",
+      "title_en": "Watch 9News Latest Stories - Season 2026 - Donald Trump claims talks with Tehran \"are going well\" - 9Now",
+      "published": "Wed, 01 Apr 2026 02:58:08 GMT",
+      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNdHBHYWJ6OURERTVWZVYzMVhUd0pJbDhGSkVncWh5eWc5M1lfUlJkY2xYeFdQZjlNWTM3QjkyZW5tcTl6SW9UZ1dKOWpvNVFLVFJJUXFfN0hCV0hobjJISmxvd05PUU41ZWZIcFpLa0M1Y0hZMUdjWnI3WVdQSFJVeWFOWl9oMWVyQWxmWg?oc=5",
+      "hl": "en-GB",
+      "gl": "BE"
+    },
+    {
+      "search_name": "High Level City Belgium English",
+      "title": "Watch 9News Latest Stories - Season 2026 - How travellers are keeping their vacations financially viable - 9Now",
+      "title_en": "Watch 9News Latest Stories - Season 2026 - How travellers are keeping their vacations financially viable - 9Now",
+      "published": "Wed, 01 Apr 2026 00:31:09 GMT",
+      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPTms0Tkh5SEd0WHl1LVg5b0lmU01yeHNvb2xObjZyMEtSUllvUVAxUzU1SlVuXzFHMHdCdnpzS2NadFc3bTREaHF3VUxKNUtHeFA1Zi1JWUxGOXJxTkdNTEJUY3otbXNQeUxrUDNZYTNvZnVjbTBKb2hGUHI0WGxLMlhCdW8zQ21RNGpFdQ?oc=5",
+      "hl": "en-GB",
+      "gl": "BE"
+    },
+    {
+      "search_name": "High Level City Belgium English",
+      "title": "Watch 9News Latest Stories - Season 2026 - Tributes flow for beloved TV personality Mel Schilling - 9Now",
+      "title_en": "Watch 9News Latest Stories - Season 2026 - Tributes flow for beloved TV personality Mel Schilling - 9Now",
+      "published": "Tue, 31 Mar 2026 19:06:52 GMT",
+      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOTWVFVVpTU1BxVXlTV0VrNHJzdVpuUEFISkpGaEs5RzlwZGR0LUJzQ2V0MWxuc2xpd1UtOVRJbERGWXYtblVxNGFKVEVWdnF3N29sazJhd00xWXgwWk5iVy1sSGpTNE92aHk5di1vOVNIMlBKU1VmZWE2cDBnSUdMTE5qVkxBV1BNN3c2Tw?oc=5",
+      "hl": "en-GB",
+      "gl": "BE"
+    },
+    {
+      "search_name": "High Level City Belgium French",
+      "title": "Un Néerlandais de 12 ans projetait un attentat contre le parlement flamand à Bruxelles - 7sur7.be",
+      "title_en": "A 12-year-old Dutchman planned an attack against the Flemish parliament in Brussels - 7sur7.be",
+      "published": "Wed, 01 Apr 2026 05:10:00 GMT",
+      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOWkxVY2tWVzEtTmsxR3BEaHRhbGlONTlTa0tiNnlTRG1WcmlmdHV3NGNOMzNiNk50RDJONkZZUG5kaTVrUC1SdVhqbVNtOFZIMGY2M3NYWG1tLW9jNmQwbm1iY3ROMG92WnljejJPeEhsXzhTdlE3RzZ2RWVtb1dnc2NlOVZLNG54ci1hX1dDTkx2Y243WFU2WXhadlJJVW9sRDdaUlFDSVZ5R0JjbjRCcThkQXZnT3pESW9kbHNLUE5BbUs5?oc=5",
+      "hl": "fr",
+      "gl": "BE"
+    },
+    {
+      "search_name": "High Level City Belgium French",
+      "title": "Une nouvelle fusillade fait un blessé dans le quartier Clemenceau - BruxellesToday",
+      "title_en": "A new shooting leaves one injured in the Clemenceau district - BruxellesToday",
+      "published": "Wed, 01 Apr 2026 05:53:36 GMT",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQSTVSNGoxa01TOWFfWDh6VFJyNjhRWExUYWdVZTdnOXlBNTdBM1JmOW5FNG9jUUFuVm9SdXhSS25SMTV2dVFEMGY4MUdLMkRVOXBNdHlrb0xEakJ1eVE2RmZpQTh2Zi1EcDlTaUNBWmFXdWJTSjE0U0J3RnctMHlWcw?oc=5",
+      "hl": "fr",
+      "gl": "BE"
+    },
+    {
+      "search_name": "High Level City Belgium French",
+      "title": "Fusillade à Anderlecht : une personne blessée par balle à Clemenceau - BX1",
+      "title_en": "Shooting in Anderlecht: one person injured by gunshot in Clemenceau - BX1",
+      "published": "Wed, 01 Apr 2026 05:53:00 GMT",
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNSS1vQkwwSzNkSFhKcVpuMzcwZzQ0Nl9UVDdvZDBHaVhYYUJic19aWElldG9JUXphN29hWTdKejRvSlJlcEdQVk80bDg0c25aQ2hHZUpFYTlTajVQcE43X2lfeFZUa1l1VUY1c2l6MDlPQXhtWmhYalpsWWZCVmw5Tzh5S1VkUC1ndU1ORjZCdw?oc=5",
+      "hl": "fr",
+      "gl": "BE"
+    },
+    {
+      "search_name": "High Level City Belgium French",
+      "title": "L’UE appelle les Européens à télétravailler et à moins prendre la voiture - politico.eu",
+      "title_en": "The EU calls on Europeans to telework and drive less - politico.eu",
+      "published": "Tue, 31 Mar 2026 17:57:40 GMT",
+      "link": "https://news.google.com/rss/articles/CBMimgJBVV95cUxNT3FiZFd1Zm5rVzlyS05xUkRhbnB5TTJBQVBDZXhtRXZLR01qNUFTUGJaYVRVWERORzBUR1NXSW9LbUNSWXFURmZCeFpFSEF2bFh4Z0k3UFJqOUN4ODB4VGpleHZnTlQ3b21TZFYwYXZQcU9rbm80VUJIWHptOVZwM1BmNXFZWEVqelBtT3pEQUZSZ3NqXzU4QjFLRzNxSXB3ZFZBWWZyeE1QWXRWMzktMWdNVFVaeXM3RjYzcXlKUHF0OGVGdXZXRXMzVmdQVGplZmRjSDl6N3B2MThlbVZIODd3WExiN2NSRzlEWmhmYVJPSnk5T0JsV09VZURfc2pFTjh6SEFpdjFHcG1ST2pWTk5IWld2VzdfVGc?oc=5",
+      "hl": "fr",
       "gl": "BE"
     },
     {
@@ -211,31 +571,94 @@
       "gl": "BE"
     },
     {
+      "search_name": "High Level City Belgium French",
+      "title": "Harcèlement sexuel à l'Institut Jules Bordet : un urologue renvoyé en correctionnel - BruxellesToday",
+      "title_en": "Sexual harassment at the Jules Bordet Institute: a urologist sent to prison - BruxellesToday",
+      "published": "Tue, 31 Mar 2026 07:32:00 GMT",
+      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQRjVuSEp6ZXAzeGRhVHdvaE9hZUZTWHo1MzRobjlVQnBfdUg2R3o2VUNtY1hMUU1fWmZqMVhJckJpOTZyRWlKRk9lbFJnTmdXZUxLbkk5YXIyN2ZsTU1FcWFfX1pmWHI1M3VvREhHazMyQmQ2SFpNck05S0FMR3JXQzBWNU42MEkybjFCcXhCTlN1Zw?oc=5",
+      "hl": "fr",
+      "gl": "BE"
+    },
+    {
+      "search_name": "Local Town Maasmechelen Dutch",
+      "title": "25 maanden effectief voor 41ste veroordeling van Lommelaar - De Lommelse Gazet",
+      "title_en": "25 months effective for Lommelaar's 41st conviction - De Lommelse Gazet",
+      "published": "Tue, 31 Mar 2026 14:26:11 GMT",
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQcnE3WExrYmJCcldfWHdPOTBFSE5IeW9HZ1FqTDBVZlg1NEU0UzFNdjRTZ01DQWs2dWZqdW16TS02NlB3b3BVc1o5UGVodDdiOWRTdWh6ZU5HSFpEeXg5YXRVbDJTVjhmRk1ndVg4amZ3N3BFSzJiR0pDd3hnQkNYcXNIMVFGaEZNTHUtazgtOWM3MW1Z?oc=5",
+      "hl": "nl",
+      "gl": "BE"
+    },
+    {
+      "search_name": "Local Town Maasmechelen Dutch",
+      "title": "Vakantiehuis Fabiola in Maasmechelen krijgt dit jaar nog subsidie van 518.000 euro, maar moet daarna op zoek naar andere financiering - vrt.be",
+      "title_en": "Holiday home Fabiola in Maasmechelen will receive a subsidy of 518,000 euros this year, but will then have to look for other financing - vrt.be",
+      "published": "Tue, 31 Mar 2026 14:20:01 GMT",
+      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOSTFsSFRCNldNY2ZiX0l5TmZDd3hkd3Y0QVNmUmdnN2tDVFhNVFBrWkhBdjVOMWdkN05IRkZRd2FaVTNHdzdBbG1acVozUkgyMGowQlpRQ1ozMHdZN2wwRXliRzdUVll5RURpRmFuTFIwM2p2eHVUc3BhQlpxd3pKR1E3ZDdrSWNkd0YyaE12YkwyemM0dnJiV1FmN2prNF9HTXhta1M4b3I?oc=5",
+      "hl": "nl",
+      "gl": "BE"
+    },
+    {
       "search_name": "Local Town Maasmechelen French (fallback)",
-      "title": "Poursuivi par la justice, Radja Nainggolan brise le silence : \"Je voyais les choses différemment\" - Walfoot.be",
-      "title_en": "Pursued by justice, Radja Nainggolan breaks the silence: “I saw things differently” - Walfoot.be",
-      "published": "Tue, 31 Mar 2026 07:00:00 GMT",
-      "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNbDMwclFlTEdSMl95SGR6dkdKT09mS0FYU0FJcmVMWV9qTG9JV21qQkpyT2hmcFMtOVg1R3F5V01RYTV0ek11RkxLWThWY2N6aGcwLU9xUVUySTBHejQ4WDZyME1YX0VMRGRqTGFZdnVJbFNlRnI3N2liNnJwbmxydmZTd3BnSnNodlFkWEd6MzFSaHhCZFNHc1BPeXNiT2FIOS1DVEFQUWxFdzJCaDRvOVhLMUdqZjFnZTRfT3JmVGdkV0x1ZVZxRDNnV0_SAdIBQVVfeXFMTWtHVG1LZV9XREhjVlpBWkpwdktxLW1jRjRheVVLTWVWY3d5N290MThQS21fWkRYaTF5TWFwUkxFaXBfRFB6eDdYYUQ4a2RGbVp2RUp2NkdaaDRJcG1YSjNGNFRxVUVEOVFwcWpxdU9VR2VsYW13RGpjdjY2UEtRNk4ydXd4LVhXQjYtcVVyVHRkUC12MDIzZ1hobXQ5UGxMdzlNVmNDeEh0ekhjTktUWm1fbjAwQlBWYUkwaUREbXAxNE51SWx4VlNPOVN5OHBqbW53?oc=5",
+      "title": "Challenger Pro League - Amende pour le Patro Eisden après échauffourée et menaces envers les arbitres - DHnet",
+      "title_en": "Challenger Pro League - Fine for Patro Eisden after scuffle and threats towards referees - DHnet",
+      "published": "Tue, 31 Mar 2026 17:17:00 GMT",
+      "link": "https://news.google.com/rss/articles/CBMiigJBVV95cUxNdTVrdGxhaU1ESGxiQ2pPVGdGNnJ2UGNXV21zdVhUNnR5YVdzYWZvMGF5RmRUWU8zV2FUYU9qLWdZVjRHcG1QdDY4NTF3b2FzLU5MVlFKX3dxeUw0Q2VSVDdpRE85QVloaWNNNmZKcm5naXVhU2VYekp3RjQyR2Z5YWhMTFZMNV9mZlM2SU9kMlZiMExybldIa2VWNTRYcko1WVpMazZwbFJvNHBqX3JzMURURmhibl9ZUlg3RjVoYlQzMDlUVWkxQ3M1d1ZteUxFcFg2SDZOaFFWUTBrbzBtNnpkWHhvQjlicGFWeE50dzcwWFNBa1JYQWFVVF82bmZ3ZDZJdVNXM3VwUQ?oc=5",
       "hl": "fr",
       "gl": "BE"
     },
     {
       "search_name": "Local Town Maasmechelen French (fallback)",
-      "title": "Highlights: Herentals 2-5 RSCA Futsal (F. League) - Anderlecht",
-      "title_en": "Highlights: Herentals 2-5 RSCA Futsal (F. League) - Anderlecht",
-      "published": "Tue, 31 Mar 2026 12:48:17 GMT",
-      "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE84LUgxdEJ6M0k1SVlkR3dnVVlMNTdWSTNXVzlYeHRka2o3ZURKcXdwM2ltZXM5MUFjZWsySFpWeTZfVGQzTTFCbnpfMU5TX0tGT3BGRHZjX1JCbEFXZVVYR3hKNjI1SHdaampCdXZKaGxTUGY3Y2dwLXlZMlhUUQ?oc=5",
+      "title": "« Un rythme différent » : le coureur belge Jasper De Buyst a subi une ablation cardiaque - Le Soir",
+      "title_en": "“A different rhythm”: Belgian runner Jasper De Buyst underwent cardiac ablation - Le Soir",
+      "published": "Tue, 31 Mar 2026 20:49:13 GMT",
+      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNYS1uYmJ4aFpOYkdfOUpFVTFUNTk2emtHUENPcmhIQkJRYTdtdDE4S1FZbDBNZTVLaDVCUm9pZURGaGxrM2RxamFEUkRvUVk4TGprRmRQTk9ISjVlNG9MN0p6Tk9KY2RmWmxCSnVvN2ZmcGpPaWJGZy04SmozSjlZcTkyTG1mSmJnbjJIenp0cW81akN1aHNIdVA4bWJVaUh5NXpDc291VU9rRVYxU051dFJvNi1WTloycnZ2Z0tla2xIdmx1d3g0?oc=5",
       "hl": "fr",
       "gl": "BE"
     },
     {
       "search_name": "Local Town Maasmechelen French (fallback)",
-      "title": "Vynova demande une prolongation de la protection contre ses créanciers - DHnet",
-      "title_en": "Vynova requests extension of protection from creditors - DHnet",
-      "published": "Tue, 31 Mar 2026 11:54:00 GMT",
-      "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPcHRIVUhBNjlGZlV5QUF2aVpnbUZBVEM5MkszeWRHS0M1MnJCeGRmbjFqYU5HeXNkcHBMY042dXdOSlRwWVpTMkJkNkhvRERLNzhELUZfYTNFTnJ3N3h4UHZqakdJSWg2WThHM3I5SlZQWUQ1TFU5UFRTS3NfQlhMSXh2SXhhSjkzR3FERW1sUDJHdXVCclBGUExYVktYSU1fTHJKdVE2Mml2UlktdFEyYVJOVEtsMi1IRW5JTEtxZjFGUUlSSzU1QUVxRTRYWDJKWUQwMWZYLTFCTzI3MEZrYmxIdw?oc=5",
+      "title": "Avec un Parti socialiste hésitant, la primaire de la gauche pour 2027 a du plomb dans l’aile - France 24",
+      "title_en": "With a hesitant Socialist Party, the left's primary for 2027 is in trouble - France 24",
+      "published": "Wed, 01 Apr 2026 05:11:44 GMT",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQN3g5N01YQVhhdHhuT1c4OXdaUGpOQkJFbEphRDJiY25mTWp4Sy03aEp5UkdfNXhZa0lFOENuYkdvN0EzaWJ5WEtWOU0xOFNORjVuLUxJbEw4enA5Q0pyX1dQOHBoLUhlMGRydlRyLTBxU0FxU0ZVS3pma00xbUJJVGEtUFk1MDYzeFpHNFFnbkVwNnVPRGtlVmNZSlh2dXc5ZURxUHlKSmFNakJkX3RWNk5LVmhNb2M?oc=5",
       "hl": "fr",
       "gl": "BE"
+    },
+    {
+      "search_name": "Local Town Maasmechelen French (fallback)",
+      "title": "Le savoir-faire de futurs chefs belges en démonstration: l'IPES de Wavre remporte (une nouvelle fois) le Trophée Romeyer - L'Avenir",
+      "title_en": "The know-how of future Belgian chefs on display: IPES de Wavre wins (once again) the Romeyer Trophy - L'Avenir",
+      "published": "Tue, 31 Mar 2026 16:38:00 GMT",
+      "link": "https://news.google.com/rss/articles/CBMiqAJBVV95cUxOdEJidTkwX1YwOXhXY0RwYVR4bVNMc3Q1allpOWEzd2VBRkFVMXg0UWFJODVjbGpIU1dwWXNvcFc1WDNnTDhFUW9GeUg2blljUkFPZXhuVVh0dlh0dGlRemFhVFhVM3ZQVnJXV0tETDNxT1BjWkNjenMtaXlFOGpkNWNSVk11QlZEYkdCS2NkZmNpM2pPRFFNNTNhZEpuMG1jLUIwZmFKVi1BVHdMdElPSW5uMER1S1B3LUxMV240ZTFsMVVOelJrbmlTRTM5YmxTMVZveUlSemtZZkZOamxpa191WXVJZmtHZXpGeEJtYjhKeVV3cllfelc0Q1hXU1VWVi0wMjhwcnhiNGp2dXFfeTRubGVVMFJoSDJ1TTV5RHVwZ3MxZ0k1QQ?oc=5",
+      "hl": "fr",
+      "gl": "BE"
+    },
+    {
+      "search_name": "Local Town Maasmechelen French (fallback)",
+      "title": "Mère et fils libérés sous conditions après avoir été arrêtés pour menace d'attentat - MSN",
+      "title_en": "Mother and son released on conditions after being arrested for threatening to attack - MSN",
+      "published": "Tue, 31 Mar 2026 14:11:26 GMT",
+      "link": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxOVHpqeV8wMDNnT1BOSl8wbk5mb05HcG43c25fQ2I1UUdGSnlMU09PQ3VjaVRTcDg3TzUwVGl1cnI5RTUwaWZOU3JlMk9HSXA0MWV3aE4yVW52MS1MdVVrRmZNRzcxUENhUTFoaGp0TENvRVItekJwQnJBeHNUQXA3eHdjNXBjd2xTQzVFMzdVOVlzUHNMa0tIYUVGLURWRUx4ODYzamYtZFRTU3dZZEpUd29UcE1CaEdWeEVSdU5Mei1YTGpPYmM2YjQ0NlprVGhtdktlMXFZUmhDRXprOExUVDVKbTdQMUxXTEh5Q3VnRlV5aWZZaHNOdHRMbk1SMHFGYjlCQ19xamM?oc=5",
+      "hl": "fr",
+      "gl": "BE"
+    },
+    {
+      "search_name": "Local Town Maasmechelen English (fallback)",
+      "title": "The best of both worlds at KPMG Accountancy Hasselt - KPMG",
+      "title_en": "The best of both worlds at KPMG Accountancy Hasselt - KPMG",
+      "published": "Tue, 31 Mar 2026 16:45:27 GMT",
+      "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxNWXJIVlVVYmRwQThoRWlMXzQ4d2RBTjBnWTRScWJlOVRVc3l3VTFFaDlxWGJLN3lIZVhIZ3RqZGNCSEFQNWJLM3JBeWMzSHBWVXg2am53LVJIRVF0OXpzMjZmYnd1ZWN6TU41U25VbTNRSnF0Q2VKTlM1dkRRT2I5dEt5WjNVal9obzlMNlY2eU1BMnhieHpKRHNWODZCdlBHQ0pZNF9fLW5xQ25ZLUotY2JjRlViZlQtaXhYMXAwYW5pZk42WVk4bXZzZVdmQWhQRW1EdTVJUW1nVzF6VlE?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "Local Town Maasmechelen English (fallback)",
+      "title": "Olaf Has Fallen - Vulture",
+      "title_en": "Olaf Has Fallen - Vulture",
+      "published": "Tue, 31 Mar 2026 16:42:36 GMT",
+      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1ER2h2YWRQRFhxeUdrY0VyV0VZd2UyQjZfRWRjUmpBaC00QXpvNk5CcGlTUFhOSkYyc3A3VlRDN3N5cVYwUlBmMDJqQ0ZUb012d2kzY0tuZVNoVFBvWEFaREFFMXlBSlJyY3Flb0VUbjlfRmJSUF85a3JHaDU?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
     },
     {
       "search_name": "Local Town Maasmechelen English (fallback)",
@@ -243,6 +666,15 @@
       "title_en": "Disney’s AI Olaf Animatronic ‘Just Died’ on Disneyland Paris Debut - mandatory.com",
       "published": "Tue, 31 Mar 2026 11:06:18 GMT",
       "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQRkIxU0l5ZE03Z1ZlX08ta2xiZzA1WWx3ZmtrWEJmaWJsODBURzhGLV80dE44NlRJcDFNQzViYzZpTXlIUFYwRWZKejROa09IUzhkNWF4dVJmVmRSMjNfVmdkYTNtZjFKVEZFblBpOVc5TGtORzB5RjQ0ZHdMdEF5bGxsZ2paVHFh0gGOAUFVX3lxTE5zMTFkdWRpS2JsdGE1aDZsRXFncElfN2FHLWF4ZkEzVWFJRGhXOV9RQkEyRzMxZU5iMmxiZDUyZUpVNkRqOXhXZ3c5TTNCTHpsajZpUlRsN1l0N0pic0Vma0E0cWVUMWpvc3oyTDltVFo3VDVJUEhSRTBGRGhhdkVLbTRwNXpLZG9hYktQVFE?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "Village Wertheim (fallback)",
+      "title": "FIU researchers develop adapted swim lessons that improve water safety skills for autistic children - EurekAlert!",
+      "title_en": "FIU researchers develop adapted swim lessons that improve water safety skills for autistic children - EurekAlert!",
+      "published": "Tue, 31 Mar 2026 21:07:12 GMT",
+      "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1CYjVZVHRlLVg3RGxadS05OHp0emJoUU1zTWNJS3VIRXhxRW1SMmI4TVBKRnhKdXgxMEV0TlEzaFU3ZS1XM1pSUXp6NlBPbkJ1NE52VjAxOW1oUnVF?oc=5",
       "hl": "en-GB",
       "gl": "GB"
     },
@@ -256,20 +688,29 @@
       "gl": "GB"
     },
     {
+      "search_name": "Village Wertheim (fallback)",
+      "title": "New FIU discovery could slow Parkinson’s disease and reduce life-threatening lung injury - EurekAlert!",
+      "title_en": "New FIU discovery could slow Parkinson’s disease and reduce life-threatening lung injury - EurekAlert!",
+      "published": "Tue, 31 Mar 2026 10:08:00 GMT",
+      "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1lczZ4c3I2bkdkaVRqMTJXVEZIRWVaRXg2Q1BqVTZtTWVkenFSaU5sQmFEeGUxUjRvby1OcldqR0RuZTZ6S21LWjNuOEZrUndtZ1hWSURfR2xBNnV4?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
       "search_name": "Local Town Ingolstadt German",
       "title": "Polizisten in unüblicher Rolle – Nächtlicher Vorfall an einer Bushaltestelle beschäftigt Ermittler - Augsburger Allgemeine",
       "title_en": "Police officers in an unusual role – a night-time incident at a bus stop concerns investigators - Augsburger Allgemeine",
-      "published": "Tue, 31 Mar 2026 11:37:48 GMT",
-      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQUUY5aWg1MHhmS0VfTTlFZDAtbWRLZ3Rmbm5abmtNOTRIbUN1RUZNajFHY25mckJrckt2dUFzWlJRUEhlRlpGdXVEWERjT0h3TUZyaFpDRVJhcjk4eVhtZFo1bV9rX0EzNm1JY001OE1zUHoyeVA1TmVYSS1IUlRBeXgzdkVoWlJJaTR2d3hxRUVCMHZ0eC1kWlVwVWVZRmNlRlNVamU4eTRkNGp0a3d4SmlJWmhPSE9BTEE?oc=5",
+      "published": "Wed, 01 Apr 2026 04:51:51 GMT",
+      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNRGdTRVRQUTlnblk1TWxXUVh5MTZwcThrYVpzN3haZE9oQ0p1clE0UzI2NUEwNGNvRUItWlNzQWx5Y0dYY1E4VDVkWWtCVUxqUjc2QXJSaF9vTFBVTV9HbnAzYTFKRml6M1FyMW1paHg1M29sUHdRRlZWeDFOWHk2YWFVZ1dodjJQLVh2M1BLSXNiUUk5eXJNNjAybmU3eFFJcHhIVnd0U2c3Tm1IWVY2bE5mSlJpWFJPeFh5ck1Ca3loQQ?oc=5",
       "hl": "de",
       "gl": "DE"
     },
     {
       "search_name": "Local Town Ingolstadt German",
-      "title": "Fahrbahnsanierung in Ingolstadt: Verkehrsbehinderungen ab April - regionalreporter.de",
-      "title_en": "Road renovation in Ingolstadt: traffic disruptions from April - regionalreporter.de",
-      "published": "Tue, 31 Mar 2026 10:39:46 GMT",
-      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPVlNhZWdGTU5jWnlDSGdlVnVfYnJKTWFBVHc3WW5Tc1dJZm53NzFfQ2RaVmFiMW81RWlUcGpRTEExd2Q4d3JmYUFPNkI0X1pBeGkyVEJ2eEtjUGU4M1E3QlI3MVJ5dnA3Ql9QS2I3Y2ZuRWpFOU9ST2pydzRWM1BqMFpnX1hLZUF4bVRmclBSVnRWdG55Rm5wSmFYTW8wZnUxRUo0UWVhei11XzM1S010X1FRemVHLTg?oc=5",
+      "title": "Zivile Polizisten wollen Vandalismusserie in Ingolstadt klären - HITRADIO RT1",
+      "title_en": "Civilian police want to clarify the series of vandalism in Ingolstadt - HITRADIO RT1",
+      "published": "Tue, 31 Mar 2026 12:26:00 GMT",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNejZRN0p5M0pBOF9pc3BjMkdSY2RRQVZjZlpPR1JyVjYwcXAyNTJlNDFPTS1jUGR4bTI0WFFqdFc2QUJiYUlaRlBibjFIVjhLQS1yTEdCamVQbTR4X1R4U096dVBGcXctalY2YmJuTlI2VWVVM1lONmV4VVBZblFOQXZ1X2lycGdMUGsxbFJxbXBHUkNmT2NYbEM4SQ?oc=5",
       "hl": "de",
       "gl": "DE"
     },
@@ -279,6 +720,15 @@
       "title_en": "Attentive neighbor disrupts night-time break-in at bowling center: police call for witnesses - Augsburger Allgemeine",
       "published": "Tue, 31 Mar 2026 10:06:57 GMT",
       "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNNEpFbUxjWDF0dVR2NGhTdnpQS290c3Y0a01kR3RZZ1JvWVNONWVmNE1hejdiSHNVa1Q2ajM0UjdwWENZcGZ1WU1WRi1tVEo2TTdab2ZyYmVycXJTVHVMTzhmVHBmM0ExN0FScmktZlZLMHRWaklxdEJ3bDRZTGxEeVBPQWRxVGxYUTU3ZGFOZERBT1h0aVExeThQRTlOdnRUT2ljelVzeG5qUHMtaVdjcjlEWlR5WWg3?oc=5",
+      "hl": "de",
+      "gl": "DE"
+    },
+    {
+      "search_name": "Local Town Ingolstadt German",
+      "title": "Ingolstadt: Baggerfahrer beschädigt Leitung: Explosionsgefahr an Baustelle - Augsburger Allgemeine",
+      "title_en": "Ingolstadt: Excavator driver damages cable: Danger of explosion at construction site - Augsburger Allgemeine",
+      "published": "Tue, 31 Mar 2026 15:15:23 GMT",
+      "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxObHlrME5mZHEtN1lqdm1sd21zVWFqZ01aZkMtbFktMXFJaW5UQlE3NWlldktkbWVFTnFYd1RpQnVTejV5WlVOVTFHVEFienBYT0p4UGxFTWdHWnozSjFVQXVNZWxub1Z6WlNyeTItaWRKekJteEpBbWU1TG9ITVhaTTdPbUxqZTV1WERHSUZsQ1lNQXhPNVlYMXBNdzdPcVB3Z0VzdWFNSXU4bjlCX1VRUHBhclVLTjVVYnpIdUZ6WTlheGs?oc=5",
       "hl": "de",
       "gl": "DE"
     },
@@ -301,11 +751,74 @@
       "gl": "DE"
     },
     {
+      "search_name": "Village Las Rozas La Roca (fallback)",
+      "title": "🥐 From Cruyff to Zidane via Las Rozas, the 5️⃣ stories of the day - OneFootball",
+      "title_en": "🥐 From Cruyff to Zidane via Las Rozas, the 5️⃣ stories of the day - OneFootball",
+      "published": "Tue, 31 Mar 2026 17:14:31 GMT",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOS2RJemV0S0NzMG9hY1ZycWttYUY2eHZPTk9LalQyMWE3Z1dqTnJ4bkJNWjNySUVfU1piQzBEVzNBbDg5aFV1NGJaNlhJMlJtMGNNRHZYWHcyX0dxcG4teXZlOTUwUWxxN3g1a21Yam0yQ2plWlpTeEJ5NU5oUDAzNXVzc0pMQ3Nqam53NlJoNl96SWxDT0h0QmJrX1BMVU1wS19z?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
       "search_name": "High Level City UK Ireland",
-      "title": "2026 film and high-end TV productions shooting in the UK and Ireland: latest updates - screendaily.com",
-      "title_en": "2026 film and high-end TV productions shooting in the UK and Ireland: latest updates - screendaily.com",
-      "published": "Tue, 31 Mar 2026 07:46:52 GMT",
+      "title": "2026 film and high-end TV productions shooting in the UK and Ireland: latest updates - Screen Daily",
+      "title_en": "2026 film and high-end TV productions shooting in the UK and Ireland: latest updates - Screen Daily",
+      "published": "Tue, 31 Mar 2026 19:45:53 GMT",
       "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQZmNMRTBhWHdsbFo0WHUtenBKUWJ0Z09LVVBuTjVUb1R6dnYyV0UwSEluX01NUXJuVzhuVlZCTUlHanpOQ0hpT1p4N2xGSnIyaEg3eGRKQ3BZVlJWT0hPREU4dmd2azc2VGVhQVl2emFKVmpENnNrT3BJNGVDY2xlNDVSUV95dzdPcHFtOHhqcG9WbUdYYU9odjhUTHp2b0dzMTZ6Yzh4U1VGNVVfeVl5RmQ1eDJpLU91MHlMUS1kZlZNNng3LTE1VHNIb1o?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "High Level City UK Ireland",
+      "title": "Suspected WW2 bomb found in River Thames as police race to town - Oxford Mail",
+      "title_en": "Suspected WW2 bomb found in River Thames as police race to town - Oxford Mail",
+      "published": "Tue, 31 Mar 2026 19:40:00 GMT",
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNMkJ3ckdjeU5wenJ0MG5Cd2pQZWJSS2tkY0huSVgxcEdXTmVWQmx2ZWczR2RUZEp3dDIyMHVPbW54Y3VHSlJnNXh1V05lbWN2clJGaWZPVmVvN3E2X0RObW5LOUNHRUhMUGdRQklJcDdUZGpxLTJ2WmlBMnM0UTZkcDhyXzJMd3VnRmc5bVZEbG55ZlBQ?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "High Level City UK Ireland",
+      "title": "Restaurant shut by police as forensics investigate shooting - London Now",
+      "title_en": "Restaurant shut by police as forensics investigate shooting - London Now",
+      "published": "Wed, 01 Apr 2026 06:21:16 GMT",
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQU2w5aXFUT0Q1b3IxbzREcWFQdTVWU0hjRTZrV0pGOFl6OC1CRk8wcXNoMjZRbkdXT2hiYXJZMERsZTRLMklXdHQtWmtZNWpPc3JxMTYySjZsRHU5ajFUeHBpWVZUMzRuMVloY3A5ZEZFRmo1T1kzN3BqcWtSaHIxa0ZMay1MX2Q3WG40Rm9kcw?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "High Level City UK Ireland",
+      "title": "Boy, 16, fighting for his life after being stabbed in the head in south London - London Evening Standard",
+      "title_en": "Boy, 16, fighting for his life after being stabbed in the head in south London - London Evening Standard",
+      "published": "Tue, 31 Mar 2026 10:01:46 GMT",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPSEFfUDkta08wQ0hxdXpPaWhONTNZUld6QW5KRWF2TkpwQzgyOW9TejV4VHhfOGZPX3NKWFA5Q3hWZFVBR1d4X0Nlem1JYV8wbkJXOGZuMjNzbWpVd2RGQUNUbGtja1RKelBwWVJuWmR2V1prOHlUT1k4ZHNmQWZrMTFkRTlmZnh2Qmx6aEJBUHZwa05OSnF0OUY1a19TR01adkE?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "High Level City UK Ireland",
+      "title": "Accused in downtown stabbing was jailed for 2015 attack on stranger - London Free Press",
+      "title_en": "Accused in downtown stabbing was jailed for 2015 attack on stranger - London Free Press",
+      "published": "Tue, 31 Mar 2026 18:21:38 GMT",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOLUQ2ajBmSTg4SEhYdi1lM212aG92S29ZeHFvdm03Z0p3SkV3YUtJVVNDX0JfSVdJNDFlNERLUVVKWUdwM3ZJMXlJTkdxM1JTSTdzcnFVc1dsd2ZhbjFMRy1ETVQ0XzV4QWtGazZHM19kcFdKcWZzaW00NnFudjZSdXR6Z3dycmdiR1NVYURIR1ROTGJqbm1GYWNnUXNkY19JcFJfUk13?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "High Level City UK Ireland",
+      "title": "‘Too Much's Meg Stalter Would \"Literally Start Crying\" While Shooting Fergie's ‘London Bridge' Remix Video - MSN",
+      "title_en": "‘Too Much's Meg Stalter Would \"Literally Start Crying\" While Shooting Fergie's ‘London Bridge' Remix Video - MSN",
+      "published": "Wed, 01 Apr 2026 04:24:30 GMT",
+      "link": "https://news.google.com/rss/articles/CBMi0ANBVV95cUxPNjlIMmNYQ09JUDJ3TFctY3U2Y3BTNUZSYmYzM05vY1d5bGlmUmRQODdOY2piSllydVFlVUNYX1BLOWkzVTBEOTJZZ2I0U1JnaUFJdnNXNWtGWDRZdDcydGV2Wk9YaWRrNjh6NHhaM2JNajVvUWZscjM3bTRTdDlIY1c4S2V0VW94dVhHaV9TSERBZ01aN0VZRXVoenE1cUU4enh0UlBjUlZFLVlTaGllVEkzazBIdDFfTU55dENyYnkxUWdVSVBvd1pma2VnT2ZtUTNOQnFtUWpiaFVwYS0wZGg3SGxLU0Nlb2pSRTZ2NThLNWNzTEo0N1BkZnVuTEhndjE5ckZ3Wm5YUVp2RG82R0tMZGZvLVY0UHJGUlRCY1BpQktUOXhhR3ZjSWlKYm9YTmZIaGlUaUpvdmZRdXpwcDkzc2Jjek1ueTBKeVpQcENiWXpyVk5YZVl4N3B5NnVPMFk4bEFBbkM4UHRmdTRBRHVPTUlFTHo4cHhEcEZyaFNLSTNVNDZFRlVVWnRwTnpsS0FOQnNUTWNLYnd2NnMwRGg0bDI5aF8yNUNQNUVuOHdsU1hiaEI1Ny1hMkVvR3R3WnF1d3g3NV9jTDhHbGZOWQ?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "High Level City UK Ireland",
+      "title": "Man facing attempted murder charge for 'stabbing' appears at court - Oxford Mail",
+      "title_en": "Man facing attempted murder charge for 'stabbing' appears at court - Oxford Mail",
+      "published": "Tue, 31 Mar 2026 16:00:00 GMT",
+      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOMW1falZ4T0JwdkEyc0Vxdm5GVFg5WEFiWFF2a3VucEJRdzZHWS1US3dLRmhnRzVmQV9ycGtWdFhXZ3o5bUVxeW0xZTI5OE1GZW92aVBOVURBWkxPNTdoU01zc3hOWHRqald2UkZtVlhpOUlWT3cyUVVJM2FNTjNQSm0yYlRUby1qcWx4aVVvNDZrX3d4WDZiLVFIN2VzeTA?oc=5",
       "hl": "en-GB",
       "gl": "GB"
     },
@@ -314,7 +827,25 @@
       "title": "Police shut road after teen boy stabbed in thigh - London Now",
       "title_en": "Police shut road after teen boy stabbed in thigh - London Now",
       "published": "Tue, 31 Mar 2026 12:04:38 GMT",
-      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPdFMxZGtUTVR4bnAzSl8taXVadkdmZGpxWVVZM3NnWkZPRzd1MUVmMEZ3dEtTdEhvME9reVVTWTMyaC1Wa2lMRk94RjZUUjdERXZmTUU1TVliWE5oaU91WGJ0YjNKSVFFOVBHbGlnWTNndWowRk5hUnV6Ulo2Z2NPRjJlZ201S3lQeTFZT1VsS1M0am5fc2N3WHkxUm0zOTAz?oc=5",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxONWxxdHBmczRpcGd4N0cxdjdKRlpXNXdnSE9NdGJNVlQ3TmNhT2MtQjhYNkdScEFqSnY3TGwxVGF3SnljY3laQUt5QnhaTlBTX19vNWJWTTVrbFF1RkRCY2NWZlFPR09QRzE5U3E2OTFRUm8zaF9Id21BeVJrLWUzTHJ0Z3lWWWNqT2N2WjF2bjJzUUxQYi1paURCRnc5OGxFRUl6S0l5cHJPdw?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "High Level City UK Ireland",
+      "title": "Family's tribute to ‘funny' and 'honest' son shot dead while sitting in car - London Now",
+      "title_en": "Family's tribute to ‘funny' and 'honest' son shot dead while sitting in car - London Now",
+      "published": "Tue, 31 Mar 2026 16:30:28 GMT",
+      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNNVlWd1pXVUF2NHd6Mkp3VXJnX043RE5waC00eU5nd2IwZ19LQXMxR3V5dWk0T1ZId2pVMnpXSGlEbHFGLWpRM05YeWFfX2NYMDNEblV4LTJ6NHJiUEh3X01VNndCNTItWHRnZnFfS2lPWkVidnRVMkNWZmZxRTVNVjJIVjZXeUt5THZVNGZKSmdtNlNyMU1QaHQtcWh0dw?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
+    },
+    {
+      "search_name": "High Level City UK Ireland",
+      "title": "Man stabbed to death near Westminster Abbey pictured for the first time - London Now",
+      "title_en": "Man stabbed to death near Westminster Abbey pictured for the first time - London Now",
+      "published": "Tue, 31 Mar 2026 07:15:06 GMT",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPWG9NSjVCRi04S29SbUZKY2kwMm5vR0RsczVSa0F3M1QzN2FkM2hIUFZmNHVGWXBEVG0tczN1c2RFbHBMNEVRbFN1NVRvWHJjX3JkQWd1SGRJZnhaM1otWjlVQnY3SXFyZWRVdWRkQzRvYVg0dkttTFh2aDVlSFRFNG1pdEo1MjNGSWNuZ2ZVdXZYZTNNbzlsaHRleDJVNFo5Nmc?oc=5",
       "hl": "en-GB",
       "gl": "GB"
     },
@@ -329,19 +860,19 @@
     },
     {
       "search_name": "High Level City UK Ireland",
-      "title": "‘Too Much's Meg Stalter Would \"Literally Start Crying\" While Shooting Fergie's ‘London Bridge' Remix Video - MSN",
-      "title_en": "‘Too Much's Meg Stalter Would \"Literally Start Crying\" While Shooting Fergie's ‘London Bridge' Remix Video - MSN",
-      "published": "Tue, 31 Mar 2026 08:28:02 GMT",
-      "link": "https://news.google.com/rss/articles/CBMi0gNBVV95cUxNejVtcGQ0UF9xMk1xWjJoQ0hzOW1MYTg2Q2JwQjFFdFV4QmlNTjZOamFGQlFORk5kNTQ5Wk5ySHVmOE4tS1N6XzZsdW9YWnR2cnVXQlRfLWlRQ1RSaGM3UjhtQTE4QkJISzFSMjNTTE1ZTzk2REVmajFFNTJGQUFVUjI2c3pKaHNXdGU3aHc3RUktcEpNUTVEOXNvaFBNTjlJZHR6RXh0SXFQNHJzZVBPMFVwb093ZXZGVURWTzVxcVkyR2t1enJib0RWRkEzaElvb0FMU1pYNUpEOG43YUxWWC1CS3MtaUVSbVpTLVNyWU1MU3BpMkhPWDJxZWNvalQ3UW02MkRoWjRxZ1lMVy1HZzhFLURHLU9oLVJzN3JDbkNLZy1sMjd5cTJOQkJRX1BwdjNoelhvQ01tZE5sSWl5dW1NTG4xREE4WGhRcmZ6M1Fya242Y0lMX1pIN3BqRmN6NUxRbnA5RDNNQ3h4ZTlZMDNtcUp5LWpGMzV5WHRBOWNzZUVWQmpsUmtqM3BIM0g2YUR0WG1PRTRENENONVBYR3RKREJFQ25XS3Z3WXhHQm0yQzJLSl9HRlJGcTNrbjlpTW1zU3JCekstbWFoeWZwRHVB?oc=5",
+      "title": "London man charged following late‑night downtown stabbing - 106.9 The X",
+      "title_en": "London man charged following late‑night downtown stabbing - 106.9 The X",
+      "published": "Tue, 31 Mar 2026 22:22:57 GMT",
+      "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxONnVZeEZMYVJKaU0tMWc4NTBOclRUTGFTSWdsRUh4REViZVdlOV8wbW1IRzRDOUlyY1pmZWpXbFo2cklnRmYyNzNFUWxjWVVTUGFLU1FXNm5QcjN1Q0o2LUNORW55SnRXRHFDbHh6YW41aEE0UUVjV3JPVzcxaElpMzhtRXduUQ?oc=5",
       "hl": "en-GB",
       "gl": "GB"
     },
     {
       "search_name": "High Level City UK Ireland",
-      "title": "Man stabbed to death near Westminster Abbey pictured for the first time - London Now",
-      "title_en": "Man stabbed to death near Westminster Abbey pictured for the first time - London Now",
-      "published": "Tue, 31 Mar 2026 07:15:06 GMT",
-      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPWG9NSjVCRi04S29SbUZKY2kwMm5vR0RsczVSa0F3M1QzN2FkM2hIUFZmNHVGWXBEVG0tczN1c2RFbHBMNEVRbFN1NVRvWHJjX3JkQWd1SGRJZnhaM1otWjlVQnY3SXFyZWRVdWRkQzRvYVg0dkttTFh2aDVlSFRFNG1pdEo1MjNGSWNuZ2ZVdXZYZTNNbzlsaHRleDJVNFo5Nmc?oc=5",
+      "title": "Man (23) charged with stabbing a garda in Dublin city centre - MSN",
+      "title_en": "Man (23) charged with stabbing a garda in Dublin city centre - MSN",
+      "published": "Tue, 31 Mar 2026 10:20:40 GMT",
+      "link": "https://news.google.com/rss/articles/CBMihANBVV95cUxPWkc4NVVFbnZXYWM4SGpRM1d5RGp0UElMZUR0allsWFVpcnpSTjdmMnFna0Y0U1k3bmR5TzBIcDNuM1Y2Tjh3WFFiWDBTY1Y3Zy1NbHBJTnlzZTkwWmltQ2Q4ZUZ4blhuNXlTMFF5WTBZblBRbFZJR1BEakd1V3dpUEk1amlIMll0MFUtYUFsSVZfdUFYOGhUVXZrMElpcm1EU0RwOExSclVvaEZSQVFqX1dqNmVka0dhQjE1NzlqMXFfWWdiRy1hRjM1c2FiOEdvazdra2RpcHBBdU85ZTRsRXN5OXp6UVFHOTRDY0hLY2tzWmk2MzBkZS01bVhXVzBxRkV6b0R6M2swSHE0UnJPNVNPOXEtNjNtY2FLamFTWjdvZUg1bU5UOUw1NE5xM0k3UUxLaVZBbGhmaVludjg1Q1lqM290YTNCb1ZCQ3hmcTBGOXZZTWdYb0kzVG5QTWtiVnQ2TUprcUVIZ01URTU4anU4V3c2aVdxQnpXc005cjc5S0hN?oc=5",
       "hl": "en-GB",
       "gl": "GB"
     },
@@ -356,10 +887,64 @@
     },
     {
       "search_name": "High Level City Italy Italian",
+      "title": "Musei di Brera chiusi a Pasquetta e Primo Maggio per protesta. Cosa c’entra la lezione di fitness dell’influencer Isaac Boots tra i libri antichi - Il Giorno",
+      "title_en": "Brera museums closed on Easter Monday and May 1st in protest. What influencer Isaac Boots' fitness class has to do with ancient books - Il Giorno",
+      "published": "Tue, 31 Mar 2026 13:28:39 GMT",
+      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNb2xjbzlvUHVKa1UzRS1KcXhNcmxpNXpVVFhOeURFbjdLUzV3SVhfdnA2dXdxcFV3dmprZjJ1RXNoa2ZyNnJjZU81SmNtcEo4NnJScDc4d185TFBKZVFuX0l6dUhRd0dVTGJEZlRLdXMxX1hLM3hQR0VLYUtLSEVkWXVYZmtVTGo5SlR1VGNqYURlUmc?oc=5",
+      "hl": "it",
+      "gl": "IT"
+    },
+    {
+      "search_name": "High Level City Italy Italian",
+      "title": "Olimpiadi Paralimpiadi Milano Cortina, Fontana: siano un unico evento - Lombardia Notizie Online",
+      "title_en": "Olympic Paralympics Milan Cortina, Fontana: they are a single event - Lombardia Notizie Online",
+      "published": "Tue, 31 Mar 2026 14:22:25 GMT",
+      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5XaXIyXzhSdUFYRXY1dWNGTXgtSnhSdlhnR0VpOWpOcFBjZmZkTXNMYlhRNV9qcVF2N3dJdEFIQzRIWnh4LUJ6UnRHd2k3ZmtvNjRHNkNJSEEwcndrTllmQWdoaWpIZFdRU2EzNUVNeDAxcTI2NHg5OWhFbUlZaDA?oc=5",
+      "hl": "it",
+      "gl": "IT"
+    },
+    {
+      "search_name": "High Level City Italy Italian",
+      "title": "Lavoratori di Grande Brera in sciopero il 6 aprile e il primo maggio - RaiNews",
+      "title_en": "Grande Brera workers on strike on April 6th and May 1st - RaiNews",
+      "published": "Tue, 31 Mar 2026 16:58:45 GMT",
+      "link": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxOX1VCV1ZhWkg1YnpHNWJZRGhlcy1aaHdMbjVXVUVQVnVqRHpxbHZvM2lScjlOSkMtUU42ODB6NHRUUEx0ZnptMTZmaGJJdVFDOHB4UHJ2UnQ2Z2lxcUJjdk84dUsxbHFVejd3UkFoQ1lRbDhfLXkzbHZoc3dNQktvME80LWlTek5yb25lTHRBMUg1aVpZd2FCWjNxd2RGSTFodVRnbDg1MlRBX1luQmhjY09IYlUtNzJ1LUpXQ1U3MlB3SVpKQ0QyZ3ppampHUE1FTExxbmdTQ3pBbHlLN3J0TVNCalpGNnBLekdTNVJn0gHzAUFVX3lxTE4tVFBoM3VEMWZBTENEYXJpbGFWY1FrSWljdzJEVFhBQnZ6eHl4bTlOckFQN0h1SWJ3RTR2dVRVdktwUmEzdm5BekFmWExSU2dvTU94a1Niai1CM2tzZkIzdVBSYmR2YTJuUkpoQlBMUVFHOGJ5ZkI1RUY0Nk9OOHhTZlY1ZHY1MFVRMHh0Sm84STc2anVlTjR4VlM1WGI3R0R1d2lXYjkxNmhadmpBcHJmY2VSTmNMRHNhOEw2ZHRBd25hNF9Na0xtWU1YeFRvN1RfZmQxekVwc0plQXctZnQxUndocmpMdmlsbFRhUHkzUXlCaw?oc=5",
+      "hl": "it",
+      "gl": "IT"
+    },
+    {
+      "search_name": "High Level City Italy Italian",
+      "title": "Sciopero ai magazzini Arcese di Castel San Pietro: \"Paghe troppo basse rispetto al costo della vita\" - RaiNews",
+      "title_en": "Strike at the Arcese warehouses in Castel San Pietro: \"Pages too low compared to the cost of living\" - RaiNews",
+      "published": "Tue, 31 Mar 2026 12:02:42 GMT",
+      "link": "https://news.google.com/rss/articles/CBMipAJBVV95cUxNV05wY3gwU1VBWUZPRmJHZXRmMUV3emg0dmhmNmFhQnljYzVMZmhQOUJQTmpaeDdrM2ZuVkFxRmRsQXNwYTgzblVkRnhEanRDUnNfeWhkQ01HX0ZCRnFEeEVJSHFILUhEX1FDT3o5OFVrdUNmb0F6eFFKcmViTWpiS1J5aXY5SzFCS1pJVy1wTHo0d01WWnQzX28xUnVQUFd0c1BzZEZDNi1uelRCUWIwNG1SUUhuQlRpb2Q2Y1owTjZ6M0dTTnJGMDZSMUhoLVRFdnI5b3BFOVpIUGEzVk5hTkZ4REpOZUU0eF9QQnlXR2ZpZ0NaN19GemJ3bHY3dlNlNkxKbmN0MG83VTJLRlZhSTlURXBCbFktdUNxSDMyQW1NN0Nx0gGkAkFVX3lxTE1XTnBjeDBTVUFZRk9GYkdldGYxRXd6aDR2aGY2YWFCeWNjNUxmaFA5QlBOalp4N2szZm5WQXFGZGxBc3BhODNuVWRGeERqdENSc195aGRDTUdfRkJGcUR4RUlIcUgtSERfUUNPejk4VWt1Q2ZvQXp4UUpyZWJNamJLUnlpdjlLMUJLWklXLXBMejR3TVZadDNfbzFSdVBQV3RzUHNkRkM2LW56VEJRYjA0bVJRSG5CVGlvZDZjWjBONnozR1NOckYwNlIxSGgtVEV2cjlvcEU5WkhQYTNWTmFORnhESk5lRTR4X1BCeVdHZmlnQ1o3X0Z6Yndsdjd2U2U2TEpuY3QwbzdVMktGVmFJOVRFcEJsWS11Q3FIMzJBbU03Q3E?oc=5",
+      "hl": "it",
+      "gl": "IT"
+    },
+    {
+      "search_name": "High Level City Italy Italian",
+      "title": "Caos a Milano, pro Pal liberi. \"Così possono studiare\" - il Giornale",
+      "title_en": "Chaos in Milan, pro Pal free. \"So they can study\" - il Giornale",
+      "published": "Tue, 31 Mar 2026 10:03:16 GMT",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNWUctMjMzT0tqMU9Hcnd6NWdCdnBpRUd2OXNuTzhZSC03RlM4ZHREVzZmdzhxa0hmelJEMTFJa0F0cjhCbjBELVZXRUlVWC1pZzBfeVJpb04wbTJQNXJvMjhLbXZHanhHeVJlNVJkTmo0aVBtbDhicVR5Y0ZNcUdtVFc5NGxES2hmYzFTV3ltamFROHIxZnJfTXNRcGVxNGU2YkE?oc=5",
+      "hl": "it",
+      "gl": "IT"
+    },
+    {
+      "search_name": "High Level City Italy Italian",
       "title": "Dall’”Ecomobile Together”/ Il viaggio, il Concerto del 27 e la manifestazione del 28 marzo - ecoinformazioni.com",
       "title_en": "From \"Ecomobile Together\" / The journey, the concert on March 27th and the demonstration on March 28th - ecoinformazioni.com",
-      "published": "Tue, 31 Mar 2026 13:08:06 GMT",
-      "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNNkVqTG92S3FlV2Foal9namRnMDhLZDludGtsX05MYnZkaVkyRnZuSVFVTzBfOTB2aG90bVVOakpLT2pLbkpsUVdHLUl3MGNscFlTeDJ6WVF4bk5LN2hwZFNYZDg3RWtfc3FtUFFITmpZVlIwWThqemR1WHdyUzJmb3I5ckdfZDQ1OWlDZS1VS2hhREpoUm9MN0R2b2Q1N3hJbVNoUTFVQ3lkMmlkUU0yV0dGMmNlZERqcG1ZNtIBhwNBVV95cUxNdTZMaTNJZF9sX2xJaklrTEVob3M2N2J2NGptUm1MdHdYOTlKeTM4aEh2M3ExalpLX1VZTWtvSDJqQXZvWGVKeV83TmxMM0N1REtfQzloM0xvX2toOUE4a1BJX1hwM293Tkp3OWZ2QTBKczQtN1dHMGxVWUFpRmFyMk1NandreW85TFNobDJGV3JsamF4WFpHQmE4Z2E4NmljYWFaN2lkalB4dVpvSXoycDhUZy1yR1NfLTBoV192QWNwSWxaWE03bUQ1ZDNPMS1NRkdWbnRDa3pnV3plU2VfTU5kQjJORTdzZE5acThrNEpPWmkzaHQ5UzFiSmw3LWVkZnhWQ256Q1kxNXBpYkRFVGF6SHhKTGlYekNTYXdFYmN6OTVoRUFPcUxtWHZkUGlITHdpS3JWRmdoOGRoYW9wajhZTWt2MG9DdUpfeHdVOUljNHFFb3JOdGJ0bm8yQUI3ZUl1VU1sc1piV1dOYUh4ay1rUUZGTVVMTlNmQjZLejJmVjREa0tJ?oc=5",
+      "published": "Tue, 31 Mar 2026 08:56:32 GMT",
+      "link": "https://news.google.com/rss/articles/CBMihwNBVV95cUxNdTZMaTNJZF9sX2xJaklrTEVob3M2N2J2NGptUm1MdHdYOTlKeTM4aEh2M3ExalpLX1VZTWtvSDJqQXZvWGVKeV83TmxMM0N1REtfQzloM0xvX2toOUE4a1BJX1hwM293Tkp3OWZ2QTBKczQtN1dHMGxVWUFpRmFyMk1NandreW85TFNobDJGV3JsamF4WFpHQmE4Z2E4NmljYWFaN2lkalB4dVpvSXoycDhUZy1yR1NfLTBoV192QWNwSWxaWE03bUQ1ZDNPMS1NRkdWbnRDa3pnV3plU2VfTU5kQjJORTdzZE5acThrNEpPWmkzaHQ5UzFiSmw3LWVkZnhWQ256Q1kxNXBpYkRFVGF6SHhKTGlYekNTYXdFYmN6OTVoRUFPcUxtWHZkUGlITHdpS3JWRmdoOGRoYW9wajhZTWt2MG9DdUpfeHdVOUljNHFFb3JOdGJ0bm8yQUI3ZUl1VU1sc1piV1dOYUh4ay1rUUZGTVVMTlNmQjZLejJmVjREa0tJ0gGHA0FVX3lxTE11NkxpM0lkX2xfbElqSWtMRWhvczY3YnY0am1SbUx0d1g5OUp5MzhoSHYzcTFqWktfVVlNa29IMmpBdm9YZUp5XzdObEwzQ3VES19DOWgzTG9fa2g5QThrUElfWHAzb3dOSnc5ZnZBMEpzNC03V0cwbFVZQWlGYXIyTU1qd2t5bzlMU2hsMkZXcmxqYXhYWkdCYThnYTg2aWNhYVo3aWRqUHh1Wm9JejJwOFRnLXJHU18tMGhXX3ZBY3BJbFpYTTdtRDVkM08xLU1GR1ZudENremdXemVTZV9NTmRCMk5FN3NkTlpxOGs0Sk9aaTNodDlTMWJKbDctZWRmeFZDbnpDWTE1cGliREVUYXpIeEpMaVh6Q1Nhd0ViY3o5NWhFQU9xTG1YdmRQaUhMd2lLclZGZ2g4ZGhhb3BqOFlNa3Ywb0N1Sl94d1U5SWM0cUVvck50YnRubzJBQjdlSXVVTWxzWmJXV05hSHhrLWtRRkZNVUxOU2ZCNkt6MmZWNERrS0k?oc=5",
+      "hl": "it",
+      "gl": "IT"
+    },
+    {
+      "search_name": "High Level City Italy Italian",
+      "title": "Pilastro, lavori ‘blindati’. Gettate le basi del MuBa. La protesta in Quartiere - Il Resto del Carlino",
+      "title_en": "Pilastro, 'armored' works. Lay the foundations of MuBa. The protest in the neighborhood - Il Resto del Carlino",
+      "published": "Wed, 01 Apr 2026 05:48:16 GMT",
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOT1pBc3VpWUxfWlNlYmpQRGJRVmpZVnlfMEpBM1Y5MGx1Y25NeXMwbEVwcTNGZWI2N1dpYUtseHl6c0hYVC1TYnFReUk1Q2lqNHlUQzhNMW5BaTJOQUxlR0MwOVFNTVN2RnFoU0FqTTBfZTE2bS13UkhPWWJIc1Iwdk5HVy1mczR1VW1mWFNzd2dobjRt?oc=5",
       "hl": "it",
       "gl": "IT"
     },
@@ -373,13 +958,13 @@
       "gl": "IT"
     },
     {
-      "search_name": "High Level City Italy Italian",
-      "title": "Tensione per il cantiere del MuBa: blindati e polizia per l’avvio dei lavori, protesta del comitato | VIDEO - BolognaToday",
-      "title_en": "Tension for the MuBa construction site: armored vehicles and police to start work, protest from the committee | VIDEO - BolognaToday",
-      "published": "Tue, 31 Mar 2026 10:14:43 GMT",
-      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQTk03SUpSMzBtazZ5Q0xWSHVjcGM3bVAyRkVKYXl0MkNHc005NV92bUNQVjBmRnFPYkZIZ0xsTkVmbnFDV0Rha1Fzb3BmdGhDZjRDZ216djVzLUI1NEk4Vko1dWtYZm1fOUY0UEwtTzcwam9jWnhMQmQ2Mi1vOVdrcExLeUpId2Qyb0NHT2QxZFdJaE0?oc=5",
-      "hl": "it",
-      "gl": "IT"
+      "search_name": "Village Fidenza (fallback)",
+      "title": "Profile C. Gilioli, : Info, news, matches and statistics - besoccer.com",
+      "title_en": "Profile C. Gilioli, : Info, news, matches and statistics - besoccer.com",
+      "published": "Tue, 31 Mar 2026 09:20:49 GMT",
+      "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9OcWF2Z0tJUjZwQjlBcktYSExrTWlHazFxRk9nYjFLVkVrR3huUF9fM3hXam1KYmc2M2NadHh3cDQ4QkNQeWxObWthLXJoOU1Xc0V4TU16M3Z1U2Rf?oc=5",
+      "hl": "en-GB",
+      "gl": "GB"
     }
   ]
 }
