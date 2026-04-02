@@ -1,9 +1,6 @@
 name: Daily News Collection
 on:
-  schedule:
-    - cron: "0 7 * * 2-5"    # Tue-Fri morning → 24h
-    - cron: "0 14 * * 1-5"   # Mon-Fri afternoon → 7h
-    - cron: "0 7 * * 1"      # Monday morning → 72h
+  
   workflow_dispatch:
     inputs:
       lookback_hours:
