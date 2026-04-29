@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-29T13:42:39.026272+00:00",
+  "generated_at": "2026-04-29T13:48:16.559689+00:00",
   "lookback_hours": 7,
   "run_type": "Afternoon run (7h)",
   "articles": [
@@ -46,6 +46,18 @@
       "title_en": "Who can get Amazon drone delivery in San Antonio? What we know - MSN",
       "published": "Wed, 29 Apr 2026 07:38:13 GMT",
       "link": "https://news.google.com/rss/articles/CBMi6gJBVV95cUxNcUVrQV9TUDZKTDdzVEhhVWNrcFBacUJueWhxd2t1OXZpZ2cyT3hNNzg1bHV1RkRIRmtvN0tzUjN1enhtMkswWGNMdU9Wd1JpRGJMSkx0ZVp3eS1yZDd1RW03dGR2c3NKRWhFQ01sWS1WYTNNYk5JblczaE9xZVVUWlVKY1RueTBwVlB0cWhTb2dtbktwWjFCNXR4VUYzQVFtZ3NTT3hzU25pZW1hUVRRWEdRaEFFbmViSTlXeWNUUkVlcjBFcEhXSC1sMUc4UlA2WmIwT09xZnUxUXMtODFqWDdPbGQ1b3FNM2xzMERSenc5dXhnZlBzQ095a3Nnd3p1VUswc2U0RWVCNjZvdWtXb2dBLWhBSHBLd0lnbE9jandEWDhZTEYzX2xXajJYRHVyeHBscHBpZGlhRG1fQUtreG5xUk5rRXBfYXkwYTJUSTdKUkZ1VllDYnYtM0ctSFdLdWYxRERxb1RKZw?oc=5",
+      "village": "",
+      "country": "Europe",
+      "category": "BV Intel",
+      "language": "en-GB"
+    },
+    {
+      "search_name": "BV Logistics Companies",
+      "search_query": "(\"Dropit\" OR \"DHL\" OR \"UPS\" OR \"DPD\" OR \"Flight Logistics\" OR \"Fedex\" OR \"Amazon\" OR \"Royal Mail\" OR \"Parcelforce\" OR \"EVRI\" ) AND ( \"supply \" OR  \"delivery\") AND -\"postal vote\"",
+      "title": "Amazon is expanding faster shipping with new 1-hour and 3-hour delivery options - MSN",
+      "title_en": "Amazon is expanding faster shipping with new 1-hour and 3-hour delivery options - MSN",
+      "published": "Wed, 29 Apr 2026 12:14:50 GMT",
+      "link": "https://news.google.com/rss/articles/CBMipANBVV95cUxPZW1hbE9CZGhEQmI1Rl9RdllkSjBlZUpla192b0Ruc0xCMVEtcVV2bE9uZkE4NEFrYnZLeHNrSzBwbnJZSmlHaUNhdFNvakdOTVYyYk1tYjluVWswVU0tbnhYN3RjaVRIS3RUNml5WWxMeU9uUE1Tdk9VVzB0MDJ4bnVLOVV1UXlvemcwazlic3RkS0FuYmxZSml1ZENUTVRfMzBzWFJLT1E2VDZjVmFjc09ZbmNWbFdBa2xzbWVDZkxOVWFNQTdfb3pXWnQyX1lnWFFBRkY1Z0RxVkVINWZQSUNhQUFxUlgzd1YwOEF5MmpsdXZvcDh0QS12dnFHMjZENXNMUmpNZjZTNlliVnNTUFBna3BoQmFib2Jadk53bDZjY0p4NG9CX05SMUIwR3NteF9wd2FSS2ctc01wclpEMTlMb214T3k0RGNzYzlsZmNtd2c4RW43bFRrLVpUQXRNakdvY0ZGNFMwZjRhNHBoR25YZFZGXzdQeUg1eHB2OTZ0dUxfSXc4dVp1R29BdFRNbER0bGMyNlE2RXItOFNOdzlsa3M?oc=5",
       "village": "",
       "country": "Europe",
       "category": "BV Intel",
@@ -138,6 +150,18 @@
     {
       "search_name": "High Level City Belgium French",
       "search_query": "(\"Bruxelles\" OR \"Anvers\" OR \"Maastricht\") AND (bombe OR explosion OR fusillade OR agression OR couteau OR \"colis suspect\" OR \"alerte à la bombe\" OR attentat) AND -football AND -transfert",
+      "title": "Patrick Bruel désormais visé par une enquête en Belgique - MSN",
+      "title_en": "Patrick Bruel now targeted by investigation in Belgium - MSN",
+      "published": "Wed, 29 Apr 2026 07:32:36 GMT",
+      "link": "https://news.google.com/rss/articles/CBMinANBVV95cUxPRzZCMXdZWEpJWjgybnBQSW0wc19DZmVzTmJiTFJjTkxsMDFPOU5QdGp1QVJnc1VOVXhrNE5LM2JYRUNHRDZfT1JBYkxHdHY0MlpvdWFuZnEtb2tacGdIZUY0OHdNcnpnaEhwUnhERTJHTllGZ1VaZzZhNDRTX1dZTmVZaTVBdUJmZFptQmxCNk5oT0pmTXJtZDdWRFgzbHk1RUtCQ3pIY3JIYkQ1RHplQTlvWjExVEs3U1dtT2hDZ0VmLW5vVG9PbWVpNzd5M19kM19aMEtUQnZFVzhfQTJidEpVUEhESjBpcTZ5Yk9VRkg0YThhSDBoWEtkc0lFVW1Yc0lDd2hpSS1YTHdtSjNlTkRqNFVQVWhyeWpUaUQ0RnpNWm10WEY4QVhRNS1yYlJjd2gzOXBydDBCYno5VGcycFpua1BhZk8xVzJ5eHpIbmc4dmtsNUdCZlVEMDhQc2lXYzgtb3hVb2h1U2wwMFBBenNOa2M1ZkFBVGdrNGpmaF9QeWRhckUxblRMcms5a0pqMEV3TWUyWmw5SUM2?oc=5",
+      "village": "Belgium",
+      "country": "Belgium",
+      "category": "High Level City",
+      "language": "fr"
+    },
+    {
+      "search_name": "High Level City Belgium French",
+      "search_query": "(\"Bruxelles\" OR \"Anvers\" OR \"Maastricht\") AND (bombe OR explosion OR fusillade OR agression OR couteau OR \"colis suspect\" OR \"alerte à la bombe\" OR attentat) AND -football AND -transfert",
       "title": "Ponts de mai : explosion des réservations vers Aix et Marseille, le week-end du 8 mai bat des records ! - Maritima",
       "title_en": "May bridges: explosion of reservations to Aix and Marseille, the weekend of May 8 breaks records! -Maritima",
       "published": "Wed, 29 Apr 2026 10:13:00 GMT",
@@ -160,24 +184,12 @@
       "language": "fr"
     },
     {
-      "search_name": "Local Town Maasmechelen French (fallback)",
-      "search_query": "(\"Maasmechelen\" OR \"Hasselt\" OR \"Lanaken\")",
-      "title": "Visa pour la Flandre : Sporting Hasselt, le Wrexham flamand qui sent la buvette et le BV - Le Soir",
-      "title_en": "Visa for Flanders: Sporting Hasselt, the Flemish Wrexham that smells like a refreshment bar and BV - Le Soir",
-      "published": "Wed, 29 Apr 2026 13:36:32 GMT",
-      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOMjNXQzFSNzdhVUdGbGpWTHJfazI3U2lNOThuWERXRHBtUTdTZkJhYXdobnNxRkFtaE9tT1JMN1dFZWI1NFBUb3gtQjJPS1NVdjk0Vks5TjNHMVNLRzRYRXJQWVZ0QlN6Wl93UjJGMHRQakx4RVp2SGplWm5Wd0NFZC13d2RFeFVnTS1jZVNJMXpGUm5WVXpYU2dtWEhnUzdwWGxCdFp1OTIxSlNlNjR2dnIxZHMzVHpYNWloUk9lS1gyclZZblE?oc=5",
-      "village": "Maasmechelen",
-      "country": "Belgium",
-      "category": "Local Town",
-      "language": "fr"
-    },
-    {
-      "search_name": "Local Town Maasmechelen French (fallback)",
-      "search_query": "(\"Maasmechelen\" OR \"Hasselt\" OR \"Lanaken\")",
-      "title": "Pukkelpop - Pukkelpop divulgue 14 nouveaux noms à l'affiche du festival - DHnet",
-      "title_en": "Pukkelpop - Pukkelpop reveals 14 new names on the festival poster - DHnet",
-      "published": "Wed, 29 Apr 2026 11:04:00 GMT",
-      "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxOTWpFSXNCRUNRNUIyS0oyVTJYbUtwSGNsd1NEclpodlBjU2JjZklRSGdibUhBQS13SkpuUFVTR0w3WUdyc0lONTFLMTFlZEpZMTJDb0dKcWtqc1VUVUc5QTZEZER3Rm8wdm5uTGwyOHRXWk5sNnFLX25BSlpidVFXVTdYUVRWVnhjOUU4aHl1aVM5Vm1SMS1LUnJtaG4zVDFaenYtcnRoekM3cmN4aVVjRjgySEc5dmdKWjh0dlJCSHA0QlVsUFRKY3dUd2xKUlRNamNIN1Ytc25wVWduRFRFdw?oc=5",
+      "search_name": "Local Town Maasmechelen French",
+      "search_query": "(\"Maasmechelen\" OR \"Hasselt\" OR \"Lanaken\") AND (manifestation OR bombe OR explosion OR fusillade OR couteau OR évacuation OR police OR arrestation OR protestation)",
+      "title": "Un individu impliqué dans une bagarre à Maasmechelen placé sous surveillance électronique - DHnet",
+      "title_en": "Individual involved in fight in Maasmechelen placed under electronic surveillance - DHnet",
+      "published": "Wed, 29 Apr 2026 13:46:00 GMT",
+      "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxPV3g3cTJpLUNzb0Q3cXF1X24yMUdtZTBwUExFZ09XWFVVaXgyREdDZDZfYVUtVWNhaWk0eFhLMG05OEE4TS1HYk1BXzZpZkRyMWpaQXRHMjlNZDl4ekNvZ21PTlJlOFhWaGVwM0NKX3NwSTc5aXNCUEVRZXJCZE83VUt6VDlKbWFjUi1HNXJ5MjdxekI0WkhoZXR0bF80ZUloSFM3UnV5NF96dmc4YlVjRjdMa05MVUZMOUpFMzdKX21qSkgxVDM2NTVBVEJSR0lBUDVDQWtwbWRGclN2b25nNWxQQ2p1NGFzSDF0Z0ZHY1NJOF9sMkJZMmprZEU?oc=5",
       "village": "Maasmechelen",
       "country": "Belgium",
       "category": "Local Town",
@@ -293,18 +305,6 @@
     },
     {
       "search_name": "High Level City UK Ireland",
-      "search_query": "(\"Dublin\" OR \"Oxford\" OR \"London\") AND (\"Bomb\" OR \"explosion\" OR \"shooting\"  OR \"Stabbing\" OR \"suspicious package\" OR \"unattended Package\" OR \"explosive\" OR \"bomb threat\" OR \"Protest\" OR \"blockade\" )",
-      "title": "Woman guilty of murdering sister after stabbing her 10 times and stealing Rolex - London Now",
-      "title_en": "Woman guilty of murdering sister after stabbing her 10 times and stealing Rolex - London Now",
-      "published": "Wed, 29 Apr 2026 11:14:54 GMT",
-      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxPSnZ0WTZ5a0Y3QnBIRGRRMlhSYlZWVlF4SjNYWGFoUm5xM3FnX0w3c3NpSGU3eUQtaDZ5VS1NN2dYM1lpRTk4MndMTmpJLUI1S3FkSUhsajRVNUdRMWlsdUtPWmZycDZvOVpSRF9MLWtwa096V2hsMEM1ejFFdGFvdmRlbFVtSzhuRTZiYmJNM2dtZWs4Q0dNN3UyaU42Zw?oc=5",
-      "village": "UK / Ireland",
-      "country": "UK / Ireland",
-      "category": "High Level City",
-      "language": "en-GB"
-    },
-    {
-      "search_name": "High Level City UK Ireland",
       "search_query": "(\"Oxford\" OR \"Bicester\" OR \"Oxfordshire\" OR \"London\" OR \"UK\" OR \"England\" OR \"Britain\") AND (\"protest\" OR \"demonstration\" OR \"blockade\" OR \"strike\" OR \"march\" OR \"rally\" OR \"civil unrest\" OR \"disorder\" OR \"dispersal order\" OR \"anti-social behaviour\" OR \"flash mob\" OR \"social media gathering\" OR \"link-up\") AND -sport AND -football",
       "title": "‘Particularly badly exposed’: How the Iran war is hitting the UK - Al Jazeera",
       "title_en": "‘Particularly badly exposed’: How the Iran war is hitting the UK - Al Jazeera",
@@ -330,6 +330,18 @@
     {
       "search_name": "High Level City Italy Italian",
       "search_query": "(\"Milano\" OR \"Bologna\") AND (protesta OR manifestazione OR corteo OR sciopero OR blocco OR presidio OR \"sit-in\") AND -calcio AND -moda AND -\"settimana della moda\" AND -Serie AND -mercato",
+      "title": "Bandiere d'Israele e urla di \"schifo\": scintille in consiglio sul 25 aprile. \"Ebrei esclusi, non accadeva dal 1938\" - MilanoToday",
+      "title_en": "Israeli flags and shouts of \"disgust\": sparks in the council on April 25th. \"Jews excluded, this hasn't happened since 1938\" - MilanoToday",
+      "published": "Wed, 29 Apr 2026 09:58:16 GMT",
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOR0VfRG1nTDEzQ3FtanNyaU4xUGd1aTdFR0EtUE9XaUxBYmN1Snh6S2hoTmpUS1hNZ3ItRHRqZzJwelR1SEIxMnFfSXBXQXFpODAzbksyNXFIZnFORFp6TWpKSTA2d3VLN1dBWXgzcEt4blYxNWZRa0VsSzEwN3lWcWNobWx4R19odUNkeHRXOA?oc=5",
+      "village": "Italy",
+      "country": "Italy",
+      "category": "High Level City",
+      "language": "it"
+    },
+    {
+      "search_name": "High Level City Italy Italian",
+      "search_query": "(\"Milano\" OR \"Bologna\") AND (protesta OR manifestazione OR corteo OR sciopero OR blocco OR presidio OR \"sit-in\") AND -calcio AND -moda AND -\"settimana della moda\" AND -Serie AND -mercato",
       "title": "Sciopero alla Fluid-o-Tech contro il licenziamento di Gianfranco, operato al ginocchio - Il Giorno",
       "title_en": "Strike at Fluid-o-Tech against the dismissal of Gianfranco, who underwent knee surgery - Il Giorno",
       "published": "Wed, 29 Apr 2026 11:31:55 GMT",
@@ -346,18 +358,6 @@
       "title_en": "May 1st 2026, what to do in Milan? Procession, festivals, events not to be missed - Mentelocale",
       "published": "Wed, 29 Apr 2026 12:00:29 GMT",
       "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQS1BiR3paQlFRY2dNZFhYTHp0S3BwWjIxT2YyMjgwZGZnMmNONkdXa2ItUktveS16SVVneDFSSU9qbjhHSEJ3SnBlYXEyaC1VZm5BVERYSHlCcjZPNElOMjc5bTJHbDB6amFXWUZKLXdPdHJjaFdFbmxPYk1NZDRNOVNGLTZGeV92XzFkaEZpTTZxaW0zYnRrRVVmUlc3a2wwWERPYU92NFJKSUY5b1JzU0tpMzdQUFE?oc=5",
-      "village": "Italy",
-      "country": "Italy",
-      "category": "High Level City",
-      "language": "it"
-    },
-    {
-      "search_name": "High Level City Italy Italian",
-      "search_query": "(\"Milano\" OR \"Bologna\") AND (protesta OR manifestazione OR corteo OR sciopero OR blocco OR presidio OR \"sit-in\") AND -calcio AND -moda AND -\"settimana della moda\" AND -Serie AND -mercato",
-      "title": "Bandiere d'Israele e urla di \"schifo\": scintille in consiglio sul 25 aprile. \"Ebrei esclusi, non accadeva dal 1938\" - MilanoToday",
-      "title_en": "Israeli flags and shouts of \"disgust\": sparks in the council on April 25th. \"Jews excluded, this hasn't happened since 1938\" - MilanoToday",
-      "published": "Wed, 29 Apr 2026 09:58:16 GMT",
-      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOR0VfRG1nTDEzQ3FtanNyaU4xUGd1aTdFR0EtUE9XaUxBYmN1Snh6S2hoTmpUS1hNZ3ItRHRqZzJwelR1SEIxMnFfSXBXQXFpODAzbksyNXFIZnFORFp6TWpKSTA2d3VLN1dBWXgzcEt4blYxNWZRa0VsSzEwN3lWcWNobWx4R19odUNkeHRXOA?oc=5",
       "village": "Italy",
       "country": "Italy",
       "category": "High Level City",
@@ -508,30 +508,6 @@
       "language": "en-GB"
     },
     {
-      "search_name": "Access Disruption Wertheim English (fallback)",
-      "search_query": "(\"Wertheim\" OR \"A3 autobahn\" OR \"Würzburg\" OR \"Aschaffenburg\")",
-      "title": "Stars who smoke—and the reactions they sparked - MSN",
-      "title_en": "Stars who smoke—and the reactions they sparked - MSN",
-      "published": "Wed, 29 Apr 2026 07:33:37 GMT",
-      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNYnNJLVMxdjZzbUZYaXcyRjBqb1dSNkd1aVp2VzlpaTJCdVlnZVF0bE0zT2hxLXZQeFZYUU1Bc2l6Q0lMQi1QSTNLT0x5RmFzSmlSQTJsWVQzQmNpLWdVc2tPWk1NMTFnY2VfNk9rdkpFNWJhV2JITnhuTktoVk01NHFVRDcyS0lkT0pKRXpCMDJycjRjc0JaODI4eUI?oc=5",
-      "village": "Wertheim",
-      "country": "Germany",
-      "category": "Other",
-      "language": "en-GB"
-    },
-    {
-      "search_name": "Access Disruption Wertheim English (fallback)",
-      "search_query": "(\"Wertheim\" OR \"A3 autobahn\" OR \"Würzburg\" OR \"Aschaffenburg\")",
-      "title": "Andy Roddick shares ESPN ultimatum - MSN",
-      "title_en": "Andy Roddick shares ESPN ultimatum - MSN",
-      "published": "Wed, 29 Apr 2026 07:45:28 GMT",
-      "link": "https://news.google.com/rss/articles/CBMi5wJBVV95cUxNb0g4U0Z6TkFLQ0tPMzByNzJpU2RmTkxZbk1lUEZqaURySzA2bnpsbFNSTU1YeVFUSEk5QXAwWHc5Vk44YUdtLWs3T09mTkxiejh3LUhuUU5vbUh5ZHczbnF0eEotWWdJandqVkZEWEczbmFzNW8zQkdNR291a3VPNWRrMGE1eTh5SXBtb0pRbFo4ajBGcFpOSkFsckZER0lJV3E2blRDQzh2SlJ2UGdhUzBDRDhsNVY5eHVWb2REOUVLTTdsWldhd284d0NvRklBU0FrcHduUUJSZjBjbXI2SEZwRGVPZXZ5SkxFMmdvel9CUnNrZjZXYnFYZjZ2Q2NCbVZqb3BnRVRHdWd6Tjg5bzIyQzJGUDhCenNlaFVwel9HelhpVXotZ1oyUk5xeXF2SXlnc0hvSTBLLVhfRG1TVTFyNnltZ2hzQzJvNFJPS1NXM2xydWtsVUlEVVVCck0zblJvUGNDOA?oc=5",
-      "village": "Wertheim",
-      "country": "Germany",
-      "category": "Other",
-      "language": "en-GB"
-    },
-    {
       "search_name": "Access Disruption Ingolstadt German",
       "search_query": "(\"Ingolstadt\" OR \"A9\" OR \"A8\" OR \"B9\") AND (Sperrung OR Stau OR Unfall OR Protest OR Blockade OR Evakuierung OR Streckensperrung OR Polizeieinsatz) AND -Audi AND -Auto AND -Wetter AND -Sport",
       "title": "Heftiger A9-Unfall bei Schweitenkirchen: 23-Jähriger überschlägt sich nach Crash - Pfaffenhofen Today",
@@ -590,6 +566,18 @@
       "country": "Germany",
       "category": "Other",
       "language": "de"
+    },
+    {
+      "search_name": "Access Disruption Ingolstadt English (fallback)",
+      "search_query": "(\"Ingolstadt\" OR \"A9 autobahn\" OR \"A8 autobahn\")",
+      "title": "Viktoria Köln 1904 - FotMob",
+      "title_en": "Victoria Cologne 1904 - PhotoMob",
+      "published": "Wed, 29 Apr 2026 07:23:08 GMT",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPUWdnTW54d0VmNlNJeUpBdEgxRDJOTWhQeUhETWtSVFlKck1jdmpWWlJ6c2o2YjhsbDlHWVdnZmFOTHNFUTRPZndRVllfYVRXenE0VDBpV3pxN3BtNjZ3dHBMZUoxN1RTcjhETUlNVC1KQmRCX0haNFN6RTRsS0hqa1dnSVkwTjBZU3puQUJ3?oc=5",
+      "village": "Ingolstadt",
+      "country": "Germany",
+      "category": "Other",
+      "language": "en-GB"
     },
     {
       "search_name": "Access Disruption Fidenza Italian",
