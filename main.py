@@ -35,7 +35,7 @@ if not _raw or not _raw.strip():
 
 LOOKBACK_HOURS      = int(_raw)
 PAST_DAYS           = int(os.getenv("PAST_DAYS", "1"))
-MAX_ITEMS           = int(os.getenv("MAX_ITEMS", "30"))
+MAX_ITEMS           = int(os.getenv("MAX_ITEMS", "50"))
 DUP_THRESHOLD       = float(os.getenv("DUP_THRESHOLD", "0.7"))
 MODEL_NAME          = os.getenv("MODEL_NAME", "all-MiniLM-L6-v2")
 EXTRACT_CONTENT     = os.getenv("EXTRACT_CONTENT", "false").lower() == "true"
